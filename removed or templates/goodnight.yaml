@@ -1,0 +1,31 @@
+  - name: Goodnight
+    entities:
+      light.vardagsrumslampa: off
+      light.kitchen: off
+      switch.livingroom_standing_window_lamp: off
+      switch.livingroom_hanging_window_lamp: off
+      light.hallen:
+        state: on
+        brightness: 1
+      input_select.house_mode:
+        option: Night
+
+  - name: Goodnight Isa
+    entities:
+      light.hallen:
+        state: on
+        brightness: 1
+
+  - name: Goodnight Stefan
+    entities:
+      light.hallen:
+        state: on
+        brightness: 1
+
+  - name: Goodmorning
+    entities:
+      light.hallen:
+        state: on
+        brightness: 5
+      input_select.house_mode:
+        option: Day

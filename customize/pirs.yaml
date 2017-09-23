@@ -1,0 +1,6 @@
+    sensor.passage_pir_luminance:
+      friendly_name: Passage Lux
+      icon: mdi:theme-light-dark
+    sensor.upstairs_hallway_pir_luminance:
+      friendly_name: Upstairs Hallway Lux
+      icon: mdi:theme-light-dark

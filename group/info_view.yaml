@@ -1,0 +1,16 @@
+info_view:
+  view: yes
+  name: Info
+  icon: mdi:home-variant
+  entities:
+    - device_tracker.isabellas_iphone_6s
+    - device_tracker.stefan_iphone_7
+    - group.info_card
+    # - group.weather_summary_today_card
+    # - group.weather_summary_tomorrow_card
+    - group.inside_lights_card
+    - group.outside_lights_card
+    - group.camera_card
+    - input_select.house_mode
+    - input_select.day_mode    
+    - group.test_group

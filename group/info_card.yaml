@@ -1,0 +1,22 @@
+info_card:
+  name: Info
+  control: hidden
+  entities:
+  - sensor.date__time
+  - sun.sun
+  - sensor.front_door
+  - sensor.back_door
+  - sensor.nexa_door
+  - sensor.dining_area_window
+  - sensor.passage_movement
+  - sensor.passage_pir_luminance
+  - sensor.upstairs_hallway_movement
+  - sensor.upstairs_hallway_pir_luminance
+  - sensor.vacuumed_today
+  # - sensor.motion_sensor
+  # - binary_sensor.upstairs_litter_box_pir
+  - sensor.upstairs_litter_box_visits
+  - switch.stefan_on_air
+  - sensor.grimsan55
+  - sensor.fire_alarm_1_sensor_status
+  - sensor.fire_alarm_2_sensor_status

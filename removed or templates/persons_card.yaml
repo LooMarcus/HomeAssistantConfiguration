@@ -1,0 +1,14 @@
+persons_card:
+  view: false
+  name: Personer
+  control: hidden
+  icon: mdi:human-male-female
+  entities:
+#  - input_boolean.stefan_home
+#  - input_boolean.isabella_home
+  - sensor.isa
+  # - device_tracker.isabella_isaowntracks
+  - device_tracker.isabellas_iphone_6s
+  - device_tracker.isabelliphone6s
+  - sensor.stefan
+  - device_tracker.stefansiphone

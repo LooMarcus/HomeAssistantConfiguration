@@ -1,0 +1,17 @@
+inside_lights_card:
+  name: Inside lights
+  entities:
+    - light.bedroom_ceiling_light
+    - light.bedside_lamp
+    - light.dining_area_ceiling_light_level
+    - light.e14
+    - light.floor_lamp_uplight
+    - light.gateway_light_34ce008bfc4b
+    - light.hallway_window_light
+    - light.isa_ceiling_light
+    - light.living_room_ceiling_light_level
+    - light.living_room_spotlights_level
+    - light.passage_ceiling_spotlights_level
+    - sensor.stefan_ceiling_light
+    - light.upstairs_hallway_ceiling_light_level
+    - light.isa_ceiling_lamp

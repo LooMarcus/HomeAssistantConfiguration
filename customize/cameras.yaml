@@ -1,0 +1,10 @@
+#########################################
+######        SANNCE FFMPEG        ######
+#########################################
+
+    camera.camera_sannce:
+      name: Toakamera
+      homebridge_hidden: true
+    binary_sensor.ffmpeg_motion:
+      name: Katt på toa!
+      homebridge_hidden: true

@@ -1,0 +1,90 @@
+homeassistant:
+  customize:
+    binary_sensor.door_window_sensor_158d00019f5110:
+      friendly_name: Yard Storage Door
+    binary_sensor.door_window_sensor_158d00019e152b:
+      friendly_name: Backyard Door
+
+input_boolean:
+  backyard_door:
+    name: Backyard door
+    initial: off
+
+sensor:
+  - platform: template  
+    sensors:
+      front_door:
+        friendly_name: 'Front Door'
+        value_template: '{% if is_state("sensor.front_door_access_control", "22") %}Open{% else %}Closed{% endif %}'
+        icon_template: '{% if is_state("sensor.front_door_access_control", "22") %}mdi:login{% else %}mdi:page-layout-sidebar-right{% endif %}'
+
+      sensative_door_battery:
+        friendly_name: 'Sensative Door Battery'
+        value_template: '{% if states.zwave.sensative %}
+          {{ states.zwave.front_door.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        unit_of_measurement: '%'
+        entity_id: zwave.sensative
+
+      back_door:
+        friendly_name: 'Back Door'
+        value_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}Open{% else %}Closed{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}mdi:message-alert{% else %}mdi:page-layout-sidebar-right{% endif %}'
+
+      nexa_door:
+        friendly_name: 'Nexa Door'
+        value_template: '{% if is_state("switch.nexa_door", "on") %}Open{% else %}Closed{% endif %}'
+        icon_template: '{% if is_state("switch.nexa_door", "on") %}mdi:login{% else %}mdi:page-layout-sidebar-right{% endif %}'
+
+binary_sensor:
+  - platform: rfxtrx
+    devices:
+      0b11001f01539bda0a010f50:
+        name: Nexa Door
+
+
+
+
+
+
+automation:
+  - alias: Door opened
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door_sensor
+        to: 'on'
+      - platform: state
+        entity_id: binary_sensor.back_door_sensor
+        to: 'on'
+    # add condition for not_home or alarm on
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Door opened'
+          message: >
+            '{{ trigger.entity_id }} just opened and noone seems to be home'
+
+  - alias: Door closed
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door_sensor
+        to: 'off'
+      - platform: state
+        entity_id: binary_sensor.back_door_sensor
+        to: 'off'
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Door closed'
+          message: >
+            '{{ trigger.entity_id }} just closed and noone seems to be home'

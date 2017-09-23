@@ -1,0 +1,71 @@
+#########################################
+######           MI FLORA          ######
+#########################################
+
+    sensor.monstera_battery:
+      icon: mdi:battery
+      friendly_name: Monstera batteri
+      homebridge_hidden: true
+    sensor.monstera_conductivity:
+      homebridge_hidden: true 
+      hidden: true
+    sensor.monstera_light_intensity:
+      icon: mdi:white-balance-iridescent
+      friendly_name: Hall lux
+      homebridge_hidden: true
+    sensor.monstera_moisture:
+      icon: mdi:water-percent
+      friendly_name: Monstera fuktighet
+      homebridge_hidden: true
+    sensor.monstera_temperature:
+      friendly_name: Hall temperatur
+      homebridge_hidden: true
+
+    sensor.palm_battery:
+      icon: mdi:battery
+      friendly_name: Palm batteri
+      homebridge_hidden: true
+    sensor.palm_conductivity:
+      hidden: true
+      homebridge_hidden: true
+    sensor.palm_light_intensity:
+      icon: mdi:white-balance-iridescent
+      friendly_name: Arbetsrum lux
+      homebridge_hidden: true
+    sensor.palm_moisture:
+      icon: mdi:water-percent
+      friendly_name: Palm fuktighet
+      homebridge_hidden: true
+    sensor.palm_temperature:
+      friendly_name: Arbetsrum temperatur
+      homebridge_hidden: true
+
+
+#########################################
+######            BATTERY          ######
+#########################################
+
+    sensor.isabellas_iphone_6s_battery_state:
+      icon: mdi:battery-charging
+      homebridge_hidden: true
+    sensor.isabellas_iphone_6s_battery_level:
+      icon: mdi:battery
+      homebridge_hidden: true
+    sensor.paddan_battery_level:
+      icon: mdi:battery
+      homebridge_hidden: true
+    sensor.paddan_battery_state:
+      icon: mdi:battery-charging
+      homebridge_hidden: true
+    sensor.sensative_door_battery:
+      icon: mdi:battery
+      homebridge_hidden: true
+
+#########################################
+######          FIRE ALARMS        ######
+#########################################
+  
+    sensor.fire_alarm_1_sensor_status:
+      icon: mdi:fire
+    sensor.fire_alarm_2_sensor_status:
+      icon: mdi:fire

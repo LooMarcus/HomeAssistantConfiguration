@@ -1,0 +1,11 @@
+weather_summary_tomorrow_card:
+  name: Väderprognos imorgon
+  entities:
+    - sensor.dark_sky_daily_high_temperature_1
+    - sensor.dark_sky_daily_high_apparent_temperature_1
+    - sensor.dark_sky_daily_low_temperature_1
+    - sensor.dark_sky_daily_low_apparent_temperature_1
+    - sensor.dark_sky_wind_speed_1
+    - sensor.dark_sky_precip_1
+    - sensor.dark_sky_precip_intensity_1
+    - sensor.dark_sky_precip_probability_1

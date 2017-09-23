@@ -1,0 +1,28 @@
+- alias: Hallway window light switch on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.white1
+    to: 'on'
+  condition:
+   condition: state
+   entity_id: light.hallway_window_light
+   state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.hallway_window_light
+      data:
+        brightness: 45
+
+
+- alias: Hallway window light switch off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.white1
+    to: 'on'
+  condition:
+   condition: state
+   entity_id: light.hallway_window_light
+   state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.hallway_window_light

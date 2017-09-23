@@ -1,0 +1,4 @@
+upstairs_security_card:
+  name: Upstairs Security
+  entities:
+  - sensor.upstairs_hallway_movement

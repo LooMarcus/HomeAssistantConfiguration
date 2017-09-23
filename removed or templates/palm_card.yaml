@@ -1,0 +1,9 @@
+palm_card:
+  name: Palm
+  entities:
+  - sensor.palm_moisture
+  - sensor.palm_light_intensity
+  - sensor.palm_temperature
+  - sensor.palm_conductivity
+  - sensor.palm_battery
+  - plant.palm

@@ -1,0 +1,10 @@
+downstairs_lights_card:
+  name: Lampor
+  entities:
+    - light.hallway_window_light
+    - light.living_room_ceiling_light_level
+    - light.living_room_spotlights_level    
+    - light.dining_area_ceiling_light_level
+    - light.passage_ceiling_spotlights_level
+    - light.yard_outside_light
+    - light.front_outside_light

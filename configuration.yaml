@@ -1,0 +1,169 @@
+homeassistant:
+  name: Home
+  latitude: !secret lat_coord
+  longitude: !secret long_coord
+  elevation: 50
+  unit_system: metric
+  time_zone: !secret time_zone
+  customize: !include_dir_merge_named customize
+  # customize_glob: !include customglob.yaml
+  packages: !include_dir_named packages
+config:
+http:
+  api_password: !secret http_password
+  base_url: !secret base_url
+updater:
+discovery:
+conversation:
+
+# ########################################
+# ###                GUI               ###
+# ########################################
+frontend:
+# panel_iframe:
+#   # grafana:
+#   #   title: "Grafana"
+#   #   icon: mdi:chart-areaspline
+#   #   url: !secret grafana_url
+#   mdi_index:
+#     title: MDI Icons
+#     icon: mdi:vector-square
+#     url: !secret mdi_index_url
+#   # hadashboard:
+#   #   title: HaDashboard
+#   #   icon: mdi:television-guide
+#   #   url: !secret hadashboard_url
+#   # configurator:
+#   #   title: Configurator
+#   #   icon: mdi:wrench
+#   #   url: !secret configurator_url
+# # panel_custom: 
+# #   - name: floorplan
+# #     sidebar_title: Floorplan
+# #     sidebar_icon: mdi:home
+# #     url_path: floorplan
+# #     config: !include floorplan.yaml
+
+# ########################################
+# ###              LOGGING             ###
+# ########################################
+history:
+# recorder:
+#   purge_days: 7
+logbook: #!include logbook.yaml
+# logger: !include logger.yaml
+sun:
+python_script:
+# zone:
+#   name: School
+#   latitude: !secret school_lat
+#   longitude: !secret school_long
+#   icon: mdi:code-braces
+# tts:
+#   platform: google
+# # influxdb:
+# #   host: 127.0.0.1
+# #   database: home_assistant
+# #   username: !secret influxdb_username
+# #   password: !secret influxdb_password
+
+
+########################################
+###               HUBS               ###
+########################################
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A14SREW-if00-port0
+  debug:
+zwave:
+  usb_path: /dev/ttyACM0
+  new_entity_ids: true
+xiaomi:
+  gateways:
+   - mac: !secret xiaomi_mac
+     key: !secret xiaomi_key
+# TRÅDFRI
+# HUE
+
+# ########################################
+# ###              ENTITES             ###
+# ########################################
+# # media_player: !include media_player.yaml
+# # alert: !include alert.yaml
+# # plant: !include plant.yaml
+sensor: !include_dir_merge_list sensor
+switch: !include_dir_merge_list switch
+binary_sensor: !include_dir_merge_list binary_sensors
+light: !include_dir_merge_list lights
+# scene: !include_dir_merge_list scene
+input_boolean: !include_dir_merge_named input_boolean/
+input_select: !include_dir_merge_named input_select
+# device_tracker: !include device_tracker.yaml
+# # input_slider: !include_dir_merge_named input_slider/
+# # camera:
+# #   - platform: ffmpeg
+# #     name: Camera Sannce
+# #     input: !secret camera_input
+# #     extra_arguments: -pred 1
+
+
+# ########################################
+# ###             SERVICES             ###
+# ########################################
+automation: !include_dir_merge_list automation
+# notify: !include notify.yaml
+# script: !include_dir_merge_named script
+script: !include scripts.yaml
+group: !include_dir_merge_named group/
+# # mqtt:
+# #   broker: !secret mqtt_broker
+# #   port: 1883
+# #   client_id: home-assistant
+# #   username: !secret mqtt_username
+# #   password: !secret mqtt_password
+# google:
+#   client_id: !secret google_id
+#   client_secret: !secret google_secret
+# # ffmpeg:
+# #   ffmpeg_bin: /usr/bin/avconv
+
+
+########################################
+###                IOS               ###
+########################################
+ios:
+  push:
+    categories:
+      - name: Laundry clean in washer
+        identifier: 'WASHER'
+        actions:
+          - identifier: 'WASHER_EMPTIED'
+            title: 'Yes'
+            # activationMode: 'background'
+            authenticationRequired: yes
+            # destructive: no
+            behavior: 'default'
+          - identifier: 'WASHER_NOT_EMPTIED'
+            title: 'Snooze'
+            activationMode: 'background'
+            # authenticationRequired: yes
+            destructive: yes
+            # behavior: 'textInput'
+            # textInputButtonTitle: 'Silencio!'
+            # textInputPlaceholder: 'Placeholder'
+      - name: Vacuum now
+        identifier: 'VACUUM'
+        actions:
+          - identifier: 'VACUUM_NOW'
+            title: 'Yes'
+            # activationMode: 'background'
+            authenticationRequired: yes
+            # destructive: no
+            behavior: 'default'
+          - identifier: 'VACUUM_LATER'
+            title: 'Snooze'
+            activationMode: 'background'
+            # authenticationRequired: yes
+            destructive: yes
+            # behavior: 'textInput'
+            # textInputButtonTitle: 'Silencio!'
+            # textInputPlaceholder: 'Placeholder'

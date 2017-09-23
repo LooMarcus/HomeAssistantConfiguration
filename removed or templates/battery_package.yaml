@@ -1,0 +1,51 @@
+sensor:
+### Battery level for Bedroom Temperature Sensor ###
+  - platform: template
+    sensors:
+      battery_bedroom_temp_sensor:
+        friendly_name: 'Sensor Quarto'
+        value_template: "{{ states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level|default(-1)|int if states.sensor.temperature_158dxxxxxxxxxx is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: sensor.temperature_158dxxxxxxxxxx
+
+### Battery level lower than 10% ###
+  - platform: template
+    sensors:
+      bedroom_sensor_battery_low:
+        value_template: '{{ states.sensor.temperature_158dxxxxxxxxxx.attributes.battery_level < 10 }}'
+        friendly_name: 'Bedroom sensor battery is low'
+
+alert: 
+### Alert via iOS notification when Bedroom sensor battery < 10% ###
+  bedroom_sensor_battery_low:
+    name: Bedroom sensor battery is low
+    entity_id: sensor.bedroom_sensor_battery_low
+    state: 'True'
+# Repeat in minutes (1 day = 1440 minutes)
+    repeat: 1440
+    skip_first: False
+    notifiers:
+      - ios

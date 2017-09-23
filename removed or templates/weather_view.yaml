@@ -1,0 +1,7 @@
+weather_view:
+  view: yes
+  name: Väder
+  icon: mdi:weather-partlycloudy
+  entities:
+    # - group.yr_card
+    - group.dark_sky_card

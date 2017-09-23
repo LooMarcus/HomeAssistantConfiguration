@@ -1,0 +1,5 @@
+  - platform: rfxtrx
+    automatic_add: true
+    devices:
+      0b11000676bc0cfe01010f70:
+        name: Hallway Window Light

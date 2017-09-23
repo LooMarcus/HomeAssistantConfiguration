@@ -1,0 +1,18 @@
+## https://home-assistant.io/docs/configuration/customizing-devices/
+
+#########################################
+######             ZONE            ######
+#########################################
+
+    # zone.home:
+    #   track_ios: true
+    # zone.LIA:
+    #   track_ios: true
+
+#########################################
+######        INPUT SLIDERS        ######
+#########################################
+    
+    # input_slider.livingroom_light_brightness:
+    #   icon: mdi:lamp
+

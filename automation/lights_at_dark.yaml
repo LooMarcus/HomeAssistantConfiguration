@@ -1,0 +1,92 @@
+## Turn on outside lights and hallway window light at sunset
+
+- alias: Lights on at sunset
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:45:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.front_outside_light
+      data:
+        brightness: 127
+    - service: light.turn_on
+      entity_id: light.yard_outside_light
+      data:
+        # brightness: 127
+        profile: relax
+    - service: light.turn_on
+      entity_id: light.hallway_window_light
+      data:
+        brightness: 45
+
+## Turn off outside lights and hallway window light at midnight
+- alias: Lights off at midnight
+  trigger:
+    platform: time
+    at: '00:01:00'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.front_outside_light
+    - service: homeassistant.turn_off
+      entity_id: light.yard_outside_light
+    - service: homeassistant.turn_off
+      entity_id: light.hallway_window_light
+
+
+## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min
+- alias: Outside lights on when we come home at night
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.stefan_iphone_7
+      zone: zone.home
+      event: enter
+    - platform: zone
+      entity_id: device_tracker.isabellas_iphone_6s
+      zone: zone.home
+      event: enter
+  condition:
+    condition: time
+    after: '00:01:00'
+    before: '05:00:00'
+  action:
+    - service: light.turn_on
+      entity_id: light.front_outside_light
+      data:
+        brightness: 127
+    - service: light.turn_on
+      entity_id: light.yard_outside_light
+      data:
+        brightness: 127
+    - service: light.turn_on
+      entity_id: light.hallway_window_light
+      data:
+        brightness: 45
+
+    - delay: 0:10
+    
+    - service: homeassistant.turn_off
+      entity_id: light.front_outside_light
+    - service: homeassistant.turn_off
+      entity_id: light.yard_outside_light
+    - service: homeassistant.turn_off
+      entity_id: light.hallway_window_light
+
+## Also turn on passage lights, but not turn off
+- alias: Passage lights on when we come home at night
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.stefan_iphone_7
+      zone: zone.home
+      event: enter
+    - platform: zone
+      entity_id: device_tracker.isabellas_iphone_6s
+      zone: zone.home
+      event: enter
+  condition:
+    condition: time
+    after: '00:01:00'
+    before: '05:00:00'
+  action:
+    - service: light.turn_on
+      entity_id: light.passage_ceiling_spotlights_level

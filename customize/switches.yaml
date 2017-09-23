@@ -1,0 +1,23 @@
+#########################################
+######            SWITCH           ######
+#########################################
+
+    switch.__switch_2_0:
+      hidden: true
+      homebridge_hidden: true
+    switch.door:
+      hidden: true
+      homebridge_hidden: true
+    switch.motion_sensor:
+      hidden: true
+      homebridge_hidden: true
+    switch.roomba:
+      icon: mdi:roomba
+    switch.air_cleaner_quiet_auto:
+      icon: mdi:fan
+    switch.bedroom_light_switch:
+      icon: mdi:hotel
+    switch.all_lights_off_switch:
+      icon: mdi:theme-light-dark
+    switch.washer:
+      icon: mdi:washing-machine

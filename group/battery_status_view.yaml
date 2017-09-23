@@ -1,0 +1,5 @@
+battery_status_view:
+  icon: mdi:battery
+  view: yes
+  entities:
+  - group.battery_card

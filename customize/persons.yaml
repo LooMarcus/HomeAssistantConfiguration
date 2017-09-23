@@ -1,0 +1,8 @@
+#########################################
+######           PERSONS           ######
+#########################################
+
+    sensor.isa:
+      icon: mdi:human-female
+    sensor.stefan:
+      icon: mdi:human-male

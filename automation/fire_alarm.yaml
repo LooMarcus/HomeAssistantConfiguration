@@ -1,0 +1,32 @@
+  - alias: Fire Alarm 1 Triggered
+    trigger:
+      platform: state
+      entity_id: sensor.fire_alarm_1_sensor_status
+      to: 'Panic'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Brandvarnaren på nedre plan gick igång'
+          message: 'Brinner det?'
+
+  - alias: Fire Alarm 2 Triggered
+    trigger:
+      platform: state
+      entity_id: sensor.fire_alarm_2_sensor_status
+      to: 'Panic'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Brandvarnaren på övre plan gick igång'
+          message: 'Brinner det?'
+
+  # - alias: Fire Alarm 3 Triggered
+  #   trigger:
+  #     platform: state
+  #     entity_id: sensor.fire_alarm_3_sensor_status
+  #     to: 'Panic'
+  #   action:
+  #     - service: notify.ios_isabellas_iphone_6s
+  #       data:
+  #         title: 'Brandvarnaren i förrådet gick igång'
+  #         message: 'Brinner det?'

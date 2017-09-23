@@ -1,0 +1,7 @@
+security_view:
+  view: yes
+  name: Security
+  icon: mdi:security-home
+  entities:
+  - group.downstairs_security_card
+  - group.upstairs_security_card

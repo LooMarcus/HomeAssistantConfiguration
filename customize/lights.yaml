@@ -1,0 +1,41 @@
+    light.living_room_ceiling_light_level:
+      icon: mdi:ceiling-light
+      friendly_name: Living Room Ceiling Light
+    light.upstairs_hallway_ceiling_light_level:
+      icon: mdi:ceiling-light
+      friendly_name: Upstairs Hallway Ceiling Light      
+    light.dining_area_ceiling_light_level:
+      friendly_name: Dining Area Ceiling Light
+      icon: mdi:ceiling-light
+    light.passage_ceiling_spotlights_level:
+      friendly_name: Passage Ceiling Spotlights
+      icon: mdi:spotlight-beam
+    light.living_room_spotlights_level:
+      friendly_name: Living Room Spotlights
+      icon: mdi:spotlight-beam
+    light.isa_ceiling_lamp:
+      friendly_name: Bedroom Ceiling Light
+      icon: mdi:ceiling-light
+    # light.yard_outside_light:
+    #   icon: 
+    # light.front_outside_light:
+    #   icon: 
+    light.hallway_window_light:
+      icon: mdi:lamp
+
+
+    light.living_room_ceiling_light_level_2:
+      hidden: true
+      homebridge_hidden: true
+    light.upstairs_hallway_ceiling_light_level_2:
+      hidden: true
+      homebridge_hidden: true
+    light.dining_area_ceiling_light_level_2:
+      hidden: true
+      homebridge_hidden: true
+    light.living_room_spotlights_level_2:
+      hidden: true
+      homebridge_hidden: true
+    light.passage_ceiling_spotlights_level_2:
+      hidden: true
+      homebridge_hidden: true

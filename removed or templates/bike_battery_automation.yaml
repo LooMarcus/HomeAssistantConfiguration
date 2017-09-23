@@ -1,0 +1,14 @@
+alias: 'Timer cykelbatteri'
+trigger:
+  - platform: state
+    entity_id: switch.philio_technology_corporation_pan11_smart_energy_plug_in_switch_switch_11_0
+    to: 'on'
+    for:
+      minutes: 5
+condition:
+  condition: numeric_state
+  entity_id: sensor.philio_technology_corporation_pan11_smart_energy_plug_in_switch_power_11_8
+  below: '10'
+action:
+  - service: switch.turn_off
+    entity_id: switch.philio_technology_corporation_pan11_smart_energy_plug_in_switch_switch_11_0

@@ -1,0 +1,10 @@
+  # - platform: template
+  #   sensors:
+  #     stefan_ceiling_light:
+  #       friendly_name: "Stefan Ceiling Light"
+  #       value_template: >-
+  #         {% if is_state(light.stefan_ceiling_light', 'on') %}
+  #           'on'
+  #         {% else %}
+  #           'off'
+  #         {% endif %}

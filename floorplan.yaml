@@ -1,0 +1,166 @@
+      name: Floorplan
+      image: /local/custom_ui/floorplan/floorplan.svg
+      stylesheet: /local/custom_ui/floorplan/floorplan.css
+      warnings:
+      pan_zoom:
+      date_format: DD-MMM-YYYY
+      # hide_app_toolbar:
+
+      # last_motion_entity: sensor.motion_sensor
+      # last_motion_class: last-motion
+
+      groups:
+
+        - name: Sensors
+          entities:
+             - sensor.upstairs_litter_box_visits
+          text_template: '${entity.state ? entity.state : "unknown"}'
+          class_template: '
+          var visits = parseFloat(entity.state);
+          if (visits > 2)
+            return "Time to clean!";
+          else
+            return visits + "visits";
+          '
+
+          #'
+            
+            # var temp = parseFloat(entity.state.replace("°", ""));
+            # if (temp < 10)
+            #   return "temp-low";
+            # else if (temp < 30)
+            #   return "temp-medium";
+            # else
+            #   return "temp-high";
+            # '
+
+
+
+        # - name: Dark Sky Sensors
+        #   entities:
+        #     - sensor.home_dark_sky_icon
+        #   image_template: '
+        #     var imageName = "";
+
+        #     switch (entity.state) {
+        #       case "clear-day":
+        #         imageName = "day";
+        #         break;
+
+        #       case "clear-night":
+        #         imageName = "night";
+        #         break;
+
+        #       case "partly-cloudy-day":
+        #         imageName = "cloudy-day-1";
+        #         break;
+
+        #       case "partly-cloudy-night":
+        #         imageName = "cloudy-night-1";
+        #         break;
+
+        #       case "cloudy":
+        #         imageName = "cloudy";
+        #         break;
+
+        #       case "rain":
+        #         imageName = "rainy-1";
+        #         break;
+
+        #       case "snow":
+        #         imageName = "snowy-1";
+        #         break;
+        #     }
+
+        #     return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
+        #     '
+        - name: Lights
+          entities:
+            - light.hallway_window_light
+            - light.living_room_ceiling_light_level
+            - light.living_room_spotlights_level
+            - light.dining_area_ceiling_light_level
+            - light.passage_ceiling_spotlights_level
+            - light.yard_outside_light
+            - light.front_outside_light
+            - light.upstairs_hallway_ceiling_light_level
+            - light.isa_ceiling_lamp
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'
+          action:
+            service: toggle
+
+        # - name: Switches
+        #   entities:
+        #      - switch.doorbell
+        #   states:
+        #     - state: 'on'
+        #       class: 'doorbell-on'
+        #     - state: 'off'
+        #       class: 'doorbell-off'
+
+        # - name: NVR
+        #   entities:
+        #      - binary_sensor.blue_iris_nvr
+        #   text_template: '${(entity.state === "on") ? "online" : "offline"}'
+        #   states:
+        #     - state: 'off'
+        #       class: 'danger-text'
+        #     - state: 'on'
+        #       class: 'success-text'
+
+        # - name: Alarm Panel
+        #   entities:
+        #      - alarm_control_panel.alarm
+        #   states:
+        #     - state: 'armed_away'
+        #       class: 'alarm-armed'
+        #     - state: 'armed_home'
+        #       class: 'alarm-armed'
+        #     - state: 'disarmed'
+        #       class: 'alarm-disarmed'
+
+        - name: Pir sensors
+          entities:
+            - binary_sensor.passage_pir_sensor
+            - binary_sensor.upstairs_hallway_pir_sensor
+
+          states:
+            - state: 'off'
+              class: 'info-background'
+            - state: 'on'
+              class: 'warning-background'
+          state_transitions:
+            - name: On to off
+              from_state: 'on'
+              to_state: 'off'
+              duration: 10
+
+        - name: Security binary sensors
+          entities:
+            - binary_sensor.water_heater_sensor
+            - binary_sensor.dining_area_window_sensor_sensor
+            - binary_sensor.back_door_sensor
+            - binary_sensor.front_door_sensor
+            - binary_sensor.upstairs_litterbox
+            - binary_sensor.door_window_sensor_158d00019e152b #backyard door
+            - binary_sensor.door_window_sensor_158d00019f5110 #yard storage door
+          states:
+            - state: 'off'
+              class: 'info-background'
+            - state: 'on'
+              class: 'danger-background'
+          state_transitions:
+            - name: On to off
+              from_state: 'on'
+              to_state: 'off'
+              duration: 10
+        # - name: Cameras
+        #   entities:
+        #     - camera.camera_sannce
+        #   states:
+        #     - state: 'idle'
+        #       class: 'camera-idle'

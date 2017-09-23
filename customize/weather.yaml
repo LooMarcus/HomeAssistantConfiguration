@@ -1,0 +1,86 @@
+#########################################
+######           WEATHER           ######
+#########################################
+
+## TODAY
+    sensor.dark_sky_hourly_summary:
+      friendly_name: "24 h-prognos"
+      homebridge_hidden: true
+    sensor.dark_sky_daily_summary:
+      friendly_name: "Veckoprognos"
+      homebridge_hidden: true
+    sensor.dark_sky_temperature:
+      friendly_name: Temperatur
+      homebridge_hidden: true
+    sensor.dark_sky_apparent_temperature:
+      friendly_name: Känns som
+      homebridge_hidden: true
+    sensor.dark_sky_wind_speed:
+      friendly_name: Vindhastighet
+      homebridge_hidden: true
+    sensor.dark_sky_precip:
+      friendly_name: Nederbörd
+      homebridge_hidden: true
+    sensor.dark_sky_precip_intensity:
+      friendly_name: Nederbörd mängd
+      homebridge_hidden: true
+    sensor.dark_sky_precip_probability:
+      friendly_name: Risk för nederbörd
+      homebridge_hidden: true
+    sensor.dark_sky_daily_high_apparent_temperature:
+      friendly_name: Känns som högst idag
+      homebridge_hidden: true
+    sensor.dark_sky_daily_low_apparent_temperature:
+      friendly_name: Känns som lägst idag
+      homebridge_hidden: true
+    sensor.dark_sky_cloud_coverage:
+      friendly_name: Molntäcke idag
+      homebridge_hidden: true
+    sensor.dark_sky_daily_high_temperature:
+      friendly_name: Högsta temperatur idag
+      homebridge_hidden: true
+    sensor.dark_sky_daily_low_temperature:
+      friendly_name: Lägsta temperatur idag
+      homebridge_hidden: true
+    sensor.dark_sky_humidity:
+      friendly_name: Luftfuktighet idag
+      homebridge_hidden: true
+    sensor.dark_sky_daily_max_precip_intensity:
+      friendly_name: Max nederbörd idag
+      homebridge_hidden: true
+
+
+## TOMORROW
+    sensor.dark_sky_daily_high_temperature_1:
+      friendly_name: Högsta temperatur imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_daily_high_apparent_temperature_1:
+      friendly_name: Känns som högst imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_daily_low_temperature_1:
+      friendly_name: Lägsta temperatur imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_daily_low_apparent_temperature_1:
+      friendly_name: Känns som lägst imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_wind_speed_1:
+      friendly_name: Vindhastighet imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_precip_1:
+      friendly_name: Nederbörd imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_precip_intensity_1:
+      friendly_name: Nederbörd mängd imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_precip_probability_1:
+      friendly_name: Risk för nederbörd imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_cloud_coverage_1:
+      friendly_name: Molntäcke imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_humidity_1:
+      friendly_name: Luftfuktighet imorgon
+      homebridge_hidden: true
+    sensor.dark_sky_daily_max_precip_intensity_1:
+      friendly_name: Max nederbörd imorgon
+      homebridge_hidden: true

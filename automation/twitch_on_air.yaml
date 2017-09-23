@@ -1,0 +1,25 @@
+  # - alias: Stefan on air
+  #   trigger:
+  #     platform: state
+  #     entity_id: sensor.grimsan55
+  #     to: 'streaming'
+  #   action:
+  #     - service: homeassistant.turn_on
+  #       entity_id: switch.stefan_on_air
+  #     - service: notify.ios_isabellas_iphone_6s
+  #       data:
+  #         title: 'Stefan gick on air'
+  #         message: 'Stör ej'
+
+  # - alias: Stefan off air
+  #   trigger:
+  #     platform: state
+  #     entity_id: sensor.grimsan55
+  #     to: 'offline'
+  #   action:
+  #     - service: homeassistant.turn_off
+  #       entity_id: switch.stefan_on_air
+  #     - service: notify.ios_isabellas_iphone_6s
+  #       data:
+  #         title: 'Stefan gick on air'
+  #         message: 'Stör ej'

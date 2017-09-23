@@ -1,0 +1,7 @@
+  washing_machine_status:
+    name: Washing Machine Status
+    options:
+      - Idle
+      - Running
+      - Clean
+    initial: Idle

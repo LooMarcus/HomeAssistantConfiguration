@@ -1,0 +1,19 @@
+- platform: broadlink
+  friendly_name: Broadlink Hallway
+  host: !secret broadlink_roomba_ip
+  mac: !secret broadlink_roomba_mac
+  switches:
+    roomba:
+      friendly_name: Roomba
+      command_on: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
+      command_off: 'JgCQAGAhHmIfYB9gH2BdIh5iXAACbGAhHmIeYR5hH2BdIh5iXAACZGAhHmIeYR5hH2BdIh5iXAACZGEhH2AfYB9gIF9eISBgXgACYl8iIGAfYB9gH2BfICBgXgACamEhH2AfYB9gH2BfICBgXgACYmEgIGAfYCBfIF9cIx9hXAACZGAhHmIeYR5hH2BdIh5iXAANBQAAAAAAAAAA'
+
+- platform: broadlink
+  friendly_name: Broadlink Bedroom
+  host: !secret broadlink_bedroom_ip
+  mac: !secret broadlink_bedroom_mac
+  switches:
+    air_cleaner_quiet_auto:
+      friendly_name: Air Cleaner Quiet
+      command_on: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
+      command_off: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='

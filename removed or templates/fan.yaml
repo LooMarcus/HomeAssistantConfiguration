@@ -1,0 +1,17 @@
+# - alias: 'Fan on'
+#   trigger:
+#     platform: state
+#     entity_id: switch.right_button
+#     to: 'on'
+#   action:
+#     - service: homeassistant.turn_on
+#       entity_id: switch.stefans_flakt
+
+# - alias: 'Fan off'
+#   trigger:
+#     platform: state
+#     entity_id: switch.right_button
+#     to: 'off'
+#   action:
+#     - service: homeassistant.turn_off
+#       entity_id: switch.stefans_flakt

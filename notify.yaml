@@ -1,0 +1,8 @@
+  # - name: Pushbullet Isa
+  #   platform: pushbullet
+  #   api_key: !secret pushbullet_key
+  - name: All
+    platform: group
+    services:
+      - service: ios_isabellas_iphone_6s
+      - service: ios_stefan_iphone_7

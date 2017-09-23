@@ -1,0 +1,53 @@
+# - platform: mqtt
+#   name: "Stefan On Air"
+#   state_topic: "OnAirLed/Switch1/Control"
+#   command_topic: "OnAirLed/gpio/15"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0
+
+# - platform: mqtt
+#   name: "UpstairsLitterBox"
+#   state_topic: "UpstairsLitterBox/Button/state"
+#   command_topic: "UpstairsLitterBox/gpio/13"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0
+
+# - platform: mqtt
+#   name: "UpstairsLitterBoxBlueLed"
+#   state_topic: "UpstairsLitterBox/blueled/state"
+#   command_topic: "UpstairsLitterBox/gpio/15"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0
+
+# - platform: mqtt
+#   name: "UpstairsLitterBoxGreenLed"
+#   state_topic: "UpstairsLitterBox/greenled/state"
+#   command_topic: "UpstairsLitterBox/gpio/12"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0
+
+# - platform: mqtt
+#   name: "UpstairsLitterBoxRedLed"
+#   state_topic: "UpstairsLitterBox/redled/state"
+#   command_topic: "UpstairsLitterBox/gpio/02"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0
+
+# - platform: mqtt
+#   name: "EspButtonPir"
+#   state_topic: "EspButton/pir/state"
+#   command_topic: "EspButton/gpio/14"
+#   payload_on: "1"
+#   payload_off: "0"
+#   optimistic: false
+#   qos: 0

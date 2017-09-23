@@ -1,0 +1,5 @@
+temperature_card:
+  name: Temperaturer
+  entities:
+    - sensor.monstera_temperature
+    - sensor.palm_temperature

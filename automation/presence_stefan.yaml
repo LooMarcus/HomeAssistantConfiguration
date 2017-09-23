@@ -1,0 +1,54 @@
+# test with door trigger for presence (if door is not opened I cannot have left) - seems to be working
+- alias: 'Stefan away'
+  trigger:
+    - platform: state
+      # entity_id: group.stefan
+      entity_id: device_tracker.stefan_iphone_7
+      to: 'not_home'
+  action:
+    # - service: homeassistant.turn_off
+    #   entity_id: input_boolean.stefan_home
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Stefan är nu rapporterad som inte hemma.'
+        message: 'Inte hemma'
+
+- alias: 'Stefan Home'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.stefan_iphone_7
+      to: 'home'     
+  action:
+    # - service: homeassistant.turn_on
+    #   entity_id: input_boolean.stefan_home
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Stefan är nu rapporterad som hemma.'
+        message: 'Hemma'
+
+- alias: Force Check Stefan Location Home
+  trigger:
+    - platform: state
+      entity_id: sensor.front_door
+      to: 'Open'
+  action:
+  # Catch home
+  - service: notify.ios_stefan_iphone_7
+    data:
+      message: "request_location_update"
+  - delay: '00:10:00'
+  # catch not_home
+  - service: notify.ios_stefan_iphone_7
+    data:
+      message: "request_location_update"
+
+# - alias: Force Check Stefan Location Away
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.front_door
+#       to: 'Open'
+#   action:
+#   - delay: '00:10:00'
+#   - service: notify.ios_stefan_iphone_7
+#     data:
+#       message: "request_location_update"

@@ -1,0 +1,47 @@
+homeassistant:
+  customize:
+    switch.laundry_line_drying:
+      icon: mdi:tshirt-crew
+#-------------------------------------------
+
+switch:
+  - platform: mqtt
+    command_topic: "dummy/laundry/linedrying"
+    name: Laundry Line Drying
+    
+#-------------------------------------------
+
+automation:
+  - alias: Laundry Line Drying On
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.white5
+        to: 'on'
+    condition:
+      condition: state
+      entity_id: switch.laundry_line_drying
+      state: 'off'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: switch.laundry_line_drying
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Laundry hung out to dry'
+          message: ''
+
+  - alias: Laundry Line Drying Off
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.white5
+        to: 'off'
+    condition:
+      condition: state
+      entity_id: switch.laundry_line_drying
+      state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: switch.laundry_line_drying
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Laundry taken in'
+          message: ''

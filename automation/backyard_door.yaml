@@ -1,0 +1,111 @@
+## notify when door opened (replace with alert) and set input_boolean.front_door to on to allow for presence automations
+  - alias: Backyard door opened
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019e152b
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+      ## add condition for not_home or alarm on
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'The backyard door was opened'
+          message: 'Turning the backyard light red'
+          ## FIX ACTIONABLE NOTIFICATION TO TURN OFF
+      - service: light.turn_on
+        entity_id: light.yard_outside_light
+        data:
+          brightness: 255
+          color_name: "red"
+
+## notify when door closed (replace with alert for door open)
+  - alias: Backyard door closed
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019e152b
+      to: 'off'
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'The backyard door was closed'
+          message: 'Anyone home?'
+
+
+  - alias: Turn yard outside light on at full when Isa coming home through backyard door
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019e152b
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.isabellas_iphone_6s
+          state: 'home'
+        - condition: sun
+          after: sunset
+          after_offset: "-00:45:00"
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'The backyard door was opened'
+          message: 'Turning the backyard light red'
+      - service: light.turn_on
+        entity_id: light.yard_outside_light
+        data:
+          brightness: 255
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.backyard_door
+      - delay: "00:10:00"
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.backyard_door
+
+
+  - alias: Turn yard outside light off when Isa has come home
+    trigger:
+      platform: state
+      entity_id: input_boolean.backyard_door
+      to: 'off'
+    condition:
+      - condition: time
+        after: '00:01:00'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'You should be inside'
+          message: 'Turning backyard light off again'
+      - service: light.turn_off
+        entity_id: light.yard_outside_light
+
+  - alias: Turn yard outside light dim again when Isa has come home
+    trigger:
+      platform: state
+      entity_id: input_boolean.backyard_door
+      to: 'off'
+    condition:
+      condition: and
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:45:00"
+        - condition: time
+          before: '00:01:00'
+        - condition: state
+          entity_id: device_tracker.isabellas_iphone_6s
+          state: 'home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'You should be inside'
+          message: 'Turning backyard light dim again'
+      - service: light.turn_on
+        entity_id: light.yard_outside_light
+        data:
+          profile: relax

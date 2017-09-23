@@ -1,0 +1,8 @@
+downstairs_security_card:
+  name: Downstairs Security
+  entities:
+  - sensor.front_door
+  - sensor.back_door
+  - sensor.dining_area_window
+  - sensor.passage_movement
+  - sensor.nexa_door

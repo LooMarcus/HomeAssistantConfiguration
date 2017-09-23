@@ -1,0 +1,18 @@
+- alias: Nightlight Upstairs Hallway
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.upstairs_hallway_pir_sensor
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_select.day_mode
+      state: Night
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_34ce008bfc4b
+      data:
+        brightness: 50
+        color_name: 'orangered'
+    - delay: '00:05:00'
+    - service: light.turn_off
+      entity_id: light.gateway_light_34ce008bfc4b

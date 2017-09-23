@@ -1,0 +1,14 @@
+weather_summary_today_card:
+  name: Väderprognos idag
+  entities:
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    # - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_high_apparent_temperature
+    # - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_daily_low_apparent_temperature
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability

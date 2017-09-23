@@ -1,0 +1,11 @@
+system_monitor_view:
+  name: System-info
+  icon: mdi:lan
+  view: yes
+  entities:
+  - group.device_states_card
+  - group.computer_states_card
+  - group.media_states_card
+  - group.raspberry_card
+  - group.hass_card
+  - group.internet_card

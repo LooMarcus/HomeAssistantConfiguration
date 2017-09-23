@@ -1,0 +1,35 @@
+- alias: 'Bedroom light on'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_light_switch
+    to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.isa_ceiling_lamp
+
+- alias: 'Bedroom light off'
+  trigger:
+    platform: state
+    entity_id: switch.bedroom_light_switch
+    to: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.isa_ceiling_lamp
+
+# - alias: 'All inside lights on'
+#   trigger:
+#     platform: state
+#     entity_id: switch.all_lights_off_switch
+#     to: 'on'
+#   action:
+#     - service: light.turn_on
+#       entity_id: group.inside_lights_card
+
+- alias: 'All inside lights off'
+  trigger:
+    platform: state
+    entity_id: switch.all_lights_off_switch
+    to: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: group.inside_lights_card

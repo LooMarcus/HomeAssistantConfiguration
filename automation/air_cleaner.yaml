@@ -1,0 +1,23 @@
+- alias: Air Cleaner To Quiet at 21
+  trigger:
+    - platform: time
+      at: '21:00:00'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.air_cleaner_quiet
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        message: 'Set to quiet'
+        title: 'Air cleaner'
+
+- alias: Air Cleaner To Auto At 11
+  trigger:
+    - platform: time
+      at: '11:00:00'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.air_cleaner_quiet
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        message: 'Set to auto'
+        title: 'Air cleaner'

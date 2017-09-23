@@ -1,0 +1,23 @@
+  exclude:
+    entities:
+      - sensor.date__time
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+      - sensor.dark_sky_humidity_1
+      - sensor.dark_sky_precip_intensity_1
+      - sensor.dark_sky_precip_probability_1
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_pressure_1
+      - sensor.dark_sky_wind_bearing_1
+      - sensor.dark_sky_wind_speed_1
+      - sensor.since_last_boot
+      - sensor.ha_uptime
+      - sensor.yr_symbol

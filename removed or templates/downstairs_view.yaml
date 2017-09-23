@@ -1,0 +1,8 @@
+downstairs_view:
+  view: yes
+  name: Downstairs
+  icon: mdi:page-layout-footer
+  entities:
+    - sensor.isa
+    - sensor.stefan
+    - group.downstairs_lights_card

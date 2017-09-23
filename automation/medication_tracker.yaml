@@ -1,0 +1,25 @@
+  # - alias: Medicin reminder on
+  #   trigger:
+  #     platform: 
+  #     entity_id: switch.espbutton
+  #     to: 'on'
+  #   action:
+  #     - service: homeassistant.turn_on
+  #       entity_id: switch.espbuttonled
+  #     - service: notify.ios_isabellas_iphone_6s
+  #       data:
+  #         title: 'Du har tagit din medicin'
+  #         message: 'Bravo!'
+
+    # - alias: Medicin reminder off
+    #   trigger:
+    #     platform: 
+    #     entity_id: switch.espbutton
+    #     to: 'off'
+    #   action:
+    #     - service: homeassistant.turn_off
+    #       entity_id: switch.espbuttonled
+    #     - service: notify.ios_isabellas_iphone_6s
+    #       data:
+    #         title: 'Nollställd medicin'
+    #         message: 'Bravo!'

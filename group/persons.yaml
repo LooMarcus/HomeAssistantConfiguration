@@ -1,0 +1,5 @@
+persons:
+  view: no
+  entities:
+    - device_tracker.stefan_iphone_7
+    - device_tracker.isabellas_iphone_6s

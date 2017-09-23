@@ -1,0 +1,33 @@
+  - alias: Remind me to water monstera
+    trigger:
+      platform: state
+      entity_id: device_tracker.isabellas_iphone_6s
+      to: 'home'
+      for:
+        minutes: 10
+    condition:
+      condition: numeric_state
+      entity_id: sensor.monstera_moisture
+      below: 20
+    action:
+      service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Vattna'
+        message: 'Monstera'
+
+  - alias: Remind me to water palm
+    trigger:
+      platform: state
+      entity_id: device_tracker.isabellas_iphone_6s
+      to: 'home'
+      for:
+        minutes: 10
+    condition:
+      condition: numeric_state
+      entity_id: sensor.palm_moisture
+      below: 20
+    action:
+      service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Vattna'
+        message: 'Palmen'

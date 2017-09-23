@@ -1,0 +1,13 @@
+  # livingroom_hanging_lamp_brightness:
+  #   name: Livingroom hanging lamp brightness
+  #   initial: 0
+  #   min: 0
+  #   max: 254
+  #   step: 1
+
+  # livingroom_light_brightness:
+  #   name: Livingroom lamp brightness
+  #   initial: 0
+  #   min: 0
+  #   max: 254
+  #   step: 1

@@ -1,0 +1,8 @@
+  # - platform: bluetooth_tracker
+  #   track_new_devices: True
+  #   interval_seconds: 20
+  #   consider_home: 360
+  - platform: nmap_tracker
+    hosts: !secret nmap_tracker_hosts
+    home_interval: 10
+  # - platform: owntracks

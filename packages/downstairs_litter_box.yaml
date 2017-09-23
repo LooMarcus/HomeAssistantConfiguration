@@ -1,0 +1,80 @@
+homeassistant:
+  customize:
+    sensor.downstairs_litter_box_visits:
+      icon: mdi:poop
+    binary_sensor.motion_sensor_158d0001a24ef1:
+      friendly_name: Downstairs Litter Box
+#-------------------------------------------
+
+sensor:
+  - platform: mqtt
+    state_topic: "dummy/downstairslitterbox/count"
+    name: Downstairs Litter Box Visits
+    unit_of_measurement: "visits"
+
+#-------------------------------------------
+
+automation:
+  - alias: Set Downstairs Litter Box Sensor To Zero On Start
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - service: python_script.dlitter_reset
+    
+    
+  - alias: Count visits to downstairs litter box
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0001a24ef1
+        to: 'on'
+    condition:
+    - condition: template
+      value_template: >
+        {% if states.automation.count_visits_to_downstairs_litter_box.last_triggered is not none %}
+          {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.count_visits_to_downstairs_litter_box.attributes.last_triggered) | int > 300 %} true {% else %} false
+          {% endif %}
+        {% else %}
+        false
+        {% endif %}
+    action:
+      - service: python_script.dlitter_counter
+
+  - alias: Send notification when downstairs litter box is used more than three times
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.downstairs_litter_box_visits
+        above: '2'
+      - platform: state
+        entity_id: device_tracker.isabellas_iphone_6s
+        to: 'home'
+        for:
+          minutes: 10
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '07:00:00'
+          before: '23:00:00'
+        - condition: state
+          entity_id: device_tracker.isabellas_iphone_6s
+          state: 'home'
+        - condition: numeric_state
+          entity_id: sensor.downstairs_litter_box_visits
+          above: '2'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Time to clean!'
+          message: 'More than three visits to downstairs litter box'
+
+  # Input select for three different litter box modes? Idle, In use and Cleaning mode. When in cleaning mode don't count as visit.
+  # also make sensor for total amount of visits on box(es)
+
+
+  - alias: Reset downstairs litter box visit counter
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.white2
+    action:
+      - service: python_script.dlitter_reset

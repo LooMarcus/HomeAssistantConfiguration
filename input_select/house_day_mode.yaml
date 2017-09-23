@@ -1,0 +1,20 @@
+  day_mode:
+    name: Day mode
+    options:
+     - Morning
+     - Day
+     - Evening
+     - Night
+    initial: Day
+    icon: mdi:house
+
+  house_mode:
+    name: House mode
+    options:
+     - Guest mode
+     - Cleaning day
+     - Shell protection
+     - Armed
+     - Unarmed
+    initial: Unarmed
+    icon: mdi:house
