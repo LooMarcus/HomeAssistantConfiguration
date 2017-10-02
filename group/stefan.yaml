@@ -6,3 +6,5 @@ stefan:
     # - device_tracker.stefansplewatch
     # - sensor.stefan_computer    
     - device_tracker.stefan_iphone_7
+    - sensor.igrims_battery_level
+    - sensor.igrims_battery_state

@@ -6,7 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: !secret time_zone
   customize: !include_dir_merge_named customize
-  # customize_glob: !include customglob.yaml
+  customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
 config:
 http:
@@ -15,11 +15,15 @@ http:
 updater:
 discovery:
 conversation:
+customizer:
+  custom_ui: hosted
 
 # ########################################
 # ###                GUI               ###
 # ########################################
 frontend:
+#   extra_html_url:
+#     - /local/custom_ui/state-card-custom-ui.html
 # panel_iframe:
 #   # grafana:
 #   #   title: "Grafana"

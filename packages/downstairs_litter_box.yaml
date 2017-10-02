@@ -3,7 +3,8 @@ homeassistant:
     sensor.downstairs_litter_box_visits:
       icon: mdi:poop
     binary_sensor.motion_sensor_158d0001a24ef1:
-      friendly_name: Downstairs Litter Box
+      hidden: true
+      # friendly_name: Downstairs Litter Box
 #-------------------------------------------
 
 sensor:
@@ -11,6 +12,14 @@ sensor:
     state_topic: "dummy/downstairslitterbox/count"
     name: Downstairs Litter Box Visits
     unit_of_measurement: "visits"
+
+template_sensor:
+  platform: template
+  sensors:
+    downstairs_litter_box:
+      friendly_name: 'Downstairs Litter Box'
+      value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "detected") %}In use{% else %}Clear{% endif %}'
+      icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "detected") %}mdi:cat{% else %}mdi:cancel{% endif %}'
 
 #-------------------------------------------
 
@@ -67,10 +76,6 @@ automation:
         data:
           title: 'Time to clean!'
           message: 'More than three visits to downstairs litter box'
-
-  # Input select for three different litter box modes? Idle, In use and Cleaning mode. When in cleaning mode don't count as visit.
-  # also make sensor for total amount of visits on box(es)
-
 
   - alias: Reset downstairs litter box visit counter
     trigger:

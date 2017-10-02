@@ -23,7 +23,6 @@
     light.hallway_window_light:
       icon: mdi:lamp
 
-
     light.living_room_ceiling_light_level_2:
       hidden: true
       homebridge_hidden: true
@@ -39,3 +38,7 @@
     light.passage_ceiling_spotlights_level_2:
       hidden: true
       homebridge_hidden: true
+
+    light.stefan_ceiling_light:
+      # hide_control: true
+      confirm_controls_show_lock: true

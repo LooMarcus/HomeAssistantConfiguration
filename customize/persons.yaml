@@ -2,7 +2,9 @@
 ######           PERSONS           ######
 #########################################
 
-    sensor.isa:
-      icon: mdi:human-female
-    sensor.stefan:
-      icon: mdi:human-male
+    device_tracker.stefan_iphone_7:
+      state_card_mode: badges
+    sensor.igrims_battery_level:
+      state_card_mode: badges    
+    sensor.igrims_battery_state:
+      state_card_mode: badges

@@ -1,9 +1,9 @@
-monstera_card:
-  name: Monstera
-  entities:
-  - sensor.monstera_moisture
-  - sensor.monstera_light_intensity
-  - sensor.monstera_temperature
-  - sensor.monstera_conductivity
-  - sensor.monstera_battery
-  - plant.monstera
+# monstera_card:
+#   name: Monstera
+#   entities:
+#   - sensor.monstera_moisture
+#   - sensor.monstera_light_intensity
+#   - sensor.monstera_temperature
+#   - sensor.monstera_conductivity
+#   - sensor.monstera_battery
+#   - plant.monstera

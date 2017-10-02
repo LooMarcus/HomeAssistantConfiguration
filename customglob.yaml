@@ -1,2 +1,33 @@
-# light.*:
-#   custom_ui_state_card: custom_light
+"*.*":
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+
+light.*:
+  state_card_mode: break-slider
+  stretch_slider: true
+  slider_theme:
+    pin: true
+
+
+"sensor.*_exporting*":
+  hidden: true
+"sensor.*_energy*":
+  hidden: true
+"sensor.*_alarm_type*":
+  hidden: true
+"sensor.*_alarm_level*":
+  hidden: true
+"sensor.*_alarm_type*":
+  hidden: true
+"sensor.*_power*":
+  hidden: true
+"sensor.*sourcenodeid":
+  hidden: true
+"sensor.*system":
+  hidden: true
+"sensor.*unknown":
+  hidden: true
+"sensor.*heat*":
+  hidden: true
+"zwave.*":
+  hidden: true

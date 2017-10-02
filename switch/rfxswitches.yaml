@@ -6,20 +6,11 @@
         name: Right button
       0b1100080009a56e02010f60:
         name: Left button
-      # 0b1100110153b33a0a010f70:
-      #   name: Motion sensor
-      0b1100060163e70201010f70:
-        name: Stefans fläkt
-      # 09130000a96601013e70:
-      #   name: White1
-      # 0a1411010082c908000070:
-      #   name: White2
-      #   fire_event: true
+      0b1100070163e70203010f70:
+        name: Charging station
+      0b1100060163e70202010f70:
+        name: Tradfri Gateway Switch
       0b1100000009a25202010f60:
         name: Bedroom light switch
-        fire_event: true
       0b1100040009a25201010f70:
         name: All lights off switch
-        fire_event: true
-      # 0b11001f01539bda0a010f50:
-      #   name: Door
