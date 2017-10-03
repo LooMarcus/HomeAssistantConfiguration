@@ -5,7 +5,10 @@ homeassistant:
     binary_sensor.motion_sensor_158d0001a66291:
       # friendly_name: Upstairs Litter Box
       hidden: true
-
+    sensor.upstairs_litter_box:
+      extra_badge:
+        entity_id: sensor.upstairs_litter_box_visits
+        # blacklist_states: 0
 #-------------------------------------------
 
 sensor:
@@ -13,14 +16,12 @@ sensor:
     state_topic: "dummy/upstairslitterbox/count"
     name: Upstairs Litter Box Visits
     unit_of_measurement: "visits"
-
-template_sensor:
-  platform: template
-  sensors:
-    downstairs_litter_box:
-      friendly_name: 'Upstairs Litter Box'
-      value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}In use{% else %}Clear{% endif %}'
-      icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}mdi:cat{% else %}mdi:cancel{% endif %}'
+  - platform: template
+    sensors:
+      upstairs_litter_box:
+        friendly_name: 'Upstairs Litter Box'
+        value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}In use{% else %}Clear{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}mdi:cat{% else %}mdi:checkbox-blank-outline{% endif %}'
 
 #-------------------------------------------
 

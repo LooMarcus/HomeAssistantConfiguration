@@ -1,5 +1,5 @@
-test_group:
-  name: Test
+laundry_group:
+  name: Laundry
   entities:
     - input_select.washing_machine_status
     - sensor.washer

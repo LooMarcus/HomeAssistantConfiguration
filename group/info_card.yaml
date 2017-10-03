@@ -19,4 +19,3 @@ info_card:
   # - sensor.grimsan55
   # - sensor.fire_alarm_1_sensor_status
   # - sensor.fire_alarm_2_sensor_status
-  - group.cat_card

@@ -13,4 +13,5 @@ info_view:
     - group.camera_card
     - input_select.house_mode
     - input_select.day_mode    
-    - group.test_group
+    - group.laundry_group
+    - group.cat_card

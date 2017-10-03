@@ -8,6 +8,9 @@ light.*:
   slider_theme:
     pin: true
 
+# sensor.*litter_box:
+  
+
 
 "sensor.*_exporting*":
   hidden: true
@@ -16,8 +19,6 @@ light.*:
 "sensor.*_alarm_type*":
   hidden: true
 "sensor.*_alarm_level*":
-  hidden: true
-"sensor.*_alarm_type*":
   hidden: true
 "sensor.*_power*":
   hidden: true
