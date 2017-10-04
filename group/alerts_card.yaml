@@ -1,0 +1,6 @@
+alerts_card:
+  name: Alerts
+  entities:
+    - alert.back_door_open
+    - alert.backyard_door_open
+    - alert.front_door_open

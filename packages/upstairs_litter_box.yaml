@@ -3,12 +3,14 @@ homeassistant:
     sensor.upstairs_litter_box_visits:
       icon: mdi:poop
     binary_sensor.motion_sensor_158d0001a66291:
-      # friendly_name: Upstairs Litter Box
+      friendly_name: Upstairs Litter Box
       hidden: true
+    sensor.illumination_158d0001a66291:
+      friendly_name: Isas Room Lux
     sensor.upstairs_litter_box:
       extra_badge:
         entity_id: sensor.upstairs_litter_box_visits
-        # blacklist_states: 0
+
 #-------------------------------------------
 
 sensor:
@@ -20,8 +22,8 @@ sensor:
     sensors:
       upstairs_litter_box:
         friendly_name: 'Upstairs Litter Box'
-        value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}In use{% else %}Clear{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "detected") %}mdi:cat{% else %}mdi:checkbox-blank-outline{% endif %}'
+        value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}In use{% else %}Clear{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}mdi:cat{% else %}mdi:checkbox-blank-outline{% endif %}'
 
 #-------------------------------------------
 
@@ -37,7 +39,6 @@ automation:
   - alias: Count visits to upstairs litter box
     trigger:
       - platform: state
-        # entity_id: binary_sensor.upstairs_litter_box_pir
         entity_id: binary_sensor.motion_sensor_158d0001a66291
         to: 'on'
     condition:

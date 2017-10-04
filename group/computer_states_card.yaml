@@ -1,5 +1,5 @@
 computer_states_card:
-  name: Dator-status
+  name: Computer status
   entities:
   - sensor.stefan_computer
   - sensor.isa_computer

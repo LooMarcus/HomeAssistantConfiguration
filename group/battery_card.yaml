@@ -1,10 +1,10 @@
 battery_card:
-  name: Batteri-status
+  name: Battery status
   entities:
+  - sensor.igrims_battery_level
+  - sensor.igrims_battery_state
   - sensor.isabellas_iphone_6s_battery_level
   - sensor.isabellas_iphone_6s_battery_state
   - sensor.paddan_battery_level
   - sensor.paddan_battery_state
-  - sensor.monstera_battery
-  - sensor.palm_battery
-  - sensor.sensative_door_battery
+  # - sensor.sensative_door_battery

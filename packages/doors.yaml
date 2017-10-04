@@ -4,7 +4,8 @@ homeassistant:
       friendly_name: Yard Storage Door
     binary_sensor.door_window_sensor_158d00019e152b:
       friendly_name: Backyard Door
-
+    binary_sensor.door_window_sensor_158d0001a3e45e:
+      friendly_name: Balcony Door
 input_boolean:
   backyard_door:
     name: Backyard door
@@ -15,8 +16,8 @@ sensor:
     sensors:
       front_door:
         friendly_name: 'Front Door'
-        value_template: '{% if is_state("sensor.front_door_access_control", "22") %}Open{% else %}Closed{% endif %}'
-        icon_template: '{% if is_state("sensor.front_door_access_control", "22") %}mdi:login{% else %}mdi:page-layout-sidebar-right{% endif %}'
+        value_template: '{% if is_state("sensor.front_door_access_control", "22") %}Open{% elif is_state("sensor.front_door_access_control", "23")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("sensor.front_door_access_control", "22") %}mdi:login{% elif is_state("sensor.front_door_access_control", "23")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
 
       sensative_door_battery:
         friendly_name: 'Sensative Door Battery'
@@ -28,15 +29,25 @@ sensor:
         unit_of_measurement: '%'
         entity_id: zwave.sensative
 
+      backyard_door:
+        friendly_name: 'Back Yard Door'
+        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019e152b", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00019e152b", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019e152b", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d00019e152b", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+
       back_door:
         friendly_name: 'Back Door'
-        value_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}Open{% else %}Closed{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}mdi:message-alert{% else %}mdi:page-layout-sidebar-right{% endif %}'
-
+        value_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}Open{% elif is_state("binary_sensor.back_door_sensor", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.back_door_sensor", "on") %}mdi:login{% elif is_state("binary_sensor.back_door_sensor", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+      
+      balcony_door:
+        friendly_name: 'Balcony Door'
+        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3e45e", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d0001a3e45e", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3e45e", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d0001a3e45e", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+           
       nexa_door:
         friendly_name: 'Nexa Door'
-        value_template: '{% if is_state("switch.nexa_door", "on") %}Open{% else %}Closed{% endif %}'
-        icon_template: '{% if is_state("switch.nexa_door", "on") %}mdi:login{% else %}mdi:page-layout-sidebar-right{% endif %}'
+        value_template: '{% if is_state("switch.nexa_door", "on") %}Open{% elif is_state("switch.nexa_door", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("switch.nexa_door", "on") %}mdi:login{% elif is_state("switch.nexa_door", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
 
 binary_sensor:
   - platform: rfxtrx
@@ -44,10 +55,39 @@ binary_sensor:
       0b11001f01539bda0a010f50:
         name: Nexa Door
 
-
-
-
-
+alert:
+  backyard_door_open:
+    name: Backyard Door left open
+    entity_id: binary_sensor.door_window_sensor_158d00019e152b
+    state: 'on'
+    repeat: 2
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
+  front_door_open:
+    name: Front Door left open
+    entity_id: binary_sensor.front_door_sensor
+    state: 'on'
+    repeat: 2
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
+  back_door_open:
+    name: Back Door left open
+    entity_id: binary_sensor.back_door_sensor
+    state: 'on'
+    repeat: 10
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
+  balcony_door_open:
+    name: Balcony Door left open
+    entity_id: binary_sensor.door_window_sensor_158d0001a3e45e
+    state: 'on'
+    repeat: 1
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
 
 automation:
   - alias: Door opened
@@ -58,7 +98,13 @@ automation:
       - platform: state
         entity_id: binary_sensor.back_door_sensor
         to: 'on'
-    # add condition for not_home or alarm on
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e
+        to: 'on'
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d00019e152b
+        to: 'on'
+    # add condition for not_home OR alarm on
     condition:
       condition: state
       entity_id: group.persons
@@ -68,7 +114,7 @@ automation:
         data_template:
           title: 'Door opened'
           message: >
-            '{{ trigger.entity_id }} just opened and noone seems to be home'
+            '{{ trigger.to_state.name }}'
 
   - alias: Door closed
     trigger:
@@ -77,6 +123,12 @@ automation:
         to: 'off'
       - platform: state
         entity_id: binary_sensor.back_door_sensor
+        to: 'off'
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e
+        to: 'off'
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d00019e152b
         to: 'off'
     condition:
       condition: state
@@ -87,4 +139,4 @@ automation:
         data_template:
           title: 'Door closed'
           message: >
-            '{{ trigger.entity_id }} just closed and noone seems to be home'
+            '{{ trigger.to_state.name }}'

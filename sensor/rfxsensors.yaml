@@ -1,12 +1,7 @@
   - platform: rfxtrx
     automatic_add: True
-    devices:
-    #   08500a00380100bc69:
-    #     name: Temperatur Esic
-    #     data_type:
-    #     #  - Humidity
-    #      - Temperature
-      08200301d119000650:
-        name: Fire Alarm 1
-      08200301629b000660:
-        name: Fire Alarm 2
+    # devices:
+      # 08200301d119000650:
+      #   name: Fire Alarm 1
+      # 08200301629b000660:
+      #   name: Fire Alarm 2

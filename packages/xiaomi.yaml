@@ -3,8 +3,14 @@ homeassistant:
     binary_sensor.switch_158d0001243520:
       friendly_name: Bed Switch
       homebridge_hidden: true
+
+    binary_sensor.door_window_sensor_158d0001a3e3a4:
+      friendly_name: Bathroom Cabinet Door
+
     light.gateway_light_34ce008bfc4b:
       friendly_name: Xiaomi Gateway Nightlight
+    sensor.illumination_34ce008bfc4b:
+      friendly_name: Xiaomi Gateway Lumen
  
     
 sensor:
@@ -50,7 +56,7 @@ sensor:
 alert: 
 ### Alert via iOS notification when Bedroom sensor battery < 10% ###
   backyard_door_sensor_battery_low:
-    name: Bedroom sensor battery is low
+    name: Backyard door sensor battery is low
     entity_id: sensor.backyard_door_sensor_battery_low
     state: 'True'
 # Repeat in minutes (1 day = 1440 minutes)
@@ -58,6 +64,16 @@ alert:
     skip_first: False
     notifiers:
       - ios_isabellas_iphone_6s
+
+  bathroom_cabinet_door_open:
+    name: Bathroom Cabinet Door left open
+    entity_id: binary_sensor.door_window_sensor_158d0001a3e3a4
+    state: 'on'
+    repeat: 2
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
+
 
 automation:
   - alias: Light Bedside Bed Switch

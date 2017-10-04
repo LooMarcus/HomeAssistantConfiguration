@@ -1,0 +1,48 @@
+homeassistant:
+  customize:
+    sensor.dining_area_window:
+      homebridge_hidden: 'true'
+
+sensor:
+  - platform: template  
+    sensors:
+      dining_area_window:
+        friendly_name: 'Dining area window'
+        value_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}Open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
+
+
+
+automation:
+  - alias: Window opened
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.dining_area_window_sensor_sensor
+        to: 'on'
+    # add condition for not_home OR alarm on
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Window opened'
+          message: >
+            '{{ trigger.to_state.name }}'
+
+  - alias: Window closed
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.dining_area_window_sensor_sensor
+        to: 'off'
+    condition:
+      condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Window closed'
+          message: >
+            '{{ trigger.to_state.name }}'

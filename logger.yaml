@@ -9,18 +9,20 @@
 default: warn
 logs:
   homeassistant.core: warn
-  homeassistant.components.automation: info
-  homeassistant.components.device_tracker: error
+  homeassistant.components.automation: error
+  homeassistant.components.python_script: error
+  
+  homeassistant.components.device_tracker: warn
   homeassistant.components.discovery: warn
   homeassistant.components.http: error
   homeassistant.components.media_player: error
   homeassistant.components.sensor.darksky: error
-  homeassistant.components.zwave: warn
-  homeassistant.components.rfxtrx: warn
-  homeassistant.helpers.script: info
+  homeassistant.components.zwave: error
+  homeassistant.components.rfxtrx: error
+  # homeassistant.helpers.script: info
   homeassistant.components.light: warn
   homeassistant.helpers.entity: error
-  homeassistant.components.ffmpeg: debug
-  homeassistant.components.ffmpeg_motion: debug
+  # homeassistant.components.ffmpeg: debug
+  # homeassistant.components.ffmpeg_motion: debug
   homeassistant.components.xiaomi: warning
   root: warn

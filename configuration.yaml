@@ -54,8 +54,8 @@ frontend:
 history:
 # recorder:
 #   purge_days: 7
-logbook: #!include logbook.yaml
-# logger: !include logger.yaml
+logbook: !include logbook.yaml
+logger: !include logger.yaml
 sun:
 python_script:
 # zone:
@@ -101,7 +101,7 @@ light: !include_dir_merge_list lights
 # scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select
-# device_tracker: !include device_tracker.yaml
+device_tracker: !include device_tracker.yaml
 # # input_slider: !include_dir_merge_named input_slider/
 # # camera:
 # #   - platform: ffmpeg

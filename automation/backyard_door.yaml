@@ -4,22 +4,16 @@
       platform: state
       entity_id: binary_sensor.door_window_sensor_158d00019e152b
       to: 'on'
-    condition:
-      condition: state
-      entity_id: group.persons
-      state: 'not_home'
+    # condition:
+    #   condition: state
+    #   entity_id: group.persons
+    #   state: 'not_home'
       ## add condition for not_home or alarm on
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
           title: 'The backyard door was opened'
-          message: 'Turning the backyard light red'
-          ## FIX ACTIONABLE NOTIFICATION TO TURN OFF
-      - service: light.turn_on
-        entity_id: light.yard_outside_light
-        data:
-          brightness: 255
-          color_name: "red"
+          message: 'Anyone home?'
 
 ## notify when door closed (replace with alert for door open)
   - alias: Backyard door closed
@@ -27,10 +21,10 @@
       platform: state
       entity_id: binary_sensor.door_window_sensor_158d00019e152b
       to: 'off'
-    condition:
-      condition: state
-      entity_id: group.persons
-      state: 'not_home'
+    # condition:
+    #   condition: state
+    #   entity_id: group.persons
+    #   state: 'not_home'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
@@ -58,7 +52,7 @@
           title: 'The backyard door was opened'
           message: 'Turning the backyard light red'
       - service: light.turn_on
-        entity_id: light.yard_outside_light
+        entity_id: light.outside_yard_light
         data:
           brightness: 255
       - service: homeassistant.turn_on
@@ -82,7 +76,7 @@
           title: 'You should be inside'
           message: 'Turning backyard light off again'
       - service: light.turn_off
-        entity_id: light.yard_outside_light
+        entity_id: light.outside_yard_light
 
   - alias: Turn yard outside light dim again when Isa has come home
     trigger:
@@ -106,6 +100,6 @@
           title: 'You should be inside'
           message: 'Turning backyard light dim again'
       - service: light.turn_on
-        entity_id: light.yard_outside_light
+        entity_id: light.outside_yard_light
         data:
           profile: relax

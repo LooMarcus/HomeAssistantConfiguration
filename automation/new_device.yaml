@@ -1,0 +1,9 @@
+- alias: New device tracked
+  trigger:
+    platform: event
+    event_type: device_tracker_new_device
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'New device tracked'
+        message: 'Look it up!'

@@ -7,11 +7,11 @@
     offset: "-00:45:00"
   action:
     - service: light.turn_on
-      entity_id: light.front_outside_light
+      entity_id: light.outside_front_light
       data:
         brightness: 127
     - service: light.turn_on
-      entity_id: light.yard_outside_light
+      entity_id: light.outside_yard_light
       data:
         # brightness: 127
         profile: relax
@@ -27,9 +27,9 @@
     at: '00:01:00'
   action:
     - service: homeassistant.turn_off
-      entity_id: light.front_outside_light
+      entity_id: light.outside_front_light
     - service: homeassistant.turn_off
-      entity_id: light.yard_outside_light
+      entity_id: light.outside_yard_light
     - service: homeassistant.turn_off
       entity_id: light.hallway_window_light
 
@@ -51,11 +51,11 @@
     before: '05:00:00'
   action:
     - service: light.turn_on
-      entity_id: light.front_outside_light
+      entity_id: light.outside_front_light
       data:
         brightness: 127
     - service: light.turn_on
-      entity_id: light.yard_outside_light
+      entity_id: light.outside_yard_light
       data:
         brightness: 127
     - service: light.turn_on
@@ -66,9 +66,9 @@
     - delay: 0:10
     
     - service: homeassistant.turn_off
-      entity_id: light.front_outside_light
+      entity_id: light.outside_front_light
     - service: homeassistant.turn_off
-      entity_id: light.yard_outside_light
+      entity_id: light.outside_yard_light
     - service: homeassistant.turn_off
       entity_id: light.hallway_window_light
 
