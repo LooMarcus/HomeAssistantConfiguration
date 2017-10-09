@@ -29,6 +29,7 @@ sensor:
 
 automation:
   - alias: Set Upstairs Litter Box Sensor To Zero On Start
+    initial_state: 'on'
     trigger:
       platform: homeassistant
       event: start
@@ -37,6 +38,7 @@ automation:
     
     
   - alias: Count visits to upstairs litter box
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0001a66291
@@ -60,6 +62,7 @@ automation:
 
 
   - alias: Send notification when upstairs litter box is used more than three times
+    initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.upstairs_litter_box_visits
@@ -94,6 +97,7 @@ automation:
 
 
   - alias: Reset upstairs litter box visit counter
+    initial_state: 'on'
     trigger:
       - platform: state
         # entity_id: switch.upstairslitterbox

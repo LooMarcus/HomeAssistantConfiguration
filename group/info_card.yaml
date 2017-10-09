@@ -4,10 +4,7 @@ info_card:
   entities:
   - sensor.date__time
   - sun.sun
+  - calendar.cleaning_day
+  - calendar.garbage_day
+  - calendar.take_in_garbage
   - sensor.vacuumed_today
-  # - sensor.motion_sensor
-  # - binary_sensor.upstairs_litter_box_pir
-  # - switch.stefan_on_air
-  # - sensor.grimsan55
-  # - sensor.fire_alarm_1_sensor_status
-  # - sensor.fire_alarm_2_sensor_status

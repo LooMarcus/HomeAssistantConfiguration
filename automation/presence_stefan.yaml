@@ -17,7 +17,7 @@
   trigger:
     - platform: state
       entity_id: device_tracker.stefan_iphone_7
-      to: 'home'     
+      to: 'home'
   action:
     # - service: homeassistant.turn_on
     #   entity_id: input_boolean.stefan_home
@@ -25,6 +25,29 @@
       data:
         title: 'Stefan är nu rapporterad som hemma.'
         message: 'Hemma'
+
+
+- alias: 'Stefan Bayesian Home'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.stefan_home
+      to: 'on'
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Stefan är nu rapporterad som hemma.'
+        message: 'via bayesian'
+
+- alias: 'Stefan Bayesian Not Home'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.stefan_home
+      to: 'off'
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Stefan är nu rapporterad som inte hemma.'
+        message: 'via bayesian'
 
 - alias: Force Check Stefan Location Home
   trigger:

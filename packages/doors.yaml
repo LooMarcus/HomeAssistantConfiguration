@@ -6,6 +6,8 @@ homeassistant:
       friendly_name: Backyard Door
     binary_sensor.door_window_sensor_158d0001a3e45e:
       friendly_name: Balcony Door
+    binary_sensor.door_window_sensor_158d00016d6ef9:
+      friendly_name: Hallway Glass Door
 input_boolean:
   backyard_door:
     name: Backyard door
@@ -19,15 +21,15 @@ sensor:
         value_template: '{% if is_state("sensor.front_door_access_control", "22") %}Open{% elif is_state("sensor.front_door_access_control", "23")%}Closed{% else %}Unknown{% endif %}'
         icon_template: '{% if is_state("sensor.front_door_access_control", "22") %}mdi:login{% elif is_state("sensor.front_door_access_control", "23")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
 
-      sensative_door_battery:
-        friendly_name: 'Sensative Door Battery'
-        value_template: '{% if states.zwave.sensative %}
-          {{ states.zwave.front_door.attributes.battery_level }}
-        {% else %}
-          n/a
-        {% endif %}'
-        unit_of_measurement: '%'
-        entity_id: zwave.sensative
+      # sensative_door_battery:
+      #   friendly_name: 'Sensative Door Battery'
+      #   value_template: '{% if states.zwave.sensative %}
+      #     {{ states.zwave.front_door.attributes.battery_level }}
+      #   {% else %}
+      #     n/a
+      #   {% endif %}'
+      #   unit_of_measurement: '%'
+      #   entity_id: zwave.sensative
 
       backyard_door:
         friendly_name: 'Back Yard Door'
@@ -46,8 +48,14 @@ sensor:
            
       nexa_door:
         friendly_name: 'Nexa Door'
-        value_template: '{% if is_state("switch.nexa_door", "on") %}Open{% elif is_state("switch.nexa_door", "off")%}Closed{% else %}Unknown{% endif %}'
-        icon_template: '{% if is_state("switch.nexa_door", "on") %}mdi:login{% elif is_state("switch.nexa_door", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+        value_template: '{% if is_state("binary_sensor.nexa_door", "on") %}Open{% elif is_state("binary_sensor.nexa_door", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.nexa_door", "on") %}mdi:login{% elif is_state("binary_sensor.nexa_door", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+      
+      yard_storage_door:
+        friendly_name: 'Yard Storage Door'
+        value_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}Open{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}Closed{% else %}Unknown{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d00019f5110", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d00019f5110", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+
 
 binary_sensor:
   - platform: rfxtrx
@@ -66,8 +74,8 @@ alert:
       - ios_isabellas_iphone_6s
   front_door_open:
     name: Front Door left open
-    entity_id: binary_sensor.front_door_sensor
-    state: 'on'
+    entity_id: sensor.front_door_access_control
+    state: '22'
     repeat: 2
     skip_first: True
     notifiers:
@@ -88,21 +96,34 @@ alert:
     skip_first: True
     notifiers:
       - ios_isabellas_iphone_6s
+  yard_storage_door_open:
+    name: Yard Storage Door left open
+    entity_id: binary_sensor.door_window_sensor_158d00019f5110
+    state: 'on'
+    repeat:
+      - 60
+      - 30
+      - 15
+      - 5
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
 
 automation:
-  - alias: Door opened
+  - alias: Door Opened
+    initial_state: 'on'
     trigger:
       - platform: state
-        entity_id: binary_sensor.front_door_sensor
-        to: 'on'
+        entity_id: sensor.front_door_access_control
+        to: '22'
       - platform: state
         entity_id: binary_sensor.back_door_sensor
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e
+        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e ## Balcony
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019e152b
+        entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
         to: 'on'
     # add condition for not_home OR alarm on
     condition:
@@ -116,19 +137,20 @@ automation:
           message: >
             '{{ trigger.to_state.name }}'
 
-  - alias: Door closed
+  - alias: Door Closed
+    initial_state: 'on'
     trigger:
       - platform: state
-        entity_id: binary_sensor.front_door_sensor
-        to: 'off'
+        entity_id: sensor.front_door_access_control
+        to: '23'
       - platform: state
         entity_id: binary_sensor.back_door_sensor
         to: 'off'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e
+        entity_id: binary_sensor.door_window_sensor_158d0001a3e45e ## Balcony
         to: 'off'
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019e152b
+        entity_id: binary_sensor.door_window_sensor_158d00019e152b ## Backyard
         to: 'off'
     condition:
       condition: state
@@ -140,3 +162,59 @@ automation:
           title: 'Door closed'
           message: >
             '{{ trigger.to_state.name }}'
+
+
+
+  - alias: Turn outside yard light on at full when back yard door opened
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019e152b
+      to: 'on'
+    condition:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:45:00"
+    action:
+      - service: light.turn_on
+        entity_id: light.outside_yard_light
+        data:
+          brightness: 255
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.backyard_door
+      - delay: "00:10:00"
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.backyard_door
+
+  - alias: Turn outside yard light off
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: input_boolean.backyard_door
+      to: 'off'
+    condition:
+      - condition: time
+        after: '00:01:00'
+    action:
+      - service: light.turn_off
+        entity_id: light.outside_yard_light
+
+  - alias: Turn outside yard light dim
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: input_boolean.backyard_door
+      to: 'off'
+    condition:
+      condition: and
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:45:00"
+        - condition: time
+          before: '00:01:00'
+    action:
+      - service: light.turn_on
+        entity_id: light.outside_yard_light
+        data:
+          brightness: 127

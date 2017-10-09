@@ -13,12 +13,13 @@
     - service: light.turn_on
       entity_id: light.outside_yard_light
       data:
-        # brightness: 127
-        profile: relax
+        brightness: 127
     - service: light.turn_on
       entity_id: light.hallway_window_light
       data:
         brightness: 45
+    - service: light.turn_on
+      entity_id: light.outside_yard_hanging_lights
 
 ## Turn off outside lights and hallway window light at midnight
 - alias: Lights off at midnight
@@ -32,6 +33,8 @@
       entity_id: light.outside_yard_light
     - service: homeassistant.turn_off
       entity_id: light.hallway_window_light
+    - service: light.turn_off
+      entity_id: light.outside_yard_hanging_lights
 
 
 ## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min

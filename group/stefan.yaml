@@ -1,10 +1,11 @@
 stefan:
   name: Stefan
   entities:
-    # - device_tracker.stefansiphone
-    # - device_tracker.iphone
-    # - device_tracker.stefansplewatch
-    # - sensor.stefan_computer    
-    - device_tracker.stefan_iphone_7
+     
     - sensor.igrims_battery_level
     - sensor.igrims_battery_state
+    - sensor.stefan_computer  
+    - device_tracker.igrims
+    - device_tracker.stefan_iphone_7
+    - device_tracker.stefansplewatch
+    - binary_sensor.stefan_home

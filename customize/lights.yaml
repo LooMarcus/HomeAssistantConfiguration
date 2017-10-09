@@ -42,3 +42,9 @@
     light.stefan_ceiling_light:
       # hide_control: true
       confirm_controls_show_lock: true
+    light.all_hue_lights:
+      hidden: true
+      homebridge_hidden: true
+    light.hue:
+      hidden: true
+      homebridge_hidden: true

@@ -12,9 +12,9 @@ sensor:
         icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
 
 
-
 automation:
   - alias: Window opened
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.dining_area_window_sensor_sensor
@@ -32,6 +32,7 @@ automation:
             '{{ trigger.to_state.name }}'
 
   - alias: Window closed
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.dining_area_window_sensor_sensor

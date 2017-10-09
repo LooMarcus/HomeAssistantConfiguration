@@ -58,11 +58,7 @@ logbook: !include logbook.yaml
 logger: !include logger.yaml
 sun:
 python_script:
-# zone:
-#   name: School
-#   latitude: !secret school_lat
-#   longitude: !secret school_long
-#   icon: mdi:code-braces
+
 # tts:
 #   platform: google
 # # influxdb:
@@ -81,7 +77,7 @@ rfxtrx:
 zwave:
   usb_path: /dev/ttyACM0
   new_entity_ids: true
-xiaomi:
+xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
      key: !secret xiaomi_key
@@ -102,6 +98,11 @@ light: !include_dir_merge_list lights
 input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select
 device_tracker: !include device_tracker.yaml
+zone:
+  name: School
+  latitude: !secret school_lat
+  longitude: !secret school_long
+  icon: mdi:code-braces
 # # input_slider: !include_dir_merge_named input_slider/
 # # camera:
 # #   - platform: ffmpeg
@@ -114,7 +115,7 @@ device_tracker: !include device_tracker.yaml
 # ###             SERVICES             ###
 # ########################################
 automation: !include_dir_merge_list automation
-# notify: !include notify.yaml
+notify: !include notify.yaml
 # script: !include_dir_merge_named script
 script: !include scripts.yaml
 group: !include_dir_merge_named group/
@@ -124,9 +125,9 @@ group: !include_dir_merge_named group/
 # #   client_id: home-assistant
 # #   username: !secret mqtt_username
 # #   password: !secret mqtt_password
-# google:
-#   client_id: !secret google_id
-#   client_secret: !secret google_secret
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_secret
 # # ffmpeg:
 # #   ffmpeg_bin: /usr/bin/avconv
 

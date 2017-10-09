@@ -12,3 +12,4 @@ security_card:
     - sensor.dining_area_window
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
+    - sensor.yard_storage_door

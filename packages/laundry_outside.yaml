@@ -13,6 +13,7 @@ switch:
 
 automation:
   - alias: Laundry Line Drying On
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.white5
@@ -30,6 +31,7 @@ automation:
           message: ''
 
   - alias: Laundry Line Drying Off
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.white5
