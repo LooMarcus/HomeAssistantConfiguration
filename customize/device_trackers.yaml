@@ -71,6 +71,7 @@
 
     device_tracker.isabellas_iphone_6s:
       icon: mdi:cellphone-iphone
+      homebridge_visible: true
     device_tracker.isabelliphone6s:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_6s_bt:
@@ -78,3 +79,4 @@
 
     device_tracker.stefan_iphone_7:
       icon: mdi:cellphone-iphone
+      homebridge_visible: true

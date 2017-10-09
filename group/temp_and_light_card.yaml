@@ -1,0 +1,8 @@
+temp_and_light_card:
+  name: Temperature and light conditions
+  entities:
+    - sensor.illumination_34ce008bfc4b
+    - sensor.illumination_158d0001a66291
+    - sensor.illumination_158d0001a24ef1
+    - sensor.upstairs_hallway_pir_luminance
+    - sensor.passage_pir_luminance

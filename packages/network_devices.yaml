@@ -126,9 +126,6 @@ sensor:
         withings_scale:
           friendly_name: 'Withings scale'
           value_template: "{{ 'Online' if is_state('device_tracker.0024e40a2868', 'home') else 'Offline' }}"
-        sonos_3:
-          friendly_name: 'Sonos Play 3'
-          value_template: "{{ 'Online' if is_state('device_tracker.sonos_3', 'home') else 'Offline' }}"
         ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminicce9a4', 'home') else 'Offline' }}"

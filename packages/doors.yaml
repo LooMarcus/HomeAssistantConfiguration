@@ -8,6 +8,19 @@ homeassistant:
       friendly_name: Balcony Door
     binary_sensor.door_window_sensor_158d00016d6ef9:
       friendly_name: Hallway Glass Door
+
+    sensor.front_door:
+      homebridge_visible: true
+    sensor.backyard_door:
+      homebridge_visible: true
+    sensor.back_door:
+      homebridge_visible: true
+    sensor.balcony_door:
+      homebridge_visible: true
+    yard_storage_door:
+      homebridge_visible: true
+
+      
 input_boolean:
   backyard_door:
     name: Backyard door

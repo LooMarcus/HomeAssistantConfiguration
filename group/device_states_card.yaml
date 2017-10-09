@@ -5,8 +5,10 @@ device_states_card:
   - sensor.nas
   - sensor.ipad
   - sensor.galaxy_tab
-  - sensor.hue_hub
   - sensor.ip_camera
   - sensor.ir_blaster
   - sensor.ir_blaster_bedroom
   - sensor.withings_scale
+  - sensor.hue_hub
+  - sensor.ikea_gateway
+  - sensor.xiaomi_gateway

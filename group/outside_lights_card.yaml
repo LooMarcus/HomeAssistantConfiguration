@@ -3,3 +3,4 @@ outside_lights_card:
   entities:
     - light.outside_front_light
     - light.outside_yard_light
+    - light.outside_yard_hanging_lights    

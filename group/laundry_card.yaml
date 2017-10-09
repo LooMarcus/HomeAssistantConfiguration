@@ -1,0 +1,7 @@
+laundry_group:
+  name: Laundry
+  entities:
+    - input_select.washing_machine_status
+    - sensor.washer
+    - sensor.washer_plug_power
+    - switch.laundry_line_drying

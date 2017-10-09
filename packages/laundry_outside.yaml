@@ -2,6 +2,7 @@ homeassistant:
   customize:
     switch.laundry_line_drying:
       icon: mdi:tshirt-crew
+      homebridge_visible: true
 #-------------------------------------------
 
 switch:

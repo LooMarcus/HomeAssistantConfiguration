@@ -14,3 +14,7 @@
       order: 1
     group.light_card:
       order: 2
+    group.inside_lights:
+      homebridge_visible: true
+    group.outside_lights:
+      homebridge_visible: true

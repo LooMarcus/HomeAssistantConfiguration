@@ -40,8 +40,13 @@
       homebridge_hidden: true
 
     light.stefan_ceiling_light:
-      # hide_control: true
       confirm_controls_show_lock: true
+      state_card_mode: no-slider
+    light.outside_yard_hanging_lights:
+      state_card_mode: no-slider
+    light.drink_cabinet_led:
+      state_card_mode: no-slider
+
     light.all_hue_lights:
       hidden: true
       homebridge_hidden: true

@@ -7,6 +7,10 @@ light.*:
   stretch_slider: true
   slider_theme:
     pin: true
+  homebridge_visible: true
+
+
+  
 
 # sensor.*litter_box:
   
@@ -31,4 +35,6 @@ light.*:
 "sensor.*heat*":
   hidden: true
 "zwave.*":
+  hidden: true
+"binary_sensor.white*":
   hidden: true
