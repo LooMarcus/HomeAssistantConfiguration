@@ -34,7 +34,10 @@ light.*:
   hidden: true
 "sensor.*heat*":
   hidden: true
-"zwave.*":
-  hidden: true
+# "zwave.*":
+#   hidden: true
 "binary_sensor.white*":
   hidden: true
+"light.*level_*":
+  hidden: true
+  homebridge_visible: false

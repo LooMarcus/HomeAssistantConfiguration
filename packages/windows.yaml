@@ -1,7 +1,7 @@
 homeassistant:
   customize:
-    sensor.dining_area_window:
-      homebridge_hidden: 'true'
+    binary_sensor.dining_area_window_sensor_sensor:
+      homebridge_visible: true
 
 sensor:
   - platform: template  

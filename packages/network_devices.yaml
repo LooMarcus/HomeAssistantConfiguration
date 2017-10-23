@@ -33,9 +33,6 @@ homeassistant:
     sensor.ipad:
       icon: mdi:tablet-ipad
       homebridge_hidden: true
-    sensor.tivo:
-      icon: mdi:television
-      homebridge_hidden: true
     sensor.movie_system:
       icon: mdi:speaker
       homebridge_hidden: true
@@ -45,6 +42,10 @@ homeassistant:
     sensor.hue_hub:
       icon: mdi:lightbulb-outline
       homebridge_hidden: true
+    sensor.ikea_gateway:
+      icon: mdi:google-keep
+    sensor.xiaomi_gateway:
+      icon: mdi:google-keep
     sensor.ip_camera:
       icon: mdi:webcam
       homebridge_hidden: true
@@ -138,3 +139,30 @@ sensor:
         sonos:
           friendly_name: 'Sonos'
           value_template: "{{ 'Online' if is_state('device_tracker.sonoszp', 'home') else 'Offline' }}"
+
+
+automation:
+  - alias: 'Device Status'
+    hide_entity: True
+    trigger:
+         - platform: state
+           entity_id:
+             - sensor.asus_router
+             - sensor.netgear_router
+             - sensor.printer
+             - sensor.nas
+             - sensor.hue_hub
+             - sensor.ir_blaster
+             - sensor.ir_blaster_bedroom
+             - sensor.xiaomi_gateway
+             - sensor.ikea_gateway
+           to: 'offline'
+           for:
+             minutes: 5
+    action:
+
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Device {{ trigger.to_state.name }} is'
+          message: >
+            '{{ trigger.to_state.state }}'

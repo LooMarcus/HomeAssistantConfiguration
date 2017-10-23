@@ -2,6 +2,7 @@ homeassistant:
   customize:
     sensor.upstairs_litter_box_visits:
       icon: mdi:poop
+      friendly_name: Upstairs Litter Box Visits
     binary_sensor.motion_sensor_158d0001a66291:
       friendly_name: Upstairs Litter Box
       hidden: true
@@ -23,7 +24,7 @@ sensor:
       upstairs_litter_box:
         friendly_name: 'Upstairs Litter Box'
         value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}In use{% else %}Clear{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}mdi:cat{% else %}mdi:checkbox-blank-outline{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}mdi:cat{% else %}mdi:paw-off{% endif %}'
 
 #-------------------------------------------
 

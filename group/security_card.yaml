@@ -3,6 +3,7 @@ security_card:
   name: Security
   icon: mdi:home-variant
   entities:
+    - alarm_control_panel.home_alarm
     - input_select.house_mode
     - sensor.front_door
     - sensor.back_door
@@ -13,3 +14,5 @@ security_card:
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
     - sensor.yard_storage_door
+    - sensor.attic_door
+    - binary_sensor.front_door_sensor

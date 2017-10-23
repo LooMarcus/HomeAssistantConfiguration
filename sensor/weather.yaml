@@ -1,7 +1,7 @@
-#   - platform: yr
-#     monitored_conditions:
+  - platform: yr
+    monitored_conditions:
 #       - temperature
-# #      - symbol
+     - symbol
 #       - precipitation
 #       - windSpeed
 # #      - pressure
@@ -18,8 +18,14 @@
     api_key: !secret darksky_key
     forecast:
       - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
     monitored_conditions:
-  #    - summary
+      - summary
       - precip_probability
       - precip_type
       - precip_intensity
@@ -28,8 +34,8 @@
   #    - dew_point
       - wind_speed
   #    - wind_bearing
-      - cloud_cover
-      - humidity
+    #   - cloud_cover
+    #   - humidity
   #    - nearest_storm_distance
   #    - minutely_summary
       - daily_summary
@@ -40,5 +46,5 @@
       - temperature_max
       - temperature_min
   #    - pressure
-  #    - visibility
+      - visibility
   #    - ozone

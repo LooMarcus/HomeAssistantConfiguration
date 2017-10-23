@@ -52,8 +52,12 @@ frontend:
 # ###              LOGGING             ###
 # ########################################
 history:
-# recorder:
-#   purge_days: 7
+recorder:
+  purge_days: 2
+  # purge_keep_days: 5
+  # exclude:
+  #   domains:
+  #     - mqtt_statestream
 logbook: !include logbook.yaml
 logger: !include logger.yaml
 sun:
@@ -119,12 +123,16 @@ notify: !include notify.yaml
 # script: !include_dir_merge_named script
 script: !include scripts.yaml
 group: !include_dir_merge_named group/
-# # mqtt:
-# #   broker: !secret mqtt_broker
-# #   port: 1883
-# #   client_id: home-assistant
-# #   username: !secret mqtt_username
-# #   password: !secret mqtt_password
+mqtt:
+  broker: !secret mqtt_broker
+  port: 1883
+  client_id: home-assistant
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+mqtt_statestream:
+  base_topic: /homeassistant
+  # publish_attributes: true
+  # publish_timestamps: 'true'
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret

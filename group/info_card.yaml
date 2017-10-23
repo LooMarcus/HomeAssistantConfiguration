@@ -5,6 +5,7 @@ info_card:
   - sensor.date__time
   - sun.sun
   - calendar.cleaning_day
+  - calendar.house_cleaning
   - calendar.garbage_day
   - calendar.take_in_garbage
   - sensor.vacuumed_today

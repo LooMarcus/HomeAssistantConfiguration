@@ -20,4 +20,4 @@
       - sensor.dark_sky_wind_speed_1
       - sensor.since_last_boot
       - sensor.ha_uptime
-      - sensor.yr_symbol
+      - sensor.yr_symbol 

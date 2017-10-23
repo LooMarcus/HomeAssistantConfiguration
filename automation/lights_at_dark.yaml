@@ -93,3 +93,43 @@
   action:
     - service: light.turn_on
       entity_id: light.passage_ceiling_spotlights_level
+
+
+## Lights on in morning if sun below horizon
+- alias: Lights on in morning if sun below horizon
+  trigger:
+    platform: time
+    at: '06:40:00'
+  condition:
+    condition: sun
+    before: sunrise
+  action:
+    - service: light.turn_on
+      entity_id: light.outside_front_light
+      data:
+        brightness: 127
+    - service: light.turn_on
+      entity_id: light.outside_yard_light
+      data:
+        brightness: 127
+    - service: light.turn_on
+      entity_id: light.hallway_window_light
+      data:
+        brightness: 45
+    - service: light.turn_on
+      entity_id: light.outside_yard_hanging_lights
+
+## Lights off at sunrise
+- alias: Lights off at sunrise
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.outside_front_light
+    - service: homeassistant.turn_off
+      entity_id: light.outside_yard_light
+    - service: homeassistant.turn_off
+      entity_id: light.hallway_window_light
+    - service: light.turn_off
+      entity_id: light.outside_yard_hanging_lights

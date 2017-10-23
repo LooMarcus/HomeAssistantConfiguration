@@ -1,0 +1,15 @@
+homeassistant:
+  customize:
+    group.mm_all_door_sensors:
+      hidden: true
+group:
+  mm_all_door_sensors:
+    name: All doors
+    entities:
+      - sensor.front_door
+      - sensor.back_door
+      - sensor.backyard_door
+      - sensor.yard_storage_door
+      - sensor.balcony_door
+      - sensor.nexa_door
+      - sensor.attic_door
