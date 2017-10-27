@@ -1,0 +1,1 @@
+hass.states.set('sensor.all_litter_box_visits_today', 0)

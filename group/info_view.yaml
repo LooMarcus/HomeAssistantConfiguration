@@ -1,4 +1,4 @@
-info_view:
+default_view:
   view: yes
   name: Info
   icon: mdi:home-variant

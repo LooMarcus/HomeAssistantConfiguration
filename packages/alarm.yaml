@@ -29,9 +29,9 @@ automation:
 - alias: 'Alarm Arm home'
   initial_state: 'on'
   trigger:
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7
-        to: 'not_home'
+    - platform: state
+      entity_id: device_tracker.stefan_iphone_7
+      to: 'not_home'
   condition:
     - condition: state
       entity_id: device_tracker.isabellas_iphone_6s

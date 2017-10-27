@@ -11,13 +11,14 @@ logs:
   homeassistant.core: warn
   homeassistant.components.automation: error
   homeassistant.components.python_script: error
-  
+  homeassistant.components.api: error
   homeassistant.components.device_tracker: warn
   homeassistant.components.discovery: warn
   homeassistant.components.http: error
   homeassistant.components.media_player: error
   homeassistant.components.sensor.darksky: error
   homeassistant.components.zwave: error
+  homeassistant.components.zwave.util: error
   homeassistant.components.rfxtrx: error
   # homeassistant.helpers.script: info
   homeassistant.components.light: warn

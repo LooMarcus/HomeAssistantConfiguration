@@ -16,7 +16,7 @@ homeassistant:
 
 sensor:
   - platform: mqtt
-    state_topic: "dummy/downstairslitterbox/count"
+    state_topic: "litterbox/downstairs/count"
     name: Downstairs Litter Box Visits
     unit_of_measurement: "visits"
 
@@ -27,19 +27,20 @@ sensor:
         value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "on") %}In use{% else %}Clear{% endif %}'
         icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a24ef1", "on") %}mdi:cat{% else %}mdi:paw-off{% endif %}'
 
+input_select:
+  dlitterbox_state:
+    name: Downstairs Litter Box State
+    options:
+      - Clean
+      - Dirty
+      - Cleaning
+    initial: Clean
+    icon: mdi:paw
+
 #-------------------------------------------
 
 automation:
-  - alias: Set Downstairs Litter Box Sensor To Zero On Start
-    initial_state: 'on'
-    trigger:
-      platform: homeassistant
-      event: start
-    action:
-      - service: python_script.dlitter_reset
-    
-    
-  - alias: Count visits to downstairs litter box
+  - alias: Litterbox Downstairs Counter
     initial_state: 'on'
     trigger:
       - platform: state
@@ -48,21 +49,28 @@ automation:
     condition:
     - condition: template
       value_template: >
-        {% if states.automation.count_visits_to_downstairs_litter_box.last_triggered is not none %}
-          {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.count_visits_to_downstairs_litter_box.attributes.last_triggered) | int > 300 %} true {% else %} false
+        {% if states.automation.litterbox_downstairs_counter.last_triggered is not none %}
+          {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.litterbox_downstairs_counter.attributes.last_triggered) | int > 300 %} true {% else %} false
           {% endif %}
         {% else %}
         false
         {% endif %}
     action:
       - service: python_script.dlitter_counter
+      - service: python_script.all_litter_counter
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dlitterbox_state
+          option: 'Dirty'
+      - service: ifttt.trigger
+        data: {"event":"Litterbox_Visit", "value1":"Downstairs Litterbox"}
 
-  - alias: Send notification when downstairs litter box is used more than three times
+  - alias: Litterbox Downstairs Cleaning Notification
     initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.downstairs_litter_box_visits
-        above: '2'
+        above: '1'
       - platform: state
         entity_id: device_tracker.isabellas_iphone_6s
         to: 'home'
@@ -79,17 +87,46 @@ automation:
           state: 'home'
         - condition: numeric_state
           entity_id: sensor.downstairs_litter_box_visits
-          above: '2'
+          above: '1'
     action:
       - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Time to clean!'
-          message: 'More than three visits to downstairs litter box'
+        data_template:
+          title: 'Time to clean'
+          message: >
+            '{{ states('sensor.downstairs_litter_box_visits') }} visits to downstairs litterbox'
 
-  - alias: Reset downstairs litter box visit counter
+  - alias: Litterbox Downstairs Cleaning Mode
     initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.white2
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: input_select.dlitterbox_state
+          state: 'Dirty'
+        - condition: state
+          entity_id: input_select.dlitterbox_state
+          state: 'Clean'
     action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dlitterbox_state
+          option: 'Cleaning'
+
+  - alias: Litterbox Downstairs Cleaned
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.white2
+    condition:
+      condition: state
+      entity_id: input_select.dlitterbox_state
+      state: 'Cleaning'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dlitterbox_state
+          option: 'Clean'
       - service: python_script.dlitter_reset

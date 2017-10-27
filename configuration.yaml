@@ -21,6 +21,7 @@ customizer:
 # ########################################
 # ###                GUI               ###
 # ########################################
+map:
 frontend:
 #   extra_html_url:
 #     - /local/custom_ui/state-card-custom-ui.html
@@ -29,10 +30,10 @@ frontend:
 #   #   title: "Grafana"
 #   #   icon: mdi:chart-areaspline
 #   #   url: !secret grafana_url
-#   mdi_index:
-#     title: MDI Icons
-#     icon: mdi:vector-square
-#     url: !secret mdi_index_url
+  # mdi_index:
+  #   title: MDI Icons
+  #   icon: mdi:vector-square
+  #   url: !secret mdi_index_url
 #   # hadashboard:
 #   #   title: HaDashboard
 #   #   icon: mdi:television-guide
@@ -53,15 +54,15 @@ frontend:
 # ########################################
 history:
 recorder:
-  purge_days: 2
-  # purge_keep_days: 5
+  purge_interval: 2
+  purge_keep_days: 5
   # exclude:
   #   domains:
   #     - mqtt_statestream
+
 logbook: !include logbook.yaml
 logger: !include logger.yaml
 sun:
-python_script:
 
 # tts:
 #   platform: google
@@ -103,10 +104,16 @@ input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select
 device_tracker: !include device_tracker.yaml
 zone:
-  name: School
-  latitude: !secret school_lat
-  longitude: !secret school_long
-  icon: mdi:code-braces
+  - name: School
+    latitude: !secret school_lat
+    longitude: !secret school_long
+    icon: mdi:code-braces
+
+  - name: Work
+    latitude: !secret work_lat
+    longitude: !secret work_long
+    icon: mdi:briefcase
+    radius: 300
 # # input_slider: !include_dir_merge_named input_slider/
 # # camera:
 # #   - platform: ffmpeg
@@ -120,8 +127,8 @@ zone:
 # ########################################
 automation: !include_dir_merge_list automation
 notify: !include notify.yaml
-# script: !include_dir_merge_named script
-script: !include scripts.yaml
+python_script:
+script: !include_dir_merge_named script
 group: !include_dir_merge_named group/
 mqtt:
   broker: !secret mqtt_broker
@@ -131,14 +138,15 @@ mqtt:
   password: !secret mqtt_password
 mqtt_statestream:
   base_topic: /homeassistant
-  # publish_attributes: true
-  # publish_timestamps: 'true'
+  publish_attributes: true
+  # publish_timestamps: true
 google:
   client_id: !secret google_id
   client_secret: !secret google_secret
 # # ffmpeg:
 # #   ffmpeg_bin: /usr/bin/avconv
-
+ifttt:
+  key: gF6fjkRB8-jyaIV9x2IloQE5vhyulamBQvZY6o4pbVL
 
 ########################################
 ###                IOS               ###

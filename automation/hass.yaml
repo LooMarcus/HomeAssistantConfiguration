@@ -1,0 +1,34 @@
+- alias: 'HA started'
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    # Event can also be 'shutdown'
+    event: start
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Home Assistant'
+        message: 'Online'
+
+- alias: 'HA ready'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: zwave.network_ready
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Home Assistant'
+        message: 'Z-wave network now ready'
+
+- alias: 'HA stopped'
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    # Event can also be 'shutdown'
+    event: shutdown
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Home Assistant'
+        message: 'Offline'
