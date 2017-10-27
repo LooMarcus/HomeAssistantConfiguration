@@ -1,38 +1,44 @@
+## Python scripts: https://github.com/isabellaalstrom/HomeAssistantConfiguration/tree/master/python_scripts
+
 homeassistant:
   customize:
-    sensor.all_litter_box_visits_today:
+    sensor.all_litterbox_visits_today:
       icon: mdi:poop
-      friendly_name: All Litter Box Visits Today
-    sensor.upstairs_litter_box_visits:
+      friendly_name: All Litterbox Visits Today
+    sensor.upstairs_litterbox_visits:
       icon: mdi:poop
-      friendly_name: Upstairs Litter Box Visits
+      friendly_name: Upstairs Litterbox Visits
     binary_sensor.motion_sensor_158d0001a66291:
-      friendly_name: Upstairs Litter Box
+      friendly_name: Upstairs Litterbox
       hidden: true
     sensor.illumination_158d0001a66291:
       friendly_name: Isas Room Lux
-    sensor.upstairs_litter_box:
+    sensor.upstairs_litterbox:
       extra_badge:
-        entity_id: sensor.upstairs_litter_box_visits
+        entity_id: sensor.upstairs_litterbox_visits
 
 #-------------------------------------------
 
 sensor:
+  # Dummy sensors for counting with python script
   - platform: mqtt
     state_topic: "litterbox/upstairs/count"
-    name: Upstairs Litter Box Visits
+    name: Upstairs Litterbox Visits
     unit_of_measurement: "visits"
   - platform: mqtt
     state_topic: "litterbox/all/count"
-    name: All Litter Box Visits Today
+    name: All Litterbox Visits Today
     unit_of_measurement: "visits"
+
+  # Template sensor for dynamic icon and value
   - platform: template
     sensors:
-      upstairs_litter_box:
+      upstairs_litterbox:
         friendly_name: 'Upstairs Litterbox'
         value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}In use{% else %}Clear{% endif %}'
         icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66291", "on") %}mdi:cat{% else %}mdi:paw-off{% endif %}'
 
+# Controlling of mode for not registering motion
 input_select:
   ulitterbox_state:
     name: Upstairs Litterbox State
@@ -45,6 +51,7 @@ input_select:
 #-------------------------------------------
 
 script:
+  # To be able to send dynamic message to Ifttt
   ifttt_litterbox_day_summary:
     sequence:
       - service: ifttt.trigger
@@ -52,7 +59,22 @@ script:
 
 #-------------------------------------------
 
+# Group for displaying in front end
+group:
+  cat_card:
+    name: Cats!
+    entities:
+      - sensor.all_litterbox_visits_today
+      - sensor.downstairs_litterbox
+      - sensor.upstairs_litterbox
+      - input_select.dlitterbox_state
+      - input_select.ulitterbox_state    
+
+#-------------------------------------------
+
 automation:
+  # Trigger state for setting all the dummy sensors to zero at home assistant restart
+  # (otherwise they're set as 'none')
   - alias: Litterbox Sensors Set To Zero On Start
     initial_state: 'on'
     trigger:
@@ -62,7 +84,8 @@ automation:
       - service: python_script.ulitter_reset
       - service: python_script.dlitter_reset
       - service: python_script.all_litter_reset
-      
+  
+  # Count visits
   - alias: Litterbox Upstairs Counter
     initial_state: 'on'
     trigger:
@@ -72,14 +95,16 @@ automation:
     condition:
       condition: and
       conditions:
+        # Condition for not triggering the counter if it was less than two minutes (120 sec) since last trigger
         - condition: template
           value_template: >
             {% if states.automation.litterbox_upstairs_counter.last_triggered is not none %}
-              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.litterbox_upstairs_counter.attributes.last_triggered) | int > 300 %} true {% else %} false
+              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.litterbox_upstairs_counter.attributes.last_triggered) | int > 120 %} true {% else %} false
               {% endif %}
             {% else %}
             false
             {% endif %}
+        # Condition that makes sure that the input select is Dirty or Clean (not in Cleaning mode)
         - condition: or
           conditions:
             - condition: state
@@ -89,21 +114,27 @@ automation:
               entity_id: input_select.ulitterbox_state
               state: 'Dirty'
     action:
+      # Count the visit on counter for this litterbox and also all litterboxes
       - service: python_script.ulitter_counter
       - service: python_script.all_litter_counter
+      # Set the input select to Dirty
       - service: input_select.select_option
         data:
           entity_id: input_select.ulitterbox_state
           option: 'Dirty'
+      # Log visit to Google Drive Spreadsheet
       - service: ifttt.trigger
         data: {"event":"Litterbox_Visit", "value1":"Upstairs"}
 
+  # Send notification on more than two visits
   - alias: Litterbox Upstairs Cleaning Notification
     initial_state: 'on'
     trigger:
+      # Trigger either on second or higher visit
       - platform: numeric_state
-        entity_id: sensor.upstairs_litter_box_visits
+        entity_id: sensor.upstairs_litterbox_visits
         above: '1'
+      # or ten minutes after I get home
       - platform: state
         entity_id: device_tracker.isabellas_iphone_6s
         to: 'home'
@@ -112,22 +143,29 @@ automation:
     condition:
       condition: and
       conditions:
+        # Don't notify between 23pm and 7am
         - condition: time
           after: '07:00:00'
           before: '23:00:00'
+        # Don't notify if I'm not home
         - condition: state
           entity_id: device_tracker.isabellas_iphone_6s
           state: 'home'
+        # Notify only if only more than two visits (for when triggered when I get home)
         - condition: numeric_state
-          entity_id: sensor.upstairs_litter_box_visits
+          entity_id: sensor.upstairs_litterbox_visits
           above: '1'
     action:
+      # Notify me on my ios app
       - service: notify.ios_isabellas_iphone_6s
         data_template:
           title: 'Time to clean'
+          # Dynamic message that takes current number of visits
           message: >
-            '{{ states('sensor.upstairs_litter_box_visits') }} visits to upstairs litterbox'
+            '{{ states('sensor.upstairs_litterbox_visits') }} visits to upstairs litterbox'
 
+
+  # Set in cleaning mode on button press
   - alias: Litterbox Upstairs Cleaning Mode
     initial_state: 'on'
     trigger:
@@ -136,6 +174,7 @@ automation:
     condition:
       condition: or
       conditions:
+        # Only if it's currently Clean or Dirty
         - condition: state
           entity_id: input_select.ulitterbox_state
           state: 'Dirty'
@@ -143,87 +182,46 @@ automation:
           entity_id: input_select.ulitterbox_state
           state: 'Clean'
     action:
+      # Set the input select to Cleaning
       - service: input_select.select_option
         data:
           entity_id: input_select.ulitterbox_state
           option: 'Cleaning'
 
+
+  # Reset on button press when cleaned
   - alias: Litterbox Upstairs Cleaned
     initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.white3
     condition:
+      # Only if it's currently being cleaned
       condition: state
       entity_id: input_select.ulitterbox_state
       state: 'Cleaning'
     action:
+      # Set the input select to Clean
       - service: input_select.select_option
         data:
           entity_id: input_select.ulitterbox_state
           option: 'Clean'
+      # Run the python script for reseting counter
       - service: python_script.ulitter_reset
 
+
+  # Reset the all litterbox counter at midnight
   - alias: Litterbox All Counter Reset At Midnight
     initial_state: 'on'
     trigger:
       - platform: time
         at: '23:59:00'
     action:
+      # Log total visits for the day in Ifttt via script for dynamic counter
       - service: script.ifttt_litterbox_day_summary
         data_template:
-          value1: "{{ states('sensor.all_litter_box_visits_today') }}"
+          value1: "{{ states('sensor.all_litterbox_visits_today') }}"
+          value2: "test"
+      # Wait one minute and then reset the counter
+      - delay: 0:01
       - service: python_script.all_litter_reset
-
-# #-----------------------------------------
-
-# switch:
-#   - platform: mqtt
-#     name: "UpstairsLitterBox"
-#     state_topic: "UpstairsLitterBox/Button/state"
-#     command_topic: "UpstairsLitterBox/gpio/13"
-#     payload_on: "1"
-#     payload_off: "0"
-#     optimistic: false
-#     qos: 0
-
-#   - platform: mqtt
-#     name: "UpstairsLitterBoxBlueLed"
-#     state_topic: "UpstairsLitterBox/blueled/state"
-#     command_topic: "UpstairsLitterBox/gpio/15"
-#     payload_on: "1"
-#     payload_off: "0"
-#     optimistic: false
-#     qos: 0
-
-#   - platform: mqtt
-#     name: "UpstairsLitterBoxGreenLed"
-#     state_topic: "UpstairsLitterBox/greenled/state"
-#     command_topic: "UpstairsLitterBox/gpio/12"
-#     payload_on: "1"
-#     payload_off: "0"
-#     optimistic: false
-#     qos: 0
-
-#   - platform: mqtt
-#     name: "UpstairsLitterBoxRedLed"
-#     state_topic: "UpstairsLitterBox/redled/state"
-#     command_topic: "UpstairsLitterBox/gpio/02"
-#     payload_on: "1"
-#     payload_off: "0"
-#     optimistic: false
-#     qos: 0
-
-# #-------------------------------------------
-
-# binary_sensor:
-#   - platform: mqtt
-#     name: "Upstairs Litter Box Pir"
-#     state_topic: "UpstairsLitterBox/pir/state"
-#     command_topic: "UpstairsLitterBox/gpio/14"
-#     payload_on: "1"
-#     payload_off: "0"
-#     optimistic: false
-#     qos: 0
-
-#-------------------------------------------

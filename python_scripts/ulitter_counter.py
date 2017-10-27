@@ -1,8 +1,8 @@
-counter = hass.states.get('sensor.upstairs_litter_box_visits')
+counter = hass.states.get('sensor.upstairs_litterbox_visits')
 
 if counter is None:
     value = 0
 else:
     value = int(counter.state)
 
-hass.states.set('sensor.upstairs_litter_box_visits', value + 1)
+hass.states.set('sensor.upstairs_litterbox_visits', value + 1)
