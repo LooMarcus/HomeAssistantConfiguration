@@ -28,6 +28,7 @@
 
 
 - alias: 'Stefan Bayesian Home'
+  initial_state: 'off'
   trigger:
     - platform: state
       entity_id: binary_sensor.stefan_home
@@ -39,6 +40,7 @@
         message: 'via bayesian'
 
 - alias: 'Stefan Bayesian Not Home'
+  initial_state: 'off'
   trigger:
     - platform: state
       entity_id: binary_sensor.stefan_home
@@ -49,14 +51,24 @@
         title: 'Stefan är nu rapporterad som inte hemma.'
         message: 'via bayesian'
 
-- alias: Force Check Stefan Location Home
+
+
+- alias: Presence Force Check Location
   trigger:
     - platform: state
       entity_id: sensor.front_door
       to: 'Open'
+    - platform: state
+      entity_id: sensor.back_door
+      to: 'Open'
+    - platform: homeassistant
+      event: start
   action:
   # Catch home
   - service: notify.ios_stefan_iphone_7
+    data:
+      message: "request_location_update"
+  - service: notify.ios_isabellas_iphone_6s
     data:
       message: "request_location_update"
   - delay: '00:10:00'
@@ -64,14 +76,6 @@
   - service: notify.ios_stefan_iphone_7
     data:
       message: "request_location_update"
-
-# - alias: Force Check Stefan Location Away
-#   trigger:
-#     - platform: state
-#       entity_id: sensor.front_door
-#       to: 'Open'
-#   action:
-#   - delay: '00:10:00'
-#   - service: notify.ios_stefan_iphone_7
-#     data:
-#       message: "request_location_update"
+  - service: notify.ios_isabellas_iphone_6s
+    data:
+      message: "request_location_update"

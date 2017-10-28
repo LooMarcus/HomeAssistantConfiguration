@@ -1,0 +1,19 @@
+  - alias: 'Theme Night Mode'
+    initial_state: True
+    trigger:
+      - platform: time
+        at: '21:00'
+    action:
+      - service: frontend.set_theme
+        data:
+          name: darkteal
+
+  - alias: 'Theme Day Mode'
+    initial_state: True
+    trigger:
+      - platform: time
+        at: '06:00'
+    action:
+      - service: frontend.set_theme
+        data:
+          name: teal

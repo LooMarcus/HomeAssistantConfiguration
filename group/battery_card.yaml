@@ -8,3 +8,5 @@ battery_card:
   - sensor.paddan_battery_level
   - sensor.paddan_battery_state
   # - sensor.sensative_door_battery
+  - sensor.stefan_dimmer
+  - sensor.tradfri_wireless_dimmer

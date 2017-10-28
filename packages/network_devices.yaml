@@ -160,7 +160,6 @@ automation:
            for:
              minutes: 5
     action:
-
       - service: notify.ios_isabellas_iphone_6s
         data_template:
           title: 'Device {{ trigger.to_state.name }} is'

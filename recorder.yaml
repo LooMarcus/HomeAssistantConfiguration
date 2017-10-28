@@ -1,3 +1,13 @@
+  purge_interval: 2
+  purge_keep_days: 5
+  exclude:
+    domains:
+      - camera
+      - media_player
+      - sun
+      # - calendar
+      - sensor
+
   include:
     domains:
       - light

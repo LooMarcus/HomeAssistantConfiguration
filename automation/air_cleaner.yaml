@@ -1,4 +1,5 @@
 - alias: Air Cleaner To Quiet at 21
+  initial_state: 'on'
   trigger:
     - platform: time
       at: '21:00:00'
@@ -11,6 +12,7 @@
         title: 'Air cleaner'
 
 - alias: Air Cleaner To Auto At 11
+  initial_state: 'on'
   trigger:
     - platform: time
       at: '11:00:00'

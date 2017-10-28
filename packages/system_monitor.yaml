@@ -1,0 +1,49 @@
+homeassistant:
+  customize:
+    sensor.disk_used_:
+      friendly_name: Rpi Disk Used
+group:
+  system_monitor_card:
+    name: System monitor
+    entities:
+      - alert.disk_use_critical
+      - binary_sensor.critical_disk_use
+      - sensor.disk_used_
+      - sensor.last_boot
+      - sensor.since_last_boot
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_use
+        arg: /
+      - type: disk_free
+        arg: /
+      # - type: memory_free
+      - type: last_boot
+      - type: since_last_boot
+
+history_graph:
+  gr1:
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+
+binary_sensor:
+  - platform: template
+    sensors:
+      critical_disk_use:
+        value_template: '{{ states.sensor.disk_used_|float > 70 }}'
+        friendly_name: 'Critical Disk Use'
+
+alert:
+  disk_use_critical:
+    name: Rpi Disk Use is Critical
+    entity_id: binary_sensor.critical_disk_use
+    repeat: 10
+    skip_first: False
+    notifiers:
+      - ios_isabellas_iphone_6s

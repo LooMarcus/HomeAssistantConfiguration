@@ -10,3 +10,4 @@ info_card:
   - calendar.take_in_garbage
   - sensor.vacuumed_today
   - switch.air_cleaner_quiet
+  - history_graph.gr1

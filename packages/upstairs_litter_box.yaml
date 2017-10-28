@@ -126,6 +126,7 @@ automation:
       - service: ifttt.trigger
         data: {"event":"Litterbox_Visit", "value1":"Upstairs"}
 
+
   # Send notification on more than two visits
   - alias: Litterbox Upstairs Cleaning Notification
     initial_state: 'on'
@@ -225,3 +226,26 @@ automation:
       # Wait one minute and then reset the counter
       - delay: 0:01
       - service: python_script.all_litter_reset
+
+alert:
+  litterbox_upstairs_cleaning:
+    name: Upstairs Litterbox in Cleaning mode
+    done_message: Cleaning mode exited
+    entity_id: input_select.ulitterbox_state
+    state: 'Cleaning'
+    repeat: 1
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s
+
+  litterbox_downstairs_cleaning:
+    name: Downstairs Litterbox in Cleaning mode
+    done_message: Cleaning mode exited
+    entity_id: input_select.dlitterbox_state
+    state: 'Cleaning'
+    repeat: 1
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - ios_isabellas_iphone_6s

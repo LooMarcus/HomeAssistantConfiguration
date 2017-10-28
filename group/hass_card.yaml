@@ -3,3 +3,4 @@ hass_card:
   entities:
   # - sensor.ha_installed_version
   - sensor.ha_uptime
+  - sensor.uptime

@@ -1,9 +1,8 @@
 #mdi:sleep mdi:sleep_off
 
 # maybe automation tv and pc off and time is past 00 - stefan asleep
-
-
 - alias: All asleep
+  initial_state: 'on'
   trigger:
     - platform: time
       minutes: '/15'
@@ -26,13 +25,16 @@
       # - condition: state
       #   entity_id: sensor.passage_movement
       #   state: 'No movement'
-      ## Bedroom light has to be off
+      ## Bedroom lights has to be off
       - condition: state
-        entity_id: light.isa_ceiling_lamp
+        entity_id: light.bedroom_ceiling_light
         state: 'off'
       - condition: state
-        entity_id: input_select.day_mode
-        state: Evening
+        entity_id: light.bedside_lamp
+        state: 'off'
+      # - condition: state
+      #   entity_id: input_select.day_mode
+      #   state: Evening
 
       ## All computers off (not reliable, due to sometimes leaving on, how to fix?)
       - condition: state
@@ -55,16 +57,16 @@
 
       ## Tv-system bottenvåning avstängt
       ## group.media_player_view?
-      - condition: state
-        entity_id: sensor.movie_system
-        state: Offline
-      - condition: state
-        entity_id: sensor.samsung65
-        state: Offline
-      ## Tv sovrum avstängd
-      - condition: state
-        entity_id: sensor.samsung49
-        state: Offline
+      # - condition: state
+      #   entity_id: sensor.movie_system
+      #   state: Offline
+      # - condition: state
+      #   entity_id: sensor.samsung65
+      #   state: Offline
+      # ## Tv sovrum avstängd
+      # - condition: state
+      #   entity_id: sensor.samsung49
+      #   state: Offline
       #   ## försöker täcka alla olika states för shield
       # - condition: or
       #   conditions:

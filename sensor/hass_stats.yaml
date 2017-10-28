@@ -26,3 +26,5 @@
       {{ ', ' }}
     {%- endif -%}
     {{ '%02d' % hours }}:{{ '%02d' % minutes }}
+- platform: uptime
+  unit_of_measurement: hours

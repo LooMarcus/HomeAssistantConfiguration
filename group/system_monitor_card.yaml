@@ -1,7 +1,0 @@
-raspberry_card:
-  name: RPi3
-  entities:
-  - sensor.disk_use_
-  - sensor.ram_free
-  - sensor.last_boot
-  - sensor.since_last_boot

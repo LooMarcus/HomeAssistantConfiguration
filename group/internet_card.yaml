@@ -1,5 +1,5 @@
 internet_card:
-  name: Internetstatus
+  name: Internet status
   entities:
   - sensor.asus_router
   - sensor.netgear_router

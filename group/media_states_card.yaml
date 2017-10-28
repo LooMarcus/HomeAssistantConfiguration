@@ -1,5 +1,5 @@
 media_states_card:
-  name: Media-status
+  name: Media player status
   entities:
   - sensor.samsung65
   - sensor.samsung49
