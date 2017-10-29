@@ -16,29 +16,9 @@
     light.isa_ceiling_lamp:
       friendly_name: Bedroom Ceiling Light
       icon: mdi:ceiling-light
-    # light.yard_outside_light:
-    #   icon: 
-    # light.front_outside_light:
-    #   icon: 
+
     light.hallway_window_light:
       icon: mdi:lamp
-
-    # light.living_room_ceiling_light_level_2:
-    #   hidden: true
-    #   homebridge_visible: false
-    # light.upstairs_hallway_ceiling_light_level_2:
-    #   hidden: true
-    #   homebridge_visible: false
-    # light.dining_area_ceiling_light_level_2:
-    #   hidden: true
-    #   homebridge_visible: false
-    # light.living_room_spotlights_level_2:
-    #   hidden: true
-    #   homebridge_visible: false
-    # light.passage_ceiling_spotlights_level_2:
-    #   hidden: true
-    #   homebridge_visible: false
-
     light.stefan_ceiling_light:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
@@ -46,10 +26,11 @@
       state_card_mode: no-slider
     light.drink_cabinet_led:
       state_card_mode: no-slider
+      homebridge_visible: false
 
-    light.all_hue_lights:
-      hidden: true
-      homebridge_visible: false
-    light.hue:
-      hidden: true
-      homebridge_visible: false
+    # light.all_hue_lights:
+    #   hidden: true
+    #   homebridge_visible: false
+    # light.hue:
+    #   hidden: true
+    #   homebridge_visible: false

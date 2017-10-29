@@ -15,4 +15,5 @@ security_card:
     - sensor.upstairs_hallway_movement
     - sensor.yard_storage_door
     - sensor.attic_door
-    - binary_sensor.front_door_sensor
+    # - binary_sensor.front_door_sensor
+    - sensor.water_heater

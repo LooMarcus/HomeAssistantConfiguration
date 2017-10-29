@@ -1,33 +1,28 @@
-# test with door trigger for presence (if door is not opened I cannot have left) - seems to be working
-- alias: 'Stefan away'
+- alias: 'Presence Stefan Away'
   trigger:
     - platform: state
-      # entity_id: group.stefan
       entity_id: device_tracker.stefan_iphone_7
       to: 'not_home'
   action:
-    # - service: homeassistant.turn_off
-    #   entity_id: input_boolean.stefan_home
     - service: notify.ios_isabellas_iphone_6s
       data:
         title: 'Stefan är nu rapporterad som inte hemma.'
         message: 'Inte hemma'
 
-- alias: 'Stefan Home'
+- alias: 'Presence Stefan Home'
   trigger:
     - platform: state
       entity_id: device_tracker.stefan_iphone_7
       to: 'home'
   action:
-    # - service: homeassistant.turn_on
-    #   entity_id: input_boolean.stefan_home
     - service: notify.ios_isabellas_iphone_6s
       data:
         title: 'Stefan är nu rapporterad som hemma.'
         message: 'Hemma'
+###############################################################
 
 
-- alias: 'Stefan Bayesian Home'
+- alias: 'Presence Stefan Bayesian Home'
   initial_state: 'off'
   trigger:
     - platform: state
@@ -39,7 +34,7 @@
         title: 'Stefan är nu rapporterad som hemma.'
         message: 'via bayesian'
 
-- alias: 'Stefan Bayesian Not Home'
+- alias: 'Presence Stefan Bayesian Not Home'
   initial_state: 'off'
   trigger:
     - platform: state
@@ -51,7 +46,32 @@
         title: 'Stefan är nu rapporterad som inte hemma.'
         message: 'via bayesian'
 
+###############################################################
 
+- alias: 'Presence Isa Away'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.isabellas_iphone_6s
+      to: 'not_home'
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Du är nu rapporterad som inte hemma.'
+        message: 'Inte hemma'
+
+- alias: 'Presence Isa Home'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.isabellas_iphone_6s
+      to: 'home'
+  action:
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Du är nu rapporterad som hemma.'
+        message: 'Hemma'
+
+
+###############################################################
 
 - alias: Presence Force Check Location
   trigger:

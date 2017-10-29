@@ -3,88 +3,6 @@
   sensors:
 
       #########################################
-      ######            PERSONS          ######
-      #########################################
-      # isa:
-      #   friendly_name: 'Isa'
-      #   value_template: "{{ 'Home' if is_state('input_boolean.isabella_home', 'on') else 'Away' }}"
-      # stefan:
-      #   friendly_name: 'Stefan'
-      #   value_template: "{{ 'Home' if is_state('input_boolean.stefan_home', 'on') else 'Away' }}"
-
-      #########################################
-      ######           DEVICES           ######
-      # #########################################
-
-      # nas:
-      #   friendly_name: 'Synology NAS'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.0011325962fb', 'home') else 'Offline' }}"
-      # samsung65:
-      #   friendly_name: 'Vardagsrums-tv'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.90f1aac2077c', 'home') else 'Offline' }}"
-      # samsung49:
-      #   friendly_name: 'Sovrums-tv'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.14bb6eceb76a', 'home') else 'Offline' }}"
-      # movie_system:
-      #   friendly_name: 'Hemmabiosystem'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.0c89109204ff', 'home') else 'Offline' }}"
-      # netgear_router:
-      #   friendly_name: 'Netgear Router'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.204e7f4bf81b', 'home') else 'Offline' }}"
-      # shield:
-      #   friendly_name: 'NVidia Shield'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.android8e3893d2d746d835', 'home') else 'Offline' }}"
-      # shield_2:
-      #   friendly_name: 'NVidia Shield 2'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.shield', 'home') else 'Offline' }}"
-      # chromecast:
-      #   friendly_name: 'Chromecast'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.chromecast', 'home') else 'Offline' }}"
-      # stefan_computer:
-      #   friendly_name: 'Stefans dator'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.grimsan55', 'home') else 'Offline' }}"
-      # isa_computer:
-      #   friendly_name: 'Isas dator'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.isa', 'home') else 'Offline' }}"
-      # isa_laptop:
-      #   friendly_name: 'Isas laptop'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.laptopo5pj4rks', 'home') else 'Offline' }}"
-      # printer:
-      #   friendly_name: 'Skrivare'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.hp16eece', 'home') else 'Offline' }}"
-      # ipad:
-      #   friendly_name: 'iPad'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.paddan', 'home') else 'Offline' }}"
-      # galaxy_tab:
-      #   friendly_name: 'Galaxy Tab'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.android8c0fc07d9694a5a2', 'home') else 'Offline' }}"
-      # hue_hub:
-      #   friendly_name: 'Philips Hue Hub'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.philipshue', 'home') else 'Offline' }}"
-      # asus_router:
-      #   friendly_name: 'Asus Router'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.routerasuscom', 'home') else 'Offline' }}"
-      # # tivo:
-      # #   friendly_name: 'TIVO'
-      # #   value_template: "{{ 'Online' if is_state('device_tracker.tivoe800d5bf09d5729', 'home') else 'Offline' }}"
-      # ip_camera:
-      #   friendly_name: 'IP Camera'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.00b06c1a907f', 'home') else 'Offline' }}"
-      # ir_blaster:
-      #   friendly_name: 'Broadlink IR Blaster Hallway'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminib2ea6e', 'home') else 'Offline' }}"
-      # withings_scale:
-      #   friendly_name: 'Withings-våg'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.0024e40a2868', 'home') else 'Offline' }}"
-      # sonos_3:
-      #   friendly_name: 'Sonos Play 3'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.sonos_3', 'home') else 'Offline' }}"
-      # ir_blaster_bedroom:
-      #   friendly_name: 'Broadlink IR Blaster Bedroom'
-      #   value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminicce9a4', 'home') else 'Offline' }}"
-
-
-      #########################################
       ######         RFX SWITCHES        ######
       #########################################
 
@@ -93,34 +11,17 @@
         value_template: '{% if is_state("switch.motion_sensor", "on") %}Occupied{% else %}Not in use{% endif %}'
         icon_template: '{% if is_state("switch.motion_sensor", "on") %}mdi:cat{% else %}mdi:application{% endif %}'
 
-      #########################################
-      ######         OTHER SWITCHES      ######
-      #########################################
-
-      vacuumed_today:
-        friendly_name: 'Has Roomba vacuumed downstairs today?'
-        value_template: '{% if is_state("input_boolean.vacuumed_today", "on") %}Yes{% else %}No{% endif %}'
-        icon_template: '{% if is_state("input_boolean.vacuumed_today", "on") %}mdi:roomba{% else %}mdi:cancel{% endif %}'
-      
-      washer:
-        friendly_name: Washer state
-        value_template: "{{ states('sensor.washer_plug_power') | int < 3.4 }}"
-
 
       #########################################
       ######              PIRS           ######
       #########################################
-      passage_movement:
-        friendly_name: 'Passage Movement'
-        value_template: '{% if is_state("binary_sensor.passage_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.passage_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
 
-      upstairs_hallway_movement:
-        friendly_name: 'Upstairs Hallway Movement'
-        value_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
 
-      stefan_ceiling_light:
-        friendly_name: "Stefan Ceiling Light"
-        value_template: '{% if is_state("light.stefan_ceiling_light", "on") %}on{% else %}off{% endif %}'
-        icon_template: '{% if is_state("light.stefan_ceiling_light", "on") %}mdi:lightbulb-on{% else %}mdi:lightbulb{% endif %}'
+      #########################################
+      ######             LIGHTS          ######
+      #########################################
+ 
+      # stefan_ceiling_light:
+      #   friendly_name: "Stefan Ceiling Light"
+      #   value_template: '{% if is_state("light.stefan_ceiling_light", "on") %}on{% else %}off{% endif %}'
+      #   icon_template: '{% if is_state("light.stefan_ceiling_light", "on") %}mdi:lightbulb-on{% else %}mdi:lightbulb{% endif %}'

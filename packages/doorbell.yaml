@@ -1,0 +1,31 @@
+homeassistant:
+  customize:
+    binary_sensor.white6:
+      friendly_name: Doorbell front
+    
+
+binary_sensor:
+  - platform: rfxtrx
+    devices:
+      09130020a96601014270:
+        name: White6
+        off_delay:
+          seconds: 2
+
+automation:
+  - alias: Doorbell Ring
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.white6
+        to: 'on'
+    action:
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: !secret xiaomi_mac
+          ringtone_id: 10
+          ringtone_vol: 8
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Doorbell'
+          message: 'Front door'

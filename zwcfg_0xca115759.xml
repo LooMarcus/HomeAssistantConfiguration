@@ -41,7 +41,7 @@
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="2" request_flags="2" innif="true">
 				<Instance index="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="29.42" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="30.15" />
 				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
@@ -374,7 +374,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="5" name="" location="" basic="4" generic="7" specific="1" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="CacheLoad">
+	<Node id="5" name="" location="" basic="4" generic="7" specific="1" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Dynamic">
 		<Manufacturer id="0" name="">
 			<Product type="0" id="0" name="" />
 		</Manufacturer>
@@ -389,7 +389,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="6" name="Dining Area Window Sensor" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3078" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="CacheLoad">
+	<Node id="6" name="Dining Area Window Sensor" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3078" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="258" name="Neo CoolCam">
 			<Product type="3" id="1082" name="Door/Window Detector" />
 		</Manufacturer>
@@ -516,7 +516,7 @@
 			<CommandClass id="38" name="COMMAND_CLASS_SWITCH_MULTILEVEL" version="3" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
 				<Instance index="2" endpoint="2" />
-				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="15" />
 				<Value type="button" genre="user" instance="1" index="1" label="On" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="button" genre="user" instance="1" index="2" label="Off" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="bool" genre="system" instance="1" index="3" label="Ignore Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
@@ -549,11 +549,11 @@
 			</CommandClass>
 			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="4" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="2.1" />
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="3" request_flags="3" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.04" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.07" />
 				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
@@ -920,7 +920,7 @@
 			<CommandClass id="38" name="COMMAND_CLASS_SWITCH_MULTILEVEL" version="3" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
 				<Instance index="2" endpoint="2" />
-				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="83" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="7" />
 				<Value type="button" genre="user" instance="1" index="1" label="On" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="button" genre="user" instance="1" index="2" label="Off" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="bool" genre="system" instance="1" index="3" label="Ignore Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
@@ -953,12 +953,12 @@
 			</CommandClass>
 			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="4" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="9.6" />
+				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.3" />
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="3" request_flags="3" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.77" />
-				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="9.6" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.83" />
+				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.3" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 			</CommandClass>
@@ -1813,7 +1813,7 @@
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="3" request_flags="3" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.66" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.67" />
 				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
@@ -2180,7 +2180,7 @@
 			<CommandClass id="38" name="COMMAND_CLASS_SWITCH_MULTILEVEL" version="3" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
 				<Instance index="2" endpoint="2" />
-				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="8" />
 				<Value type="button" genre="user" instance="1" index="1" label="On" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="button" genre="user" instance="1" index="2" label="Off" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="bool" genre="system" instance="1" index="3" label="Ignore Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
@@ -2213,7 +2213,7 @@
 			</CommandClass>
 			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="4" request_flags="1" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+				<Value type="decimal" genre="user" instance="1" index="4" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1.5" />
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="3" request_flags="3" innif="true">
 				<Instance index="1" endpoint="1" />
@@ -2569,7 +2569,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="18" name="Passage Pir" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="CacheLoad">
+	<Node id="18" name="Passage Pir" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="258" name="Neo CoolCam">
 			<Product type="3" id="1083" name="Battery Powered PIR Sensor" />
 		</Manufacturer>
@@ -2585,7 +2585,7 @@
 			</CommandClass>
 			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="7" innif="true">
 				<Instance index="1" />
-				<Value type="decimal" genre="user" instance="1" index="3" label="Luminance" units="lux" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="58" />
+				<Value type="decimal" genre="user" instance="1" index="3" label="Luminance" units="lux" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="45" />
 			</CommandClass>
 			<CommandClass id="90" name="COMMAND_CLASS_DEVICE_RESET_LOCALLY" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
@@ -2827,7 +2827,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="20" name="Water Heater" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3077" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="CacheLoad">
+	<Node id="20" name="Water Heater" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3077" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="258" name="Neo CoolCam">
 			<Product type="3" id="1085" name="Water Leakage Detector" />
 		</Manufacturer>
@@ -2958,7 +2958,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="22" name="Upstairs Hallway Pir" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="CacheLoad">
+	<Node id="22" name="Upstairs Hallway Pir" location="" basic="4" generic="7" specific="1" roletype="6" devicetype="3079" nodetype="0" type="Notification Sensor" listening="false" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="258" name="Neo CoolCam">
 			<Product type="3" id="1083" name="Battery Powered PIR Sensor" />
 		</Manufacturer>

@@ -17,6 +17,15 @@ homeassistant:
       extra_badge:
         entity_id: sensor.upstairs_litterbox_visits
 
+
+binary_sensor:
+  - platform: rfxtrx
+    devices:
+      0913001b4ab0a1011d70:
+        name: White3
+        off_delay:
+          seconds: 5
+
 #-------------------------------------------
 
 sensor:
@@ -75,7 +84,7 @@ group:
 automation:
   # Trigger state for setting all the dummy sensors to zero at home assistant restart
   # (otherwise they're set as 'none')
-  - alias: Litterbox Sensors Set To Zero On Start
+  - alias: Litterbox All Sensors Set To Zero On Start
     initial_state: 'on'
     trigger:
       platform: homeassistant
@@ -172,6 +181,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.white3
+        to: 'on'
     condition:
       condition: or
       conditions:
@@ -196,6 +206,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.white3
+        to: 'on'
     condition:
       # Only if it's currently being cleaned
       condition: state

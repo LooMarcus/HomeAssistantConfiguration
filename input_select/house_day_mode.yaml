@@ -6,7 +6,7 @@
      - Evening
      - Night
     initial: Day
-    icon: mdi:house
+    icon: mdi:white-balance-sunny
 
   house_mode:
     name: House mode
@@ -17,4 +17,4 @@
      - Armed
      - Unarmed
     initial: Unarmed
-    icon: mdi:house
+    icon: mdi:shield

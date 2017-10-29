@@ -1,6 +1,6 @@
 ## Turn on outside lights and hallway window light at sunset
 
-- alias: Lights on at sunset
+- alias: Lights On Outside And Hallway At Sunset
   trigger:
     platform: sun
     event: sunset
@@ -22,10 +22,10 @@
       entity_id: light.outside_yard_hanging_lights
 
 ## Turn off outside lights and hallway window light at midnight
-- alias: Lights off at midnight
+- alias: Lights Off Outside And Hallway At Midnight
   trigger:
     platform: time
-    at: '00:01:00'
+    at: '23:59:00'
   action:
     - service: homeassistant.turn_off
       entity_id: light.outside_front_light
@@ -38,7 +38,7 @@
 
 
 ## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min
-- alias: Outside lights on when we come home at night
+- alias: Lights On Outside And Hallway At Coming Home At Night Delay Ten Then Off
   trigger:
     - platform: zone
       entity_id: device_tracker.stefan_iphone_7
@@ -76,7 +76,7 @@
       entity_id: light.hallway_window_light
 
 ## Also turn on passage lights, but not turn off
-- alias: Passage lights on when we come home at night
+- alias: Lights On Passage At Coming Home At Night
   trigger:
     - platform: zone
       entity_id: device_tracker.stefan_iphone_7
@@ -96,7 +96,7 @@
 
 
 ## Lights on in morning if sun below horizon
-- alias: Lights on in morning if sun below horizon
+- alias: 'Lights On Outside And Hallway At 06:40 If Before Sunrise'
   trigger:
     platform: time
     at: '06:40:00'
@@ -120,7 +120,7 @@
       entity_id: light.outside_yard_hanging_lights
 
 ## Lights off at sunrise
-- alias: Lights off at sunrise
+- alias: Lights Off Outside And Hallway At Sunrise
   trigger:
     platform: sun
     event: sunrise

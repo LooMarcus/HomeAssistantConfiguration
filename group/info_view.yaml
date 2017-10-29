@@ -13,8 +13,10 @@ default_view:
     - group.inside_lights_card
     - group.outside_lights_card
     # - group.camera_card
-    - input_select.day_mode    
+      
     - group.laundry_group
     - group.cat_card
     - group.alerts_card
     - group.security_card
+    - input_boolean.isabella_home
+    - input_boolean.stefan_home

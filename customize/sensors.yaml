@@ -45,27 +45,13 @@
 ######            BATTERY          ######
 #########################################
 
-    sensor.isabellas_iphone_6s_battery_state:
-      icon: mdi:battery-charging
-      homebridge_hidden: true
-    sensor.isabellas_iphone_6s_battery_level:
-      icon: mdi:battery
-      homebridge_hidden: true
-    sensor.paddan_battery_level:
-      icon: mdi:battery
-      homebridge_hidden: true
-    sensor.paddan_battery_state:
-      icon: mdi:battery-charging
-      homebridge_hidden: true
-    sensor.sensative_door_battery:
-      icon: mdi:battery
-      homebridge_hidden: true
+
 
 #########################################
 ######          FIRE ALARMS        ######
 #########################################
   
-    sensor.fire_alarm_1_sensor_status:
-      icon: mdi:fire
-    sensor.fire_alarm_2_sensor_status:
-      icon: mdi:fire
+    # sensor.fire_alarm_1_sensor_status:
+    #   icon: mdi:fire
+    # sensor.fire_alarm_2_sensor_status:
+    #   icon: mdi:fire

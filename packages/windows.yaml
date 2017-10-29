@@ -12,38 +12,47 @@ sensor:
         icon_template: '{% if is_state("binary_sensor.dining_area_window_sensor_sensor", "on") %}mdi:window-open{% elif is_state("binary_sensor.dining_area_window_sensor_sensor", "off")%}mdi:window-closed{% else %}mdi:comment-question-outline{% endif %}'
 
 
-automation:
-  - alias: Window opened
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.dining_area_window_sensor_sensor
-        to: 'on'
-    # add condition for not_home OR alarm on
-    condition:
-      condition: state
-      entity_id: group.persons
-      state: 'not_home'
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data_template:
-          title: 'Window opened'
-          message: >
-            '{{ trigger.to_state.name }}'
+# automation:
+#   - alias: Window opened
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.dining_area_window_sensor_sensor
+#         to: 'on'
+#     # add condition for not_home OR alarm on
+#     condition:
+#       condition: state
+#       entity_id: group.persons
+#       state: 'not_home'
+#     action:
+#       - service: notify.ios_isabellas_iphone_6s
+#         data_template:
+#           title: 'Window opened'
+#           message: >
+#             '{{ trigger.to_state.name }}'
 
-  - alias: Window closed
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.dining_area_window_sensor_sensor
-        to: 'off'
-    condition:
-      condition: state
-      entity_id: group.persons
-      state: 'not_home'
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data_template:
-          title: 'Window closed'
-          message: >
-            '{{ trigger.to_state.name }}'
+#   - alias: Window closed
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.dining_area_window_sensor_sensor
+#         to: 'off'
+#     condition:
+#       condition: state
+#       entity_id: group.persons
+#       state: 'not_home'
+#     action:
+#       - service: notify.ios_isabellas_iphone_6s
+#         data_template:
+#           title: 'Window closed'
+#           message: >
+#             '{{ trigger.to_state.name }}'
+alert:
+  dining_area_window_open:
+    name: Dining area window left open
+    done_message: Window closed
+    entity_id: binary_sensor.dining_area_window_sensor_sensor
+    state: 'on'
+    repeat: 1
+    notifiers:
+      - ios_isabellas_iphone_6s

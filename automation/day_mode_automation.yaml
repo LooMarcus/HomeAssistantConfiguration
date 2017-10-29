@@ -1,7 +1,54 @@
-#mdi:sleep mdi:sleep_off
+###################################
+##  Set to evening               ##
+###################################
 
-# maybe automation tv and pc off and time is past 00 - stefan asleep
-- alias: All asleep
+- alias: 'Day Mode To Evening'
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-00:45:00'
+
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.day_mode
+        option: Evening
+
+###################################
+##  Set to morning               ##
+###################################
+
+- alias: 'Day Mode To Morning'
+  trigger:
+    - platform: sun
+      event: sunrise
+
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.day_mode
+        option: Morning
+
+###################################
+##  Set to day                   ##
+###################################
+
+- alias: 'Day Mode To Day'
+  trigger:
+    - platform: time
+      at: "08:00:00"
+
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.day_mode
+        option: Day
+
+###################################
+##  Set to night                 ##
+###################################
+
+- alias: 'Day Mode To Night'
   initial_state: 'on'
   trigger:
     - platform: time

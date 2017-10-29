@@ -2,7 +2,22 @@ homeassistant:
   customize:
     sensor.backyard_door_sensor_battery_low:
       hidden: true
- 
+    sensor.isabellas_iphone_6s_battery_state:
+      icon: mdi:battery-charging
+      homebridge_hidden: true
+    sensor.isabellas_iphone_6s_battery_level:
+      icon: mdi:battery
+      homebridge_hidden: true
+    sensor.paddan_battery_level:
+      icon: mdi:battery
+      homebridge_hidden: true
+    sensor.paddan_battery_state:
+      icon: mdi:battery-charging
+      homebridge_hidden: true
+    sensor.sensative_door_battery:
+      icon: mdi:battery
+      homebridge_hidden: true
+
     
 sensor:
   - platform: template
@@ -188,8 +203,8 @@ sensor:
         entity_id: binary_sensor.door_window_sensor_158d0001a3e3a4
 
       ### Battery level for Xiaomi Unknown Door Sensor ###
-      battery_unknown_xiaomi_door_sensor:
-        friendly_name: 'Unknown Xiaomi Door Sensor Battery'
+      battery_attic_door_sensor:
+        friendly_name: 'Attic Door Sensor Battery'
         value_template: "{{ states.binary_sensor.door_window_sensor_158d0001a3df50.attributes.battery_level|default(-1)|int if states.binary_sensor.door_window_sensor_158d0001a3df50 is not none }}"
         unit_of_measurement: '%'
         icon_template: '{% if states.binary_sensor.door_window_sensor_158d0001a3df50.attributes.battery_level == 100 %}
@@ -458,36 +473,116 @@ sensor:
       #   entity_id: zwave.water_heater
 
 ### Battery level lower than 10% ###
-  - platform: template
-    sensors:
-      backyard_door_sensor_battery_low:
-        value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e152b.attributes.battery_level < 10 }}'
-        friendly_name: 'Backyard Door Sensor battery is low'
+  # - platform: template
+  #   sensors:
+  #     backyard_door_sensor_battery_low:
+  #       value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e152b.attributes.battery_level < 10 }}'
+  #       friendly_name: 'Backyard Door Sensor battery is low'
 
-alert: 
-### Alert via iOS notification when Bedroom sensor battery < 10% ###
-  backyard_door_sensor_battery_low:
-    name: Backyard door sensor battery is low
-    entity_id: sensor.backyard_door_sensor_battery_low
-    state: 'True'
-# Repeat in minutes (1 day = 1440 minutes)
-    repeat: 1440
-    skip_first: False
-    notifiers:
-      - ios_isabellas_iphone_6s
+group:
+  battery_status_view:
+    icon: mdi:battery-unknown
+    view: yes
+    entities:
+      - group.ios_batteries
+      - group.tradfri_batteries
+      - group.xiaomi_batteries
+
+  ios_batteries:
+    name: Ios Batteries
+    entities:
+      - sensor.igrims_battery_level
+      - sensor.igrims_battery_state
+      - sensor.isabellas_iphone_6s_battery_level
+      - sensor.isabellas_iphone_6s_battery_state
+      - sensor.paddan_battery_level
+      - sensor.paddan_battery_state
+
+  tradfri_batteries:
+    name: Tradfri Batteries
+    entities:
+      - sensor.stefan_dimmer
+      - sensor.tradfri_wireless_dimmer
+
+  xiaomi_batteries:
+    name: Xiaomi Batteries
+    entities:
+      - sensor.battery_attic_door_sensor
+      - sensor.battery_backyard_door_sensor
+      - sensor.battery_balcony_door_sensor
+      - sensor.battery_bathroom_cabinet_door_sensor
+      - sensor.battery_bed_switch
+      - sensor.battery_dlitter_pir_sensor
+      - sensor.battery_hallway_glass_door_sensor
+      - sensor.battery_ulitter_pir_sensor
+      - sensor.battery_yard_storage_door_sensor
+
+# alert: 
+# ### Alert via iOS notification when Bedroom sensor battery < 10% ###
+#   backyard_door_sensor_battery_low:
+#     name: Backyard door sensor battery is low
+#     entity_id: sensor.backyard_door_sensor_battery_low
+#     state: 'True'
+# # Repeat in minutes (1 day = 1440 minutes)
+#     repeat: 1440
+#     skip_first: False
+#     notifiers:
+#       - ios_isabellas_iphone_6s
 
 automation:
-  - alias: Low Battery
+  - alias: Low Battery Devices
     initial_state: 'on'
     trigger:
       - platform: numeric_state
-        entity_id: sensor.battery_water_heater_sensor
-        below: 10
+        entity_id: sensor.paddan_battery_level
+        below: 20
+    condition:
+      condition: state
+      entity_id: sensor.paddan_battery_state
+      state: 'Unplugged'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data_template:
+          title: 'Battery low'
+          message: >
+            '{{ trigger.to_state.name }}'
+
+
+  - alias: Low Battery Sensors
+    initial_state: 'on'
+    trigger:
       - platform: numeric_state
-        entity_id: sensor.battery_back_door_sensor
+        entity_id: sensor.battery_attic_door_sensor
         below: 10
       - platform: numeric_state
         entity_id: sensor.battery_backyard_door_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_balcony_door_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_bathroom_cabinet_door_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_bed_switch
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_dlitter_pir_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_hallway_glass_door_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_ulitter_pir_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_yard_storage_door_sensor
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.stefan_dimmer
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.tradfri_wireless_dimmer
         below: 10
     action:
       - service: notify.ios_isabellas_iphone_6s

@@ -13,7 +13,16 @@ homeassistant:
     sensor.downstairs_litterbox:
       extra_badge:
         entity_id: sensor.downstairs_litterbox_visits
-        
+
+
+binary_sensor:
+  - platform: rfxtrx
+    devices:
+      091300160991a1011680:
+        name: White2
+        off_delay:
+          seconds: 5
+
 #-------------------------------------------
 
 sensor:
@@ -132,6 +141,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.white2
+        to: 'on'
     condition:
       condition: or
       conditions:
@@ -156,6 +166,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.white2
+        to: 'on'
     condition:
       # Only if it's currently being cleaned
       condition: state

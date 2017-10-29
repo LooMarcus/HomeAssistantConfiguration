@@ -1,0 +1,14 @@
+homeassistant:
+
+sensor:
+  - platform: template
+    sensors:
+      passage_movement:
+        friendly_name: 'Passage Movement'
+        value_template: '{% if is_state("binary_sensor.passage_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.passage_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+
+      upstairs_hallway_movement:
+        friendly_name: 'Upstairs Hallway Movement'
+        value_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'

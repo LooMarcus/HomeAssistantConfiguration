@@ -1,0 +1,105 @@
+# homeassistant:
+input_boolean:
+  goodnight_stefan:
+    name: Goodnight Stefan
+    initial: off
+  goodnight_isa:
+    name: Goodnight Isa
+    initial: off
+
+automation:
+  - alias: Goodnight Isa
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.isabellas_iphone_6s_battery_state
+        to: 'Charging'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          before: '06:00:00'        
+          after: '21:00:00'
+    #     - condition: state
+    #       entity_id: device_tracker.isabellas_iphone_6s
+    #       state: 'Home'
+    #     - condition: state
+    #       entity_id: sensor.isa_computer
+    #       state: 'Offline'
+    #     - condition: state
+    #       entity_id: sensor.isa_laptop
+    #       state: 'Offline'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Phone charging'
+          message: 'Goodnight Isa!'
+
+  - alias: Goodmorning Isa
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.isabellas_iphone_6s_battery_state
+        to: 'Unplugged'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '03:30:00'
+          before: '12:00:00'
+        # - condition: state
+        #   entity_id: device_tracker.isabellas_iphone_6s
+        #   state: 'Home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Phone unplugged'
+          message: 'Goodmorning Isa!'
+
+  - alias: Goodnight Stefan
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.igrims_battery_state
+        to: 'Charging'
+    # condition:
+    #   condition: and
+    #   conditions:
+    #     - condition: time
+    #       after: '21:00:00'
+    #       before: '06:00:00'
+    #     - condition: state
+    #       entity_id: device_tracker.stefan_iphone_7
+    #       state: 'Home'
+    #     - condition: state
+    #       entity_id: sensor.isa_computer
+    #       state: 'Offline'
+    #     - condition: state
+    #       entity_id: sensor.isa_laptop
+    #       state: 'Offline'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Phone charging'
+          message: 'Goodnight Stefan!'
+
+  - alias: Goodmorning Stefan
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: sensor.igrims_battery_state
+        to: 'Unplugged'
+    # condition:
+    #   condition: and
+    #   conditions:
+    #     - condition: time
+    #       after: '03:30:00'
+    #       before: '12:00:00'
+    #     - condition: state
+    #       entity_id: device_tracker.stefan_iphone_7
+    #       state: 'Home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Phone unplugged'
+          message: 'Goodmorning Stefan!'

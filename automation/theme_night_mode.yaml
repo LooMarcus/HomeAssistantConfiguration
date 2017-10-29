@@ -1,4 +1,4 @@
-  - alias: 'Theme Night Mode'
+  - alias: 'Theme Night Mode at 21'
     initial_state: True
     trigger:
       - platform: time
@@ -8,7 +8,7 @@
         data:
           name: darkteal
 
-  - alias: 'Theme Day Mode'
+  - alias: 'Theme Day Mode At 06'
     initial_state: True
     trigger:
       - platform: time

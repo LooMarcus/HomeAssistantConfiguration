@@ -1,4 +1,0 @@
-washer_in_use:
-  name: Washer in use
-  initial: off
-  icon: "mdi:arrow-right-drop-circle-outline"

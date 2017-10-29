@@ -36,7 +36,7 @@
     to: 'on'
   condition:
    condition: template
-   value_template: {{ states.light.hallway_window_light.attributes.brightness|float > 46 }}
+   value_template: '{{ states.light.hallway_window_light.attributes.brightness|float > 46 }}'
   action:
     - service: light.turn_on
       entity_id: light.hallway_window_light

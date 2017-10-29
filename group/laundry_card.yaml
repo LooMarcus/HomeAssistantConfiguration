@@ -1,7 +1,11 @@
 laundry_group:
-  name: Laundry
+  name: Cleaning
   entities:
     - input_select.washing_machine_status
     - sensor.washer
     - sensor.washer_plug_power
     - switch.laundry_line_drying
+    - switch.roomba_dock
+    - switch.roomba
+    - switch.roomba_dock_livingroom
+    - switch.roomba_livingroom

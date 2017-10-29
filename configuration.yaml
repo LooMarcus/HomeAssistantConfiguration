@@ -133,15 +133,16 @@ mqtt:
   password: !secret mqtt_password
 mqtt_statestream:
   base_topic: /homeassistant
-  publish_attributes: true
+  # publish_attributes: true
   # publish_timestamps: true
-google:
-  client_id: !secret google_id
-  client_secret: !secret google_secret
+# google:
+#   client_id: !secret google_id
+#   client_secret: !secret google_secret
 # # ffmpeg:
 # #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
   key: gF6fjkRB8-jyaIV9x2IloQE5vhyulamBQvZY6o4pbVL
+shopping_list:
 
 ########################################
 ###                IOS               ###
@@ -154,32 +155,25 @@ ios:
         actions:
           - identifier: 'WASHER_EMPTIED'
             title: 'Yes'
-            # activationMode: 'background'
             authenticationRequired: yes
-            # destructive: no
             behavior: 'default'
           - identifier: 'WASHER_NOT_EMPTIED'
             title: 'Snooze'
             activationMode: 'background'
-            # authenticationRequired: yes
             destructive: yes
-            # behavior: 'textInput'
-            # textInputButtonTitle: 'Silencio!'
-            # textInputPlaceholder: 'Placeholder'
+
       - name: Vacuum now
         identifier: 'VACUUM'
         actions:
           - identifier: 'VACUUM_NOW'
             title: 'Yes'
-            # activationMode: 'background'
             authenticationRequired: yes
-            # destructive: no
             behavior: 'default'
           - identifier: 'VACUUM_LATER'
             title: 'Snooze'
             activationMode: 'background'
-            # authenticationRequired: yes
+            # destructive: yes
+          - identifier: 'VACUUM_STOP_ASKING'
+            title: 'Stop asking'
+            activationMode: 'background'
             destructive: yes
-            # behavior: 'textInput'
-            # textInputButtonTitle: 'Silencio!'
-            # textInputPlaceholder: 'Placeholder'

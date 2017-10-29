@@ -10,11 +10,46 @@
       hidden: false
     group.all_switches:
       hidden: false
-    group.info_card:
+
+
+    group.alerts_card:
       order: 1
-    group.light_card:
+    group.info_card:
       order: 2
-    group.inside_lights:
-      homebridge_visible: true
+    group.security_card:
+      order: 3
+    group.cat_card:
+      order: 4
+    group.inside_lights_card:
+      order: 5
     group.outside_lights:
-      homebridge_visible: true
+      order: 6
+    group.laundry_group:
+      order: 7
+
+    group.system_monitor_view:
+      order: 8
+    group.system_monitor_card:
+      order: 9
+    group.computer_states_card:
+      order: 10
+    group.device_states_card:
+      order: 11
+    group.media_states_card:
+      order: 12
+    group.internet_card:
+      order: 13
+    history_graph.gr1:
+      order: 14
+
+    group.battery_status_view:
+      order: 15
+    group.ios_batteries:
+      order: 16
+    group.tradfri_batteries:
+      order: 17
+    group.xiaomi_batteries:
+      order: 18
+      
+    group.media_player_view:
+      order: 19

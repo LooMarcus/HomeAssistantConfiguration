@@ -1,0 +1,24 @@
+homeassistant:
+
+
+input_select:  
+  washing_machine_status:
+    name: Washing Machine Status
+    options:
+      - Idle
+      - Running
+      - Clean
+    initial: Idle
+
+input_boolean:
+  washer_in_use:
+    name: Washer in use
+    initial: off
+    icon: "mdi:arrow-right-drop-circle-outline"
+
+sensor:
+  - platform: template
+    sensors:
+      washer:
+        friendly_name: Washer idle
+        value_template: "{{ states('sensor.washer_plug_power') | int < 3.4 }}"

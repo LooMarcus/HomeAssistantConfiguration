@@ -1,0 +1,16 @@
+homeassistant:
+switch:
+  - platform: broadlink
+    friendly_name: Broadlink Livingroom
+    host: !secret broadlink_livingroom_ip
+    mac: !secret broadlink_livingroom_mac
+    switches:
+      roomba_livingroom:
+        friendly_name: Roomba Livingroom
+        command_on: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
+        command_off: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
+      roomba_dock_livingroom:
+        friendly_name: Dock Roomba Livingroom
+        command_on: 'JgA2AF8iHmIdYh1iHWJcIh5iXAACbF8iIGAeYh1iHWJeICBgXQACY18iIGAeYh1iHWJeICBgXgANBQAA'
+        command_off: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
+## ADD TV

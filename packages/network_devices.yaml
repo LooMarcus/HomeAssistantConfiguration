@@ -1,5 +1,9 @@
 homeassistant:
   customize:
+    sensor.magic_mirror_rpi:
+      icon: mdi:raspberrypi
+    sensor.hass_rpi:
+      icon: mdi:home-assistant      
     sensor.stefan_computer:
       icon: mdi:monitor
       homebridge_hidden: true
@@ -57,10 +61,13 @@ homeassistant:
       homebridge_hidden: true
     sensor.ir_blaster:
       icon: mdi:remote
-      homebridge_hidden: true      
+      homebridge_hidden: true
     sensor.ir_blaster_bedroom:
       icon: mdi:remote
-      homebridge_hidden: true    
+      homebridge_hidden: true
+    sensor.ir_blaster_livingroom:
+      icon: mdi:remote
+      homebridge_hidden: true
     sensor.withings_scale:
       icon: mdi:scale-bathroom
       homebridge_hidden: true
@@ -130,6 +137,9 @@ sensor:
         ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminicce9a4', 'home') else 'Offline' }}"
+        ir_blaster_livingroom:
+          friendly_name: 'Broadlink IR Blaster Livingroom'
+          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminiccec6f', 'home') else 'Offline' }}"
         ikea_gateway:
           friendly_name: 'Ikea Trådfri Gateway'
           value_template: "{{ 'Online' if is_state('device_tracker.gwa0cc2bfd2145', 'home') else 'Offline' }}"
@@ -139,7 +149,12 @@ sensor:
         sonos:
           friendly_name: 'Sonos'
           value_template: "{{ 'Online' if is_state('device_tracker.sonoszp', 'home') else 'Offline' }}"
-
+        magic_mirror_rpi:
+          friendly_name: 'Magic Mirror Rpi'
+          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi_2', 'home') else 'Offline' }}"
+        hass_rpi:
+          friendly_name: 'Hass Rpi'
+          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi', 'home') else 'Offline' }}"
 
 automation:
   - alias: 'Device Status'
@@ -154,6 +169,7 @@ automation:
              - sensor.hue_hub
              - sensor.ir_blaster
              - sensor.ir_blaster_bedroom
+             - sensor.ir_blaster_livingroom
              - sensor.xiaomi_gateway
              - sensor.ikea_gateway
            to: 'offline'

@@ -32,6 +32,10 @@ light.*:
   hidden: true
 "sensor.*unknown":
   hidden: true
+"sensor.*s_heat*":
+  hidden: true
+"sensor.*t_heat_":
+  hidden: true
 "sensor.*heat*":
   hidden: true
 # "zwave.*":

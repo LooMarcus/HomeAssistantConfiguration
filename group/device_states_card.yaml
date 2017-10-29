@@ -8,7 +8,10 @@ device_states_card:
   - sensor.ip_camera
   - sensor.ir_blaster
   - sensor.ir_blaster_bedroom
+  - sensor.ir_blaster_livingroom
   - sensor.withings_scale
   - sensor.hue_hub
   - sensor.ikea_gateway
   - sensor.xiaomi_gateway
+  - sensor.hass_rpi
+  - sensor.magic_mirror_rpi
