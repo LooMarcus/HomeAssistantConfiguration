@@ -1,0 +1,94 @@
+homeassistant:
+
+automation:
+  ## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min
+  - alias: Lights On Outside And Hallway At Coming Home At Night Delay Ten Then Off
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.home
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_6s
+        zone: zone.home
+        event: enter
+      - platform: state
+        entity_id: input_boolean.stefan_home
+        to: 'on'
+      - platform: state
+        entity_id: input_boolean.isabella_home
+        to: 'on'
+    condition:
+      condition: time
+      after: '00:01:00'
+      before: '05:00:00'
+    action:
+      - service: scene.turn_on
+        entity_id: scene.lights_at_dark
+      # - service: light.turn_on
+      #   entity_id: light.outside_front_light
+      #   data:
+      #     brightness: 127
+      # - service: light.turn_on
+      #   entity_id: light.outside_yard_light
+      #   data:
+      #     brightness: 127
+      # - service: light.turn_on
+      #   entity_id: light.hallway_window_light
+      #   data:
+      #     brightness: 45
+
+      - delay: 0:10
+      
+      - service: homeassistant.turn_off
+        entity_id: light.outside_front_light
+      - service: homeassistant.turn_off
+        entity_id: light.outside_yard_light
+      - service: homeassistant.turn_off
+        entity_id: light.hallway_window_light
+      - service: homeassistant.turn_off
+        entity_id: light.outside_hanging_lights
+
+  ## Also turn on passage lights, but not turn off
+  - alias: Lights On Passage At Coming Home At Night
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.home
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_6s
+        zone: zone.home
+        event: enter
+    condition:
+      condition: time
+      after: '00:01:00'
+      before: '05:00:00'
+    action:
+      - service: light.turn_on
+        entity_id: light.passage_ceiling_spotlights_level
+
+
+  - alias: Lights On Outside And Hallway At Presence While Dark
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.stefan_iphone_7
+        zone: zone.home
+        event: enter
+      - platform: zone
+        entity_id: device_tracker.isabellas_iphone_6s
+        zone: zone.home
+        event: enter
+      - platform: state
+        entity_id: input_boolean.stefan_home
+        to: 'on'
+      - platform: state
+        entity_id: input_boolean.isabella_home
+        to: 'on'
+    condition:
+      condition: sun
+      after: sunset
+      after_offset: "-00:45:00"
+    action:
+      - service: scene.turn_on
+        entity_id: scene.lights_at_dark

@@ -1,0 +1,13 @@
+test_view:
+  view: yes
+  name: Test
+  entities:
+    - history_graph.stefan
+    - history_graph.isabella
+    - group.persons
+    - sensor.fanSensors
+    - sensor.fan_humidity
+    - sensor.fan_temperature
+    - sensor.fan_light
+    - sensor.fan_speed
+    # - sensor.bathroom_fan_temperature

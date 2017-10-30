@@ -6,3 +6,9 @@ temp_and_light_card:
     - sensor.illumination_158d0001a24ef1
     - sensor.upstairs_hallway_pir_luminance
     - sensor.passage_pir_luminance
+    - sensor.palm_light_intensity
+    - sensor.palm_temperature
+    - sensor.monstera_light_intensity
+    - sensor.monstera_temperature
+    - sensor.fan_temperature
+    - sensor.fan_light

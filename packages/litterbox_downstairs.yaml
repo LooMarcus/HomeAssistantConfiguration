@@ -180,3 +180,52 @@ automation:
           option: 'Clean'
       # Run the python script for reseting counter
       - service: python_script.dlitter_reset
+
+
+## ------------------------------------------------------------------
+##   Cleaning mode left on, actionable ios-notification 
+
+  - alias: 'Litterbox Downstairs Cleaning'
+    trigger:
+      - platform: state
+        entity_id: input_select.dlitterbox_state
+        to: 'Cleaning'
+        for:
+          minutes: 1
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Downstairs litterbox'
+          message: 'Are you done cleaning?'
+          data:
+            push:
+              badge: 0
+              category: "CLEANING_MODE_D_STILL_ON"
+
+  - alias: 'Litterbox Downstairs Cleaning Done'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: CLEANING_D_DONE
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dlitterbox_state
+          option: 'Clean'
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Downstairs litterbox'
+          message: 'Cleaning mode off'
+
+  - alias: 'Litterbox Downstairs Cleaning Not Done'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: CLEANING_D_NOT_DONE
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Not done cleaning downstairs litter box'
+          message: 'Remember to change status later'

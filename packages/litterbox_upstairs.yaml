@@ -238,13 +238,63 @@ automation:
       - delay: 0:01
       - service: python_script.all_litter_reset
 
+## ------------------------------------------------------------------
+##   Cleaning mode left on, actionable ios-notification 
+
+  - alias: 'Litterbox Upstairs Cleaning'
+    trigger:
+      - platform: state
+        entity_id: input_select.ulitterbox_state
+        to: 'Cleaning'
+        for:
+          minutes: 1
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Upstairs litterbox'
+          message: 'Are you done cleaning?'
+          data:
+            push:
+              badge: 0
+              category: "CLEANING_MODE_U_STILL_ON"
+
+  - alias: 'Litterbox Upstairs Cleaning Done'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: CLEANING_U_DONE
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.ulitterbox_state
+          option: 'Clean'
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Upstairs litterbox'
+          message: 'Cleaning mode off'
+
+  - alias: 'Litterbox Upstairs Cleaning Not Done'
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: CLEANING_U_NOT_DONE
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Not done cleaning upstairs litter box'
+          message: 'Remember to change status later'
+
+
+## To make sure I don't forget anyway
 alert:
   litterbox_upstairs_cleaning:
     name: Upstairs Litterbox in Cleaning mode
     done_message: Cleaning mode exited
     entity_id: input_select.ulitterbox_state
     state: 'Cleaning'
-    repeat: 1
+    repeat: 20
     can_acknowledge: True
     skip_first: True
     notifiers:
@@ -255,7 +305,7 @@ alert:
     done_message: Cleaning mode exited
     entity_id: input_select.dlitterbox_state
     state: 'Cleaning'
-    repeat: 1
+    repeat: 20
     can_acknowledge: True
     skip_first: True
     notifiers:

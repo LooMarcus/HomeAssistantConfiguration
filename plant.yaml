@@ -1,0 +1,25 @@
+palm:
+  sensors:
+    moisture: sensor.palm_moisture
+    battery: sensor.palm_battery
+    temperature: sensor.palm_temperature
+    conductivity: sensor.palm_conductivity
+    brightness: sensor.palm_light_intensity
+  min_moisture: 20
+  max_moisture: 60
+  min_battery: 10
+  min_conductivity: 500
+  max_conductivity: 3000
+
+monstera:
+  sensors:
+    moisture: sensor.monstera_moisture
+    battery: sensor.monstera_battery
+    temperature: sensor.monstera_temperature
+    conductivity: sensor.monstera_conductivity
+    brightness: sensor.monstera_light_intensity
+  min_moisture: 20
+  max_moisture: 60
+  min_battery: 10
+  min_conductivity: 500
+  max_conductivity: 3000

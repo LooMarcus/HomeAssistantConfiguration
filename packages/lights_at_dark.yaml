@@ -1,0 +1,41 @@
+homeassistant:
+
+automation:
+## Turn on outside lights and hallway window light at sunset
+  - alias: Lights On Outside And Hallway At Sunset
+    trigger:
+      platform: sun
+      event: sunset
+      offset: "-00:45:00"
+    action:
+      - service: scene.turn_on
+        entity_id: scene.lights_at_dark
+      # - service: light.turn_on
+      #   entity_id: light.outside_front_light
+      #   data:
+      #     brightness: 127
+      # - service: light.turn_on
+      #   entity_id: light.outside_yard_light
+      #   data:
+      #     brightness: 127
+      # - service: light.turn_on
+      #   entity_id: light.hallway_window_light
+      #   data:
+      #     brightness: 45
+      # - service: light.turn_on
+      #   entity_id: light.outside_yard_hanging_lights
+
+## Turn off outside lights and hallway window light at midnight
+  - alias: Lights Off Outside And Hallway At Midnight
+    trigger:
+      platform: time
+      at: '23:59:00'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: light.outside_front_light
+      - service: homeassistant.turn_off
+        entity_id: light.outside_yard_light
+      - service: homeassistant.turn_off
+        entity_id: light.hallway_window_light
+      - service: light.turn_off
+        entity_id: light.outside_yard_hanging_lights

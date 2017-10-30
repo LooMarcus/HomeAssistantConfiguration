@@ -1,0 +1,12 @@
+  - name: Lights At Dark
+    entities:
+      light.outside_front_light:
+        state: on
+        brightness: 127
+      light.outside_yard_light:
+        state: on
+        brightness: 127
+      light.hallway_window_light:
+        state: on
+        brightness: 45
+      light.outside_yard_hanging_lights: on

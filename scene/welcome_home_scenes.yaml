@@ -1,0 +1,20 @@
+  - name: Welcome Home
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.living_room_spotlights_level:
+        state: on
+        brightness: 50
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness: 50
+      light.upstairs_hallway_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.floorlamp_uplight:
+        state: on
+        brightness: 50
+      light.outside_yard_light:
+        state: on
+        brightness: 255

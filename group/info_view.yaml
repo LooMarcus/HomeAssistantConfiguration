@@ -20,3 +20,6 @@ default_view:
     - group.security_card
     - input_boolean.isabella_home
     - input_boolean.stefan_home
+    - group.temp_and_light_card
+    - plant.palm
+    - plant.monstera

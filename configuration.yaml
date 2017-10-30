@@ -89,12 +89,12 @@ xiaomi_aqara:
 # ########################################
 # # media_player: !include media_player.yaml
 # # alert: !include alert.yaml
-# # plant: !include plant.yaml
+plant: !include plant.yaml
 sensor: !include_dir_merge_list sensor
 switch: !include_dir_merge_list switch
 binary_sensor: !include_dir_merge_list binary_sensors
 light: !include_dir_merge_list lights
-# scene: !include_dir_merge_list scene
+scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select
 device_tracker: !include device_tracker.yaml
@@ -142,7 +142,7 @@ mqtt_statestream:
 # #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
   key: gF6fjkRB8-jyaIV9x2IloQE5vhyulamBQvZY6o4pbVL
-shopping_list:
+# shopping_list:
 
 ########################################
 ###                IOS               ###
@@ -150,7 +150,7 @@ shopping_list:
 ios:
   push:
     categories:
-      - name: Laundry clean in washer
+      - name: Laundry Clean In Washer
         identifier: 'WASHER'
         actions:
           - identifier: 'WASHER_EMPTIED'
@@ -162,7 +162,7 @@ ios:
             activationMode: 'background'
             destructive: yes
 
-      - name: Vacuum now
+      - name: Vacuum Now
         identifier: 'VACUUM'
         actions:
           - identifier: 'VACUUM_NOW'
@@ -175,5 +175,30 @@ ios:
             # destructive: yes
           - identifier: 'VACUUM_STOP_ASKING'
             title: 'Stop asking'
+            activationMode: 'background'
+            destructive: yes
+
+      - name: Litterbox Upstairs Cleaning Mode
+        identifier: 'CLEANING_MODE_U_STILL_ON'
+        actions:
+          - identifier: 'CLEANING_U_DONE'
+            title: 'Done'
+            # authenticationRequired: yes
+            activationMode: 'background'            
+            behavior: 'default'
+          - identifier: 'CLEANING_U_NOT_DONE'
+            title: 'Not done yet'
+            activationMode: 'background'
+            destructive: yes
+      - name: Litterbox Downstairs Cleaning Mode
+        identifier: 'CLEANING_MODE_D_STILL_ON'
+        actions:
+          - identifier: 'CLEANING_D_DONE'
+            title: 'Done'
+            # authenticationRequired: yes
+            activationMode: 'background'            
+            behavior: 'default'
+          - identifier: 'CLEANING_D_NOT_DONE'
+            title: 'Not done yet'
             activationMode: 'background'
             destructive: yes
