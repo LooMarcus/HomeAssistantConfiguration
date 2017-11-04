@@ -1,6 +1,7 @@
-
-
 homeassistant:
+  customize:
+    sensor.fan_temperature:
+      homebridge_visible: true
 
 sensor:
   - platform: template

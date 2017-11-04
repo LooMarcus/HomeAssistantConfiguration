@@ -2,7 +2,7 @@ homeassistant:
   customize:
     binary_sensor.white6:
       friendly_name: Doorbell front
-    
+      # homebridge_visible: true
 
 binary_sensor:
   - platform: rfxtrx

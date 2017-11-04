@@ -104,11 +104,11 @@ automation:
     condition:
       condition: and
       conditions:
-        # Condition for not triggering the counter if it was less than two minutes (120 sec) since last trigger
+        # Condition for not triggering the counter if it was less than three minutes (180 sec) since last trigger
         - condition: template
           value_template: >
             {% if states.automation.litterbox_upstairs_counter.last_triggered is not none %}
-              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.litterbox_upstairs_counter.attributes.last_triggered) | int > 120 %} true {% else %} false
+              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.litterbox_upstairs_counter.attributes.last_triggered) | int > 180 %} true {% else %} false
               {% endif %}
             {% else %}
             false

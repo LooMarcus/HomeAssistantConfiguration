@@ -1,0 +1,14 @@
+homeassistant:
+  customize:
+    sensor.temperature_158d0001235510:
+      friendly_name: Upstairs Hallway Temperature
+      homebridge_visible: true
+    sensor.temperature_158d000123552c:
+      friendly_name: Passage Temperature
+      homebridge_visible: true
+    sensor.humidity_158d0001235510:
+      friendly_name: Upstairs Hallway Humidity
+      homebridge_visible: true
+    sensor.humidity_158d000123552c:
+      friendly_name: Passage Humidity
+      homebridge_visible: true

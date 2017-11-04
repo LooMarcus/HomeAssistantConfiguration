@@ -1,5 +1,11 @@
 homeassistant:
-
+  customize:
+    sensor.passage_movement:
+      homebridge_visible: true
+      device_type: opening
+    sensor.upstairs_hallway_movement:
+      homebridge_visible: true
+      device_type: opening
 sensor:
   - platform: template
     sensors:

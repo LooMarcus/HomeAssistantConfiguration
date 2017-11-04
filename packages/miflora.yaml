@@ -1,5 +1,9 @@
 homeassistant:
-
+  customize:
+    sensor.monstera_temperature:
+      homebridge_visible: true
+    sensor.palm_temperature:
+      homebridge_visible: true
 
 
 sensor:

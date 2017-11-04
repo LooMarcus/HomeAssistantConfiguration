@@ -87,7 +87,7 @@ xiaomi_aqara:
 # ########################################
 # ###              ENTITES             ###
 # ########################################
-# # media_player: !include media_player.yaml
+media_player: !include media_player.yaml
 # # alert: !include alert.yaml
 plant: !include plant.yaml
 sensor: !include_dir_merge_list sensor

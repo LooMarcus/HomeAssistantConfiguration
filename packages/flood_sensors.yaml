@@ -2,6 +2,7 @@ homeassistant:
   customize:
     sensor.water_heater:
       hidden: false
+      homebridge_visible: true
 
 sensor:
   - platform: template  

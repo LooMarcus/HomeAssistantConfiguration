@@ -2,6 +2,7 @@ homeassistant:
   customize:
     binary_sensor.dining_area_window_sensor_sensor:
       homebridge_visible: true
+      device_class: opening
 
 sensor:
   - platform: template  

@@ -3,31 +3,26 @@
 #########################################
     media_player.shield:
       friendly_name: Chromecast Shield
-      homebridge_hidden: true
-    media_player.plex_shield:
-      friendly_name: Plex Shield
-      icon: mdi:plex
-      homebridge_hidden: true
-    media_player.htse6730_hte6730:
-      friendly_name: Hemmabiosystem
-      homebridge_hidden: true
+      homebridge_visible: true
     media_player.big_fucking_tv_ue65hu8500:
       friendly_name: Vardagsrums-tv
-      homebridge_hidden: true
+      homebridge_visible: true
+    media_player.sonos:
+      homebridge_visible: true
+    media_player.htse6730_hte6730:
+      friendly_name: Hemmabiosystem
+      homebridge_visible: true
+
+
     media_player.sovrum:
       friendly_name: Chromecast sovrum
-      homebridge_hidden: true
+      homebridge_visible: true
+
     media_player._samsung_5_series_49_ue49k5505:
       friendly_name: Sovrumstv
-      homebridge_hidden: true
-    media_player.spotify:
-      friendly_name: Isa Spotify
-      homebridge_hidden: true
-    media_player.spotify_2:
-      friendly_name: Fel Spotify?
-      homebridge_hidden: true
-      hidden: true
+      homebridge_visible: true
+
     media_player.shield_2:
       friendly_name: Plex Shield
       icon: mdi:plex
-      homebridge_hidden: true
+      homebridge_visible: true

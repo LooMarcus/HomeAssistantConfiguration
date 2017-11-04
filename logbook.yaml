@@ -31,3 +31,15 @@
       - sensor.vacuumed_today
       - sensor.water_heater_flood
       - sensor.yard_storage_door
+
+      - device_tracker.isabellas_iphone_6s
+      - device_tracker.isabelliphone6s
+      - sensor.isa_laptop      
+      - sensor.isa_computer
+      - input_boolean.isabella_home
+      - binary_sensor.isabella_home
+      - device_tracker.stefan_iphone_7
+      - device_tracker.igrims
+      - device_tracker.grimsan55
+      - input_boolean.stefan_home
+      - binary_sensor.stefan_home 

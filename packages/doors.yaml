@@ -14,11 +14,15 @@ homeassistant:
       homebridge_visible: true
     binary_sensor.door_window_sensor_158d0001a3df50:
       friendly_name: Attic Door
+      homebridge_visible: true
+
     binary_sensor.front_door_homebridge:
       homebridge_visible: true
-      hidden: true
+      device_class: opening
+
     binary_sensor.back_door_sensor:
       homebridge_visible: true
+      device_class: opening
       
 input_boolean:
   backyard_door:

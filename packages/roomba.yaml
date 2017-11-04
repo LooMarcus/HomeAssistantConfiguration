@@ -1,5 +1,10 @@
 homeassistant:
-
+  # customize:
+  #   switch.roomba:
+  #     homebridge_visible: true
+  #   switch.roomba_dock:
+  #     homebridge_visible: true
+      
 switch:
   - platform: broadlink
     friendly_name: Broadlink Hallway

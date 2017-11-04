@@ -6,3 +6,7 @@
       homebridge_visible: true
     scene.welcome_home:
       homebridge_visible: true
+    scene.watch_tv:
+      homebridge_visible: true
+    scene.ceiling_lights:
+      homebridge_visible: true

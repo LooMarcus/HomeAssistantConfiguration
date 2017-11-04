@@ -1,0 +1,10 @@
+  - name: Watch Tv
+    entities:
+      light.living_room_ceiling_light_level:
+        state: on
+        brightness: 50
+      light.living_room_spotlights_level: off
+      light.passage_ceiling_spotlights_level:
+        state: on
+        brightness: 20
+      light.upstairs_hallway_ceiling_light_level: off
