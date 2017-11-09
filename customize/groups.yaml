@@ -10,7 +10,8 @@
       hidden: false
     group.all_switches:
       hidden: false
-
+    group.all_scripts:
+      hidden: false
 
     group.alerts_card:
       order: 1

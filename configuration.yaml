@@ -13,7 +13,7 @@ http:
   api_password: !secret http_password
   base_url: !secret base_url
 updater:
-discovery:
+# discovery:
 conversation:
 customizer:
   custom_ui: hosted
@@ -94,6 +94,8 @@ sensor: !include_dir_merge_list sensor
 switch: !include_dir_merge_list switch
 binary_sensor: !include_dir_merge_list binary_sensors
 light: !include_dir_merge_list lights
+tradfri:
+  host: !secret tradfri_gateway_ip
 scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select
@@ -123,7 +125,7 @@ zone:
 automation: !include_dir_merge_list automation
 notify: !include notify.yaml
 python_script:
-script: !include_dir_merge_named script
+script: !include scripts.yaml
 group: !include_dir_merge_named group/
 mqtt:
   broker: !secret mqtt_broker
@@ -151,7 +153,7 @@ ios:
   push:
     categories:
       - name: Laundry Clean In Washer
-        identifier: 'WASHER'
+        identifier: 'washer'
         actions:
           - identifier: 'WASHER_EMPTIED'
             title: 'Yes'
@@ -163,7 +165,7 @@ ios:
             destructive: yes
 
       - name: Vacuum Now
-        identifier: 'VACUUM'
+        identifier: 'vacuum'
         actions:
           - identifier: 'VACUUM_NOW'
             title: 'Yes'
@@ -179,7 +181,7 @@ ios:
             destructive: yes
 
       - name: Litterbox Upstairs Cleaning Mode
-        identifier: 'CLEANING_MODE_U_STILL_ON'
+        identifier: 'cleaning_mode_u_still_on'
         actions:
           - identifier: 'CLEANING_U_DONE'
             title: 'Done'
@@ -191,7 +193,7 @@ ios:
             activationMode: 'background'
             destructive: yes
       - name: Litterbox Downstairs Cleaning Mode
-        identifier: 'CLEANING_MODE_D_STILL_ON'
+        identifier: 'cleaning_mode_d_still_on'
         actions:
           - identifier: 'CLEANING_D_DONE'
             title: 'Done'

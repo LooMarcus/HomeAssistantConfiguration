@@ -167,6 +167,9 @@ automation:
       - platform: state
         entity_id: binary_sensor.white2
         to: 'on'
+      - platform: state
+        entity_id: input_select.dlitterbox_state
+        to: 'Clean'
     condition:
       # Only if it's currently being cleaned
       condition: state
@@ -200,7 +203,7 @@ automation:
           data:
             push:
               badge: 0
-              category: "CLEANING_MODE_D_STILL_ON"
+              category: "cleaning_mode_d_still_on"
 
   - alias: 'Litterbox Downstairs Cleaning Done'
     trigger:

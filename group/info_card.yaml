@@ -10,5 +10,5 @@ info_card:
   - calendar.take_in_garbage
   - input_select.day_mode 
   # - sensor.vacuumed_today
-  - input_select.roomba_mode 
+  # - input_select.roomba_mode 
   - switch.air_cleaner_quiet

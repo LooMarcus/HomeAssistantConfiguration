@@ -65,6 +65,9 @@
       - condition: state
         entity_id: group.persons
         state: 'home'
+      - condition: state
+        entity_id: group.persons
+        state: 'home'
       ## No movement detected
       # - condition: state
       #   entity_id: sensor.upstairs_hallway_movement

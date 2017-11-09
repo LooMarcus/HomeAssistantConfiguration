@@ -1,0 +1,98 @@
+# START FLASH  
+light_flash:
+  alias: Light flash on
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_hanging_lights
+    - delay:
+        seconds: 1
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_hanging_lights
+
+    - delay:
+        seconds: 1
+
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_hanging_lights
+
+    - delay:
+        seconds: 1
+
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_hanging_lights
+
+    - delay:
+        seconds: 1
+
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.outside_yard_hanging_lights
+
+    - delay:
+        seconds: 1
+
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.isa_ceiling_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.outside_yard_hanging_lights
+
+
+# # LOOP BACK TO START FLASH AGAIN         
+# light_loop:
+#   alias: Light flash loop
+#   sequence:
+#     - delay:
+# #### time for flash light off
+#         seconds: 1
+#     - service: script.turn_on
+#       data:
+#         entity_id: script.light_flash
+# CANCEL FLASHING 
+light_flash_cancel:
+  alias: Cancel Light Flash
+  sequence:
+    - service: script.turn_off
+      data:
+        entity_id: script.light_flash
+    - service: script.turn_off
+      data:
+        entity_id: script.light_loop

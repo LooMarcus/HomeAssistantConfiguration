@@ -1,0 +1,9 @@
+house_view:
+  view: yes
+  icon: mdi:broom
+  entities:
+    - group.laundry_card
+    - group.vacuum_card    
+    - group.temp_and_light_card    
+    - group.cat_card
+    - group.plant_card

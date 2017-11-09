@@ -2,6 +2,7 @@ test_view:
   view: yes
   name: Test
   entities:
+    - sensor.isabella_home
     - history_graph.stefan
     - history_graph.isabella
     - group.persons

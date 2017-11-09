@@ -42,7 +42,7 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: group.persons
+          entity_id: device_tracker.isabellas_iphone_6s
           state: 'not_home'
         - condition: time
           after: '09:00:00'
@@ -57,8 +57,7 @@ automation:
           title: 'No one seems to be at home'
           data:
             push:
-              badge: 0
-              category: "VACUUM"
+              category: "vacuum"
 
 
   - alias: Vacuum Now Selected

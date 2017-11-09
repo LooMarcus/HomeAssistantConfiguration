@@ -7,3 +7,5 @@ everything_view:
     - group.all_lights
     - group.all_switches
     - group.all_zwave
+    - group.all_scripts
+    - group.all_plants

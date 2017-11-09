@@ -32,21 +32,21 @@ sensor:
       - conductivity
       - battery
 
-alert:
-  palm_problem:
-    name: Palm is having a problem
-    entity_id: plant.palm
-    state: 'problem'
-    repeat: 144 # every 24h
-    can_acknowledge: True
-    notifiers:
-      - ios_isabellas_iphone_6s
+# alert:
+#   palm_problem:
+#     name: Palm is having a problem
+#     entity_id: plant.palm
+#     state: 'problem'
+#     repeat: 1440 # every 24h
+#     can_acknowledge: True
+#     notifiers:
+#       - ios_isabellas_iphone_6s
 
-  monstera_problem:
-    name: Monstera is having a problem
-    entity_id: plant.monstera
-    state: 'problem'
-    repeat: 144 # every 24h
-    can_acknowledge: True
-    notifiers:
-      - ios_isabellas_iphone_6s
+#   monstera_problem:
+#     name: Monstera is having a problem
+#     entity_id: plant.monstera
+#     state: 'problem'
+#     repeat: 1440 # every 24h
+#     can_acknowledge: True
+#     notifiers:
+#       - ios_isabellas_iphone_6s

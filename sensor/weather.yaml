@@ -18,12 +18,12 @@
     api_key: !secret darksky_key
     forecast:
       - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
+      # - 2
+      # - 3
+      # - 4
+      # - 5
+      # - 6
+      # - 7
     monitored_conditions:
       - summary
       - precip_probability

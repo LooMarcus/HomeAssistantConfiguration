@@ -1,7 +1,7 @@
 homeassistant:
   customize:
     binary_sensor.white6:
-      friendly_name: Doorbell front
+      friendly_name: Doorbell
       # homebridge_visible: true
 
 binary_sensor:
@@ -11,21 +11,61 @@ binary_sensor:
         name: White6
         off_delay:
           seconds: 2
-
+switch:
+  - platform: rfxtrx
+    signal_repetitions: 3
+    devices:
+      0b11000f0190965201040f70:
+        name: Doorbell Front Door
+        fire_event: true
 automation:
-  - alias: Doorbell Ring
-    initial_state: 'on'
+  - alias: Doorbell Front Door
     trigger:
-      - platform: state
-        entity_id: binary_sensor.white6
-        to: 'on'
+      - platform: event
+        event_type: button_pressed
+        event_data: 
+          state: 'group on'
+          entity_id: switch.doorbell_front_door
+    condition:
+      - condition: template
+        value_template: >
+          {% if states.automation.doorbell_front_door.last_triggered is not none %}
+            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.doorbell_front_door.attributes.last_triggered) | int > 10 %} true {% else %} false
+            {% endif %}
+          {% else %}
+          false
+          {% endif %}
     action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Doorbell ringing!'
+          message: 'Someone is at the front door'
+      # - service: notify.ios_ipad
+      #   data:
+      #     title: 'Doorbell ringing!'
+      #     message: 'Someone is at the front door'
       - service: xiaomi_aqara.play_ringtone
         data:
           gw_mac: !secret xiaomi_mac
           ringtone_id: 10
-          ringtone_vol: 8
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Doorbell'
-          message: 'Front door'
+          ringtone_vol: 10
+      - service: script.turn_on
+        entity_id: script.light_flash
+      # - delay:
+      #     seconds: 10
+      # - service: script.turn_on
+      #   entity_id: script.light_flash_cancel
+
+
+  - alias: Doorbell Tests
+    trigger:
+      - platform: state
+        entity_id: switch.doorbell_front_door
+        to: 'on'
+    action:
+      - service: script.turn_on
+        entity_id: script.light_flash
+      # - delay:
+      #     seconds: 10
+      # - service: script.turn_on
+      #   entity_id: script.light_flash_cancel
