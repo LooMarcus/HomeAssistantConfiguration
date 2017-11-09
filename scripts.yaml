@@ -19,9 +19,9 @@ light_flash:
     - service: homeassistant.turn_off
       data:
         entity_id: light.outside_yard_light
-    - service: homeassistant.turn_off
-      data:
-        entity_id: light.outside_yard_hanging_lights
+    # - service: homeassistant.turn_off
+    #   data:
+    #     entity_id: light.outside_yard_hanging_lights
 
     - delay:
         seconds: 1
@@ -32,9 +32,9 @@ light_flash:
     - service: homeassistant.turn_on
       data:
         entity_id: light.outside_yard_light
-    - service: homeassistant.turn_on
-      data:
-        entity_id: light.outside_yard_hanging_lights
+    # - service: homeassistant.turn_on
+    #   data:
+    #     entity_id: light.outside_yard_hanging_lights
 
     - delay:
         seconds: 1
@@ -45,9 +45,9 @@ light_flash:
     - service: homeassistant.turn_off
       data:
         entity_id: light.outside_yard_light
-    - service: homeassistant.turn_off
-      data:
-        entity_id: light.outside_yard_hanging_lights
+    # - service: homeassistant.turn_off
+    #   data:
+    #     entity_id: light.outside_yard_hanging_lights
 
     - delay:
         seconds: 1
@@ -58,9 +58,9 @@ light_flash:
     - service: homeassistant.turn_on
       data:
         entity_id: light.outside_yard_light
-    - service: homeassistant.turn_on
-      data:
-        entity_id: light.outside_yard_hanging_lights
+    # - service: homeassistant.turn_on
+    #   data:
+    #     entity_id: light.outside_yard_hanging_lights
 
     - delay:
         seconds: 1
@@ -71,9 +71,9 @@ light_flash:
     - service: homeassistant.turn_off
       data:
         entity_id: light.outside_yard_light
-    - service: homeassistant.turn_off
-      data:
-        entity_id: light.outside_yard_hanging_lights
+    # - service: homeassistant.turn_off
+    #   data:
+    #     entity_id: light.outside_yard_hanging_lights
 
 
 # # LOOP BACK TO START FLASH AGAIN         

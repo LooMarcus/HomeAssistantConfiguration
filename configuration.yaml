@@ -143,7 +143,7 @@ mqtt_statestream:
 # # ffmpeg:
 # #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
-  key: gF6fjkRB8-jyaIV9x2IloQE5vhyulamBQvZY6o4pbVL
+  key: !secret ifttt_key
 # shopping_list:
 
 ########################################
