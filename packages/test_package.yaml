@@ -13,4 +13,4 @@ automation:
     action:
       - service: python_script.flash_light
         data_template:
-          entity_id: light.isa_ceiling_light
+          entity_id: light.bedside_lamp

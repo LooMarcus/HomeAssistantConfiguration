@@ -9,4 +9,7 @@ automation:
     action:
       - service: light.turn_on
         entity_id: light.drink_cabinet_led   # stairs test
-      
+      - delay:
+          minutes: 1
+      - service: light.turn_off
+        entity_id: light.drink_cabinet_led
