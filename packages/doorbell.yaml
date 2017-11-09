@@ -25,6 +25,7 @@ input_boolean:
 
 automation:
   - alias: Doorbell Front Door Trigger Boolean
+    initial_state: 'on'
     trigger:
       - platform: event
         event_type: button_pressed
@@ -36,6 +37,7 @@ automation:
         entity_id: input_boolean.doorbell_ringing    
 
   - alias: Doorbell Front Door Ring
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: input_boolean.doorbell_ringing
@@ -65,23 +67,6 @@ automation:
       #     ringtone_vol: 10
       - service: python_script.flash_lights_upstairs_hallway_and_yard
       - delay:
-          seconds: 10
+          seconds: 5
       - service: homeassistant.turn_off
-        entity_id: input_boolean.doorbell_ringing    
-      
-      # - service: script.turn_on
-      #   entity_id: script.light_flash_cancel
-
-
-  # - alias: Doorbell Tests
-  #   trigger:
-  #     - platform: state
-  #       entity_id: switch.doorbell_front_door
-  #       to: 'on'
-  #   action:
-  #     - service: script.turn_on
-  #       entity_id: script.light_flash
-      # - delay:
-      #     seconds: 10
-      # - service: script.turn_on
-      #   entity_id: script.light_flash_cancel
+        entity_id: input_boolean.doorbell_ringing

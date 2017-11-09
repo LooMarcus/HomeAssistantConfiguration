@@ -4,11 +4,12 @@ info_card:
   entities:
   - sensor.date__time
   - sun.sun
-  - calendar.cleaning_day
-  - calendar.house_cleaning
-  - calendar.garbage_day
-  - calendar.take_in_garbage
+  # - calendar.cleaning_day
+  # - calendar.house_cleaning
+  # - calendar.garbage_day
+  # - calendar.take_in_garbage
   - input_select.day_mode 
   # - sensor.vacuumed_today
   # - input_select.roomba_mode 
   - switch.air_cleaner_quiet
+  - input_boolean.test

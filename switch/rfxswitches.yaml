@@ -15,6 +15,7 @@
       0b1100040009a25201010f70:
         name: All lights off switch
 
+
       # 0b11000f0190965201040f70:
       #   name: test 
       #   fire_event: true
