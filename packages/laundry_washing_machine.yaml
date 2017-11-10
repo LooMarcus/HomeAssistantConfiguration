@@ -110,27 +110,33 @@ automation:
           minutes: 10
       - platform: time
         at: '08:01:00'
-    # condition:
-    #   condition: and
-    #   conditions:
-    #     - condition: time
-    #       before: '23:00:00'
-    #       after: '08:00:00'
-    #     - condition: state
-    #       entity_id: group.persons
-    #       state: 'home'
-    #     - condition: state
-    #       entity_id: input_select.washing_machine_status
-    #       state: Clean
-    #     - condition: template
-    #       value_template: >
-    #         {% if states.automation.send_alert_when_washing_machine_is_finished.last_triggered is not none %}
-    #           {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_when_washing_machine_is_finished.attributes.last_triggered) | int > 1800 %} true {% else %} false
-    #           {% endif %}
-    #         {% else %}
-    #         false
-    #         {% endif %}
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          before: '23:00:00'
+          after: '08:00:00'
+        - condition: state
+          entity_id: group.persons
+          state: 'home'
+        - condition: state
+          entity_id: input_select.washing_machine_status
+          state: Clean
+        - condition: template
+          value_template: >
+            {% if states.automation.send_alert_when_washing_machine_is_finished.last_triggered is not none %}
+              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_when_washing_machine_is_finished.attributes.last_triggered) | int > 1800 %} true {% else %} false
+              {% endif %}
+            {% else %}
+            false
+            {% endif %}
     action:
+      - service: light.turn_on
+        data:
+          entity_id: light.floorlamp_uplight
+          brightness: 150
+          color_name: 'red'
+
       - service: notify.ios_isabellas_iphone_6s
       # - service_template: >
       #     {% if (is_state('device_tracker.isabellas_iphone_6s', 'home')) and (is_state('device_tracker.stefan_iphone_7', 'home'))  %}
@@ -161,6 +167,8 @@ automation:
           entity_id: input_select.washing_machine_status
           option: Idle
       # - service: notify.all
+      - service: light.turn_off
+        entity_id: light.floorlamp_uplight
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: 'The laundry is taken care of'
