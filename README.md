@@ -42,12 +42,12 @@ I'm often behind on updating the readme. Ask me about anything!
 * Fibaro Dimmer 2
 * Pax Calima Bluetooth Bathroom Fan
 * Nexa Doorbell
-and probably some more things I've forgotten about...
+* and probably some more things I've forgotten about...
 
 ### Presence-detection
 * Ios-app for Hass.
 * Homekit
-neither is 100 %, I'm currently also experimenting with bayesian sensors
+* neither is 100 %, I'm currently also experimenting with bayesian sensors
 
 ## Automation hall of fame
 ### My favorite automations
