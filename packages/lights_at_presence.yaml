@@ -25,18 +25,6 @@ automation:
     action:
       - service: scene.turn_on
         entity_id: scene.lights_at_dark
-      # - service: light.turn_on
-      #   entity_id: light.outside_front_light
-      #   data:
-      #     brightness: 127
-      # - service: light.turn_on
-      #   entity_id: light.outside_yard_light
-      #   data:
-      #     brightness: 127
-      # - service: light.turn_on
-      #   entity_id: light.hallway_window_light
-      #   data:
-      #     brightness: 45
 
       - delay: 0:10
       
@@ -91,4 +79,4 @@ automation:
       after_offset: "-00:45:00"
     action:
       - service: scene.turn_on
-        entity_id: scene.lights_at_dark
+        entity_id: scene.ceiling_lights

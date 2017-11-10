@@ -6,74 +6,52 @@ homeassistant:
       icon: mdi:home-assistant      
     sensor.stefan_computer:
       icon: mdi:monitor
-      homebridge_hidden: true
     sensor.isa_laptop:
       icon: mdi:laptop-windows
-      homebridge_hidden: true
     sensor.isa_computer:
       icon: mdi:monitor
-      homebridge_hidden: true
     sensor.asus_router:
       icon: mdi:wifi
-      homebridge_hidden: true
     sensor.netgear_router:
       icon: mdi:wifi
-      homebridge_hidden: true
     sensor.printer:
       icon: mdi:printer
-      homebridge_hidden: true
     sensor.nas:
       icon: mdi:server
-      homebridge_hidden: true
     sensor.chromecast:
       icon: mdi:cast
-      homebridge_hidden: true
     sensor.shield:
       icon: mdi:android
-      homebridge_hidden: true
     sensor.shield_2:
       icon: mdi:android
-      homebridge_hidden: true
     sensor.ipad:
       icon: mdi:tablet-ipad
-      homebridge_hidden: true
     sensor.movie_system:
       icon: mdi:speaker
-      homebridge_hidden: true
     sensor.samsung65:
       icon: mdi:television
-      homebridge_hidden: true
     sensor.hue_hub:
       icon: mdi:lightbulb-outline
-      homebridge_hidden: true
     sensor.ikea_gateway:
       icon: mdi:google-keep
     sensor.xiaomi_gateway:
       icon: mdi:google-keep
     sensor.ip_camera:
       icon: mdi:webcam
-      homebridge_hidden: true
     sensor.galaxy_tab:
       icon: mdi:tablet-android
-      homebridge_hidden: true
     sensor.samsung49:
       icon: mdi:television
-      homebridge_hidden: true
     sensor.ir_blaster:
       icon: mdi:remote
-      homebridge_hidden: true
     sensor.ir_blaster_bedroom:
       icon: mdi:remote
-      homebridge_hidden: true
     sensor.ir_blaster_livingroom:
       icon: mdi:remote
-      homebridge_hidden: true
     sensor.withings_scale:
       icon: mdi:scale-bathroom
-      homebridge_hidden: true
     sensor.sonos_3:
       icon: mdi:speaker-wireless
-      homebridge_hidden: true
 sensor:
   - platform: template
     sensors:

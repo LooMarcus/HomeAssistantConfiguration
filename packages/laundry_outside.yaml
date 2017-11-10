@@ -48,4 +48,33 @@ automation:
         data:
           title: 'Laundry taken in'
           message: ''
-## ADD IF RAIN
+
+  - alias: Laundry Line If Raining
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.yr_precipitation
+        above: 0.5
+    condition:
+      condition: state
+      entity_id: switch.laundry_line_drying
+      state: 'on'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Take in the laundry'
+          message: 'Its going to rain'
+
+  - alias: Laundry Line 12h
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: switch.laundry_line_drying
+        to: 'on'
+        for:
+          hours: 12
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Take in the laundry'
+          message: 'Its been out there forever...'

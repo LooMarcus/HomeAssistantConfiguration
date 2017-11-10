@@ -1,8 +1,8 @@
   - platform: yr
     monitored_conditions:
-#       - temperature
-     - symbol
-#       - precipitation
+      # - temperature
+      - symbol
+      - precipitation
 #       - windSpeed
 # #      - pressure
 # #      - windDirection

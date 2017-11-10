@@ -14,13 +14,6 @@ input_select:
       - Clean
     initial: Idle
 
-
-# input_boolean:
-#   washer_in_use:
-#     name: Washer in use
-#     initial: off
-#     icon: "mdi:arrow-right-drop-circle-outline"
-
 sensor:
   - platform: template
     sensors:

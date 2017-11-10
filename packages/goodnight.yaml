@@ -23,12 +23,12 @@ automation:
     #     - condition: state
     #       entity_id: device_tracker.isabellas_iphone_6s
     #       state: 'Home'
-    #     - condition: state
-    #       entity_id: sensor.isa_computer
-    #       state: 'Offline'
-    #     - condition: state
-    #       entity_id: sensor.isa_laptop
-    #       state: 'Offline'
+        - condition: state
+          entity_id: sensor.isa_computer
+          state: 'Offline'
+        - condition: state
+          entity_id: sensor.isa_laptop
+          state: 'Offline'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
@@ -62,21 +62,12 @@ automation:
       - platform: state
         entity_id: sensor.igrims_battery_state
         to: 'Charging'
-    # condition:
-    #   condition: and
-    #   conditions:
-    #     - condition: time
-    #       after: '21:00:00'
-    #       before: '06:00:00'
-    #     - condition: state
-    #       entity_id: device_tracker.stefan_iphone_7
-    #       state: 'Home'
-    #     - condition: state
-    #       entity_id: sensor.isa_computer
-    #       state: 'Offline'
-    #     - condition: state
-    #       entity_id: sensor.isa_laptop
-    #       state: 'Offline'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '21:00:00'
+          before: '06:00:00'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:

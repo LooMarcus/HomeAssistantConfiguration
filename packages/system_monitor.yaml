@@ -103,10 +103,9 @@ automation:
            to: 'off'
            for:
              minutes: 1
-
     action:
-      - service: script.ifttt_notify
+      - service: notify.ios_isabellas_iphone_6s
         data_template:
-          value1: 'Process Status:'
-          value2: "{{ trigger.to_state.attributes.friendly_name }} is "
-          value3: "{{ trigger.to_state.state }}"
+          title: 'Process status'
+          message: >
+            '{{ trigger.to_state.attributes.friendly_name }} is {{ trigger.to_state.state }}'

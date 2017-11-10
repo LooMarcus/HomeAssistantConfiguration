@@ -185,56 +185,56 @@ automation:
 
 
 
-  - alias: Turn outside yard light on at full when back yard door opened
-    initial_state: 'on'
-    trigger:
-      platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00019e152b
-      to: 'on'
-    condition:
-      - condition: sun
-        after: sunset
-        after_offset: "-00:45:00"
-    action:
-      - service: light.turn_on
-        entity_id: light.outside_yard_light
-        data:
-          brightness: 255
-      - service: homeassistant.turn_on
-        entity_id: input_boolean.backyard_door
-      - delay: "00:10:00"
-      - service: homeassistant.turn_off
-        entity_id: input_boolean.backyard_door
+  # - alias: Turn outside yard light on at full when back yard door opened
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: state
+  #     entity_id: binary_sensor.door_window_sensor_158d00019e152b
+  #     to: 'on'
+  #   condition:
+  #     - condition: sun
+  #       after: sunset
+  #       after_offset: "-00:45:00"
+  #   action:
+  #     - service: light.turn_on
+  #       entity_id: light.outside_yard_light
+  #       data:
+  #         brightness: 255
+  #     - service: homeassistant.turn_on
+  #       entity_id: input_boolean.backyard_door
+  #     - delay: "00:10:00"
+  #     - service: homeassistant.turn_off
+  #       entity_id: input_boolean.backyard_door
 
-  - alias: Turn outside yard light off
-    initial_state: 'on'
-    trigger:
-      platform: state
-      entity_id: input_boolean.backyard_door
-      to: 'off'
-    condition:
-      - condition: time
-        after: '00:01:00'
-    action:
-      - service: light.turn_off
-        entity_id: light.outside_yard_light
+  # - alias: Turn outside yard light off
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: state
+  #     entity_id: input_boolean.backyard_door
+  #     to: 'off'
+  #   condition:
+  #     - condition: time
+  #       after: '00:01:00'
+  #   action:
+  #     - service: light.turn_off
+  #       entity_id: light.outside_yard_light
 
-  - alias: Turn outside yard light dim
-    initial_state: 'on'
-    trigger:
-      platform: state
-      entity_id: input_boolean.backyard_door
-      to: 'off'
-    condition:
-      condition: and
-      conditions:
-        - condition: sun
-          after: sunset
-          after_offset: "-00:45:00"
-        - condition: time
-          before: '00:01:00'
-    action:
-      - service: light.turn_on
-        entity_id: light.outside_yard_light
-        data:
-          brightness: 127
+  # - alias: Turn outside yard light dim
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: state
+  #     entity_id: input_boolean.backyard_door
+  #     to: 'off'
+  #   condition:
+  #     condition: and
+  #     conditions:
+  #       - condition: sun
+  #         after: sunset
+  #         after_offset: "-00:45:00"
+  #       - condition: time
+  #         before: '00:01:00'
+  #   action:
+  #     - service: light.turn_on
+  #       entity_id: light.outside_yard_light
+  #       data:
+  #         brightness: 127

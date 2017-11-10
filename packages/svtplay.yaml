@@ -1,3 +1,8 @@
+# install:
+# sudo apt-get install svtplay-dl
+# custom component from:
+# https://github.com/postlund/hass-config
+
 homeassistant:
   customize:
     script.morning_news:

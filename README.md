@@ -1,7 +1,7 @@
 # My Home Assistant Configuration
 I'm often behind on updating the readme. Ask me about anything!
 
-### Running on a Raspberry Pi 3 with an 8 gb card.
+### Running Hassbian Stretch on a Raspberry Pi 3 with a 16 gb card (and another for backups).
 * Using Homebridge to get support for Homekit and Siri
 
 ## Hubs
@@ -66,4 +66,11 @@ neither is 100 %, I'm currently also experimenting with bayesian sensors
 * Turning on lights in stairs on motion, different brightness on different times of day (two Xiaomi pirs on the way and need to buy a Proove dimmer for the lights)
 * Turn kitchen lights smart
 * Trådfri lights in walk in closet that turns on when you open the door
-* Automate turning on and off charging of e-bike battery, with notifications
+* Automate  turning on and off charging of e-bike battery, with notifications
+
+
+## Recommended links
+* [Hassbian](https://home-assistant.io/docs/installation/hassbian/)
+* [How to backup your config on Github](https://home-assistant.io/docs/ecosystem/backup/backup_github/)
+* [Homebridge](https://github.com/nfarina/homebridge) and [Homebridge for Home assistant](https://github.com/home-assistant/homebridge-homeassistant)
+* [Backup your sd card with rpi-clone - in swedish](https://snillevilla.se/automatisk-sakerhetskopiering-av-raspberry-pi-minneskort/)
