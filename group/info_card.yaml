@@ -13,3 +13,6 @@ info_card:
   # - input_select.roomba_mode 
   - switch.air_cleaner_quiet
   - input_boolean.test
+  - script.morning_news
+  # - script.svt_live
+  # - script.tv4_live

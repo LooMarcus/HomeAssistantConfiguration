@@ -1,57 +1,69 @@
-In need of updating. Not keeping up with all my changes..
 # My Home Assistant Configuration
+I'm often behind on updating the readme. Ask me about anything!
 
 ### Running on a Raspberry Pi 3 with an 8 gb card.
+* Using Homebridge to get support for Homekit and Siri
 
 ## Hubs
 * 433 mhz: RFXTRX433e
 * Zwave: Aeon Labs Z Wave Stick (GEN 5)
+* Zigbee: Xiaomi, Hue and Trådfri gateways
 
 ## Devices
 * Hue lights
-* Nexa motion sensor (433mhz)
-* Nexa door sensor (433mhz)
+* Trådfri lights
 * Nexa and Proove plugs/dimmers (433mhz)
 * Ios-devices (iPhones, Apple watch, iPad)
-* Old Samsung Galaxy tablet
-* Sannce IP camera
+* Old Samsung Galaxy tablet (currently not used)
+* Sannce IP camera (currently not used)
 * Xiaomi MiFloras (plant sensors)
 * IRobot Roomba 880
 * Electrolux Air Cleaner
 * Withings WS-50
-* 2 Broadlink RM3 mini IR-blaster
-* Nvidia Shield TV
+* 3 Broadlink RM3 mini IR-blaster
+* Nvidia Shield TV (Android tv, media center)
 * Plex Media Server
 * Two Samsung smart tv's
 * Samsung Media system
 * Chromecast
+* Synology NAS
 * Sonos Play3
 * Neo Coolcam Flood sensor
 * Neo Coolcam Door/Window sensors
 * Neo Coolcam Pirs
-* Sensative Strip Door sensor
-* and probable some things I've forgotten about
+* Xiaomi Door/Window sensors
+* Xiaomi Pirs
+* Xiaomi Switches
+* Xiaomi Temperature and Humidity Sensors
+* Sensative Strips Door sensor
+* Nexa motion sensor (433mhz)
+* Nexa Door/Window sensor (433mhz)
+* Fibaro Wall Plug
+* Fibaro Dimmer 2
+* Pax Calima Bluetooth Bathroom Fan
+* Nexa Doorbell
+and probably some more things I've forgotten about...
 
 ### Presence-detection
 * Ios-app for Hass.
+* Homekit
+neither is 100 %, I'm currently also experimenting with bayesian sensors
 
-## Automations
-Not very much yet, more coming after we move in July.
-* air_cleaner: Setting air cleaner in bedroom to quiet at 9 pm (before bedtime) and auto at 11 am (when we are sure to have gotten out of bed), using Broadlink RM3 mini ir blaster
-* back_door: Notify when back door is opened or closed when no one is at home (add when we are sleeping, if goodnight automation is found to be working)
-* bedroom_switches: Allow the nexa switch by the bed to turn on and off the bedroom hue light, and to turn off all smart lights on the inside of the house
-* fire_alarm: Send notifications when fire alarms go off (not working at the moment, fire alarms only send unknown)
-* front_door: Notify when front door is opened or closed when no one is at home (add when we are sleeping, if goodnight automation is found to be working)
-* goodnight: Trying to do a catch all automation for hass to know when we are asleep (not yet tested)
-* house_mode_automation: Setting the input_select to different options, based on sun and time (adding "night" if goodnight automation works, to use as trigger to other things)
-* laundry_notifications: Send actionable notifications when washing machine is done
-* laundry: Track the washing machine status based on watt from Fibaro plug
-* lights_at_dark: Set light status on a few lights inside and outside based on time of day, sun and if we are coming home at night
-* medication_tracker: Not yet done, but I want it to be able to keep track of if I've taken my medications and remind me if not. A button for me to tell hass I've taken the medication and a red led at my bed for reminding me I've not taken it. Will be done with a Nodemcu and Espeasy
-* new_ha_release: Update for hass available notification
-* presence_isa and presence_stefan: Presence notifications
-* reminder_to_water: Water plants-notifications
-* twitch_on_air: Not yet done, will be used to make an "on air" sign with Nodemcu and Espeasy
-* vacuuming: Turn on the Roomba robot vacuum cleaner once during the day when we are not at home, using Broadlink RM3 mini ir blaster
+## Automation hall of fame
+### My favorite automations
+* Setting air cleaner in bedroom to quiet at 9 pm (before bedtime) and auto at 11 am (when we are sure to have gotten out of bed), using Broadlink RM3 mini ir blaster
+* Set light status on a few lights inside and outside based on time of day, sun and if we are coming home at night
+* Xiaomi switch by the bed toggles bedside lamp, bedroom ceiling light or turn off all smart lights for the night
+* Roomba only vacuums when noone is home, using Broadlink RM3 mini ir blaster
+* Notifications when washing machine is done
+* Say good morning to Siri and she turns on a couple of lights and turns on the morning show on the livingroom tv
+* When someone rings the doorbell, send notifications and flash lights in backyard
+* Notifications for cleaning cat litterboxes
 
-## In the process of setting up Floorplan for display on tablets around the house
+## Future plans:
+* Setting up a Magic mirror with information from Hass.
+* Setting up Floorplan on tablets
+* Turning on lights in stairs on motion, different brightness on different times of day (two Xiaomi pirs on the way and need to buy a Proove dimmer for the lights)
+* Turn kitchen lights smart
+* Trådfri lights in walk in closet that turns on when you open the door
+* Automate turning on and off charging of e-bike battery, with notifications
