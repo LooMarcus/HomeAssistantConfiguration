@@ -172,7 +172,7 @@ automation:
           title: 'Time to clean'
           # Dynamic message that takes current number of visits
           message: >
-            '{{ states('sensor.upstairs_litterbox_visits') }} visits to upstairs litterbox'
+            ' {{ "\ud83d\ude02" }} {{ states('sensor.upstairs_litterbox_visits') }} visits to upstairs litterbox'
 
 
   # Set in cleaning mode on button press

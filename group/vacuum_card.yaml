@@ -2,9 +2,11 @@ vacuum_card:
   view: no
   name: Roomba
   entities:
-    - input_select.roomba_mode 
-    - switch.roomba_dock
+    - input_select.roomba_mode
+    - switch.roomba_combined
+    - sensor.roomba_docked
     - switch.roomba
+    - switch.roomba_dock
     - switch.roomba_dock_livingroom
     - switch.roomba_livingroom
     # - sensor.vacuumed_today 

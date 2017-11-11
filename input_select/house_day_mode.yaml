@@ -11,10 +11,9 @@
   house_mode:
     name: House mode
     options:
-     - Guest mode
-     - Cleaning day
-     - Shell protection
-     - Armed
-     - Unarmed
-    initial: Unarmed
-    icon: mdi:shield
+      - 'Guest mode'
+      - 'Cleaning day'
+      - 'Vacation'
+      - 'Family mode'
+    initial: 'Family mode'
+    icon: mdi:home

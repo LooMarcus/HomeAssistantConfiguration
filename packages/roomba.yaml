@@ -1,17 +1,34 @@
 homeassistant:
-  # customize:
-  #   switch.roomba:
-  #     homebridge_visible: true
-  #   switch.roomba_dock:
-  #     homebridge_visible: true
-      
+  customize:
+    binary_sensor.door_window_sensor_158d0001a3df50:
+      friendly_name: Roomba Docked  
+
 switch:
+  - platform: template
+    switches:
+      roomba:
+        value_template: "{{ is_state('binary_sensor.door_window_sensor_158d0001a3df50', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: switch.roomba_vacuum
+        turn_off:
+          service: switch.turn_off
+          data:
+            entity_id: switch.roomba_vacuum
+        icon_template: >-
+          {% if is_state('binary_sensor.door_window_sensor_158d0001a3df50', 'on') %}
+            mdi:broom
+          {% else %}
+            mdi:roomba
+          {% endif %}
+
   - platform: broadlink
     friendly_name: Broadlink Hallway
     host: !secret broadlink_roomba_ip
     mac: !secret broadlink_roomba_mac
     switches:
-      roomba:
+      roomba_vacuum:
         friendly_name: Roomba
         command_on: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
         command_off: 'JgCQAGAhHmIfYB9gH2BdIh5iXAACbGAhHmIeYR5hH2BdIh5iXAACZGAhHmIeYR5hH2BdIh5iXAACZGEhH2AfYB9gIF9eISBgXgACYl8iIGAfYB9gH2BfICBgXgACamEhH2AfYB9gH2BfICBgXgACYmEgIGAfYCBfIF9cIx9hXAACZGAhHmIeYR5hH2BdIh5iXAANBQAAAAAAAAAA'
@@ -20,12 +37,21 @@ switch:
         command_on: 'JgA2AF8iHmIdYh1iHWJcIh5iXAACbF8iIGAeYh1iHWJeICBgXQACY18iIGAeYh1iHWJeICBgXgANBQAA'
         command_off: 'JgCQAGAhHmIfYB9gH2BdIh5iXAACbGAhHmIeYR5hH2BdIh5iXAACZGAhHmIeYR5hH2BdIh5iXAACZGEhH2AfYB9gIF9eISBgXgACYl8iIGAfYB9gH2BfICBgXgACamEhH2AfYB9gH2BfICBgXgACYmEgIGAfYCBfIF9cIx9hXAACZGAhHmIeYR5hH2BdIh5iXAANBQAAAAAAAAAA'
 
+sensor:
+  platform: template
+  sensors:
+    roomba_docked:
+      friendly_name: 'Roomba Docked'
+      value_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3df50", "on") %}Vacuuming{% elif is_state("binary_sensor.door_window_sensor_158d0001a3df50", "off")%}Docked{% else %}Unknown{% endif %}'
+      icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3df50", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d0001a3df50", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+
 input_select:
   roomba_mode:
     name: Roomba
     options:
      - 'Waiting To Vacuum'
      - 'Vacuum Now'
+     - 'Vacuuming'
      - 'Has Vacuumed'
      - 'Dock'
      - 'Not Today'
@@ -51,6 +77,9 @@ automation:
         - condition: state
           entity_id: input_select.roomba_mode
           state: 'Waiting To Vacuum'
+        - condition: state
+          entity_id: binary_sensor.door_window_sensor_158d0001a3df50
+          state: 'off'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
@@ -74,7 +103,7 @@ automation:
       - service: input_select.select_option
         data:
           entity_id: input_select.roomba_mode
-          option: 'Has Vacuumed'
+          option: 'Vacuuming'
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: 'Telling the Roomba to start vacuuming'
@@ -102,8 +131,8 @@ automation:
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
-          message: 'I will check again next hour'
-          title: 'Not vacuuming right now'
+          message: 'Got it'
+          title: 'No vacuuming today'
       - service: input_select.select_option
         data:
           entity_id: input_select.roomba_mode
@@ -123,6 +152,8 @@ automation:
       - service: homeassistant.turn_off
         entity_id: switch.roomba
 
+
+## Not working
   - alias: 'Vacuum Dock Roomba'
     initial_state: 'on'
     trigger:
@@ -147,6 +178,7 @@ automation:
           entity_id: input_select.roomba_mode
           option: 'Waiting To Vacuum'
 
+
   - alias: 'Vacuum Now'
     initial_state: 'on'
     trigger:
@@ -156,10 +188,40 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: switch.roomba
+      # - service: notify.ios_isabellas_iphone_6s
+      #   data:
+      #     message: 'Vacuuming'
+      # - service: input_select.select_option
+      #   data:
+      #     entity_id: input_select.roomba_mode
+      #     option: 'Vacuuming'
+
+  - alias: 'Vacuum Is Done'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0001a3df50
+      to: 'off'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          message: 'Vacuuming done'
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.roomba_mode
+          option: 'Has Vacuumed'
+
+  - alias: 'Vacuum Starting'
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0001a3df50
+      to: 'on'
+    action:
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: 'Vacuuming'
       - service: input_select.select_option
         data:
           entity_id: input_select.roomba_mode
-          option: 'Waiting To Vacuum'
+          option: 'Vacuuming'
