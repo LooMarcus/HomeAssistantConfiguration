@@ -22,7 +22,7 @@
           else
             return visits + "visits";
           '
-
+ 
           #'
             
             # var temp = parseFloat(entity.state.replace("°", ""));

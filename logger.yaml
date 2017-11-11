@@ -25,6 +25,7 @@ logs:
   homeassistant.components.zwave: error
   homeassistant.components.zwave.util: error
   homeassistant.components.rfxtrx: debug
+  homeassistant.components.notify: debug
   # homeassistant.helpers.script: info
   homeassistant.components.light: warn
   homeassistant.helpers.entity: error

@@ -15,8 +15,11 @@
           seconds: 5
       0a14111f0082c908000080:
         name: White7
+        off_delay:
+          seconds: 5
       0913000fde02a1011670:
         name: White8
-
+        off_delay:
+          seconds: 5
       0b1100110153b33a0a010f70:
         name: Nexa motion sensor

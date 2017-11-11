@@ -21,3 +21,5 @@ default_view:
     - input_boolean.isabella_home
     - input_boolean.stefan_home
     # - group.temp_and_light_card
+    - device_tracker.isabella
+    - device_tracker.stefan

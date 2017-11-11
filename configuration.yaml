@@ -93,8 +93,8 @@ sensor: !include_dir_merge_list sensor
 switch: !include_dir_merge_list switch
 binary_sensor: !include_dir_merge_list binary_sensors
 light: !include_dir_merge_list lights
-tradfri:
-  host: !secret tradfri_gateway_ip
+# tradfri:
+#   host: !secret tradfri_gateway_ip
 scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean/
 input_select: !include_dir_merge_named input_select

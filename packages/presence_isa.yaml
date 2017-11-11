@@ -9,14 +9,14 @@ input_boolean:
     initial: on
     icon: mdi:human-female
 
-# if boolean on = home, if boolean off = zone from device_tracker if not "not_home"
-sensor:
-  - platform: template
-    sensors:
-      isabella_home:
-        friendly_name: 'Isabella'
-        value_template: '{% if is_state("input_boolean.isabella_home", "on") %}Home{% elif is_state("device_tracker.isabellas_iphone_6s", "School")%}School{% elif is_state("device_tracker.isabellas_iphone_6s", "Work")%}Work{% else %}Not home{% endif %}'
-#         icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3df50", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d0001a3df50", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
+# # if boolean on = home, if boolean off = zone from device_tracker if not "not_home"
+# sensor:
+#   - platform: template
+#     sensors:
+#       isabella_home:
+#         friendly_name: 'Isabella'
+#         value_template: '{% if is_state("input_boolean.isabella_home", "on") %}Home{% elif is_state("device_tracker.isabellas_iphone_6s", "School")%}School{% elif is_state("device_tracker.isabellas_iphone_6s", "Work")%}Work{% else %}Not home{% endif %}'
+# #         icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3df50", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d0001a3df50", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
 
 
 
@@ -62,81 +62,62 @@ sensor:
 #         to_state: 'on'
 #         prob_given_true: 0.7
 
-history_graph:
-  isabella:
-    name: Isabella
-    refresh: 180
-    entities:
-      - input_boolean.isabella_home
 
 # Lots of automations to keep track of device tracking works or not
 automation:
-  # - alias: 'Presence Isa Away'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: device_tracker.isabellas_iphone_6s
-  #       to: 'not_home'
-  #   action:
-  #     - service: notify.ios_isabellas_iphone_6s
-  #       data:
-  #         title: 'Du är nu rapporterad som inte hemma.'
-  #         message: 'Inte hemma'
-
-  # - alias: 'Presence Isa Home'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: device_tracker.isabellas_iphone_6s
-  #       to: 'home'
-  #   action:
-  #     - service: notify.ios_isabellas_iphone_6s
-  #       data:
-  #         title: 'Du är nu rapporterad som hemma.'
-  #         message: 'Hemma'
-
-  # - alias: 'Presence Isabella Bayesian Home'
-  #   initial_state: 'on'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: binary_sensor.isabella_home
-  #       to: 'on'
-  #   action:
-  #     - service: notify.ios_isabellas_iphone_6s
-  #       data:
-  #         title: 'Isa är nu rapporterad som hemma.'
-  #         message: 'via bayesian'
-
-  # - alias: 'Presence Isa Bayesian Away'
-  #   initial_state: 'on'
-  #   trigger:
-  #     - platform: state
-  #       entity_id: binary_sensor.isabella_home
-  #       to: 'off'
-  #   action:
-  #     - service: notify.ios_isabellas_iphone_6s
-  #       data:
-  #         title: 'Isa är nu rapporterad som inte hemma.'
-  #         message: 'via bayesian'
-
-  - alias: "Presence Isa Homekit Home Mode"
+  - alias: "Presence Isa Home By Script"
     initial_state: 'on'
     trigger:
       - platform: state
         entity_id: input_boolean.isabella_home
         to: 'on'
+      - platform: state
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s
+        to: 'home'
+      - platform: homeassistant
+        event: start
     action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          title: 'Isa homekit home'
-          message: 'wow'
+      - service: python_script.meta_device_tracker
+        data_template:
+          entity_id: '{{trigger.entity_id}}'
+          meta_entity: 'Isabella'
 
-  - alias: "Presence Isa Homekit Away Mode"
+  - alias: "Presence Isa Away By Script"
     initial_state: 'on'
     trigger:
       - platform: state
         entity_id: input_boolean.isabella_home
         to: 'off'
+      - platform: state
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s
+        to: 'not_home'
+        for:
+          minutes: 10
+    action:
+      - service: python_script.meta_device_tracker
+        data_template:
+          entity_id: '{{trigger.entity_id}}'
+          meta_entity: 'Isabella'
+
+  - alias: "Presence Isa Home Notification"
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'home'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
-          title: 'Isa homekit away'
-          message: 'wow'
+          title: 'Isa'
+          message: 'home'
+  - alias: "Presence Isa Away Notification"
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Isa'
+          message: 'not home'
