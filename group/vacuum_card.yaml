@@ -1,4 +1,5 @@
 vacuum_card:
+  control: hidden
   view: no
   name: Roomba
   entities:

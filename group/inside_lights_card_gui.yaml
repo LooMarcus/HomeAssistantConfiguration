@@ -1,4 +1,5 @@
 inside_lights_card:
+  control: hidden
   name: Inside lights
   entities:
     - light.bedroom_ceiling_light
@@ -14,4 +15,4 @@ inside_lights_card:
     - light.e14
     - light.floorlamp_uplight
     - light.gateway_light_34ce008bfc4b
-    - light.drink_cabinet_led
+    - light.kitchen_sink_light

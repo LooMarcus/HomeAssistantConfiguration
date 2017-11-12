@@ -4,13 +4,14 @@ security_card:
   icon: mdi:home-variant
   entities:
     - alarm_control_panel.home_alarm
-    - input_select.house_mode
+    # - input_select.house_mode
     - sensor.front_door
     - sensor.back_door
     - sensor.nexa_door
     - sensor.backyard_door
     - sensor.balcony_door
     - sensor.dining_area_window
+    - sensor.kitchen_movement
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
     - sensor.yard_storage_door

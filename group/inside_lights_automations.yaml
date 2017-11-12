@@ -12,3 +12,4 @@ inside_lights_automations:
     - light.e14
     - light.floorlamp_uplight
     - light.gateway_light_34ce008bfc4b
+    - light.kitchen_sink_light

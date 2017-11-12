@@ -1,4 +1,5 @@
 alarmclock:
+  control: hidden
   name: Wake Me Up
   entities: 
     - automation.alarm_clock

@@ -25,5 +25,3 @@
         name: White8
         off_delay:
           seconds: 5
-      0b1100110153b33a0a010f70:
-        name: Nexa motion sensor
