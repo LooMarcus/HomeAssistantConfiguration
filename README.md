@@ -68,7 +68,8 @@ I'm often behind on updating the readme. Ask me about anything!
 * Trådfri lights in walk in closet that turns on when you open the door
 * Automate turning on and off charging of e-bike battery, with notifications
 
-
+## Sample gui - House View
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/house_view.png" alt="Home Assistant" />
 
 ## Recommended links
 * [Hassbian](https://home-assistant.io/docs/installation/hassbian/)
