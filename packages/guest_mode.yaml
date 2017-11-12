@@ -1,0 +1,5 @@
+input_boolean:
+  guest_mode:
+    name: Guest Mode
+    initial: 'off'
+    icon: mdi:account-multiple

@@ -104,6 +104,7 @@ automation:
         data:
           entity_id: input_select.roomba_mode
           option: 'Vacuuming'
+      # - service: python_script.vacuuming
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: 'Telling the Roomba to start vacuuming'

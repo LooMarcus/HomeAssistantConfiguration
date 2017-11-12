@@ -2,6 +2,7 @@ house_view:
   view: yes
   icon: mdi:broom
   entities:
+    - switch.air_cleaner_quiet
     - group.laundry_card
     - group.vacuum_card    
     - group.temp_and_light_card    

@@ -1,0 +1,5 @@
+    script.goodnight:
+      homebridge_visible: true
+
+    script.goodmorning:
+      homebridge_visible: true

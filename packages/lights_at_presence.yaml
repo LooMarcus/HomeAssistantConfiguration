@@ -28,13 +28,19 @@ automation:
 
       - delay: 0:10
       
-      - service: homeassistant.turn_off
-        entity_id: light.outside_front_light
-      - service: homeassistant.turn_off
-        entity_id: light.outside_yard_light
-      - service: homeassistant.turn_off
-        entity_id: light.hallway_window_light
-      - service: homeassistant.turn_off
+      - service: light.turn_off
+        data:
+          entity_id: light.outside_front_light
+          transition: 60
+      - service: light.turn_off
+        data:          
+          entity_id: light.outside_yard_light
+          transition: 60
+      - service: light.turn_off
+        data:      
+          entity_id: light.hallway_window_light
+          transition: 60
+      - service: light.turn_off
         entity_id: light.outside_hanging_lights
 
   ## Also turn on passage lights, but not turn off

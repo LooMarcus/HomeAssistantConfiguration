@@ -72,7 +72,7 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'on'
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s, device_tracker.isabellas_iphone_6s_2
         to: 'home'
       - platform: homeassistant
         event: start
@@ -89,7 +89,7 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s, device_tracker.isabellas_iphone_6s_2
         to: 'not_home'
         for:
           minutes: 10

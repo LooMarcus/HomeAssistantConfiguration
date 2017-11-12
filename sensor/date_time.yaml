@@ -1,3 +1,8 @@
   - platform: time_date
     display_options:
+      - 'date_time'    
+      - 'time'
+      - 'date'
       - 'date_time'
+      - 'time_date'
+      - 'time_utc'

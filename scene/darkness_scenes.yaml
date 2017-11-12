@@ -3,10 +3,13 @@
       light.outside_front_light:
         state: on
         brightness: 127
+        transition: 60
       light.outside_yard_light:
         state: on
         brightness: 127
+        transition: 60
       light.hallway_window_light:
         state: on
         brightness: 45
+        transition: 60
       light.outside_yard_hanging_lights: on

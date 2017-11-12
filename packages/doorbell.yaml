@@ -4,13 +4,6 @@ homeassistant:
       friendly_name: Doorbell
       # homebridge_visible: true
 
-binary_sensor:
-  - platform: rfxtrx
-    devices:
-      09130020a96601014270:
-        name: White6
-        off_delay:
-          seconds: 2
 switch:
   - platform: rfxtrx
     signal_repetitions: 3
@@ -18,6 +11,7 @@ switch:
       0b11000f0190965201040f70:
         name: Doorbell Front Door
         fire_event: true
+
 input_boolean:
   doorbell_ringing:
     name: Doorbell is ringing
@@ -42,31 +36,32 @@ automation:
       - platform: state
         entity_id: input_boolean.doorbell_ringing
         to: 'on'
-    # condition:
-    #   - condition: template
-    #     value_template: >
-    #       {% if states.automation.doorbell_front_door.last_triggered is not none %}
-    #         {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.doorbell_front_door.attributes.last_triggered) | int > 10 %} true {% else %} false
-    #         {% endif %}
-    #       {% else %}
-    #       false
-    #       {% endif %}
     action:
-      - service: notify.ios_isabellas_iphone_6s
+      - service_template: >
+          {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+            notify.all
+          {% elif is_state('device_tracker.isabella', 'home') %}
+            notify.ios_isabellas_iphone_6s
+          {% elif is_state('device_tracker.stefan', 'home') %}
+            notify.ios_stefan_iphone_7
+          {% endif %}
         data:
           title: 'Doorbell ringing!'
           message: 'Someone is at the front door'
-      # - service: notify.ios_ipad
+      - service: notify.pushbullet_isa
+        data:
+          title: 'Doorbell ringing!'
+          message: 'Someone is at the front door'
+          target: 'device/isadator'
+      # - service: notify.pushbullet_stefan
       #   data:
       #     title: 'Doorbell ringing!'
       #     message: 'Someone is at the front door'
-      # - service: xiaomi_aqara.play_ringtone
-      #   data:
-      #     gw_mac: !secret xiaomi_mac
-      #     ringtone_id: 10
-      #     ringtone_vol: 10
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: !secret xiaomi_mac
+          ringtone_id: 10
+          ringtone_vol: 10
       - service: python_script.flash_lights_upstairs_hallway_and_yard
-      - delay:
-          seconds: 5
       - service: homeassistant.turn_off
         entity_id: input_boolean.doorbell_ringing

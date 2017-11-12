@@ -1,6 +1,9 @@
   - name: Pushbullet Isa
     platform: pushbullet
     api_key: !secret pushbullet_key
+  - name: Pushbullet Stefan
+    platform: pushbullet
+    api_key: !secret stefan_pushbullet_key
   - name: All
     platform: group
     services:

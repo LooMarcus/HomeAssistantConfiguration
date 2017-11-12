@@ -13,6 +13,10 @@
         name: White5
         off_delay:
           seconds: 5
+      09130020a96601014270:
+        name: White6
+        off_delay:
+          seconds: 2
       0a14111f0082c908000080:
         name: White7
         off_delay:

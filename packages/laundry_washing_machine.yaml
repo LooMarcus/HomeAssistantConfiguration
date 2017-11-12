@@ -137,15 +137,15 @@ automation:
           brightness: 150
           color_name: 'red'
 
-      - service: notify.ios_isabellas_iphone_6s
-      # - service_template: >
-      #     {% if (is_state('device_tracker.isabellas_iphone_6s', 'home')) and (is_state('device_tracker.stefan_iphone_7', 'home'))  %}
-      #       notify.all
-      #     {% elif is_state('device_tracker.isabellas_iphone_6s', 'home') %}
-      #       notify.ios_isabellas_iphone_6s
-      #     {% elif is_state('device_tracker.stefan_iphone_7', 'home') %}
-      #       notify.ios_stefan_iphone_7
-      #     {% endif %}
+      # - service: notify.ios_isabellas_iphone_6s
+      - service_template: >
+          {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+            notify.all
+          {% elif is_state('device_tracker.isabella', 'home') %}
+            notify.ios_isabellas_iphone_6s
+          {% elif is_state('device_tracker.stefan', 'home') %}
+            notify.ios_stefan_iphone_7
+          {% endif %}
         data:
           message: 'Take care of it now?'
           title: 'Washing machine is done!'

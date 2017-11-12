@@ -203,3 +203,15 @@ ios:
             title: 'Not done yet'
             activationMode: 'background'
             destructive: yes
+      - name: Alarm Clock
+        identifier: 'alarm_clock'
+        actions:
+          - identifier: 'AWAKE'
+            title: 'Yes'
+            destructive: no
+          - identifier: 'AWAKE_NO'
+            title: 'No'
+            destructive: no
+          - identifier: 'SNOOZE'
+            title: 'Snooze'
+            destructive: yes

@@ -1,0 +1,55 @@
+input_boolean:
+  vacation_mode:
+    name: Vacation Mode
+    initial: off
+    icon: mdi:beach
+
+automation:
+  - alias: Vacation Mode Automations On
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.vacation_mode
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: group.persons
+          state: 'not_home'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: automation.vacation_lights_on
+
+  - alias: Vacation Mode Automations Off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: group.persons
+        to: 'home'
+      - platform: state
+        entity_id: input_boolean.vacation_mode
+        to: 'off'
+    condition:
+      condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'on'
+    action:
+      - service: homeassistant.off
+        entity_id: automation.vacation_lights_on
+
+## Set more automations for vacation
+  
+  - alias: Vacation Lights On Evening
+    initial_state: 'off'
+    trigger:
+      - platform: time
+        # This will match every 10 minutes
+        minutes: '/10'
+        seconds: 00
+    # Conditions taken care of in python_script
+    condition:
+      condition: time
+      after: '17:30:00'
+    action:
+      service: python_script.vacation_lights_on

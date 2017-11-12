@@ -17,11 +17,17 @@ automation:
       platform: time
       at: '23:59:00'
     action:
-      - service: homeassistant.turn_off
-        entity_id: light.outside_front_light
-      - service: homeassistant.turn_off
-        entity_id: light.outside_yard_light
-      - service: homeassistant.turn_off
-        entity_id: light.hallway_window_light
+      - service: light.turn_off
+        data:
+          entity_id: light.outside_front_light
+          transition: 30
+      - service: light.turn_off
+        data:
+          entity_id: light.outside_yard_light
+          transition: 30
+      - service: light.turn_off
+        data:
+          entity_id: light.hallway_window_light
+          transition: 30
       - service: light.turn_off
         entity_id: light.outside_yard_hanging_lights

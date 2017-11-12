@@ -8,4 +8,4 @@
       - !secret hass_host_ip
   # - platform: bluetooth_tracker      
   # - platform: owntracks
-  - platform: bluetooth_le_tracker
+  - platform: bluetooth_tracker

@@ -1,0 +1,88 @@
+# ALARM CLOCK
+# based on:
+# https://github.com/master-kenobi/ha-alarmclock
+
+input_boolean:
+  alarm_weekday:
+    name: Weekdays Only
+    icon: mdi:calendar
+
+input_number:
+  alarm_hour:
+    name: Hour
+    icon: mdi:timer
+    min: 0
+    max: 23
+    step: 1
+  alarm_minutes:
+    name: Minutes
+    icon: mdi:timer
+    min: 0
+    max: 59
+    step: 1
+
+sensor:
+  - platform: template
+    sensors:
+      alarm_time:
+        friendly_name: 'Time'
+        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarm_hour") | int, states("input_number.alarm_minutes") | int) }}'
+
+automation:
+  - alias: 'Alarm clock'
+    initial_state: 'on'
+    trigger:
+      platform: template
+      value_template: '{{ states.sensor.time.state == states.sensor.alarm_time.state }}'
+    condition:
+      condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: input_boolean.alarm_weekday
+              state: 'on'
+            - condition: time
+              weekday:
+                - mon
+                - tue
+                - wed
+                - thu
+                - fri
+        - condition: state
+          entity_id: input_boolean.alarm_weekday
+          state: 'off'
+    action:
+      service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Good morning.'
+        message: 'Run automations?'        
+        data:
+          push:
+            category: 'alarm_clock'
+
+###### awake actionable notification pushed ######
+  - alias: Alarm Clock Awake Action
+    initial_state: true
+    hide_entity: true
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: AWAKE
+    action:
+      service: script.turn_on
+      entity_id: script.goodmorning
+
+###### snooze actionable notification pushed ######
+  - alias: Alarm Clock Snooze Action
+    initial_state: true
+    hide_entity: true
+    trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+        actionName: SNOOZE
+    action:
+      service: script.turn_on
+      entity_id: script.alarm_clock_snooze

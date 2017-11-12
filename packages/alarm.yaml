@@ -75,12 +75,12 @@ automation:
   initial_state: 'on'
   trigger:
   ## Add pirs when fixed the cat false trigger
-    # - platform: state
-    #   entity_id: sensor.pir1
-    #   to: 'active'
-    # - platform: state
-    #   entity_id: sensor.pir2
-    #   to: 'active'
+      - platform: state
+        entity_id: binary_sensor.passage_pir_sensor
+        to: 'on'
+      - platform: state
+        entity_id: binary_sensor.upstairs_hallway_pir_sensor
+        to: 'on'
       - platform: state
         entity_id: sensor.front_door_access_control
         to: '22'

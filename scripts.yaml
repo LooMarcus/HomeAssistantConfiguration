@@ -18,3 +18,55 @@
 #          media_content_id: >
 #             https://www.tv4play.se/program/nyhetsmorgon/3933934
 #          media_content_type: 'video'
+
+goodmorning:
+  alias: Goodmorning
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_ceiling_light_level
+        brightness: 50
+    - service: light.turn_on
+      data:
+        entity_id: light.passage_ceiling_spotlights_level
+        brightness: 50
+    - service: light.turn_on
+      data:
+        entity_id: light.upstairs_hallway_ceiling_light_level
+        brightness: 50
+        transition: 30
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - service: light.turn_on
+      data:
+        entity_id: light.bedside_lamp
+        brightness: 60
+        transition: 30
+    - service: script.morning_news
+
+goodnight:
+  alias: Goodnight
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: group.inside_lights_automations
+        transition: 30
+    - wait_template: "{{ states.light.bedside_lamp.state == 'off' }}"
+    - service: light.turn_on
+      data:
+        entity_id: light.bedside_lamp
+        brightness: 50
+
+alarm_clock_snooze:
+  alias: Alarm Clock Snooze
+  sequence:
+    # Snooze 5 mins
+    - delay: '00:05:00'
+    - service: notify.ios_isabellas_iphone_6s
+      data:
+        title: 'Good morning.'
+        message: 'Run automations?'        
+        data:
+          push:
+            category: 'alarm_clock' 

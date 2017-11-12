@@ -8,12 +8,12 @@
     initial: Day
     icon: mdi:white-balance-sunny
 
-  house_mode:
-    name: House mode
-    options:
-      - 'Guest mode'
-      - 'Cleaning day'
-      - 'Vacation'
-      - 'Family mode'
-    initial: 'Family mode'
-    icon: mdi:home
+  # house_mode:
+  #   name: House mode
+  #   options:
+  #     - 'Guest Mode'
+  #     - 'Cleaning Day'
+  #     - 'Vacation Mode'
+  #     - 'Family Mode'
+  #   initial: 'Family Mode'
+  #   icon: mdi:home

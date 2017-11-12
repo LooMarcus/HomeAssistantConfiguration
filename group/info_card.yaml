@@ -4,15 +4,13 @@ info_card:
   entities:
   - sensor.date__time
   - sun.sun
+  # - input_select.day_mode 
+  - input_boolean.vacation_mode
+  - input_boolean.cleaning_day
+  - input_boolean.guest_mode
+  - input_boolean.test
+  - script.morning_news
   # - calendar.cleaning_day
   # - calendar.house_cleaning
   # - calendar.garbage_day
   # - calendar.take_in_garbage
-  - input_select.day_mode 
-  # - sensor.vacuumed_today
-  # - input_select.roomba_mode 
-  - switch.air_cleaner_quiet
-  - input_boolean.test
-  - script.morning_news
-  # - script.svt_live
-  # - script.tv4_live

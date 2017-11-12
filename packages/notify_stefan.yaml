@@ -1,0 +1,32 @@
+homeassistant:
+  customize:
+    input_boolean.notify_stefan:
+      icon: mdi:message-bulleted
+    input_text.stefan_notify_text:
+      icon: mdi:message-bulleted
+
+input_boolean:
+  notify_stefan:
+    name: Send
+    initial: 'off'
+
+input_text:
+  stefan_notify_text:
+    name: Stefan Notify Text
+    initial: Fem minuter till mat
+
+
+automation:
+  - alias: Notify Stefan
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: input_boolean.notify_stefan
+      to: 'on'
+    action:
+      - service: notify.pushbullet_stefan
+        data:
+          message: ''
+          title: '{{ states.input_text.stefan_notify_text.state }}'
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.notify_stefan

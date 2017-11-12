@@ -5,21 +5,10 @@ default_view:
   entities:
     - device_tracker.isabellas_iphone_6s
     - device_tracker.stefan_iphone_7
-    # - sensor.upstairs_hallway_pir_luminance
-    # - sensor.passage_pir_luminance
-    - group.info_card
-    # - group.weather_summary_today_card
-    # - group.weather_summary_tomorrow_card
-    - group.inside_lights_card
-    - group.outside_lights_card
-    # - group.camera_card
-      
-    # - group.laundry_group
-    # - group.cat_card
-    - group.alerts_card
-    - group.security_card
-    - input_boolean.isabella_home
-    - input_boolean.stefan_home
-    # - group.temp_and_light_card
     - device_tracker.isabella
     - device_tracker.stefan
+    - group.info_card
+    - group.inside_lights_card
+    - group.outside_lights_card
+    - group.alerts_card
+    - group.security_card
