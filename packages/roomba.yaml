@@ -69,7 +69,7 @@ automation:
       condition: and
       conditions:
         - condition: state
-          entity_id: device_tracker.isabellas_iphone_6s
+          entity_id: group.persons
           state: 'not_home'
         - condition: time
           after: '09:00:00'

@@ -1,15 +1,15 @@
-homeassistant:
+# homeassistant:
 
-automation:
-  - alias: Lights On Stairs
-    trigger:
-      platform: state
-      entity_id: binary_sensor.nexa_motion_sensor
-      to: 'on'
-    action:
-      - service: light.turn_on
-        entity_id: light.drink_cabinet_led   # stairs test
-      - delay:
-          minutes: 1
-      - service: light.turn_off
-        entity_id: light.drink_cabinet_led
+# automation:
+#   - alias: Lights On Stairs
+#     trigger:
+#       platform: state
+#       entity_id: binary_sensor.nexa_motion_sensor
+#       to: 'on'
+#     action:
+#       - service: light.turn_on
+#         entity_id: light.drink_cabinet_led   # stairs test
+#       - delay:
+#           minutes: 1
+#       - service: light.turn_off
+#         entity_id: light.drink_cabinet_led
