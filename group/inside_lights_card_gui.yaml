@@ -12,7 +12,7 @@ inside_lights_card:
     - light.isa_ceiling_light
     - light.stefan_ceiling_light
     - light.hallway_window_light
-    - light.e14
+    - light.floorlamp_reading_light
     - light.floorlamp_uplight
     - light.gateway_light_34ce008bfc4b
     - light.kitchen_sink_light

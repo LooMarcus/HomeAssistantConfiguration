@@ -64,9 +64,10 @@ I'm often behind on updating the readme. Ask me about anything!
 * Setting up a Magic mirror with information from Hass.
 * Setting up Floorplan on tablets
 * Turning on lights in stairs on motion, different brightness on different times of day (two Xiaomi pirs on the way and need to buy a Proove dimmer for the lights)
-* Turn kitchen lights smart
+* Turn kitchen lights smart (have started!)
 * Trådfri lights in walk in closet that turns on when you open the door
-* Automate  turning on and off charging of e-bike battery, with notifications
+* Automate turning on and off charging of e-bike battery, with notifications
+
 
 
 ## Recommended links

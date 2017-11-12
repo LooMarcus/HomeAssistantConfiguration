@@ -9,7 +9,7 @@ inside_lights_automations:
     - light.upstairs_hallway_ceiling_light_level
     - light.dining_area_ceiling_light_level
     - light.isa_ceiling_light
-    - light.e14
+    - light.floorlamp_reading_light
     - light.floorlamp_uplight
     - light.gateway_light_34ce008bfc4b
     - light.kitchen_sink_light
