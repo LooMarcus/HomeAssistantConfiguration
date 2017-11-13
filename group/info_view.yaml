@@ -3,8 +3,8 @@ default_view:
   name: Info
   icon: mdi:information-outline
   entities:
-    - device_tracker.isabellas_iphone_6s
-    - device_tracker.stefan_iphone_7
+    # - device_tracker.isabellas_iphone_6s
+    # - device_tracker.stefan_iphone_7
     - device_tracker.isabella
     - device_tracker.stefan
     - group.info_card
@@ -12,3 +12,7 @@ default_view:
     - group.outside_lights_card
     - group.alerts_card
     - group.security_card
+    - input_boolean.stefan_home
+    - input_boolean.isabella_home
+    - device_tracker.marek
+    - device_tracker.anette    

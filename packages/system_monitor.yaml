@@ -5,13 +5,16 @@ homeassistant:
     sensor.process_mosquitto:
       friendly_name: 'Mosquitto'
       hidden: False
+      icon: mdi:message-processing
     sensor.process_homebridge:
       friendly_name: 'Apple HomeKit'
       hidden: False
+      icon: mdi:apple
     sensor.uptime:
       friendly_name: 'Hass Uptime'
     sensor.ha_uptime:
       friendly_name: 'Hass Up Since'
+      icon: mdi:timetable
     
 
 group:

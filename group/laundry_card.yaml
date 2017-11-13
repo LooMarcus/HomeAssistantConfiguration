@@ -1,5 +1,5 @@
 laundry_card:
-  name: Cleaning
+  name: Laundry
   entities:
     - input_select.washing_machine_status
     - sensor.washer

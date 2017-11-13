@@ -99,12 +99,12 @@ automation:
         for:
           minutes: 1
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s
+        entity_id: device_tracker.isabella
         to: 'home'
         for:
           minutes: 10
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7
+        entity_id: device_tracker.stefan
         to: 'home'
         for:
           minutes: 10
@@ -124,8 +124,8 @@ automation:
           state: Clean
         - condition: template
           value_template: >
-            {% if states.automation.send_alert_when_washing_machine_is_finished.last_triggered is not none %}
-              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_when_washing_machine_is_finished.attributes.last_triggered) | int > 1800 %} true {% else %} false
+            {% if states.automation.laundry_notification_on_washing_machine_done.last_triggered is not none %}
+              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.laundry_notification_on_washing_machine_done.attributes.last_triggered) | int > 1800 %} true {% else %} false
               {% endif %}
             {% else %}
             false
@@ -182,15 +182,15 @@ automation:
         actionName: WASHER_NOT_EMPTIED
     action:
       - delay: 0:30
-      - service: notify.ios_isabellas_iphone_6s
-      # - service_template: >
-      #     {% if (is_state('device_tracker.isabellas_iphone_6s', 'home')) and (is_state('device_tracker.stefan_iphone_7', 'home'))  %}
-      #       notify.all
-      #     {% elif is_state('device_tracker.isabellas_iphone_6s', 'home') %}
-      #       notify.ios_isabellas_iphone_6s
-      #     {% elif is_state('device_tracker.stefan_iphone_7', 'home') %}
-      #       notify.ios_stefan_iphone_7
-      #     {% endif %}
+      # - service: notify.ios_isabellas_iphone_6s
+      - service_template: >
+          {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+            notify.all
+          {% elif is_state('device_tracker.isabella', 'home') %}
+            notify.ios_isabellas_iphone_6s
+          {% elif is_state('device_tracker.stefan', 'home') %}
+            notify.ios_stefan_iphone_7
+          {% endif %}
         data:
           message: 'Take care of it now?'
           title: 'Washing machine is done!'

@@ -16,3 +16,4 @@ temp_and_light_card:
     - sensor.temperature_158d000123552c
     - sensor.humidity_158d0001235510
     - sensor.humidity_158d000123552c
+    - sensor.fan_humidity

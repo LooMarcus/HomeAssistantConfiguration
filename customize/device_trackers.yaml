@@ -2,81 +2,78 @@
 ######       DEVICE_TRACKING       ######
 #########################################
 
-    device_tracker.0011325962fb:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.204e7f4bf81b:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.android8c0fc07d9694a5a2:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.android8e3893d2d746d835:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.chromecast:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.grimsan55:
-      hidden: false
-      homebridge_hidden: true
-    device_tracker.hp16eece:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.isa:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.paddan:
-      hidden: false
-      homebridge_hidden: true
-    device_tracker.philipshue:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.routerasuscom:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.shield:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.tivoe800d5bf09d5729:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.0c89109204ff:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.14bb6eceb76a:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.90f1aac2077c:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.00b06c1a907f:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.laptopo5pj4rks:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.isabella_ipad:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.broadlink_rmminib2ea6e:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.0024e40a2868:
-      hidden: true
-      homebridge_hidden: true
-    device_tracker.sonos_3:
-      hidden: true
-      homebridge_hidden: true
+    # device_tracker.synology_nas:
+    #   hidden: true
+       
+    # device_tracker.netgear_router:
+    #   hidden: true
+       
+    # device_tracker.android8c0fc07d9694a5a2:
+    #   hidden: true
+       
+    # device_tracker.nvidia_shield:
+    #   hidden: true
+       
+    # device_tracker.chromecast_bedroom:
+    #   hidden: true
+       
+    # device_tracker.stefan_computer:
+    #   hidden: false
+       
+    # device_tracker.hp_printer:
+    #   hidden: true
+       
+    # device_tracker.isa_computer:
+    #   hidden: true
+       
+    # device_tracker.paddan:
+    #   hidden: false
+       
+    # device_tracker.philipshue:
+    #   hidden: true
+       
+    # device_tracker.router_asus:
+    #   hidden: true
+       
+    # device_tracker.shield_bt:
+    #   hidden: true
+       
+    # device_tracker.livingroom_movie_system:
+    #   hidden: true
+       
+    # device_tracker.bedroom_tv:
+    #   hidden: true
+       
+    # device_tracker.livingroom_tv:
+    #   hidden: true
+       
+    # device_tracker.sannce_ip_camera:
+    #   hidden: true
+       
+    # device_tracker.isa_laptop:
+    #   hidden: true
+       
+    # device_tracker.isabella_ipad:
+    #   hidden: true
+       
+    # device_tracker.broadlink_hallway:
+    #   hidden: true
+       
+    # device_tracker.withings_scale:
+    #   hidden: true
+       
+    # device_tracker.sonos_3:
+    #   hidden: true
+       
 
-    device_tracker.isabellas_iphone_6s:
+    device_tracker.isabella:
       icon: mdi:cellphone-iphone
       homebridge_visible: true
-    device_tracker.isabelliphone6s:
+    device_tracker.isabellas_iphone_6s_wifi:
       icon: mdi:cellphone-iphone
     device_tracker.isabellas_iphone_6s_bt:
       icon: mdi:bluetooth
 
-    device_tracker.stefan_iphone_7:
+    device_tracker.stefan:
       icon: mdi:cellphone-iphone
       homebridge_visible: true

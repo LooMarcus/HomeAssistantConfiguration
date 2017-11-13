@@ -14,6 +14,9 @@ Using [PyCalima](https://github.com/PatrickE94/pycalima) command line sensor to 
 #### batteries
 Template sensors for sensor battery levels and automations to notify on low battery.
 
+#### charging_station
+Automations for turning on the charging station with a button and a reminder to charge my e-bike battery every night. Will redo with more variables when I get a power metering plug.
+
 #### doorbell
 Send notifications and flash lights when someone rings the doorbell. Using a [python script](https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/python_scripts/flash_lights_upstairs_hallway_and_yard.py) to flash the lights and then return to previous state and brightness.
 

@@ -15,6 +15,7 @@
     - service: notify.ios_isabellas_iphone_6s
       data:
         message: "request_location_update"
+    - service: python_script.device_tracker_placeholders
 
 - alias: 'Hass Ready'
   initial_state: 'on'

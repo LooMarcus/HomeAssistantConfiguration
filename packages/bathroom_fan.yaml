@@ -2,7 +2,11 @@ homeassistant:
   customize:
     sensor.fan_temperature:
       homebridge_visible: true
-
+    sensor.fan_light:
+      icon: mdi:theme-light-dark
+    sensor.fan_humidity:
+      icon: mdi:water-percent   
+      
 sensor:
   - platform: template
     sensors:

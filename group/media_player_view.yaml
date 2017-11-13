@@ -15,3 +15,5 @@ media_player_view:
     - media_player.mediacenter_sovrum
     - media_player.mediacenter_vardagsrum
     - media_player.sonos
+    - device_tracker.isabella
+    - device_tracker.stefan

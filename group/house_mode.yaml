@@ -1,0 +1,9 @@
+house_mode:
+  control: hidden
+  view: no
+  icon: mdi:home-heart
+  name: House Modes
+  entities:
+    - input_boolean.vacation_mode
+    - input_boolean.cleaning_day
+    - input_boolean.guest_mode

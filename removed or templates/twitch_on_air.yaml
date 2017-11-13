@@ -1,7 +1,7 @@
   # - alias: Stefan on air
   #   trigger:
   #     platform: state
-  #     entity_id: sensor.grimsan55
+  #     entity_id: sensor.stefan_computer
   #     to: 'streaming'
   #   action:
   #     - service: homeassistant.turn_on
@@ -14,7 +14,7 @@
   # - alias: Stefan off air
   #   trigger:
   #     platform: state
-  #     entity_id: sensor.grimsan55
+  #     entity_id: sensor.stefan_computer
   #     to: 'offline'
   #   action:
   #     - service: homeassistant.turn_off

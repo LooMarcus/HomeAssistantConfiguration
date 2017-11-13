@@ -57,14 +57,14 @@
   condition:
     condition: and
     conditions:
+      - condition: state
+        entity_id: input_select.day_mode
+        state: 'Evening'
       ## Has to be between 22 and 06
       - condition: time
         after: '22:00:00'
         before: '06:00:00'
       ## Someone has to be home
-      - condition: state
-        entity_id: group.persons
-        state: 'home'
       - condition: state
         entity_id: group.persons
         state: 'home'

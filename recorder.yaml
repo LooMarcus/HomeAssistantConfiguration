@@ -45,13 +45,13 @@
       - sensor.yard_storage_door
 
       - device_tracker.isabellas_iphone_6s
-      - device_tracker.isabelliphone6s
+      - device_tracker.isabellas_iphone_6s_wifi
       - sensor.isa_laptop      
       - sensor.isa_computer
       - input_boolean.isabella_home
       - binary_sensor.isabella_home
       - device_tracker.stefan_iphone_7
-      - device_tracker.igrims
-      - device_tracker.grimsan55
+      - device_tracker.stefan_iphone_7_wifi
+      - device_tracker.stefan_computer
       - input_boolean.stefan_home
       - binary_sensor.stefan_home 

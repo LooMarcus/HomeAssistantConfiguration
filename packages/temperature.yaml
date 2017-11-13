@@ -8,7 +8,9 @@ homeassistant:
       homebridge_visible: true
     sensor.humidity_158d0001235510:
       friendly_name: Upstairs Hallway Humidity
+      icon: mdi:water-percent
       homebridge_visible: true
     sensor.humidity_158d000123552c:
       friendly_name: Passage Humidity
       homebridge_visible: true
+      icon: mdi:water-percent      

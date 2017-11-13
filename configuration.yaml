@@ -111,11 +111,11 @@ zone:
     icon: mdi:briefcase
     radius: 300
 # # input_slider: !include_dir_merge_named input_slider/
-# # camera:
-# #   - platform: ffmpeg
-# #     name: Camera Sannce
-# #     input: !secret camera_input
-# #     extra_arguments: -pred 1
+camera:
+  - platform: ffmpeg
+    name: Fireplace Cam
+    input: !secret camera_input
+    extra_arguments: -pred 1
 
 
 # ########################################

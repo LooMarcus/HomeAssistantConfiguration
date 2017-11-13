@@ -57,6 +57,21 @@ goodnight:
       data:
         entity_id: light.bedside_lamp
         brightness: 50
+    - delay: 
+        seconds: 30
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway_light_34ce008bfc4b
+        brightness: 255
+        rgb_color:
+          - 253
+          - 64
+          - 6
+    - delay:
+        minutes: 5
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_34ce008bfc4b
 
 alarm_clock_snooze:
   alias: Alarm Clock Snooze

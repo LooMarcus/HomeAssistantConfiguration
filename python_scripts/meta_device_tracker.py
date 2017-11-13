@@ -29,28 +29,18 @@ metatrackerName = "device_tracker." + data.get('meta_entity')
 # Get current & new state
 newState = hass.states.get(triggeredEntity)
 currentState = hass.states.get(metatrackerName)
+
+# # Create placeholder device_tracker.meta entity
+# hass.states.set(metatrackerName, 'unknown', {
+#     'name': metatrackerName,
+#     'last_update_source': 'placeholder'
+# })
+
+# hass.services.call('notify', 'pushbullet_isa', {"message": currentState, "title": "Meta tracker script"})
+
 # Get New data
 newSource = newState.attributes.get('source_type')
 
-# If GPS source, set new coordinates
-if newSource == 'gps':
-  newLatitude = newState.attributes.get('latitude')
-  newLongitude = newState.attributes.get('longitude')
-  newgpsAccuracy = newState.attributes.get('gps_accuracy')
-# If not, keep last known coordinates
-else:
-  if newSource is not None:
-    newLatitude = currentState.attributes.get('latitude')
-    newLongitude = currentState.attributes.get('longitude')
-    newgpsAccuracy = currentState.attributes.get('gps_accuracy')
-
-# Get Battery
-if newState.attributes.get('battery') is not None:
-  newBattery = newState.attributes.get('battery')
-elif currentState.attributes.get('battery') is not None:
-  newBattery = currentState.attributes.get('battery')
-else:
-  newBattery = None
 
 # Set new state and icon
 # Everything updates 'home'
@@ -61,19 +51,46 @@ if newState.state == 'home':
 elif newState.state == 'on':
     newStatus = 'home'
     newIcon = 'mdi:home-map-marker'
+    newSource = "homekit"
+# See if this is holding up, otherwise remove
+elif newState.state == 'off':
+    newStatus = 'not_home'
+    newIcon = 'mdi:home'
+    newSource = "homekit"
 # only GPS platforms update 'not_home'
 elif newState.state == 'not_home' and newSource == 'gps':
     newStatus = 'not_home'
     newIcon = 'mdi:home'
-# elif newState.state == 'work' and newSource == 'gps':
-#     newStatus = 'work'
-#     newIcon = 'mdi:briefcase'
-# elif newState.state == 'school' and newSource == 'gps':
-#     newStatus = 'school'
-#     newIcon = 'mdi:code-braces'
+elif newState.state == 'work' and newSource == 'gps':
+    newStatus = 'not_home'
+    newIcon = 'mdi:briefcase'
+elif newState.state == 'school' and newSource == 'gps':
+    newStatus = 'not_home'
+    newIcon = 'mdi:code-braces'
 # Otherwise keep old status
 else: 
     newStatus = currentState.state
+
+
+# If GPS source, set new coordinates
+if newSource == 'gps':
+    newLatitude = newState.attributes.get('latitude')
+    newLongitude = newState.attributes.get('longitude')
+    newgpsAccuracy = newState.attributes.get('gps_accuracy')
+# If not, keep last known coordinates
+else:
+    if newSource is not None:
+        newLatitude = currentState.attributes.get('latitude')
+        newLongitude = currentState.attributes.get('longitude')
+        newgpsAccuracy = currentState.attributes.get('gps_accuracy')
+
+# # Get Battery
+if newState.attributes.get('battery') is not None:
+    newBattery = newState.attributes.get('battery')
+elif currentState.attributes.get('battery') is not None:
+    newBattery = currentState.attributes.get('battery')
+else:
+    newBattery = None
 
 # Create device_tracker.meta entity
 hass.states.set(metatrackerName, newStatus, {
@@ -87,3 +104,6 @@ hass.states.set(metatrackerName, newStatus, {
     'last_update_source': newState.name 
 })
 
+
+# done = hass.states.get(metatrackerName)
+# hass.services.call('notify', 'pushbullet_isa', {"message": done, "title": "Meta tracker script done"})

@@ -17,7 +17,7 @@ timeOfDay = int("{}{}".format(now.hour, now.minute))
 weekday = datetime.date(now.year, now.month, now.day).weekday()
 workday = hass.states.get('binary_sensor.workday_sensor')
 
-hass.services.call('notify', 'pushbullet_isa', {"message": test, "title": test})
+# hass.services.call('notify', 'pushbullet_isa', {"message": "Lights are running", "title": "Vacation!"})
 
 if guestMode is 'off':
     # if weekday < 5 # weekday

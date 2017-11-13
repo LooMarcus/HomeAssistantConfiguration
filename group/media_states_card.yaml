@@ -4,7 +4,7 @@ media_states_card:
   - sensor.samsung65
   - sensor.samsung49
   - sensor.movie_system
-  - sensor.chromecast
+  - sensor.chromecast_bedroom
   - sensor.shield
   - sensor.shield_2
   - sensor.sonos

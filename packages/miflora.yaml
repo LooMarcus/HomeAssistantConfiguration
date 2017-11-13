@@ -2,9 +2,14 @@ homeassistant:
   customize:
     sensor.monstera_temperature:
       homebridge_visible: true
+      icon: mdi:thermometer
     sensor.palm_temperature:
       homebridge_visible: true
-
+      icon: mdi:thermometer      
+    sensor.palm_light_intensity:
+      icon: mdi:theme-light-dark
+    sensor.monstera_light_intensity:
+      icon: mdi:theme-light-dark
 
 sensor:
   - platform: miflora

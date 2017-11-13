@@ -4,13 +4,13 @@
 
     switch.__switch_2_0:
       hidden: true
-      homebridge_hidden: true
+       
     switch.door:
       hidden: true
-      homebridge_hidden: true
+       
     switch.motion_sensor:
       hidden: true
-      homebridge_hidden: true
+       
     switch.roomba:
       icon: mdi:roomba
     switch.air_cleaner_quiet_auto:

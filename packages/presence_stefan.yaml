@@ -22,13 +22,13 @@ input_boolean:
 #         platform: 'state'
 #         to_state: 'home'
 #         # Stefan Home -> likely wifi reports him as home
-#       - entity_id: 'device_tracker.igrims'
+#       - entity_id: 'device_tracker.stefan_iphone_7_wifi'
 #         prob_given_true: 0.7
 #         prob_given_false: 0.1
 #         platform: 'state'
 #         to_state: 'home'
 #         # Stefan Home -> Very likely his computer is on, but sometimes he leaves it on
-#       - entity_id: 'device_tracker.grimsan55'
+#       - entity_id: 'device_tracker.stefan_computer'
 #         prob_given_true: 0.99
 #         prob_given_false: 0.3
 #         platform: 'state'
@@ -54,7 +54,7 @@ automation:
         entity_id: input_boolean.stefan_home
         to: 'on'
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.igrims
+        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
         to: 'home'
       - platform: homeassistant
         event: start
@@ -71,7 +71,7 @@ automation:
         entity_id: input_boolean.stefan_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.igrims
+        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
         to: 'not_home'
         for:
           minutes: 10

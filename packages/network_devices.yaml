@@ -18,12 +18,12 @@ homeassistant:
       icon: mdi:printer
     sensor.nas:
       icon: mdi:server
-    sensor.chromecast:
+    sensor.chromecast_bedroom:
       icon: mdi:cast
     sensor.shield:
       icon: mdi:android
-    sensor.shield_2:
-      icon: mdi:android
+    # sensor.shield_2:
+    #   icon: mdi:android
     sensor.ipad:
       icon: mdi:tablet-ipad
     sensor.movie_system:
@@ -57,40 +57,40 @@ sensor:
     sensors:
         nas:
           friendly_name: 'Synology NAS'
-          value_template: "{{ 'Online' if is_state('device_tracker.0011325962fb', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.synology_nas', 'home') else 'Offline' }}"
         samsung65:
           friendly_name: 'Livingroom TV'
-          value_template: "{{ 'Online' if is_state('device_tracker.90f1aac2077c', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.livingroom_tv', 'home') else 'Offline' }}"
         samsung49:
           friendly_name: 'Bedroom TV'
-          value_template: "{{ 'Online' if is_state('device_tracker.14bb6eceb76a', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.bedroom_tv', 'home') else 'Offline' }}"
         movie_system:
-          friendly_name: 'Home Movie System'
-          value_template: "{{ 'Online' if is_state('device_tracker.0c89109204ff', 'home') else 'Offline' }}"
+          friendly_name: 'Livingroom Movie System'
+          value_template: "{{ 'Online' if is_state('device_tracker.livingroom_movie_system', 'home') else 'Offline' }}"
         netgear_router:
           friendly_name: 'Netgear Router'
-          value_template: "{{ 'Online' if is_state('device_tracker.204e7f4bf81b', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.netgear_router', 'home') else 'Offline' }}"
         shield:
           friendly_name: 'NVidia Shield'
-          value_template: "{{ 'Online' if is_state('device_tracker.android8e3893d2d746d835', 'home') else 'Offline' }}"
-        shield_2:
-          friendly_name: 'NVidia Shield 2'
-          value_template: "{{ 'Online' if is_state('device_tracker.shield', 'home') else 'Offline' }}"
-        chromecast:
+          value_template: "{{ 'Online' if is_state('device_tracker.nvidia_shield', 'home') else 'Offline' }}"
+        # shield_2:
+        #   friendly_name: 'NVidia Shield 2'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.shield', 'home') else 'Offline' }}"
+        chromecast_bedroom:
           friendly_name: 'Chromecast Bedroom'
-          value_template: "{{ 'Online' if is_state('device_tracker.chromecast', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.chromecast_bedroom', 'home') else 'Offline' }}"
         stefan_computer:
           friendly_name: 'Stefan computer'
-          value_template: "{{ 'Online' if is_state('device_tracker.grimsan55', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.stefan_computer', 'home') else 'Offline' }}"
         isa_computer:
           friendly_name: 'Isas computer'
-          value_template: "{{ 'Online' if is_state('device_tracker.isa', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.isa_computer', 'home') else 'Offline' }}"
         isa_laptop:
           friendly_name: 'Isas laptop'
-          value_template: "{{ 'Online' if is_state('device_tracker.laptopo5pj4rks', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.isa_laptop', 'home') else 'Offline' }}"
         printer:
           friendly_name: 'HP Printer'
-          value_template: "{{ 'Online' if is_state('device_tracker.hp16eece', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.hp_printer', 'home') else 'Offline' }}"
         ipad:
           friendly_name: 'iPad'
           value_template: "{{ 'Online' if is_state('device_tracker.paddan', 'home') else 'Offline' }}"
@@ -102,37 +102,37 @@ sensor:
           value_template: "{{ 'Online' if is_state('device_tracker.philipshue', 'home') else 'Offline' }}"
         asus_router:
           friendly_name: 'Asus Router'
-          value_template: "{{ 'Online' if is_state('device_tracker.routerasuscom', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.router_asus', 'home') else 'Offline' }}"
         ip_camera:
           friendly_name: 'IP Camera'
-          value_template: "{{ 'Online' if is_state('device_tracker.00b06c1a907f', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.sannce_ip_camera', 'home') else 'Offline' }}"
         ir_blaster:
           friendly_name: 'Broadlink IR Blaster Hallway'
-          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminib2ea6e', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_hallway', 'home') else 'Offline' }}"
         withings_scale:
           friendly_name: 'Withings scale'
-          value_template: "{{ 'Online' if is_state('device_tracker.0024e40a2868', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.withings_scale', 'home') else 'Offline' }}"
         ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
-          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminicce9a4', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
         ir_blaster_livingroom:
           friendly_name: 'Broadlink IR Blaster Livingroom'
-          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_rmminiccec6f', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
         ikea_gateway:
           friendly_name: 'Ikea Trådfri Gateway'
-          value_template: "{{ 'Online' if is_state('device_tracker.gwa0cc2bfd2145', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.tradfri_gateway', 'home') else 'Offline' }}"
         xiaomi_gateway:
           friendly_name: 'Xiaomi Gateway'
-          value_template: "{{ 'Online' if is_state('device_tracker.lumigatewayv3_miio57536510', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.xiaomi_gateway', 'home') else 'Offline' }}"
         sonos:
           friendly_name: 'Sonos'
-          value_template: "{{ 'Online' if is_state('device_tracker.sonoszp', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.sonos_play_3', 'home') else 'Offline' }}"
         magic_mirror_rpi:
           friendly_name: 'Magic Mirror Rpi'
-          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi_2', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.magic_mirror_rpi', 'home') else 'Offline' }}"
         hass_rpi:
           friendly_name: 'Hass Rpi'
-          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi', 'home') else 'Offline' }}"
+          value_template: "{{ 'Online' if is_state('device_tracker.hass_raspberry_pi', 'home') else 'Offline' }}"
 
 automation:
   - alias: 'Device Status'

@@ -7,11 +7,11 @@ I'm often behind on updating the readme. Ask me about anything!
 ## Hubs
 * 433 mhz: RFXTRX433e
 * Zwave: Aeon Labs Z Wave Stick (GEN 5)
-* Zigbee: Xiaomi, Hue and Trådfri gateways
+* Zigbee: Xiaomi and Hue gateways
 
 ## Devices
 * Hue lights
-* Trådfri lights
+* Trådfri lights, dimmers and remotes via Hue bridge
 * Nexa and Proove plugs/dimmers (433mhz)
 * Ios-devices (iPhones, Apple watch, iPad)
 * Old Samsung Galaxy tablet (currently not used)

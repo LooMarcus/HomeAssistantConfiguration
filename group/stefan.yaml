@@ -5,7 +5,7 @@ stefan:
     - sensor.igrims_battery_level
     - sensor.igrims_battery_state
     - sensor.stefan_computer  
-    - device_tracker.igrims
+    - device_tracker.stefan_iphone_7_wifi
     - device_tracker.stefan_iphone_7
-    - device_tracker.stefansplewatch
+    - device_tracker.stefans_apple_watch
     - binary_sensor.stefan_home

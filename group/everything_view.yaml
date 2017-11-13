@@ -9,3 +9,5 @@ everything_view:
     - group.all_zwave
     - group.all_scripts
     - group.all_plants
+    - device_tracker.isabella
+    - device_tracker.stefan

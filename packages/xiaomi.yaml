@@ -10,7 +10,8 @@ homeassistant:
       friendly_name: Xiaomi Gateway Nightlight
       homebridge_visible: false
     sensor.illumination_34ce008bfc4b:
-      friendly_name: Xiaomi Gateway Lumen
+      friendly_name: Upstairs Hallway Xiaomi Gateway
+      icon: mdi:theme-light-dark
 
 alert: 
   bathroom_cabinet_door_open:

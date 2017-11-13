@@ -37,26 +37,25 @@ automation:
         entity_id: input_boolean.doorbell_ringing
         to: 'on'
     action:
-      - service_template: >
-          {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
-            notify.all
-          {% elif is_state('device_tracker.isabella', 'home') %}
-            notify.ios_isabellas_iphone_6s
-          {% elif is_state('device_tracker.stefan', 'home') %}
-            notify.ios_stefan_iphone_7
-          {% endif %}
-        data:
-          title: 'Doorbell ringing!'
-          message: 'Someone is at the front door'
+      # - service_template: >
+      #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+      #       notify.all
+      #     {% elif is_state('device_tracker.isabella', 'home') %}
+      #       notify.ios_isabellas_iphone_6s
+      #     {% elif is_state('device_tracker.stefan', 'home') %}
+      #       notify.ios_stefan_iphone_7
+      #     {% endif %}
+      #   data:
+      #     title: 'Doorbell ringing!'
+      #     message: 'Someone is at the front door'
       - service: notify.pushbullet_isa
         data:
           title: 'Doorbell ringing!'
           message: 'Someone is at the front door'
-          target: 'device/isadator'
-      # - service: notify.pushbullet_stefan
-      #   data:
-      #     title: 'Doorbell ringing!'
-      #     message: 'Someone is at the front door'
+      - service: notify.pushbullet_stefan
+        data:
+          title: 'Doorbell ringing!'
+          message: 'Someone is at the front door'
       - service: xiaomi_aqara.play_ringtone
         data:
           gw_mac: !secret xiaomi_mac

@@ -13,6 +13,7 @@ homeassistant:
       hidden: true
     sensor.illumination_158d0001a66291:
       friendly_name: Isas Room Lux
+      icon: mdi:theme-light-dark
     sensor.upstairs_litterbox:
       extra_badge:
         entity_id: sensor.upstairs_litterbox_visits
@@ -146,7 +147,7 @@ automation:
         above: '1'
       # or ten minutes after I get home
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s
+        entity_id: device_tracker.isabella
         to: 'home'
         for:
           minutes: 10
@@ -159,7 +160,7 @@ automation:
           before: '23:00:00'
         # Don't notify if I'm not home
         - condition: state
-          entity_id: device_tracker.isabellas_iphone_6s
+          entity_id: device_tracker.isabella
           state: 'home'
         # Notify only if only more than two visits (for when triggered when I get home)
         - condition: numeric_state

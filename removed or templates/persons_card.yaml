@@ -9,6 +9,6 @@ persons_card:
   - sensor.isa
   # - device_tracker.isabella_isaowntracks
   - device_tracker.isabellas_iphone_6s
-  - device_tracker.isabelliphone6s
+  - device_tracker.isabellas_iphone_6s_wifi
   - sensor.stefan
   - device_tracker.stefansiphone

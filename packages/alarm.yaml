@@ -1,13 +1,18 @@
 homeassistant:
   customize:
     alarm_control_panel.home_alarm:
-      homebridge_visible: true    
+      homebridge_visible: true 
+
 alarm_control_panel:
   - platform: manual
     name: Home Alarm
     # code:
-    armed_home:
+    pending_time: 0
+    disarm_after_trigger: 'false'
+    armed_away:
       pending_time: 0
+    triggered:
+      pending_time: 0   
 
 
 automation:
@@ -20,7 +25,7 @@ automation:
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
-    - service: notify.ios_isabellas_iphone_6s
+    - service: notify.pushbullet_isa
       data_template:
         title: 'Alarm Armed Away'
         message: >
@@ -30,16 +35,15 @@ automation:
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: device_tracker.stefan_iphone_7
-      to: 'not_home'
+      entity_id: group.persons
+      to: 'home'
   condition:
-    - condition: state
-      entity_id: device_tracker.isabellas_iphone_6s
-      state: 'home'
+    condition: template
+    value_template: '{{ states.alarm_control_panel.home_alarm.state != armed_home}}'
   action:
     - service: alarm_control_panel.alarm_arm_home
       entity_id: alarm_control_panel.home_alarm
-    - service: notify.ios_isabellas_iphone_6s
+    - service: notify.pushbullet_isa
       data_template:
         title: 'Alarm Armed Home'
         message: >
@@ -48,8 +52,9 @@ automation:
 - alias: 'Alarm Arm Night'
   initial_state: 'on'
   trigger:
-    platform: time
-    at: '00:01:00'
+    platform: state
+    entity_id: input_select.day_mode
+    to: 'Night'
   action:
     - service: alarm_control_panel.alarm_arm_night
       entity_id: alarm_control_panel.home_alarm
@@ -61,15 +66,15 @@ automation:
       entity_id: group.persons
       to: 'home'
     - platform: time
-      at: '06:00:00'
+      at: '06:40:00'
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
-    - service: notify.ios_isabellas_iphone_6s
-      data_template:
-        title: 'Alarm Disarmed'
-        message: >
-          '{{ trigger.to_state.last_changed }}'
+    # - service: notify.pushbullet_isa
+    #   data_template:
+    #     title: 'Alarm Disarmed'
+    #     message: >
+    #       '{{ trigger.to_state.last_changed }}'
 
 - alias: 'Alarm Trigger While Armed Away'
   initial_state: 'on'

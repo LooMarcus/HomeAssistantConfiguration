@@ -33,7 +33,7 @@ input_boolean:
 #         platform: 'state'
 #         to_state: 'home'
 #         # If I'm home -> likely wifi reports me as home        
-#       - entity_id: 'device_tracker.isabelliphone6s'
+#       - entity_id: 'device_tracker.isabellas_iphone_6s_wifi'
 #         prob_given_true: 0.7
 #         prob_given_false: 0.1
 #         platform: 'state'
@@ -72,7 +72,7 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'on'
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s, device_tracker.isabellas_iphone_6s_2
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabellas_iphone_6s_wifi, device_tracker.isabellas_iphone_6s_bt
         to: 'home'
       - platform: homeassistant
         event: start
@@ -89,7 +89,7 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabelliphone6s, device_tracker.isabellas_iphone_6s_2
+        entity_id: device_tracker.isabellas_iphone_6s
         to: 'not_home'
         for:
           minutes: 10
