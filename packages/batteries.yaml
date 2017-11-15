@@ -377,7 +377,7 @@ sensor:
                         {% endif %}'
         entity_id: sensor.temperature_158d000123552c
 
-              ### Battery level for Upstairs Hallway Temperature Sensor ###
+      ### Battery level for Upstairs Hallway Temperature Sensor ###
       battery_upstairs_hallway_temperature:
         friendly_name: 'Upstairs Hallway Temperature Battery'
         value_template: "{{ states.sensor.temperature_158d0001235510.attributes.battery_level|default(-1)|int if states.sensor.temperature_158d0001235510 is not none }}"
@@ -407,6 +407,186 @@ sensor:
                         {% endif %}'
         entity_id: sensor.temperature_158d0001235510
 
+      ### Battery level for Downstairs Bathroom Temperature Sensor ###
+      battery_downstairs_bathroom_temperature:
+        friendly_name: 'Downstairs Bathroom Temperature Battery'
+        value_template: "{{ states.sensor.temperature_158d0001a2a899.attributes.battery_level|default(-1)|int if states.sensor.temperature_158d0001a2a899 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.sensor.temperature_158d0001a2a899.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.sensor.temperature_158d0001a2a899.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: sensor.temperature_158d0001a2a899
+
+
+      ### Battery level for Pir1 Sensor ###
+      battery_pir1:
+        friendly_name: 'Pir1 Battery'
+        value_template: "{{ states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level|default(-1)|int if states.binary_sensor.motion_sensor_158d000165ff1f is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.motion_sensor_158d000165ff1f.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: binary_sensor.motion_sensor_158d000165ff1f
+
+      ### Battery level for Pir2 Sensor ###
+      battery_pir2:
+        friendly_name: 'Pir2 Battery'
+        value_template: "{{ states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level|default(-1)|int if states.binary_sensor.motion_sensor_158d0001a66256 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.motion_sensor_158d0001a66256.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: binary_sensor.motion_sensor_158d0001a66256
+
+      ### Battery level for Switch 1 ###
+      battery_switch1:
+        friendly_name: 'Switch 1 Battery'
+        value_template: "{{ states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d0001a5e3c4 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d0001a5e3c4.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: binary_sensor.switch_158d0001a5e3c4
+
+      ### Battery level for Switch 2 ###
+      battery_switch2:
+        friendly_name: 'Switch 2 Battery'
+        value_template: "{{ states.binary_sensor.switch_158d00016c0a49.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d00016c0a49 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d00016c0a49.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d00016c0a49.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: binary_sensor.switch_158d00016c0a49
+
+      ### Battery level for Switch 3 ###
+      battery_switch3:
+        friendly_name: 'Switch 3 Battery'
+        value_template: "{{ states.binary_sensor.switch_158d00019d674a.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d00019d674a is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d00019d674a.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d00019d674a.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+        entity_id: binary_sensor.switch_158d00019d674a
 
       ### Battery level for Upstairs Hallway Pir ###
       # battery_upstairs_hallway_pir_sensor:
@@ -568,12 +748,18 @@ group:
       - sensor.battery_balcony_door_sensor
       - sensor.battery_bathroom_cabinet_door_sensor
       - sensor.battery_bed_switch
+      - sensor.battery_switch1
+      - sensor.battery_switch2
+      - sensor.battery_switch3
       - sensor.battery_dlitter_pir_sensor
-      - sensor.battery_hallway_glass_door_sensor
       - sensor.battery_ulitter_pir_sensor
+      - sensor.battery_pir1
+      - sensor.battery_pir2      
+      - sensor.battery_hallway_glass_door_sensor
       - sensor.battery_yard_storage_door_sensor
       - sensor.battery_upstairs_hallway_temperature
       - sensor.battery_passage_temperature
+      - sensor.battery_downstairs_bathroom_temperature
 
 # alert: 
 # ### Alert via iOS notification when Bedroom sensor battery < 10% ###
@@ -636,11 +822,29 @@ automation:
       - platform: numeric_state
         entity_id: sensor.battery_yard_storage_door_sensor
         below: 10
+      # - platform: numeric_state
+      #   entity_id: sensor.stefan_dimmer
+      #   below: 10
+      # - platform: numeric_state
+      #   entity_id: sensor.tradfri_wireless_dimmer
+      #   below: 10
       - platform: numeric_state
-        entity_id: sensor.stefan_dimmer
+        entity_id: sensor.battery_pir1
         below: 10
       - platform: numeric_state
-        entity_id: sensor.tradfri_wireless_dimmer
+        entity_id: sensor.battery_pir2
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_downstairs_bathroom_temperature
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_switch1
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_switch2
+        below: 10
+      - platform: numeric_state
+        entity_id: sensor.battery_switch3
         below: 10
     action:
       - service: notify.ios_isabellas_iphone_6s

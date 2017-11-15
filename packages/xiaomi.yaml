@@ -1,10 +1,24 @@
 homeassistant:
   customize:
-    binary_sensor.switch_158d0001243520:
-      friendly_name: Bed Switch
-   
+
+    binary_sensor.switch_158d0001a5e3c4:
+      friendly_name: Switch 1
+    binary_sensor.switch_158d00016c0a49:
+      friendly_name: Switch 2
+    binary_sensor.switch_158d00019d674a:
+      friendly_name: Switch 3
     binary_sensor.door_window_sensor_158d0001a3e3a4:
       friendly_name: Bathroom Cabinet Door
+    
+    binary_sensor.motion_sensor_158d000165ff1f:
+      friendly_name: Pir 1
+    sensor.illumination_158d000165ff1f:
+      friendly_name: Pir 1 lux      
+    binary_sensor.motion_sensor_158d0001a66256:
+      friendly_name: Pir 2
+    sensor.illumination_158d0001a66256:
+      friendly_name: Pir 2 lux
+
 
     light.gateway_light_34ce008bfc4b:
       friendly_name: Xiaomi Gateway Nightlight
@@ -12,6 +26,9 @@ homeassistant:
     sensor.illumination_34ce008bfc4b:
       friendly_name: Upstairs Hallway Xiaomi Gateway
       icon: mdi:theme-light-dark
+
+
+
 
 alert: 
   bathroom_cabinet_door_open:
@@ -23,40 +40,3 @@ alert:
     skip_first: True
     notifiers:
       - ios_isabellas_iphone_6s
-
-automation:
-  - alias: Light Switch Bedroom Bedside Light
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001243520
-        click_type: single
-    action:
-      service: light.toggle
-      entity_id: light.bedside_lamp
-
-  - alias: Light Switch Bedroom Ceiling Light
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001243520
-        click_type: double
-    action:
-      service: light.toggle
-      entity_id: light.bedroom_ceiling_light
-
-  - alias: Light Switch Bedroom All Lights
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001243520
-        click_type: long_click_press
-    action:
-      service: homeassistant.turn_off
-      entity_id: group.inside_lights_automations

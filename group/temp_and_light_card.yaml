@@ -1,19 +1,31 @@
 temp_and_light_card:
   name: Temperature and light conditions
   entities:
-    - sensor.illumination_34ce008bfc4b
-    - sensor.illumination_158d0001a66291
-    - sensor.illumination_158d0001a24ef1
-    - sensor.upstairs_hallway_pir_luminance
-    - sensor.fan_light    
-    - sensor.passage_pir_luminance
-    - sensor.palm_light_intensity
-    - sensor.monstera_light_intensity
-    - sensor.palm_temperature
-    - sensor.monstera_temperature
-    - sensor.fan_temperature
-    - sensor.temperature_158d0001235510
+    # Passage
     - sensor.temperature_158d000123552c
-    - sensor.humidity_158d0001235510
     - sensor.humidity_158d000123552c
+    - sensor.passage_pir_luminance
+    # Upstairs hallway
+    - sensor.temperature_158d0001235510
+    - sensor.humidity_158d0001235510
+    - sensor.illumination_34ce008bfc4b
+    - sensor.upstairs_hallway_pir_luminance
+    # Upstairs bathroom
+    - sensor.fan_light    
+    - sensor.fan_temperature  
     - sensor.fan_humidity
+    # Downstairs bathroom
+    - sensor.temperature_158d0001a2a899
+    - sensor.humidity_158d0001a2a899
+    # Isas room
+    - sensor.illumination_158d0001a66291
+    # Downstairs litterbox
+    - sensor.illumination_158d0001a24ef1
+    # pir 1+2
+    - sensor.illumination_158d000165ff1f
+    - sensor.illumination_158d0001a66256
+    # Miflora
+    - sensor.palm_temperature
+    - sensor.palm_light_intensity
+    - sensor.monstera_temperature
+    - sensor.monstera_light_intensity

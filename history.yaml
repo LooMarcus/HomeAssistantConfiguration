@@ -5,7 +5,7 @@
       - sun
       # - calendar
       - sensor
-
+      
   include:
     domains:
       - light
@@ -39,7 +39,6 @@
       - sensor.vacuumed_today
       - sensor.water_heater_flood
       - sensor.yard_storage_door
-
       - device_tracker.isabellas_iphone_6s
       - device_tracker.isabellas_iphone_6s_wifi
       - sensor.isa_laptop      

@@ -2,6 +2,7 @@ house_view:
   view: yes
   icon: mdi:home-heart
   entities:
+    - group.camera
     - group.house_mode
     - group.air
     - group.laundry_card
@@ -9,6 +10,5 @@ house_view:
     - group.temp_and_light_card    
     - group.cat_card
     - group.plant_card
-    - camera.fire_camera
     - device_tracker.isabella
     - device_tracker.stefan

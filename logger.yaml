@@ -15,7 +15,7 @@ logs:
   homeassistant.components.sensor.command_line: fatal
   homeassistant.components.sensor.miflora: error
   homeassistant.components.binary_sensor: debug  
-  homeassistant.components.python_script: error
+  homeassistant.components.python_script: debug
   homeassistant.components.api: error
   homeassistant.components.device_tracker: warn
   homeassistant.components.discovery: warn
@@ -24,12 +24,12 @@ logs:
   # homeassistant.components.sensor.darksky: error
   homeassistant.components.zwave: error
   homeassistant.components.zwave.util: error
-  homeassistant.components.rfxtrx: debug
-  homeassistant.components.notify: debug
+  homeassistant.components.rfxtrx: error
+  homeassistant.components.notify: error
   # homeassistant.helpers.script: info
   homeassistant.components.light: warn
   homeassistant.helpers.entity: error
   # homeassistant.components.ffmpeg: debug
   # homeassistant.components.ffmpeg_motion: debug
-  homeassistant.components.xiaomi: warning
+  homeassistant.components.xiaomi: debug
   root: warn

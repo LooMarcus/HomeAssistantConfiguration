@@ -6,6 +6,10 @@ homeassistant:
     sensor.temperature_158d000123552c:
       friendly_name: Passage Temperature
       homebridge_visible: true
+    sensor.temperature_158d0001a2a899:
+      friendly_name: Downstairs Bathroom Temperature
+      icon: mdi:water-percent
+      homebridge_visible: true
     sensor.humidity_158d0001235510:
       friendly_name: Upstairs Hallway Humidity
       icon: mdi:water-percent
@@ -13,4 +17,8 @@ homeassistant:
     sensor.humidity_158d000123552c:
       friendly_name: Passage Humidity
       homebridge_visible: true
-      icon: mdi:water-percent      
+      icon: mdi:water-percent
+    sensor.humidity_158d0001a2a899:
+      friendly_name: Downstairs Bathroom Humidity
+      homebridge_visible: true
+      icon: mdi:water-percent

@@ -43,6 +43,8 @@ goodmorning:
         entity_id: light.bedside_lamp
         brightness: 60
         transition: 30
+    - delay:
+        seconds: 180
     - service: script.morning_news
 
 goodnight:

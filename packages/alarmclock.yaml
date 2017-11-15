@@ -10,12 +10,14 @@ input_boolean:
 input_number:
   alarm_hour:
     name: Hour
+    initial: 06
     icon: mdi:timer
     min: 0
     max: 23
     step: 1
   alarm_minutes:
     name: Minutes
+    initial: 45
     icon: mdi:timer
     min: 0
     max: 59

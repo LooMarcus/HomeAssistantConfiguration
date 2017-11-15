@@ -11,6 +11,7 @@ automation:
         entity_id: input_boolean.test
         to: 'on'
     action:
-      - service: python_script.flash_light
-        data_template:
-          entity_id: light.bedside_lamp
+
+      # - service: python_script.flash_light
+      #   data_template:
+      #     entity_id: light.bedside_lamp
