@@ -22,3 +22,4 @@ homeassistant:
       friendly_name: Downstairs Bathroom Humidity
       homebridge_visible: true
       icon: mdi:water-percent
+

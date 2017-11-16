@@ -1,0 +1,6 @@
+  stairs_lights:
+    name: Stairs Spotlights
+    icon: mdi:spotlight-beam
+    entities:
+      - light.stairs_bottom_spot
+      - light.stairs_top_spot

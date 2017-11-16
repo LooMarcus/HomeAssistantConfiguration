@@ -4,15 +4,16 @@ inside_lights_card:
   entities:
     - light.bedroom_ceiling_light
     - light.bedside_lamp
+    - light.dining_area_ceiling_light_level  
+    - light.floorlamp_reading_light
+    - light.floorlamp_uplight
+    - light.hallway_window_light
+    - light.isa_ceiling_light
     - light.living_room_ceiling_light_level
     - light.living_room_spotlights_level
     - light.passage_ceiling_spotlights_level
-    - light.upstairs_hallway_ceiling_light_level
-    - light.dining_area_ceiling_light_level
-    - light.isa_ceiling_light
+    - group.stairs_lights
     - light.stefan_ceiling_light
-    - light.hallway_window_light
-    - light.floorlamp_reading_light
-    - light.floorlamp_uplight
+    - light.upstairs_hallway_ceiling_light_level
+    # - light.kitchen_sink_light
     - light.gateway_light_34ce008bfc4b
-    - light.kitchen_sink_light

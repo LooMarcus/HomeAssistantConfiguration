@@ -11,6 +11,7 @@ device_states_card:
   - sensor.ir_blaster_livingroom
   - sensor.withings_scale
   - sensor.hue_hub
+  - sensor.milight_hub
   - sensor.ikea_gateway
   - sensor.xiaomi_gateway
   - sensor.hass_rpi

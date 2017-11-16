@@ -9,16 +9,6 @@ homeassistant:
       friendly_name: Switch 3
     binary_sensor.door_window_sensor_158d0001a3e3a4:
       friendly_name: Bathroom Cabinet Door
-    
-    binary_sensor.motion_sensor_158d000165ff1f:
-      friendly_name: Pir 1
-    sensor.illumination_158d000165ff1f:
-      friendly_name: Pir 1 lux      
-    binary_sensor.motion_sensor_158d0001a66256:
-      friendly_name: Pir 2
-    sensor.illumination_158d0001a66256:
-      friendly_name: Pir 2 lux
-
 
     light.gateway_light_34ce008bfc4b:
       friendly_name: Xiaomi Gateway Nightlight

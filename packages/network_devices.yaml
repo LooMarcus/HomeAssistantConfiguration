@@ -35,7 +35,7 @@ homeassistant:
     sensor.ikea_gateway:
       icon: mdi:google-keep
     sensor.xiaomi_gateway:
-      icon: mdi:google-keep
+      icon: mdi:circle-outline
     sensor.ip_camera:
       icon: mdi:webcam
     sensor.galaxy_tab:
@@ -51,10 +51,17 @@ homeassistant:
     sensor.withings_scale:
       icon: mdi:scale-bathroom
     sensor.sonos_3:
-      icon: mdi:speaker-wireless
+      icon: mdi:speaker
+    sensor.milight_hub:
+      icon: mdi:google-keep
+      
+
 sensor:
   - platform: template
     sensors:
+        milight_hub:
+          friendly_name: 'Milight Hub'
+          value_template: "{{ 'Online' if is_state('device_tracker.milight_controller', 'home') else 'Offline' }}"
         nas:
           friendly_name: 'Synology NAS'
           value_template: "{{ 'Online' if is_state('device_tracker.synology_nas', 'home') else 'Offline' }}"
@@ -136,7 +143,7 @@ sensor:
 
 automation:
   - alias: 'Device Status'
-    hide_entity: True
+    # hide_entity: True
     trigger:
          - platform: state
            entity_id:
@@ -149,7 +156,8 @@ automation:
              - sensor.ir_blaster_bedroom
              - sensor.ir_blaster_livingroom
              - sensor.xiaomi_gateway
-             - sensor.ikea_gateway
+            #  - sensor.ikea_gateway
+             - sensor.milight_hub
            to: 'offline'
            for:
              minutes: 5

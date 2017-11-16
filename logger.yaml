@@ -11,11 +11,11 @@ logs:
   homeassistant.core: warn
   homeassistant.components.automation: error
   homeassistant.components.switch.broadlink: debug  
-  homeassistant.components.switch: debug  
+  # homeassistant.components.switch: debug  
   homeassistant.components.sensor.command_line: fatal
   homeassistant.components.sensor.miflora: error
-  homeassistant.components.binary_sensor: debug  
-  homeassistant.components.python_script: debug
+  # homeassistant.components.binary_sensor: debug  
+  # homeassistant.components.python_script: debug
   homeassistant.components.api: error
   homeassistant.components.device_tracker: warn
   homeassistant.components.discovery: warn
@@ -31,5 +31,5 @@ logs:
   homeassistant.helpers.entity: error
   # homeassistant.components.ffmpeg: debug
   # homeassistant.components.ffmpeg_motion: debug
-  homeassistant.components.xiaomi: debug
+  # homeassistant.components.xiaomi: debug
   root: warn

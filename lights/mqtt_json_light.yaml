@@ -1,0 +1,13 @@
+  - name: 'Stairs Bottom Spot'
+    command_topic: milight/0x2/rgbw/1 
+    state_topic: milight/updates/0x2/rgbw/1 
+    <<: &MILIGHT_PARAMS
+      platform: mqtt_json
+      color_temp: true
+      rgb: true
+      brightness: true
+
+  - name: "Stairs Top Spot"
+    command_topic: milight/0x1/rgbw/1 
+    state_topic: milight/updates/0x1/rgbw/1 
+    <<: *MILIGHT_PARAMS

@@ -19,6 +19,7 @@ script:
   morning_news:
     alias: Morning news
     sequence:
+      # tood: turn on tv with ir
       - service: script.turn_on_shield
       - service: script.svtplay_play
         data:

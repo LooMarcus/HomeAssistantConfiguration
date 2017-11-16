@@ -13,6 +13,8 @@ security_card:
     - sensor.kitchen_movement
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
+    - binary_sensor.motion_sensor_158d000165ff1f
+    - binary_sensor.motion_sensor_158d0001a66256
     - sensor.yard_storage_door
     - sensor.hallway_glass_door
     - sensor.water_heater

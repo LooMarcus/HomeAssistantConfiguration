@@ -11,7 +11,12 @@ automation:
         entity_id: input_boolean.test
         to: 'on'
     action:
-
-      # - service: python_script.flash_light
-      #   data_template:
-      #     entity_id: light.bedside_lamp
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          message: Fire camera motion
+          data:
+            attachment:
+              content-type: jpeg
+            push:
+              category: camera
+            entity_id: camera.fireplace_cam
