@@ -1,9 +1,9 @@
-alarmclock:
-  control: hidden
-  name: Wake Me Up
-  entities: 
-    - automation.alarm_clock
-    - sensor.alarm_time
-    - input_number.alarm_hour
-    - input_number.alarm_minutes
-    - input_boolean.alarm_weekday
+# alarmclock:
+#   control: hidden
+#   name: Wake Me Up
+#   entities: 
+#     - automation.alarm_clock
+#     - sensor.alarm_time
+#     - input_number.alarm_hour
+#     - input_number.alarm_minutes
+#     - input_boolean.alarm_weekday

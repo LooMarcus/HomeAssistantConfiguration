@@ -1,0 +1,5 @@
+  # - platform: wake_on_lan
+  #   name: Isa Computer
+  #   mac_address: "44:8A:5B:97:B1:92"
+  #   host: 192.168.1.1
+  #   broadcast_address: 192.168.1.35

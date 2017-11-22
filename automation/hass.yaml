@@ -16,6 +16,7 @@
       data:
         message: "request_location_update"
     - service: python_script.device_tracker_placeholders
+    - service: python_script.summary
 
 - alias: 'Hass Ready'
   initial_state: 'on'

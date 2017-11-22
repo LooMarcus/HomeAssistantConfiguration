@@ -1,0 +1,3 @@
+  # - platform: ffmpeg_motion
+  #   name: Fireplace Camera Motion
+  #   input: !secret camera_input

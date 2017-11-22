@@ -23,3 +23,12 @@ homeassistant:
       homebridge_visible: true
       icon: mdi:water-percent
 
+history_graph:
+  temperatures:
+    name: Temperatures
+    refresh: 1800
+    hours_to_show: 48
+    entities:
+      - sensor.temperature_158d0001235510
+      - sensor.temperature_158d0001a2a899
+      - sensor.temperature_158d0001a2a899

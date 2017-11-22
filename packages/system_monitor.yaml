@@ -73,7 +73,8 @@ sensor:
       {{ '%02d' % hours }}:{{ '%02d' % minutes }}
 
 history_graph:
-  gr1:
+  internet_speed_tests:
+    name: Internet Speed Tests
     entities:
       - sensor.speedtest_download
       - sensor.speedtest_ping

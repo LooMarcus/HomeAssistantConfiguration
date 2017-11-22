@@ -2,6 +2,7 @@ homeassistant:
   customize:
     input_boolean.isabella_home:
       homebridge_visible: true
+      confirm_controls_show_lock: true
 
 input_boolean:
   isabella_home:

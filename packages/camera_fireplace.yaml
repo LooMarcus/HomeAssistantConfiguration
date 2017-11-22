@@ -1,0 +1,28 @@
+camera:
+  - platform: ffmpeg
+    name: Fireplace Cam
+    input: !secret camera_input
+    extra_arguments: -pred 1
+binary_sensor:
+  - platform: ffmpeg_motion
+    name: Fireplace Camera Motion
+    input: !secret camera_input
+    changes: 5
+
+automation:
+  - alias: 'Camera Fireplace Notification On High Temperature'
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.temperature_158d000123552c
+        above: 27
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          message: Fire Camera Motion
+          data:
+            attachment:
+              content-type: jpeg
+            push:
+              category: camera
+            entity_id: camera.fireplace_cam

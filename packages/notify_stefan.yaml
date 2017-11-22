@@ -2,6 +2,8 @@ homeassistant:
   customize:
     input_boolean.notify_stefan:
       icon: mdi:message-bulleted
+      confirm_controls_show_lock: true
+      
     input_text.stefan_notify_text:
       icon: mdi:message-bulleted
 

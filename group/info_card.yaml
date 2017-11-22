@@ -2,12 +2,7 @@ info_card:
   name: Info
   control: hidden
   entities:
-    - sensor.date__time
-    - sun.sun
-    # - input_select.day_mode 
-
-    - script.morning_news
-    # - calendar.cleaning_day
-    # - calendar.house_cleaning
-    # - calendar.garbage_day
-    # - calendar.take_in_garbage
+    - sensor.summary
+    # - sensor.date__time
+    # - sun.sun
+    # - script.morning_news

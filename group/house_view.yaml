@@ -12,3 +12,4 @@ house_view:
     - group.plant_card
     - device_tracker.isabella
     - device_tracker.stefan
+    - history_graph.temperatures

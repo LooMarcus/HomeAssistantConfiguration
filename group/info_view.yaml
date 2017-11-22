@@ -16,3 +16,4 @@ default_view:
     - input_boolean.isabella_home
     - device_tracker.marek
     - device_tracker.anette    
+    # - group.summary

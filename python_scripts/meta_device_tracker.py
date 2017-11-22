@@ -57,8 +57,10 @@ elif newState.state == 'off':
     newStatus = 'not_home'
     newIcon = 'mdi:home'
     newSource = "homekit"
+# trying with wifi trigger not_home (automation triggers only if wifi not_home for 30 minutes)
+elif newState.state == 'not_home':
 # only GPS platforms update 'not_home'
-elif newState.state == 'not_home' and newSource == 'gps':
+# elif newState.state == 'not_home' and newSource == 'gps':
     newStatus = 'not_home'
     newIcon = 'mdi:home'
 elif newState.state == 'work' and newSource == 'gps':

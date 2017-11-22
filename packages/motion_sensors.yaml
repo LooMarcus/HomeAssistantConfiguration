@@ -18,3 +18,15 @@ sensor:
         friendly_name: 'Upstairs Hallway Movement'
         value_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
         icon_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+
+  - platform: template
+    sensors:
+      last_seen_motion:
+        friendly_name: 'Last Seen Motion'
+        value_template: >
+                    {%- set pirs = [states.sensor.passage_movement, states.sensor.upstairs_hallway_movement, states.binary_sensor.motion_sensor_158d000165ff1f, states.binary_sensor.motion_sensor_158d0001a66256] %}
+                    {% for pir in pirs %}
+                      {% if as_timestamp(pir.last_changed) == as_timestamp(pirs | map(attribute='last_changed') | max) %}
+                        {{ pir.name }}
+                      {% endif %}
+                    {% endfor %}

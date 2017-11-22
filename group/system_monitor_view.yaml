@@ -10,6 +10,6 @@ system_monitor_view:
     - group.hass_card
     - group.internet_card
     - group.system_monitor_card
-    - history_graph.gr1
+    - history_graph.internet_speed_tests
     - device_tracker.isabella
     - device_tracker.stefan

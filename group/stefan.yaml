@@ -1,7 +1,6 @@
 stefan:
   name: Stefan
   entities:
-     
     - sensor.igrims_battery_level
     - sensor.igrims_battery_state
     - sensor.stefan_computer  

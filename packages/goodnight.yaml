@@ -6,6 +6,34 @@ input_boolean:
   goodnight_isa:
     name: Goodnight Isa
     initial: off
+script:
+  goodnight:
+    alias: Goodnight
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id: group.inside_lights_automations
+          transition: 30
+      - wait_template: "{{ states.light.bedside_lamp.state == 'off' }}"
+      - service: light.turn_on
+        data:
+          entity_id: light.bedside_lamp
+          brightness: 25
+      - delay: 
+          seconds: 10
+      - service: light.turn_on
+        data:
+          entity_id: light.gateway_light_34ce008bfc4b
+          brightness: 255
+          rgb_color:
+            - 253
+            - 64
+            - 6
+      - delay:
+          minutes: 3
+      - service: light.turn_off
+        data:
+          entity_id: light.gateway_light_34ce008bfc4b
 
 automation:
   - alias: Goodnight Isa
@@ -20,9 +48,9 @@ automation:
         - condition: time
           before: '06:00:00'        
           after: '21:00:00'
-    #     - condition: state
-    #       entity_id: device_tracker.isabellas_iphone_6s
-    #       state: 'Home'
+        - condition: state
+          entity_id: device_tracker.isabella
+          state: 'Home'
         - condition: state
           entity_id: sensor.isa_computer
           state: 'Offline'
@@ -47,9 +75,9 @@ automation:
         - condition: time
           after: '03:30:00'
           before: '12:00:00'
-        # - condition: state
-        #   entity_id: device_tracker.isabellas_iphone_6s
-        #   state: 'Home'
+        - condition: state
+          entity_id: device_tracker.isabella
+          state: 'Home'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
@@ -80,15 +108,15 @@ automation:
       - platform: state
         entity_id: sensor.igrims_battery_state
         to: 'Unplugged'
-    # condition:
-    #   condition: and
-    #   conditions:
-    #     - condition: time
-    #       after: '03:30:00'
-    #       before: '12:00:00'
-    #     - condition: state
-    #       entity_id: device_tracker.stefan_iphone_7
-    #       state: 'Home'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '03:30:00'
+          before: '12:00:00'
+        - condition: state
+          entity_id: device_tracker.stefan
+          state: 'Home'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:

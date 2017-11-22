@@ -78,7 +78,17 @@ group:
       - sensor.downstairs_litterbox
       - sensor.upstairs_litterbox
       - input_select.dlitterbox_state
-      - input_select.ulitterbox_state    
+      - input_select.ulitterbox_state
+      - history_graph.litterbox_visits
+      
+#-------------------------------------------
+
+history_graph:
+  litterbox_visits:
+    name: Litterbox Visits
+    entities:
+      - binary_sensor.motion_sensor_158d0001a66291
+      - binary_sensor.motion_sensor_158d0001a24ef1
 
 #-------------------------------------------
 

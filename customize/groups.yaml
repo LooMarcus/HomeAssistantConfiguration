@@ -19,8 +19,6 @@
       order: 2
     group.security_card:
       order: 3
-    # group.cat_card:
-    #   order: 4
     group.inside_lights_card:
       order: 5
     group.outside_lights:

@@ -11,10 +11,10 @@ homeassistant:
       friendly_name: Bathroom Cabinet Door
 
     light.gateway_light_34ce008bfc4b:
-      friendly_name: Xiaomi Gateway Nightlight
+      friendly_name: Nightlight
       homebridge_visible: false
     sensor.illumination_34ce008bfc4b:
-      friendly_name: Upstairs Hallway Xiaomi Gateway
+      friendly_name: Upstairs Hallway Nightlight
       icon: mdi:theme-light-dark
 
 

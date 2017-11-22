@@ -19,16 +19,16 @@
 
     light.hallway_window_light:
       icon: mdi:lamp
-    light.stefan_ceiling_light:
-      confirm_controls_show_lock: true
-      state_card_mode: no-slider
-    light.outside_yard_hanging_lights:
-      state_card_mode: no-slider
+    # light.stefan_ceiling_light:
+      # confirm_controls_show_lock: true
+      # state_card_mode: no-slider
+    # light.outside_yard_hanging_lights:
+      # state_card_mode: no-slider
     # light.drink_cabinet_led:
     #   state_card_mode: no-slider
     #   homebridge_visible: false
     light.kitchen_sink_light:
-      state_card_mode: no-slider
+      # state_card_mode: no-slider
       homebridge_visible: false
     
     # light.all_hue_lights:

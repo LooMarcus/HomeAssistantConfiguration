@@ -2,6 +2,7 @@ homeassistant:
   customize:
     input_boolean.stefan_home:
       homebridge_visible: true
+      confirm_controls_show_lock: true
 
 input_boolean:
   stefan_home:
@@ -71,10 +72,15 @@ automation:
         entity_id: input_boolean.stefan_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
+        entity_id: device_tracker.stefan_iphone_7
         to: 'not_home'
         for:
           minutes: 10
+      - platform: state
+        entity_id: device_tracker.stefan_iphone_7_wifi
+        to: 'not_home'
+        for:
+          minutes: 30
     action:
       - service: python_script.meta_device_tracker
         data_template:
