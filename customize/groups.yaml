@@ -21,8 +21,14 @@
       order: 3
     group.inside_lights_card:
       order: 5
+    group.inside_lights_automations:
+      emulated_hue_hidden: false
+      emulated_hue_name: "All lights"
     group.outside_lights:
       order: 4
+      emulated_hue_hidden: false
+      emulated_hue_name: "Outside lights"
+
     group.laundry_group:
       order: 7
 

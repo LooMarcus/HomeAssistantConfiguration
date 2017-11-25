@@ -60,11 +60,11 @@ automation:
         - condition: state
           entity_id: device_tracker.isabella
           state: 'home'
-        - condition: state
-          entity_id: switch.charging_station
-          state: 'off'
+        # - condition: state
+        #   entity_id: switch.charging_station
+        #   state: 'off'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:
-          title: 'Charge e-bike battery'
-          message: ''
+          title: 'Rembember'
+          message: 'Charge e-bike battery'

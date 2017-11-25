@@ -1,52 +1,58 @@
   exclude:
     domains:
-      - camera
-      - media_player
+  #     - camera
+  #     - media_player
       - sun
-      # - calendar
-      - sensor
-      
-  include:
-    domains:
-      - light
-      - binary_sensor
+  #     - calendar
+  #     - sensor
+      - group
     entities:
-      - sensor.all_litterbox_visits_today
-      - sensor.attic_door
-      - sensor.back_door
-      - sensor.backyard_door
-      - sensor.balcony_door
-      - sensor.dining_area_window
-      - sensor.disk_used_
-      - sensor.downstairs_litterbox
-      - sensor.downstairs_litterbox_visits
-      - sensor.front_door
-      - sensor.isabellas_iphone_6s_battery_level
-      - sensor.isabellas_iphone_6s_battery_state
-      - sensor.nexa_door
-      - sensor.passage_movement
-      - sensor.passage_pir_luminance
-      - sensor.speedtest_download
-      - sensor.speedtest_ping
-      - sensor.speedtest_upload
-      - sensor.stefan_computer
-      - sensor.stefan_dimmer
-      - sensor.tradfri_wireless_dimmer
-      - sensor.upstairs_hallway_movement
-      - sensor.upstairs_hallway_pir_luminance
-      - sensor.upstairs_litterbox
-      - sensor.upstairs_litterbox_visits
-      - sensor.vacuumed_today
-      - sensor.water_heater_flood
-      - sensor.yard_storage_door
-      - device_tracker.isabellas_iphone_6s
-      - device_tracker.isabellas_iphone_6s_wifi
-      - sensor.isa_laptop      
-      - sensor.isa_computer
-      - input_boolean.isabella_home
-      - binary_sensor.isabella_home
-      - device_tracker.stefan_iphone_7
-      - device_tracker.stefan_iphone_7_wifi
-      - device_tracker.stefan_computer
-      - input_boolean.stefan_home
-      - binary_sensor.stefan_home 
+      - sensor.since_last_boot
+      - sensor.last_boot
+      - sensor.date__time
+      - sensor.date
+      - sensor.time
+  # include:
+  #   domains:
+  #     - light
+  #     - binary_sensor
+    # entities:
+    #   - sensor.all_litterbox_visits_today
+    #   - sensor.attic_door
+    #   - sensor.back_door
+    #   - sensor.backyard_door
+    #   - sensor.balcony_door
+    #   - sensor.dining_area_window
+    #   - sensor.disk_used_
+    #   - sensor.downstairs_litterbox
+    #   - sensor.downstairs_litterbox_visits
+    #   - sensor.front_door
+    #   - sensor.isabellas_iphone_6s_battery_level
+    #   - sensor.isabellas_iphone_6s_battery_state
+    #   - sensor.nexa_door
+    #   - sensor.passage_movement
+    #   - sensor.passage_pir_luminance
+    #   - sensor.speedtest_download
+    #   - sensor.speedtest_ping
+    #   - sensor.speedtest_upload
+    #   - sensor.stefan_computer
+    #   - sensor.stefan_dimmer
+    #   - sensor.tradfri_wireless_dimmer
+    #   - sensor.upstairs_hallway_movement
+    #   - sensor.upstairs_hallway_pir_luminance
+    #   - sensor.upstairs_litterbox
+    #   - sensor.upstairs_litterbox_visits
+    #   - sensor.vacuumed_today
+    #   - sensor.water_heater_flood
+    #   - sensor.yard_storage_door
+    #   - device_tracker.isabellas_iphone_6s
+    #   - device_tracker.isabellas_iphone_6s_wifi
+    #   - sensor.isa_laptop      
+    #   - sensor.isa_computer
+    #   - input_boolean.isabella_home
+    #   - binary_sensor.isabella_home
+    #   - device_tracker.stefan_iphone_7
+    #   - device_tracker.stefan_iphone_7_wifi
+    #   - device_tracker.stefan_computer
+    #   - input_boolean.stefan_home
+    #   - binary_sensor.stefan_home 

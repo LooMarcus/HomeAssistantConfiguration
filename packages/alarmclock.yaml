@@ -4,15 +4,15 @@
 
 input_boolean:
   alarmclock_mwf_enabled:
-    name: MWF Enabled
+    name: Enabled
     initial: on
     icon: mdi:toggle-switch
   alarmclock_tt_enabled:
-    name: TT Enabled
+    name: Enabled
     initial: on
     icon: mdi:toggle-switch
   alarmclock_we_enabled:
-    name: Weekend Enabled
+    name: Enabled
     initial: off
     icon: mdi:toggle-switch
 
@@ -66,14 +66,14 @@ sensor:
   - platform: template
     sensors:
       alarmclock_mwf_time_template:
-        friendly_name: 'MWF Time'
-        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_hour") | int, states("input_number.alarmclock_minutes") | int) }}'
+        friendly_name: 'Time'
+        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_mwf_hour") | int, states("input_number.alarmclock_mwf_minutes") | int) }}'
       alarmclock_tt_time_template:
-        friendly_name: 'TT Time'
-        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_hour") | int, states("input_number.alarmclock_minutes") | int) }}'
+        friendly_name: 'Time'
+        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_tt_hour") | int, states("input_number.alarmclock_tt_minutes") | int) }}'
       alarmclock_we_time_template:
-        friendly_name: 'Weekend Time'
-        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_hour") | int, states("input_number.alarmclock_minutes") | int) }}'
+        friendly_name: 'Time'
+        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmclock_we_hour") | int, states("input_number.alarmclock_we_minutes") | int) }}'
 
 group:
   alarmclock_mwf:
@@ -83,7 +83,7 @@ group:
       - sensor.alarmclock_mwf_time_template
       - input_boolean.alarmclock_mwf_enabled
       - input_number.alarmclock_mwf_hour
-      - input_number.alarmclock_mwf_minute
+      - input_number.alarmclock_mwf_minutes
   alarmclock_tt:
     name: Alarm Clock (Weekday)
     control: hidden
@@ -91,15 +91,15 @@ group:
       - sensor.alarmclock_tt_time_template
       - input_boolean.alarmclock_tt_enabled
       - input_number.alarmclock_tt_hour
-      - input_number.alarmclock_tt_minute
-  alarmclock_me:
+      - input_number.alarmclock_tt_minutes
+  alarmclock_we:
     name: Alarm Clock (Weekend)
     control: hidden
     entities:
       - sensor.alarmclock_we_time_template
       - input_boolean.alarmclock_we_enabled
       - input_number.alarmclock_we_hour
-      - input_number.alarmclock_we_minute
+      - input_number.alarmclock_we_minutes
   alarmclock:
     name: Alarmclock
     control: hidden
