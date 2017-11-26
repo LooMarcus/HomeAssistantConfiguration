@@ -8,3 +8,23 @@ input_boolean:
     name: Cleaning Day
     initial: off
     icon: mdi:broom
+
+
+automation:
+  - alias: Cleaning Day Automations Off
+    trigger:
+      - platform: state
+        entity_id: input_boolean.cleaning_day
+        to: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: automation.light_hallway_brighter_on_motion, automation.light_walk_in_closet_motion_activation
+
+  - alias: Cleaning Day Over Automations On
+    trigger:
+      - platform: state
+        entity_id: input_boolean.cleaning_day
+        to: 'off'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: automation.light_hallway_brighter_on_motion, automation.light_walk_in_closet_motion_activation

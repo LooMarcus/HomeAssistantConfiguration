@@ -165,11 +165,9 @@ automation:
       entity_id: binary_sensor.motion_sensor_158d0001a66256
       from: 'off'
       to: 'on'
-
     condition:
       - condition: template
         value_template: '{{ states.sun.sun.attributes.elevation | int < 20 }}'
-
     action:
       - service: python_script.dimmer
         data_template:
@@ -183,7 +181,6 @@ automation:
       entity_id: binary_sensor.motion_sensor_158d0001a66256
       from: 'on'
       to: 'off'
-
     action:
       - service: python_script.dimmer
         data_template:
