@@ -1,24 +1,20 @@
 homeassistant:
   customize:
-
-    binary_sensor.switch_158d0001a5e3c4:
-      friendly_name: Switch 1
     binary_sensor.switch_158d00016c0a49:
       friendly_name: Switch 2
-    binary_sensor.switch_158d00019d674a:
-      friendly_name: Switch 3
+
     binary_sensor.door_window_sensor_158d0001a3e3a4:
       friendly_name: Bathroom Cabinet Door
 
     light.gateway_light_34ce008bfc4b:
-      friendly_name: Nightlight
-      homebridge_visible: false
-    sensor.illumination_34ce008bfc4b:
       friendly_name: Upstairs Hallway Nightlight
+      homebridge_visible: false
+      emulated_hue_hidden: false
+      emulated_hue_name: "Nightlight"
+
+    sensor.illumination_34ce008bfc4b:
+      friendly_name: Upstairs Hallway Illumination
       icon: mdi:theme-light-dark
-
-
-
 
 alert: 
   bathroom_cabinet_door_open:

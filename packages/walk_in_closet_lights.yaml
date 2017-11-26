@@ -1,0 +1,140 @@
+homeassistant:
+  customize:
+    binary_sensor.switch_158d00019d674a:
+      friendly_name: Walk In Closet Dimmer
+    binary_sensor.motion_sensor_158d000165ff1f:
+      friendly_name: Walk In Closet Motion
+    sensor.illumination_158d000165ff1f:
+      friendly_name: Walk In Closet Lux      
+
+input_boolean:
+  walk_in_closet_light_override:
+    name: Override Motion Light Walk In Closet
+    initial: off
+
+group:
+  walk_in_closet_lights:
+    name: Walk In Closet Spotlights
+    icon: mdi:spotlight-beam
+    entities:
+      - light.walk_in_closet_1
+      - light.walk_in_closet_2
+      - light.walk_in_closet_3
+      - light.walk_in_closet_4
+
+
+automation:
+##################  Light on motion  ##################
+
+  - alias: Light Walk In Closet Motion Activation
+    trigger:
+      platform: state
+      entity_id: binary_sensor.motion_sensor_158d000165ff1f
+      from: 'off'
+      to: 'on'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: group.walk_in_closet_lights
+          brightness: 150
+
+  - alias: Light Walk In Closet Restore
+    trigger:
+      platform: state
+      entity_id: binary_sensor.motion_sensor_158d000165ff1f
+      from: 'on'
+      to: 'off'
+    condition:
+      condition: state
+      entity_id: input_boolean.walk_in_closet_light_override
+      state: 'off'
+    action:
+      - service: light.turn_off
+        entity_id: group.walk_in_closet_lights
+
+##################  Single click - toggle light  ##################
+        
+  - alias: Light Walk In Closet Window Toggle
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00019d674a
+        click_type: single
+    action:
+      - service: light.toggle
+        entity_id: group.walk_in_closet_lights
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.walk_in_closet_light_override
+
+##################  Double click - full light  ##################
+
+  - alias: Light Walk In Closet Window Full Light
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00019d674a
+        click_type: double
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: group.walk_in_closet_lights
+          brightness: 255
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.walk_in_closet_light_override
+
+
+##################  Turn on and off the motion activation  ##################
+
+  - alias: Light Walk In Closet Turn Off Motion Activation
+    initial_state: 'on'
+    trigger:
+      - platform: event
+        event_type: click
+        event_data:
+          entity_id: binary_sensor.switch_158d00019d674a
+          click_type: long_click_press
+    condition:
+      condition: state
+      entity_id: automation.light_walk_in_closet_on_motion
+      state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: automation.light_walk_in_closet_on_motion
+      - service: homeassistant.turn_off
+        entity_id: automation.light_walk_in_closet_restore
+
+  - alias: Light Walk In Closet Turn On Motion Activation
+    initial_state: 'on'
+    trigger:
+      - platform: event
+        event_type: click
+        event_data:
+          entity_id: binary_sensor.switch_158d00019d674a
+          click_type: long_click_press
+    condition:
+      condition: state
+      entity_id: automation.light_walk_in_closet_on_motion
+      state: 'off'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: automation.light_walk_in_closet_on_motion
+      - service: homeassistant.turn_on
+        entity_id: automation.light_walk_in_closet_restore
+
+##################  Turn off the motion activation temporarily  ##################
+
+  - alias: Light Walk In Closet Motion Activation Temporarily Off
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: input_boolean.walk_in_closet_light_override
+      to: 'on'
+    action:
+      - delay:
+          minutes: 10
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.walk_in_closet_light_override

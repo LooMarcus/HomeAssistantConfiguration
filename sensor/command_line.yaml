@@ -13,3 +13,5 @@
 # # awk använder jag sedan för att plocka ut vissa fält i den rader som är separerade med antingen = eller ,(komma). 
 # # Och sedan skriver jag ut dessa i en viss ordning ($1 t.ex. är fält nr 1). 
 # # Lite svårt att förklara såhär, finns bra introduktioner till scriptning om man googlar (bash scripting).
+
+

@@ -1,12 +1,12 @@
-# "*.*":
-#   custom_ui_state_card: state-card-custom-ui
-#   show_last_changed: true
+"*.*":
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
 
 light.*:
-  # state_card_mode: break-slider
-  # stretch_slider: true
-  # slider_theme:
-  #   pin: true
+  state_card_mode: break-slider
+  stretch_slider: true
+  slider_theme:
+    pin: true
   homebridge_visible: true
 
 
@@ -37,3 +37,5 @@ light.*:
 "light.*level_*":
   hidden: true
   homebridge_visible: false
+"sensor.*burglar*":
+  hidden: true

@@ -145,5 +145,5 @@ if inuse_count > 0:
 
 # Summary sensors update
 hass.states.set('sensor.summary', summary, {
-    # 'custom_ui_state_card': 'state-card-value_only'
+    'custom_ui_state_card': 'state-card-value_only'
 })

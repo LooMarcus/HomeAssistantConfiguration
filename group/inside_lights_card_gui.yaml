@@ -13,6 +13,7 @@ inside_lights_card:
     - light.living_room_spotlights_level
     - light.passage_ceiling_spotlights_level
     - group.stairs_lights
+    - group.walk_in_closet_lights
     - light.stefan_ceiling_light
     - light.upstairs_hallway_ceiling_light_level
     # - light.kitchen_sink_light

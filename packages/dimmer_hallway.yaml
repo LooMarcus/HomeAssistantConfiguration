@@ -1,146 +1,146 @@
-homeassistant:
-  customize:
-    binary_sensor.switch_158d0001a5e3c4:
-      friendly_name: Switch 1
+# homeassistant:
+#   customize:
+#     binary_sensor.switch_158d0001a5e3c4:
+#       friendly_name: Switch 1
 
-input_boolean:
-  dimmer_hallway:
-    name: Dimmer Hallway
-    initial: off
+# input_boolean:
+#   dimmer_hallway:
+#     name: Dimmer Hallway
+#     initial: off
 
-script:
-  dim_light_hallway:
-    sequence:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'on'
-      - service: light.turn_on
-        entity_id: light.isa_ceiling_light
-        data_template:
-          brightness: '{{states.light.isa_ceiling_light.attributes.brightness - 10}}'
-      - service: script.turn_off
-        entity_id: script.dim_light_hallway
-      - service: script.turn_on
-        entity_id: script.dim_light_hallway
+# script:
+#   dim_light_hallway:
+#     sequence:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'on'
+#       - service: light.turn_on
+#         entity_id: light.isa_ceiling_light
+#         data_template:
+#           brightness: '{{states.light.isa_ceiling_light.attributes.brightness - 10}}'
+#       - service: script.turn_off
+#         entity_id: script.dim_light_hallway
+#       - service: script.turn_on
+#         entity_id: script.dim_light_hallway
 
-  brighten_light_hallway:
-    sequence:
-    - condition: state
-      entity_id: input_boolean.dimmer_hallway
-      state: 'off'
-    - service: light.turn_on
-      entity_id: light.isa_ceiling_light
-      data_template:
-        brightness: '{{states.light.isa_ceiling_light.attributes.brightness + 10}}'
-    - service: script.turn_off
-      entity_id: script.brighten_light_hallway
-    - service: script.turn_on
-      entity_id: script.brighten_light_hallway
+#   brighten_light_hallway:
+#     sequence:
+#     - condition: state
+#       entity_id: input_boolean.dimmer_hallway
+#       state: 'off'
+#     - service: light.turn_on
+#       entity_id: light.isa_ceiling_light
+#       data_template:
+#         brightness: '{{states.light.isa_ceiling_light.attributes.brightness + 10}}'
+#     - service: script.turn_off
+#       entity_id: script.brighten_light_hallway
+#     - service: script.turn_on
+#       entity_id: script.brighten_light_hallway
 
 
-automation:
-  - alias: Light Hallway Window Brighten On
-    initial_state: 'on'
-    trigger:
-      - platform: event
-        event_type: click
-        event_data:
-          entity_id: binary_sensor.switch_158d0001a5e3c4
-          click_type: long_click_press
-    condition:
-      condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'off'
-      - condition: state
-        entity_id: light.isa_ceiling_light
-        state: 'on'
-    action:
-      - service: script.turn_on
-        entity_id: script.brighten_light_hallway
+# automation:
+#   - alias: Light Hallway Window Brighten On
+#     initial_state: 'on'
+#     trigger:
+#       - platform: event
+#         event_type: click
+#         event_data:
+#           entity_id: binary_sensor.switch_158d0001a5e3c4
+#           click_type: long_click_press
+#     condition:
+#       condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'off'
+#       - condition: state
+#         entity_id: light.isa_ceiling_light
+#         state: 'on'
+#     action:
+#       - service: script.turn_on
+#         entity_id: script.brighten_light_hallway
         
-  - alias: Light Hallway Window Brighten Off
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        from: 'on'
-        to: 'off'
-    condition:
-      condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'off'
-      - condition: state
-        entity_id: light.isa_ceiling_light
-        state: 'on'
-    action:
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.dimmer_hallway
+#   - alias: Light Hallway Window Brighten Off
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.switch_158d0001a5e3c4
+#         from: 'on'
+#         to: 'off'
+#     condition:
+#       condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'off'
+#       - condition: state
+#         entity_id: light.isa_ceiling_light
+#         state: 'on'
+#     action:
+#       - service: input_boolean.turn_on
+#         entity_id: input_boolean.dimmer_hallway
         
-  - alias: Light Hallway Window Dim On
-    initial_state: 'on'
-    trigger:
-      - platform: event
-        event_type: click
-        event_data:
-          entity_id: binary_sensor.switch_158d0001a5e3c4
-          click_type: long_click_press
-    condition:
-      condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'on'
-      - condition: state
-        entity_id: light.isa_ceiling_light
-        state: 'on'
-    action:
-      - service: script.turn_on
-        entity_id: script.dim_light_hallway
+#   - alias: Light Hallway Window Dim On
+#     initial_state: 'on'
+#     trigger:
+#       - platform: event
+#         event_type: click
+#         event_data:
+#           entity_id: binary_sensor.switch_158d0001a5e3c4
+#           click_type: long_click_press
+#     condition:
+#       condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'on'
+#       - condition: state
+#         entity_id: light.isa_ceiling_light
+#         state: 'on'
+#     action:
+#       - service: script.turn_on
+#         entity_id: script.dim_light_hallway
 
-  - alias: Light Hallway Window Dim Off
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        from: 'on'
-        to: 'off'
-    condition:
-      condition: and
-      conditions:
-      - condition: state
-        entity_id: input_boolean.dimmer_hallway
-        state: 'on'
-      - condition: state
-        entity_id: light.isa_ceiling_light
-        state: 'on'
-    action:
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.dimmer_hallway
+#   - alias: Light Hallway Window Dim Off
+#     initial_state: 'on'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.switch_158d0001a5e3c4
+#         from: 'on'
+#         to: 'off'
+#     condition:
+#       condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.dimmer_hallway
+#         state: 'on'
+#       - condition: state
+#         entity_id: light.isa_ceiling_light
+#         state: 'on'
+#     action:
+#       - service: input_boolean.turn_off
+#         entity_id: input_boolean.dimmer_hallway
         
-  - alias: Light Hallway Window Toggle
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001a5e3c4
-        click_type: single
-    action:
-      service: light.toggle
-      entity_id: light.isa_ceiling_light
-
-#   - alias: Switch 1 double click
+#   - alias: Light Hallway Window Toggle
 #     initial_state: 'on'
 #     trigger:
 #       platform: event
 #       event_type: click
 #       event_data:
 #         entity_id: binary_sensor.switch_158d0001a5e3c4
-#         click_type: double
+#         click_type: single
 #     action:
 #       service: light.toggle
-#       entity_id: light.bedroom_ceiling_light
+#       entity_id: light.isa_ceiling_light
+
+# #   - alias: Switch 1 double click
+# #     initial_state: 'on'
+# #     trigger:
+# #       platform: event
+# #       event_type: click
+# #       event_data:
+# #         entity_id: binary_sensor.switch_158d0001a5e3c4
+# #         click_type: double
+# #     action:
+# #       service: light.toggle
+# #       entity_id: light.bedroom_ceiling_light

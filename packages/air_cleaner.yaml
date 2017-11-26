@@ -2,7 +2,7 @@ homeassistant:
   customize:
     switch.air_cleaner_quiet_auto:
       homebridge_visible: true
-
+      emulated_hue_hidden: false
 switch:
   - platform: broadlink
     friendly_name: Broadlink Bedroom

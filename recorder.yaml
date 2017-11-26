@@ -1,15 +1,15 @@
 
   purge_interval: 2
   purge_keep_days: 5
-  exclude:
-    domains:
-      - camera
-      - media_player
-      - sun.sun
-      # - calendar
-      # - sensor
-      - mqtt
-      - mqtt_statestream
+  # exclude:
+  #   domains:
+  #     - camera
+  #     - media_player
+  #     - sun.sun
+  #     # - calendar
+  #     # - sensor
+  #     - mqtt
+  #     - mqtt_statestream
 
   # include:
   #   domains:

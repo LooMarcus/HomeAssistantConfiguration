@@ -14,3 +14,4 @@ inside_lights_automations:
     - light.gateway_light_34ce008bfc4b
     - light.kitchen_sink_light
     - group.stairs_lights
+    - group.walk_in_closet_lights

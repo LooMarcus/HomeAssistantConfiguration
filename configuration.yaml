@@ -12,19 +12,53 @@ config:
 http:
   api_password: !secret http_password
   base_url: !secret base_url
+  # ssl_certificate: !secret ssl_certificate
+  # ssl_key: !secret ssl_key
 updater:
 discovery:
 conversation:
 customizer:
   custom_ui: hosted
+
+
+# ########################################
+# ###              ALEXA               ###
+# ########################################
+
+emulated_hue:
+  host_ip: !secret hass_host_ip
+  expose_by_default: true
+  exposed_domains:
+    - scene
+alexa: !include alexa.yaml
+# cloud:
+  # alexa:
+  #   filter:
+  #     # include_entities:
+  #     #   - light.kitchen
+  #     include_domains:
+  #       - switch
+  #       - light
+  #       - sensor
+  #       - alert
+  #       - group
+  #       - media_player
+  #       - scene
+  #       - automation
+      # exclude_entities:
+      #   - light.stefan_ceiling_light
+      # exclude_domains:
+      #   - script
+
 # ########################################
 # ###                GUI               ###
 # ########################################
 map:
 frontend:
   # themes: !include_dir_named themes
-#   extra_html_url:
-#     - /local/custom_ui/state-card-custom-ui.html
+  extra_html_url:
+    - /local/custom_ui/state-card-custom-ui.html
+    - /local/custom_ui/state-card-value_only.html
 # panel_iframe:
 #   # grafana:
 #   #   title: "Grafana"
@@ -52,8 +86,9 @@ frontend:
 # ########################################
 # ###              LOGGING             ###
 # ########################################
-history: !include history.yaml
+
 recorder: !include recorder.yaml
+history: !include history.yaml
 logbook: !include logbook.yaml
 logger: !include logger.yaml
 sun:

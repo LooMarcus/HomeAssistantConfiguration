@@ -29,6 +29,7 @@ group:
       - sensor.disk_used_
       - sensor.last_boot
       - sensor.since_last_boot
+      - sensor.ssl_cert_expiry
       - sensor.process_homebridge
       - sensor.process_mosquitto
 
