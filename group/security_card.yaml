@@ -20,3 +20,4 @@ security_card:
     - sensor.yard_storage_door
     - sensor.hallway_glass_door
     - sensor.water_heater
+    - sensor.kitchen_sink

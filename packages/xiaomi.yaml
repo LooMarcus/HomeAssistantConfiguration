@@ -3,6 +3,7 @@ homeassistant:
     binary_sensor.switch_158d00016c0a49:
       friendly_name: Switch 2
 
+
     binary_sensor.door_window_sensor_158d0001a3e3a4:
       friendly_name: Bathroom Cabinet Door
 

@@ -8,8 +8,6 @@
         name: Left button
       0b1100070163e70203010f70:
         name: Charging station
-      0b1100060163e70202010f70:
-        name: Tradfri Gateway Switch
       0b1100000009a25202010f60:
         name: Bedroom light switch
       0b1100040009a25201010f70:

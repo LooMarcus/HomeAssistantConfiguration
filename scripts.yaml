@@ -6,7 +6,7 @@
 #          entity_id: >
 #             media_player.shield
 #          media_content_id: >
-#             https://www.tv4play.se/program/sveriges-m%C3%A4sterkock?video_id=3922560
+#             https://www.svtplay.se/kanaler/barnkanalen?start=auto
 #          media_content_type: 'video'
 # tv4_live:
 #   alias: TV4 Live
