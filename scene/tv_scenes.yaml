@@ -8,3 +8,4 @@
         state: on
         brightness: 20
       light.upstairs_hallway_ceiling_light_level: off
+      light.kitchen_ceiling_spotlights_level: off

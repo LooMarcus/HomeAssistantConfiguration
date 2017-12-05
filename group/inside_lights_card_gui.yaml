@@ -5,8 +5,10 @@ inside_lights_card:
     - light.bedroom_ceiling_light
     - light.bedside_lamp
     - light.dining_area_ceiling_light_level  
+    - light.kitchen_ceiling_spotlights_level
     - light.floorlamp_reading_light
     - light.christmas_candelabra
+    - light.storage_christmas_candelabra
     - light.floorlamp_uplight
     - light.hallway_window_light
     - light.isa_ceiling_light
@@ -17,5 +19,4 @@ inside_lights_card:
     - group.walk_in_closet_lights
     - light.stefan_ceiling_light
     - light.upstairs_hallway_ceiling_light_level
-    # - light.kitchen_sink_light
     - light.gateway_light_34ce008bfc4b

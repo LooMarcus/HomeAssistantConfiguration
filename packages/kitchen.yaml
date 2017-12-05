@@ -12,27 +12,3 @@ binary_sensor:
     devices:
       0b1100110153b33a0a010f70:
         name: Kitchen Pir
-light:
-  - platform: rfxtrx
-    devices:
-      0b1100060163e70201010f70:
-        name: Kitchen Sink Light
-
-automation:
-  - alias: Lights On Kitchen Sink On Motion
-    trigger:
-      platform: state
-      entity_id: binary_sensor.kitchen_pir
-      to: 'on'
-    action:
-      - service: light.turn_on
-        entity_id: light.kitchen_sink_light
-
-  - alias: Lights Off Kitchen Sink After Motion
-    trigger:
-      platform: state
-      entity_id: binary_sensor.kitchen_pir
-      to: 'off'
-    action:
-      - service: light.turn_off
-        entity_id: light.kitchen_sink_light

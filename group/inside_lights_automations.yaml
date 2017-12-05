@@ -15,3 +15,4 @@ inside_lights_automations:
     - light.kitchen_sink_light
     - group.stairs_lights
     - group.walk_in_closet_lights
+    - light.kitchen_ceiling_spotlights_level

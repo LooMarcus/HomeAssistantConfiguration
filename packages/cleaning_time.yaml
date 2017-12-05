@@ -14,7 +14,7 @@ script:
     sequence:
       - service: light.turn_on
         data_template:
-          entity_id: light.living_room_ceiling_light_level, light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.upstairs_hallway_ceiling_light_level, light.dining_area_ceiling_light_level, light.isa_ceiling_light
+          entity_id: light.living_room_ceiling_light_level, light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.upstairs_hallway_ceiling_light_level, light.dining_area_ceiling_light_level, light.isa_ceiling_light, light.kitchen_ceiling_spotlights_level
           brightness: 254
       - service: light.turn_on
         data_template:
@@ -41,7 +41,7 @@ script:
             - 170
       - service: light.turn_off
         data_template:
-          entity_id: light.bedroom_ceiling_light, light.floorlamp_uplight, light.living_room_spotlights_level, light.dining_area_ceiling_light_level
+          entity_id: light.bedroom_ceiling_light, light.floorlamp_uplight, light.living_room_spotlights_level, light.dining_area_ceiling_light_level, light.kitchen_ceiling_spotlights_level
 
   cleaning_music:
     alias: Cleaning music

@@ -2,6 +2,8 @@ homeassistant:
   customize:
     light.christmas_candelabra:
       icon: mdi:candle
+    light.storage_christmas_candelabra:
+      icon: mdi:candle
       
     light.floorlamp_reading_light:
      friendly_name: Dining Area Christmas Star
@@ -13,6 +15,8 @@ light:
     devices:
       0b1100060163e70202010f70:
         name: Christmas Candelabra
+      0b1100060163e70201010f70:
+        name: Storage Christmas Candelabra
 
 
 automation:
@@ -25,12 +29,14 @@ automation:
         at: '06:40:00'
     action:
       - service: light.turn_on
-        entity_id: light.christmas_candelabra, light.floorlamp_reading_light
+        entity_id: light.christmas_candelabra, light.floorlamp_reading_light, light.storage_christmas_candelabra
 
   - alias: Lights Off Christmas Lights
     trigger:
-      platform: time
-      at: '00:30:00'
+      - platform: time
+        at: '00:30:00'
+      - platform: sun
+        event: sunrise
     action:
       - service: light.turn_off
-        entity_id: light.christmas_candelabra, light.floorlamp_reading_light
+        entity_id: light.christmas_candelabra, light.floorlamp_reading_light, light.storage_christmas_candelabra
