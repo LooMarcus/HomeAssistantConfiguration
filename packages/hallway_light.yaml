@@ -179,8 +179,10 @@ automation:
     trigger:
       platform: state
       entity_id: binary_sensor.motion_sensor_158d0001a66256
-      from: 'on'
+      # from: 'on'
       to: 'off'
+      for:
+        minutes: 2
     action:
       - service: python_script.dimmer
         data_template:

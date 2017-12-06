@@ -5,6 +5,11 @@ if state == 'mail':
         'icon': 'mdi:mailbox',
         'name': 'Mailbox'
     })
+elif state == 'package':
+    hass.states.set('sensor.mailbox', 'Package!', {
+        'icon': 'mdi:mailbox',
+        'name': 'Mailbox'
+    })
 elif state == 'reset':
     hass.states.set('sensor.mailbox', 'No mail', {
         'icon': 'mdi:dots-horizontal',

@@ -7,6 +7,11 @@
       rgb: true
       brightness: true
 
+  - name: "Stairs Middle Spot"
+    command_topic: milight/0x3/rgbw/1 
+    state_topic: milight/updates/0x3/rgbw/1 
+    <<: *MILIGHT_PARAMS
+
   - name: "Stairs Top Spot"
     command_topic: milight/0x1/rgbw/1 
     state_topic: milight/updates/0x1/rgbw/1 
