@@ -173,7 +173,7 @@ automation:
         data_template:
           entity_id: light.hallway_window_light
           action: dim_up
-          level: 150
+          level: 100
 
   - alias: Light Hallway Restore
     trigger:
@@ -188,4 +188,4 @@ automation:
         data_template:
           entity_id: light.hallway_window_light
           action: dim_down
-          level: 150
+          level: 100

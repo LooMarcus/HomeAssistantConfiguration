@@ -22,5 +22,5 @@ if dim == 0 :
 	hass.services.call('light', 'turn_off', data)
 else :
 	logger.info('Dimming' + str(entity_id) + 'from : ' + str(brightness) + ' to ' + str(dim))
-	data = { "entity_id" : entity_id, "brightness" : dim }
+	data = { "entity_id" : entity_id, "brightness" : dim, 'transition' : '10'}
 	hass.services.call('light', 'turn_on', data)
