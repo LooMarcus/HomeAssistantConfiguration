@@ -9,8 +9,6 @@ homeassistant:
     light.gateway_light_34ce008bfc4b:
       friendly_name: Upstairs Hallway Nightlight
       homebridge_visible: false
-      emulated_hue_hidden: false
-      emulated_hue_name: "Nightlight"
 
     sensor.illumination_34ce008bfc4b:
       friendly_name: Upstairs Hallway Illumination

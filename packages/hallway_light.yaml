@@ -159,33 +159,33 @@ automation:
 
 ##################  Brighten light on motion, then restore  ##################
 
-  - alias: Light Hallway Brighter On Motion
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_sensor_158d0001a66256
-      from: 'off'
-      to: 'on'
-    condition:
-      - condition: template
-        value_template: '{{ states.sun.sun.attributes.elevation | int < 20 }}'
-    action:
-      - service: python_script.dimmer
-        data_template:
-          entity_id: light.hallway_window_light
-          action: dim_up
-          level: 100
+  # - alias: Light Hallway Brighter On Motion
+  #   trigger:
+  #     platform: state
+  #     entity_id: binary_sensor.motion_sensor_158d0001a66256
+  #     from: 'off'
+  #     to: 'on'
+  #   condition:
+  #     - condition: template
+  #       value_template: '{{ states.sun.sun.attributes.elevation | int < 20 }}'
+  #   action:
+  #     - service: python_script.dimmer
+  #       data_template:
+  #         entity_id: light.hallway_window_light
+  #         action: dim_up
+  #         level: 100
 
-  - alias: Light Hallway Restore
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_sensor_158d0001a66256
-      # from: 'on'
-      to: 'off'
-      for:
-        minutes: 2
-    action:
-      - service: python_script.dimmer
-        data_template:
-          entity_id: light.hallway_window_light
-          action: dim_down
-          level: 100
+  # - alias: Light Hallway Restore
+  #   trigger:
+  #     platform: state
+  #     entity_id: binary_sensor.motion_sensor_158d0001a66256
+  #     # from: 'on'
+  #     to: 'off'
+  #     for:
+  #       minutes: 2
+  #   action:
+  #     - service: python_script.dimmer
+  #       data_template:
+  #         entity_id: light.hallway_window_light
+  #         action: dim_down
+  #         level: 100

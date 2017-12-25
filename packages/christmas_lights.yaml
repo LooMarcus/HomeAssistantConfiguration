@@ -9,6 +9,13 @@ homeassistant:
      friendly_name: Dining Area Christmas Star
      icon: mdi:star-outline
 
+group:
+  christmas_lights:
+    name: Christmas Lights
+    entities:
+      - light.floorlamp_reading_light
+      - light.storage_christmas_candelabra
+      - light.christmas_candelabra
 light:  
   - platform: rfxtrx
     signal_repetitions: 3

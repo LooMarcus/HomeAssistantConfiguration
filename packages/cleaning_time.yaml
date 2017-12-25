@@ -1,11 +1,11 @@
 homeassistant:
   customize:
     script.cleaning_time:
-      emulated_hue_hidden: false
+        
     script.cleaning_time_over:
-      emulated_hue_hidden: false
+        
     script.cleaning_music:
-      emulated_hue_hidden: false
+        
     
 
 script:

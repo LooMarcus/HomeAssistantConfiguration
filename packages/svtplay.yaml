@@ -8,7 +8,7 @@ homeassistant:
     script.morning_news:
       homebridge_visible: true
       icon: mdi:television-classic
-      emulated_hue_hidden: false
+        
 
 svtplay_dl:
   accounts:

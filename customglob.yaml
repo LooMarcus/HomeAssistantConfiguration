@@ -12,6 +12,7 @@ light.*:
 
 "sensor.*_exporting*":
   hidden: true
+  alexa_hidden: true
 "sensor.*_energy*":
   hidden: true
 "sensor.*_alarm_type*":
@@ -37,5 +38,6 @@ light.*:
 "light.*level_*":
   hidden: true
   homebridge_visible: false
+  alexa_hidden: true  
 "sensor.*burglar*":
   hidden: true

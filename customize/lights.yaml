@@ -1,57 +1,57 @@
     light.living_room_ceiling_light_level:
       icon: mdi:ceiling-light
       friendly_name: Living Room Ceiling Light
-      emulated_hue_hidden: false
+        
     light.upstairs_hallway_ceiling_light_level:
       icon: mdi:ceiling-light
       friendly_name: Upstairs Hallway Ceiling Light      
-      emulated_hue_hidden: false
+        
     light.dining_area_ceiling_light_level:
       friendly_name: Dining Room Ceiling Light
       icon: mdi:ceiling-light
-      emulated_hue_hidden: false
+        
     light.passage_ceiling_spotlights_level:
       friendly_name: Passage Spotlights
       icon: mdi:spotlight-beam
-      emulated_hue_hidden: false
+        
     light.living_room_spotlights_level:
       friendly_name: Livingroom Spotlights
       icon: mdi:spotlight-beam
-      emulated_hue_hidden: false
+        
     light.isa_ceiling_lamp:
       friendly_name: Bedroom Ceiling Light
       icon: mdi:ceiling-light
-      emulated_hue_hidden: false
+        
     light.floorlamp_uplight:
       icon: mdi:lamp
       friendly_name: Floorlamp Uplight
-      emulated_hue_hidden: false
+        
     light.floorlamp_reading_light:
       icon: mdi:lamp
       friendly_name: Floorlamp Reading Light
-      emulated_hue_hidden: false
+        
     light.hallway_window_light:
       icon: mdi:lamp
-      emulated_hue_hidden: false
+        
     light.stefan_ceiling_light:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
-      emulated_hue_hidden: false
+        
     light.outside_yard_hanging_lights:
       state_card_mode: no-slider
-      emulated_hue_hidden: false
+        
     light.drink_cabinet_led:
       state_card_mode: no-slider
       homebridge_visible: false
-      # emulated_hue_hidden: false
+      #   
     light.kitchen_sink_light:
       state_card_mode: no-slider
       homebridge_visible: false
-      # emulated_hue_hidden: false
+      #   
     light.kitchen_ceiling_spotlights_level:
       icon: mdi:spotlight-beam
       friendly_name: Kitchen Spotlights
-      emulated_hue_hidden: false
+        
     # light.all_hue_lights:
     #   hidden: true
     #   homebridge_visible: false

@@ -1,5 +1,5 @@
-  flash_briefings:
-    litterbox_visits:
-      - title: How many litterbox visits?
-        text: >
-          'Total litterbox visits today is {{ states("sensor.all_litterbox_visits_today") }}'
+  # flash_briefings:
+  #   litterbox_visits:
+  #     - title: How many litterbox visits?
+  #       text: >
+  #         'Total litterbox visits today is {{ states("sensor.all_litterbox_visits_today") }}'

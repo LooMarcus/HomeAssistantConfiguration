@@ -1,7 +1,7 @@
     script.goodnight:
       homebridge_visible: true
-      emulated_hue_hidden: false
+        
 
     script.goodmorning:
       homebridge_visible: true
-      emulated_hue_hidden: false
+        

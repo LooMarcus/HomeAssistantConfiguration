@@ -3,16 +3,16 @@ homeassistant:
     light.stairs_bottom_spot:
       icon: mdi:spotlight-beam
       friendly_name: Stairs Bottom Spot
-      emulated_hue_hidden: false
+        
     light.stairs_middle_spot:
       friendly_name: Stairs Middle Spot
       icon: mdi:spotlight-beam
-      emulated_hue_hidden: false
+        
     light.stairs_top_spot:
       friendly_name: Stairs Top Spot
       icon: mdi:spotlight-beam
-      emulated_hue_hidden: false
+        
 
     group.stairs_lights:
       friendly_name: Stairs Lights
-      emulated_hue_hidden: false
+        

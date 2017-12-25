@@ -22,23 +22,23 @@ input_boolean:
 
 automation:
 
-  - alias: Xiaomi Doorbell Test
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d0001a6687f
-        click_type: single
-    action:
-      - service: notify.pushbullet_isa
-        data:
-          title: 'Xiaomi Doorbell Ringing!'
-          message: 'Someone is at the front door'
-      - service: switch.turn_on
-        entity_id: switch.doorbell_front_door
-      - service: switch.turn_off
-        entity_id: switch.doorbell_front_door
+  # - alias: Xiaomi Doorbell Test
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: event
+  #     event_type: click
+  #     event_data:
+  #       entity_id: binary_sensor.switch_158d0001a6687f
+  #       click_type: single
+  #   action:
+  #     - service: notify.pushbullet_isa
+  #       data:
+  #         title: 'Xiaomi Doorbell Ringing!'
+  #         message: 'Someone is at the front door'
+  #     - service: switch.turn_on
+  #       entity_id: switch.doorbell_front_door
+  #     - service: switch.turn_off
+  #       entity_id: switch.doorbell_front_door
 
   - alias: Doorbell Front Door Trigger Boolean
     initial_state: 'on'

@@ -9,6 +9,37 @@ homeassistant:
   customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
 config:
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - group.inside_lights_automations
+        - group.outside_lights_card
+        - group.stairs_lights
+        - group.walk_in_closet_lights
+        - group.christmas_lights
+      include_domains:
+        - switch
+        - light
+        - scene
+      exclude_entities:
+        - light.stefan_ceiling_light
+        - light.walk_in_closet_1
+        - light.walk_in_closet_2
+        - light.walk_in_closet_3
+        - light.walk_in_closet_4
+        - light.stairs_bottom_spot
+        - light.stairs_middle_spot
+        - light.stairs_top_spot
+        - light.storage_christmas_candelabra
+        - light.christmas_candelabra
+      exclude_domains:
+        - script
+        - group
+        - automation
+        - alert
+        - media_player
+        
 http:
   api_password: !secret http_password
   base_url: !secret base_url
@@ -23,30 +54,12 @@ customizer:
 # ###              ALEXA               ###
 # ########################################
 
-emulated_hue:
-  host_ip: !secret hass_host_ip
-  expose_by_default: true
-  exposed_domains:
-    - scene
-alexa: !include alexa.yaml
-# cloud:
-  # alexa:
-  #   filter:
-  #     # include_entities:
-  #     #   - light.kitchen
-  #     include_domains:
-  #       - switch
-  #       - light
-  #       - sensor
-  #       - alert
-  #       - group
-  #       - media_player
-  #       - scene
-  #       - automation
-      # exclude_entities:
-      #   - light.stefan_ceiling_light
-      # exclude_domains:
-      #   - script
+# emulated_hue:
+#   host_ip: !secret hass_host_ip
+#   expose_by_default: true
+#   exposed_domains:
+#     - scene
+# alexa: !include alexa.yaml
 
 # ########################################
 # ###                GUI               ###
@@ -116,7 +129,9 @@ xiaomi_aqara:
      key: !secret xiaomi_key
 # TRÅDFRI
 # HUE
-
+hue:
+  bridges:
+    - host: !secret hue_ip
 # ########################################
 # ###              ENTITES             ###
 # ########################################
