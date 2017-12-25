@@ -1,7 +1,15 @@
 # ALARM CLOCK
 # based on:
 # https://github.com/master-kenobi/ha-alarmclock
-
+homeassistant:
+  customize:
+    script.alarmclock_clock_snooze:
+      alexa_hidden: true
+    script.goodmorning:
+      alexa_display_categories: SCENE_TRIGGER
+    script.wakeuplight:
+      alexa_hidden: true
+    
 input_boolean:
   alarmclock_mwf_enabled:
     name: Enabled

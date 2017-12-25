@@ -17,7 +17,8 @@ homeassistant:
     sensor.upstairs_litterbox:
       extra_badge:
         entity_id: sensor.upstairs_litterbox_visits
-
+    script.ifttt_litterbox_day_summary:
+      alexa_hidden: true
 
 binary_sensor:
   - platform: rfxtrx

@@ -1,4 +1,8 @@
-# homeassistant:
+homeassistant:
+  customize:
+    script.goodnight:
+      alexa_hidden: true
+    
 input_boolean:
   goodnight_stefan:
     name: Goodnight Stefan

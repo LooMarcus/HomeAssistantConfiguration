@@ -22,6 +22,7 @@ cloud:
         - switch
         - light
         - scene
+        - script        
       exclude_entities:
         - light.stefan_ceiling_light
         - light.walk_in_closet_1
@@ -33,8 +34,15 @@ cloud:
         - light.stairs_top_spot
         - light.storage_christmas_candelabra
         - light.christmas_candelabra
+        - script.alarmclock_clock_snooze
+        - script.brighten_bedside_lamp
+        - script.brighten_light_hallway
+        - script.dim_bedside_lamp
+        - script.dim_light_hallway
+        - script.svtplay_play
+        - script.wakeuplight
+        - script.ifttt_litterbox_day_summary
       exclude_domains:
-        - script
         - group
         - automation
         - alert

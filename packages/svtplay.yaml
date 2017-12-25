@@ -8,8 +8,12 @@ homeassistant:
     script.morning_news:
       homebridge_visible: true
       icon: mdi:television-classic
-        
-
+      alexa_display_categories: TV        
+    script.turn_on_shield:
+      alexa_name: Shield
+      alexa_display_categories: TV        
+    script.svtplay_play:
+      alexa_hidden: true
 svtplay_dl:
   accounts:
     tv4play:
@@ -20,7 +24,7 @@ script:
   morning_news:
     alias: Morning news
     sequence:
-      # tood: turn on tv with ir
+      # todo: turn on tv with ir
       - service: script.turn_on_shield
       - service: script.svtplay_play
         data:

@@ -18,5 +18,6 @@ inside_lights_card:
     - group.stairs_lights
     - group.walk_in_closet_lights
     - light.stefan_ceiling_light
+    - light.stefan_lightstrip
     - light.upstairs_hallway_ceiling_light_level
     - light.gateway_light_34ce008bfc4b

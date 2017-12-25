@@ -2,6 +2,10 @@ homeassistant:
   customize:
     binary_sensor.switch_158d0001243520:
       friendly_name: Bed Switch 
+    script.dim_bedside_lamp:
+      alexa_hidden: true
+    script.brighten_bedside_lamp:
+      alexa_hidden: true
 
 input_boolean:
   bedside_lamp_dimmer:

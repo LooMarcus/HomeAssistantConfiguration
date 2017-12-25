@@ -36,7 +36,11 @@
     light.stefan_ceiling_light:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
-        
+
+    light.stefan_lightstrip:
+      confirm_controls_show_lock: true
+      state_card_mode: no-slider
+      
     light.outside_yard_hanging_lights:
       state_card_mode: no-slider
         

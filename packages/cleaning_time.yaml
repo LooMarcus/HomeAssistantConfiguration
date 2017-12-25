@@ -1,13 +1,12 @@
 homeassistant:
   customize:
     script.cleaning_time:
-        
+      alexa_display_categories: SCENE_TRIGGER
     script.cleaning_time_over:
-        
+      alexa_display_categories: SCENE_TRIGGER
     script.cleaning_music:
+      alexa_display_categories: SCENE_TRIGGER
         
-    
-
 script:
   cleaning_time:
     alias: Cleaning time

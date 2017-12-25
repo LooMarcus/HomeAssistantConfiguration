@@ -6,6 +6,10 @@ homeassistant:
       friendly_name: Hallway Motion
     sensor.illumination_158d0001a66256:
       friendly_name: Hallway Lux
+    script.dim_light_hallway:
+      alexa_hidden: true
+    script.brighten_light_hallway:
+      alexa_hidden: true
 
 input_boolean:
   dimmer_hallway:
