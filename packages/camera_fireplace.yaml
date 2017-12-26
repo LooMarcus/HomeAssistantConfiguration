@@ -1,11 +1,11 @@
 camera:
   - platform: ffmpeg
-    name: Fireplace Cam
+    name: Back Door
     input: !secret camera_input
     extra_arguments: -pred 1
 binary_sensor:
   - platform: ffmpeg_motion
-    name: Fireplace Camera Motion
+    name: Back Door Camera Motion
     input: !secret camera_input
     changes: 5
 
@@ -25,4 +25,4 @@ automation:
               content-type: jpeg
             push:
               category: camera
-            entity_id: camera.fireplace_cam
+            entity_id: camera.back_door_cam

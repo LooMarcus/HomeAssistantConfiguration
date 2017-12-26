@@ -2,6 +2,7 @@ laundry_card:
   name: Laundry
   entities:
     - input_select.washing_machine_status
+    - input_select.dryer_status
     - sensor.washer
-    - sensor.washer_plug_power
+    - sensor.dryer
     - switch.laundry_line_drying

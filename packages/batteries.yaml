@@ -812,13 +812,14 @@ group:
     icon: mdi:battery-unknown
     view: yes
     entities:
-      - group.ios_batteries
+      - group.device_batteries
       - group.tradfri_batteries
       - group.xiaomi_batteries
 
-  ios_batteries:
-    name: Ios Batteries
+  device_batteries:
+    name: Device Batteries
     entities:
+      - sensor.ring_front_door_battery
       - sensor.igrims_battery_level
       - sensor.igrims_battery_state
       - sensor.isabellas_iphone_6s_battery_level

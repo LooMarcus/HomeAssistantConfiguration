@@ -1,0 +1,180 @@
+homeassistant:
+  customize:
+    input_select.dryer_status:
+      icon: mdi:amplifier
+    sensor.dryer:
+      icon: mdi:amplifier
+
+input_select:  
+  dryer_status:
+    name: Dryer Status
+    options:
+      - Idle
+      - Running
+      - Dry
+    initial: Idle
+
+sensor:
+  - platform: template
+    sensors:
+      dryer:
+        friendly_name: Dryer Idle
+        value_template: "{{ states('sensor.dryer_plug_power') | int < 3.4 }}"
+
+
+## ------------------------------------------------------------------- ##
+automation:
+  - alias: Laundry Dryer Start
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: sensor.dryer
+      from: 'True'
+      to: 'False'
+    # condition:
+    #   condition: or
+    #   conditions:
+    #     - condition: state
+    #       entity_id: sensor.dryer_status
+    #       state: Idle
+    #     - condition: state
+    #       entity_id: sensor.dryer_status
+    #       state: Dry
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dryer_status
+          option: Running
+
+  - alias: Laundry Dryer Clean After Timeout
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: sensor.dryer
+      from: 'False'
+      to: 'True'
+      for:
+        minutes: 10
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_select.dryer_status
+          state: Running
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dryer_status
+          option: Clean
+
+
+## ------------------------  NOTIFICATIONS ------------------------  ##
+
+  - alias: Laundry Notification On Dryer Done
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: input_select.dryer_status
+        to: Clean
+        for:
+          minutes: 1
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: 'home'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: 'home'
+        for:
+          minutes: 10
+      - platform: time
+        at: '08:01:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          before: '23:00:00'
+          after: '08:00:00'
+        - condition: state
+          entity_id: group.persons
+          state: 'home'
+        - condition: state
+          entity_id: input_select.dryer_status
+          state: Clean
+        - condition: template
+          value_template: >
+            {% if states.automation.laundry_notification_on_dryer_done.last_triggered is not none %}
+              {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.laundry_notification_on_dryer_done.attributes.last_triggered) | int > 1800 %} true {% else %} false
+              {% endif %}
+            {% else %}
+            false
+            {% endif %}
+    action:
+      # - service: light.turn_on
+      #   data:
+      #     entity_id: light.floorlamp_uplight
+      #     brightness: 150
+      #     color_name: 'red'
+
+      - service: notify.ios_isabellas_iphone_6s
+      # - service_template: >
+      #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+      #       notify.all
+      #     {% elif is_state('device_tracker.isabella', 'home') %}
+      #       notify.ios_isabellas_iphone_6s
+      #     {% elif is_state('device_tracker.stefan', 'home') %}
+      #       notify.ios_stefan_iphone_7
+      #     {% endif %}
+        data:
+          message: 'Take care of it now?'
+          title: 'Dryer is done!'
+          # data:
+          #   push:
+          #     badge: 0
+          #     category: "washer"
+
+  # - alias: Laundry Dryer Emptied
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: WASHER_EMPTIED
+  #   action:
+  #     - service: input_select.select_option
+  #       data:
+  #         entity_id: input_select.dryer_status
+  #         option: Idle
+  #     # - service: notify.all
+  #     - service: light.turn_off
+  #       entity_id: light.floorlamp_uplight
+  #     - service: notify.ios_isabellas_iphone_6s
+  #       data:
+  #         message: 'The laundry is taken care of'
+
+  # - alias: Laundry Dryer Snoozed
+  #   initial_state: 'on'
+  #   trigger:
+  #     platform: event
+  #     event_type: ios.notification_action_fired
+  #     event_data:
+  #       actionName: WASHER_NOT_EMPTIED
+  #   action:
+  #     - delay: 0:30
+  #     # - service: notify.ios_isabellas_iphone_6s
+  #     - service_template: >
+  #         {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+  #           notify.all
+  #         {% elif is_state('device_tracker.isabella', 'home') %}
+  #           notify.ios_isabellas_iphone_6s
+  #         {% elif is_state('device_tracker.stefan', 'home') %}
+  #           notify.ios_stefan_iphone_7
+  #         {% endif %}
+  #       data:
+  #         message: 'Take care of it now?'
+  #         title: 'Dryer is done!'
+  #         data:
+  #           push:
+  #             badge: 0
+  #             category: "WASHER"

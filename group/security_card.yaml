@@ -12,11 +12,13 @@ security_card:
     - sensor.backyard_door
     - sensor.balcony_door
     - sensor.dining_area_window
+    - binary_sensor.ring_front_door_motion
     - sensor.kitchen_movement
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
     - binary_sensor.motion_sensor_158d000165ff1f
     - binary_sensor.motion_sensor_158d0001a66256
+    - binary_sensor.back_door_camera_motion
     - sensor.yard_storage_door
     - sensor.hallway_glass_door
     - sensor.water_heater

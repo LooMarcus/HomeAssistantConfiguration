@@ -12,8 +12,7 @@ default_view:
     - group.outside_lights_card
     - group.alerts_card
     - group.security_card
+    - group.ring_front_door
     - input_boolean.stefan_home
     - input_boolean.isabella_home
-    - device_tracker.marek
-    - device_tracker.anette    
     # - group.summary

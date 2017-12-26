@@ -57,18 +57,6 @@ conversation:
 customizer:
   custom_ui: hosted
 
-
-# ########################################
-# ###              ALEXA               ###
-# ########################################
-
-# emulated_hue:
-#   host_ip: !secret hass_host_ip
-#   expose_by_default: true
-#   exposed_domains:
-#     - scene
-# alexa: !include alexa.yaml
-
 # ########################################
 # ###                GUI               ###
 # ########################################
@@ -143,6 +131,10 @@ hue:
 # ########################################
 # ###              ENTITES             ###
 # ########################################
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
 media_player: !include media_player.yaml
 # # alert: !include alert.yaml
 plant: !include plant.yaml

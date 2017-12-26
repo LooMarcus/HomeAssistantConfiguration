@@ -140,6 +140,9 @@ sensor:
         hass_rpi:
           friendly_name: 'Hass Rpi'
           value_template: "{{ 'Online' if is_state('device_tracker.hass_raspberry_pi', 'home') else 'Offline' }}"
+        # ring_doorbell_:
+        #   friendly_name: 'Hass Rpi'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.hass_raspberry_pi', 'home') else 'Offline' }}"
 
 automation:
   - alias: 'Device Status'

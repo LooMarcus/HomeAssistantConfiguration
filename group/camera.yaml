@@ -1,5 +1,5 @@
 camera:
-  name: Camera
+  name: Cameras
   entities:
-    - camera.fireplace_cam
-    - binary_sensor.fireplace_camera_motion
+    - camera.front_door
+    - camera.back_door
