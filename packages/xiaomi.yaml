@@ -13,6 +13,11 @@ homeassistant:
     sensor.illumination_34ce008bfc4b:
       friendly_name: Upstairs Hallway Illumination
       icon: mdi:theme-light-dark
+    binary_sensor.motion_sensor_158d000165ff1f:
+      friendly_name: Backdoor Motion
+    sensor.illumination_158d000165ff1f:
+      friendly_name: Backyard Illumination     
+
 
 alert: 
   bathroom_cabinet_door_open:
@@ -24,3 +29,4 @@ alert:
     skip_first: True
     notifiers:
       - ios_isabellas_iphone_6s
+

@@ -20,13 +20,16 @@ homeassistant:
     script.ifttt_litterbox_day_summary:
       alexa_hidden: true
 
-binary_sensor:
-  - platform: rfxtrx
-    devices:
-      0913001b4ab0a1011d70:
-        name: White3
-        off_delay:
-          seconds: 5
+    binary_sensor.switch_158d0001a6687f:
+      friendly_name: Upstairs litterbox switch
+
+# binary_sensor:
+#   - platform: rfxtrx
+#     devices:
+#       0913001b4ab0a1011d70:
+#         name: White3
+#         off_delay:
+#           seconds: 5
 
 #-------------------------------------------
 
@@ -84,12 +87,12 @@ group:
       
 #-------------------------------------------
 
-history_graph:
-  litterbox_visits:
-    name: Litterbox Visits
-    entities:
-      - binary_sensor.motion_sensor_158d0001a66291
-      - binary_sensor.motion_sensor_158d0001a24ef1
+# history_graph:
+#   litterbox_visits:
+#     name: Litterbox Visits
+#     entities:
+#       - binary_sensor.motion_sensor_158d0001a66291
+#       - binary_sensor.motion_sensor_158d0001a24ef1
 
 #-------------------------------------------
 
@@ -191,9 +194,11 @@ automation:
   - alias: Litterbox Upstairs Cleaning Mode
     initial_state: 'on'
     trigger:
-      - platform: state
-        entity_id: binary_sensor.white3
-        to: 'on'
+      platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d0001a6687f
+        click_type: single
     condition:
       condition: or
       conditions:
@@ -216,9 +221,11 @@ automation:
   - alias: Litterbox Upstairs Cleaned
     initial_state: 'on'
     trigger:
-      - platform: state
-        entity_id: binary_sensor.white3
-        to: 'on'
+      - platform: event
+        event_type: click
+        event_data:
+          entity_id: binary_sensor.switch_158d0001a6687f
+          click_type: single
       - platform: state
         entity_id: input_select.ulitterbox_state
         to: 'Clean'

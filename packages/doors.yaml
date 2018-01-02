@@ -34,19 +34,19 @@ input_boolean:
 sensor:
   - platform: template
     sensors:
-      last_door_opened:
-        friendly_name: 'Last Door Opened'
-        value_template: >
-                    {%- set doors = [states.sensor.front_door, states.sensor.backyard_door, states.sensor.back_door, states.sensor.balcony_door, states.sensor.yard_storage_door, states.sensor.hallway_glass_door] %}
-                    {% for door in doors %}
-                      {% if door.state == 'Open' %}
-                        {% if as_timestamp(door.last_changed) == as_timestamp(doors | map(attribute='last_changed') | max)  %} 
-                          {{ door.name }}
-                        {% endif %}
-                      {% endif %}
-                      {% else%}
-                        states.sensor.last_door_opened.state
-                    {% endfor %}
+      # last_door_opened:
+      #   friendly_name: 'Last Door Opened'
+      #   value_template: >
+      #               {%- set doors = [states.sensor.front_door, states.sensor.backyard_door, states.sensor.back_door, states.sensor.balcony_door, states.sensor.yard_storage_door, states.sensor.hallway_glass_door] %}
+      #               {% for door in doors %}
+      #                 {% if door.state == 'Open' %}
+      #                   {% if as_timestamp(door.last_changed) == as_timestamp(doors | map(attribute='last_changed') | max)  %} 
+      #                     {{ door.name }}
+      #                   {% endif %}
+      #                 {% endif %}
+      #                 {% else%}
+      #                   states.sensor.last_door_opened.state
+      #               {% endfor %}
 
 
                     # {%- set doors = [states.binary_sensor.door_window_sensor_158d00019f5110, states.binary_sensor.door_window_sensor_158d00019e152b, states.binary_sensor.door_window_sensor_158d0001a3e45e, states.binary_sensor.front_door_homebridge, states.binary_sensor.back_door_sensor] %}

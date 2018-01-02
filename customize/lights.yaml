@@ -40,6 +40,7 @@
     light.stefan_lightstrip:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
+      homebridge_visible: true      
       
     light.outside_yard_hanging_lights:
       state_card_mode: no-slider

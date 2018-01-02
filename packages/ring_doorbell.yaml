@@ -1,0 +1,104 @@
+
+binary_sensor:
+  - platform: ring
+sensor:
+  - platform: ring
+camera:
+  - platform: ring
+
+group:
+  ring_front_door:
+    name: Front Door
+    # control: hidden
+    entities:
+      - camera.front_door
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
+      - sensor.ring_front_door_last_activity
+      - sensor.ring_front_door_last_ding
+      - sensor.ring_front_door_last_motion
+      - sensor.ring_front_door_volume
+      - sensor.ring_front_door_wifi_signal_category
+      - sensor.ring_front_door_wifi_signal_strength
+      - sensor.ring_front_door_battery      
+
+automation:
+  - alias: Lights On When Ding Or Motion On Ring Door Bell
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ring_front_door_motion, binary_sensor.ring_front_door_ding
+        to: 'on'
+    condition:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:45:00"
+    action:
+      - service: python_script.brighten_then_restore
+        data_template:
+          entity_id: 'light.outside_front_light'
+      - service: python_script.brighten_then_restore
+        data_template:
+          entity_id: 'light.hallway_window_light'
+
+  - alias: Ring Door Bell Low Battery
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: 'sensor.ring_front_door_battery'
+        below: '15'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Ring Doorbell'
+          message: 'Low Battery'
+
+  - alias: Ring Door Bell Disconnected
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: 'device_tracker.ring'
+        to: 'not_home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Ring Doorbell'
+          message: 'Disconnected from wifi'
+
+  - alias: Ring Door Bell Connected
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: 'device_tracker.ring'
+        to: 'home'
+    action:
+      - service: notify.ios_isabellas_iphone_6s
+        data:
+          title: 'Ring Doorbell'
+          message: 'Connected to wifi'
+
+  - alias: Doorbell Front Door Bell And Light
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ring_front_door_ding
+        to: 'on'
+    action:
+      # - service: notify.pushbullet_isa
+      #   data:
+      #     title: 'Doorbell ringing'
+      #     message: 'Someone is at the front door'
+      # - service: notify.pushbullet_stefan
+      #   data:
+      #     title: 'Doorbell ringing'
+      #     message: 'Someone is at the front door'
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: !secret xiaomi_mac
+          ringtone_id: 10
+          ringtone_vol: 10
+      - service: switch.turn_on
+        entity_id: switch.doorbell_front_door
+      - service: switch.turn_off
+        entity_id: switch.doorbell_front_door
+      - service: python_script.flash_lights_upstairs_hallway_and_yard

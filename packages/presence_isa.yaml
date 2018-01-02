@@ -10,59 +10,6 @@ input_boolean:
     initial: on
     icon: mdi:human-female
 
-# # if boolean on = home, if boolean off = zone from device_tracker if not "not_home"
-# sensor:
-#   - platform: template
-#     sensors:
-#       isabella_home:
-#         friendly_name: 'Isabella'
-#         value_template: '{% if is_state("input_boolean.isabella_home", "on") %}Home{% elif is_state("device_tracker.isabellas_iphone_6s", "School")%}School{% elif is_state("device_tracker.isabellas_iphone_6s", "Work")%}Work{% else %}Not home{% endif %}'
-# #         icon_template: '{% if is_state("binary_sensor.door_window_sensor_158d0001a3df50", "on") %}mdi:login{% elif is_state("binary_sensor.door_window_sensor_158d0001a3df50", "off")%}mdi:page-layout-sidebar-right{% else %}mdi:comment-question-outline{% endif %}'
-
-
-
-# binary_sensor:
-#   - platform: 'bayesian'
-#     prior: 0.65 # 65 % chance I'm at home at any given point
-#     name: 'Isabella Home Bay'
-#     probability_threshold: 0.95
-#     observations:
-#         # If I'm home -> very likely my ios app reports me as home
-#       - entity_id: 'device_tracker.isabellas_iphone_6s'
-#         prob_given_true: 0.99
-#         prob_given_false: 0.1
-#         platform: 'state'
-#         to_state: 'home'
-#         # If I'm home -> likely wifi reports me as home        
-#       - entity_id: 'device_tracker.isabellas_iphone_6s_wifi'
-#         prob_given_true: 0.7
-#         prob_given_false: 0.1
-#         platform: 'state'
-#         to_state: 'home'
-#         # If I'm home -> maybe I have my laptop on        
-#       - entity_id: 'sensor.isa_laptop'
-#         prob_given_true: 0.4
-#         prob_given_false: 0.1
-#         platform: 'state'
-#         to_state: 'Online'
-#         # If I'm home -> likely my computer is on, but sometimes I leave it on 
-#       - entity_id: 'sensor.isa_computer'
-#         prob_given_true: 0.7
-#         prob_given_false: 0.3
-#         platform: 'state'
-#         to_state: 'Online'
-#         # If I'm home -> very likely Homekit will report me as home        
-#       - entity_id: 'input_boolean.isabella_home'
-#         prob_given_true: 0.99
-#         prob_given_false: 0.01
-#         platform: 'state'
-#         to_state: 'on'
-#         # If I'm home -> likely some inside lights are on
-#       - entity_id: group.inside_lights_card
-#         platform: 'state'
-#         to_state: 'on'
-#         prob_given_true: 0.7
-
 
 # Lots of automations to keep track of device tracking works or not
 automation:
@@ -75,8 +22,6 @@ automation:
       - platform: state
         entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabellas_iphone_6s_wifi, device_tracker.isabellas_iphone_6s_bt
         to: 'home'
-      - platform: homeassistant
-        event: start
     action:
       - service: python_script.meta_device_tracker
         data_template:
@@ -90,10 +35,8 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.isabellas_iphone_6s
+        entity_id: device_tracker.isabellas_iphone_6s, device_tracker.isabellas_iphone_6s_wifi, device_tracker.isabellas_iphone_6s_bt
         to: 'not_home'
-        for:
-          minutes: 10
     action:
       - service: python_script.meta_device_tracker
         data_template:

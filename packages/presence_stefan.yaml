@@ -10,42 +10,6 @@ input_boolean:
     initial: on
     icon: mdi:human-male
 
-# binary_sensor:
-#   - platform: 'bayesian'
-#     prior: 0.65  # 65 % chance Stefan's at home at any given point
-#     name: 'Stefan Home Bay'
-#     probability_threshold: 0.95
-#     observations:
-#         # Stefan Home -> likely ios app reports him as home        
-#       - entity_id: 'device_tracker.stefan_iphone_7'
-#         prob_given_true: 0.8
-#         prob_given_false: 0.1
-#         platform: 'state'
-#         to_state: 'home'
-#         # Stefan Home -> likely wifi reports him as home
-#       - entity_id: 'device_tracker.stefan_iphone_7_wifi'
-#         prob_given_true: 0.7
-#         prob_given_false: 0.1
-#         platform: 'state'
-#         to_state: 'home'
-#         # Stefan Home -> Very likely his computer is on, but sometimes he leaves it on
-#       - entity_id: 'device_tracker.stefan_computer'
-#         prob_given_true: 0.99
-#         prob_given_false: 0.3
-#         platform: 'state'
-#         to_state: 'home'
-#         # Stefan Home -> Very likely Homekit reports him as home
-#       - entity_id: 'input_boolean.stefan_home'
-#         prob_given_true: 0.99
-#         prob_given_false: 0.01
-#         platform: 'state'
-#         to_state: 'on'
-#         # Stefan Home -> likely some inside lights are on
-#       - entity_id: group.inside_lights_card
-#         platform: 'state'
-#         to_state: 'on'
-#         prob_given_true: 0.7
-        
 # Lots of automations to keep track of device tracking works or not        
 automation:
   - alias: "Presence Stefan Home By Script"
@@ -57,8 +21,6 @@ automation:
       - platform: state
         entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
         to: 'home'
-      - platform: homeassistant
-        event: start
     action:
       - service: python_script.meta_device_tracker
         data_template:
@@ -72,15 +34,8 @@ automation:
         entity_id: input_boolean.stefan_home
         to: 'off'
       - platform: state
-        entity_id: device_tracker.stefan_iphone_7
+        entity_id: device_tracker.stefan_iphone_7, device_tracker.stefan_iphone_7_wifi
         to: 'not_home'
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: device_tracker.stefan_iphone_7_wifi
-        to: 'not_home'
-        for:
-          minutes: 30
     action:
       - service: python_script.meta_device_tracker
         data_template:
