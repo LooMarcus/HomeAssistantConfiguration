@@ -9,44 +9,7 @@ homeassistant:
   customize_glob: !include customglob.yaml
   packages: !include_dir_named packages
 config:
-cloud:
-  alexa:
-    filter:
-      include_entities:
-        - group.inside_lights_automations
-        - group.outside_lights_card
-        - group.stairs_lights
-        - group.walk_in_closet_lights
-        - group.christmas_lights
-      include_domains:
-        - switch
-        - light
-        - scene
-        - script        
-      exclude_entities:
-        - light.stefan_ceiling_light
-        - light.walk_in_closet_1
-        - light.walk_in_closet_2
-        - light.walk_in_closet_3
-        - light.walk_in_closet_4
-        - light.stairs_bottom_spot
-        - light.stairs_middle_spot
-        - light.stairs_top_spot
-        - light.storage_christmas_candelabra
-        - light.christmas_candelabra
-        - script.alarmclock_clock_snooze
-        - script.brighten_bedside_lamp
-        - script.brighten_light_hallway
-        - script.dim_bedside_lamp
-        - script.dim_light_hallway
-        - script.svtplay_play
-        - script.wakeuplight
-        - script.ifttt_litterbox_day_summary
-      exclude_domains:
-        - group
-        - automation
-        - alert
-        - media_player
+cloud: !include alexa.yaml
         
 http:
   api_password: !secret http_password
@@ -123,53 +86,27 @@ xiaomi_aqara:
   gateways:
    - mac: !secret xiaomi_mac
      key: !secret xiaomi_key
-# TRÅDFRI
-# HUE
 hue:
   bridges:
     - host: !secret hue_ip
       allow_hue_groups: false
+
 # ########################################
 # ###              ENTITES             ###
 # ########################################
 ring:
   username: !secret ring_username
   password: !secret ring_password
-
 media_player: !include media_player.yaml
-# # alert: !include alert.yaml
-plant: !include plant.yaml
-sensor: !include_dir_merge_list sensor
-switch: !include_dir_merge_list switch
-binary_sensor: !include_dir_merge_list binary_sensors
-light: !include_dir_merge_list lights
-# tradfri:
-#   host: !secret tradfri_gateway_ip
 scene: !include_dir_merge_list scene
-input_boolean: !include_dir_merge_named input_boolean/
-input_select: !include_dir_merge_named input_select
 device_tracker: !include device_tracker.yaml
-zone:
-  - name: School
-    latitude: !secret school_lat
-    longitude: !secret school_long
-    icon: mdi:code-braces
-
-  - name: Work
-    latitude: !secret work_lat
-    longitude: !secret work_long
-    icon: mdi:briefcase
-    radius: 300
-# # input_slider: !include_dir_merge_named input_slider/
-
+zone: !include zone.yaml
 
 # ########################################
 # ###             SERVICES             ###
 # ########################################
-automation: !include_dir_merge_list automation
 notify: !include notify.yaml
 python_script:
-script: !include scripts.yaml
 group: !include_dir_merge_named group/
 mqtt:
   broker: !secret mqtt_broker
@@ -188,75 +125,8 @@ mqtt_statestream:
 # #   ffmpeg_bin: /usr/bin/avconv
 ifttt:
   key: !secret ifttt_key
-# shopping_list:
 
 ########################################
 ###                IOS               ###
 ########################################
-ios:
-  push:
-    categories:
-      - name: Laundry Clean In Washer
-        identifier: 'washer'
-        actions:
-          - identifier: 'WASHER_EMPTIED'
-            title: 'Yes'
-            authenticationRequired: yes
-            behavior: 'default'
-          - identifier: 'WASHER_NOT_EMPTIED'
-            title: 'Snooze'
-            activationMode: 'background'
-            destructive: yes
-
-      - name: Vacuum Now
-        identifier: 'vacuum'
-        actions:
-          - identifier: 'VACUUM_NOW'
-            title: 'Yes'
-            authenticationRequired: yes
-            behavior: 'default'
-          - identifier: 'VACUUM_LATER'
-            title: 'Snooze'
-            activationMode: 'background'
-            # destructive: yes
-          - identifier: 'VACUUM_STOP_ASKING'
-            title: 'Stop asking'
-            activationMode: 'background'
-            destructive: yes
-
-      - name: Litterbox Upstairs Cleaning Mode
-        identifier: 'cleaning_mode_u_still_on'
-        actions:
-          - identifier: 'CLEANING_U_DONE'
-            title: 'Done'
-            # authenticationRequired: yes
-            activationMode: 'background'            
-            behavior: 'default'
-          - identifier: 'CLEANING_U_NOT_DONE'
-            title: 'Not done yet'
-            activationMode: 'background'
-            destructive: yes
-      - name: Litterbox Downstairs Cleaning Mode
-        identifier: 'cleaning_mode_d_still_on'
-        actions:
-          - identifier: 'CLEANING_D_DONE'
-            title: 'Done'
-            # authenticationRequired: yes
-            activationMode: 'background'            
-            behavior: 'default'
-          - identifier: 'CLEANING_D_NOT_DONE'
-            title: 'Not done yet'
-            activationMode: 'background'
-            destructive: yes
-      - name: Alarm Clock
-        identifier: 'alarm_clock'
-        actions:
-          - identifier: 'AWAKE'
-            title: 'Yes'
-            destructive: no
-          - identifier: 'AWAKE_NO'
-            title: 'No'
-            destructive: no
-          - identifier: 'SNOOZE'
-            title: 'Snooze'
-            destructive: yes
+ios: !include ios_config.yaml

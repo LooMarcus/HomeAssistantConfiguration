@@ -1,7 +1,0 @@
-plants_view:
-  view: yes
-  name: Växter
-  icon: mdi:leaf
-  entities:
-    - group.palm_card
-    - group.monstera_card

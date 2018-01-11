@@ -1,3 +1,11 @@
+light:
+  - platform: rfxtrx
+    automatic_add: true
+    devices:
+      0b11000676bc0cfe01010f70:
+        name: Proove Dimmer
+      0b11000552bc0cfe07010f70:
+        name: Outside Yard Hanging Lights
   - name: 'Stairs Bottom Spot'
     command_topic: milight/0x2/rgbw/1 
     state_topic: milight/updates/0x2/rgbw/1 
@@ -16,3 +24,4 @@
     command_topic: milight/0x1/rgbw/1 
     state_topic: milight/updates/0x1/rgbw/1 
     <<: *MILIGHT_PARAMS
+  - platform: lifx

@@ -1,5 +1,35 @@
-  # flash_briefings:
-  #   litterbox_visits:
-  #     - title: How many litterbox visits?
-  #       text: >
-  #         'Total litterbox visits today is {{ states("sensor.all_litterbox_visits_today") }}'
+  alexa:
+    filter:
+      include_entities:
+        - group.inside_lights_automations
+        - group.outside_lights_card
+        - group.stairs_lights
+        - group.walk_in_closet_lights
+        - group.christmas_lights
+      include_domains:
+        - switch
+        - light
+        - scene
+        - script        
+      exclude_entities:
+        - light.stefan_ceiling_light
+        - light.walk_in_closet_1
+        - light.walk_in_closet_2
+        - light.walk_in_closet_3
+        - light.walk_in_closet_4
+        - light.stairs_bottom_spot
+        - light.stairs_middle_spot
+        - light.stairs_top_spot
+        - script.alarmclock_clock_snooze
+        - script.brighten_bedside_lamp
+        - script.brighten_light_hallway
+        - script.dim_bedside_lamp
+        - script.dim_light_hallway
+        - script.svtplay_play
+        - script.wakeuplight
+        - script.ifttt_litterbox_day_summary
+      exclude_domains:
+        - group
+        - automation
+        - alert
+        - media_player

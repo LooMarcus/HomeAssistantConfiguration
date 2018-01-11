@@ -3,5 +3,5 @@ weather_view:
   name: Väder
   icon: mdi:weather-partlycloudy
   entities:
-    # - group.yr_card
+    - group.yr_card
     - group.dark_sky_card

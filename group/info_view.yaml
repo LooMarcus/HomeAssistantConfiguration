@@ -8,7 +8,7 @@ default_view:
     - group.info_card
     - group.inside_lights_card
     - group.outside_lights_card
-    - group.alerts_card
+    - group.door_alerts
     - group.security_card
     - group.ring_front_door
     - input_boolean.stefan_home

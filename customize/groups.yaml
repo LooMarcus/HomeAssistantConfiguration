@@ -13,7 +13,7 @@
     group.all_scripts:
       hidden: false
 
-    group.alerts_card:
+    group.door_alerts:
       order: 1
     group.info_card:
       order: 2

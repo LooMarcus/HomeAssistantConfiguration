@@ -1,6 +1,0 @@
-temperature_view:
-  view: yes
-  name: Temperaturer
-  icon: mdi:thermometer
-  entities:
-    - group.temperature_card
