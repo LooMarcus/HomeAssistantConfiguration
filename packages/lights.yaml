@@ -3,10 +3,10 @@ homeassistant:
     input_text.lights_tiles:
       custom_ui_state_card: state-card-tiles
       config:
-        columns: 3
-        column_width: 50px
-        row_height: 50px
-        gap: 15px
+        columns: 6
+        # column_width: 50px
+        # row_height: 50px
+        # gap: 15px
         color: '#555B65'
         color_on: '#D5D619'
         color_off: '#BBBEC2'
@@ -23,15 +23,32 @@ homeassistant:
             column: 2
             row: 1
             icon: mdi:kettle
-          - entity: scene.watch_tv
+          - entity: script.movie_time
             # label: S1
             column: 3
             row: 1
             icon: mdi:television-classic
+    script.movie_time:
+      alexa_hidden: false
+      homebridge_visible: true
+      homebridge_name: Movie Time
 
 input_text:
   lights_tiles:
     name: Lights
+
+script:
+  movie_time:
+    alias: Movie Time
+    sequence:
+      - service: light.turn_off
+        data:
+          entity_id: light.living_room_spotlights_level, light.passage_ceiling_spotlights_level, light.upstairs_hallway_ceiling_light_level, light.kitchen_ceiling_spotlights_level, light.dining_area_ceiling_light_level, light.floorlamp_reading_light, light.floorlamp_uplight, light.isa_ceiling_light
+          transition: 30
+      - service: light.turn_on
+        data:
+          entity_id: light.living_room_ceiling_light_level, group.stairs_lights
+          brightness: 10
 
 light:
   - platform: rfxtrx

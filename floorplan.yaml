@@ -13,14 +13,13 @@
 
         - name: Sensors
           entities:
-             - sensor.upstairs_litter_box_visits
-          text_template: '${entity.state ? entity.state : "unknown"}'
+             - sensor.mailbox
+          # text_template: '${entity.state ? entity.state : "unknown"}'
           class_template: '
-          var visits = parseFloat(entity.state);
-          if (visits > 2)
-            return "Time to clean!";
+          if (entity.state == "empty")
+            return "danger-text";
           else
-            return visits + "visits";
+            return "sucess-text";
           '
  
           #'
@@ -76,15 +75,31 @@
         #     '
         - name: Lights
           entities:
+            - light.bedroom_ceiling_light
+            - light.bedside_lamp
+            - light.dining_area_ceiling_light_level  
+            - light.kitchen_ceiling_spotlights_level
+            - light.floorlamp_reading_light
+            - light.floorlamp_uplight
             - light.hallway_window_light
+            - light.isa_ceiling_light
             - light.living_room_ceiling_light_level
             - light.living_room_spotlights_level
-            - light.dining_area_ceiling_light_level
             - light.passage_ceiling_spotlights_level
-            - light.yard_outside_light
-            - light.front_outside_light
+            - light.stairs_bottom_spot
+            - light.stairs_middle_spot
+            - light.stairs_top_spot
+            - light.walk_in_closet_1
+            - light.walk_in_closet_2
+            - light.walk_in_closet_3
+            - light.walk_in_closet_4            
+            # - light.stefan_ceiling_light
+            # - light.stefan_lightstrip
             - light.upstairs_hallway_ceiling_light_level
-            - light.isa_ceiling_lamp
+            - light.gateway_light_34ce008bfc4b
+            - light.outside_yard_light
+            - light.outside_yard_hanging_lights
+            - light.outside_front_light
           states:
             - state: 'on'
               class: 'light-on'
@@ -127,7 +142,8 @@
           entities:
             - binary_sensor.passage_pir_sensor
             - binary_sensor.upstairs_hallway_pir_sensor
-
+            - binary_sensor.motion_sensor_158d0001a24ef1
+            - binary_sensor.motion_sensor_158d0001a66291
           states:
             - state: 'off'
               class: 'info-background'
@@ -145,7 +161,6 @@
             - binary_sensor.dining_area_window_sensor_sensor
             - binary_sensor.back_door_sensor
             - binary_sensor.front_door_sensor
-            - binary_sensor.upstairs_litterbox
             - binary_sensor.door_window_sensor_158d00019e152b #backyard door
             - binary_sensor.door_window_sensor_158d00019f5110 #yard storage door
           states:

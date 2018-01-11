@@ -50,12 +50,12 @@ frontend:
 #   #   title: Configurator
 #   #   icon: mdi:wrench
 #   #   url: !secret configurator_url
-# # panel_custom: 
-# #   - name: floorplan
-# #     sidebar_title: Floorplan
-# #     sidebar_icon: mdi:home
-# #     url_path: floorplan
-# #     config: !include floorplan.yaml
+panel_custom: 
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:home
+    url_path: floorplan
+    config: !include floorplan.yaml
 
 # ########################################
 # ###              LOGGING             ###

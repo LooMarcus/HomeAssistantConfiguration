@@ -16,6 +16,10 @@ script:
   goodnight:
     alias: Goodnight
     sequence:
+      - service: alarm_control_panel.alarm_arm_night
+        data:
+          entity_id: alarm_control_panel.home_alarm
+      - service: script.air_cleaner_quiet
       - service: homeassistant.turn_off
         data:
           entity_id: group.inside_lights_automations
@@ -26,7 +30,7 @@ script:
           entity_id: light.bedside_lamp
           brightness: 25
       - delay: 
-          seconds: 10
+          seconds: 25
       - service: light.turn_on
         data:
           entity_id: light.gateway_light_34ce008bfc4b
@@ -36,10 +40,14 @@ script:
             - 64
             - 6
       - delay:
-          minutes: 3
+          minutes: 5
       - service: light.turn_off
         data:
           entity_id: light.gateway_light_34ce008bfc4b
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.day_mode
+          option: Night
 
 automation:
   - alias: Goodnight Isa
