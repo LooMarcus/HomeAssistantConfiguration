@@ -52,7 +52,7 @@ http:
   api_password: !secret http_password
   base_url: !secret base_url
 updater:
-discovery:
+# discovery:
 conversation:
 customizer:
   custom_ui: hosted

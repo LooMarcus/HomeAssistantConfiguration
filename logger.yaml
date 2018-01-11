@@ -32,4 +32,5 @@ logs:
   # homeassistant.components.ffmpeg: debug
   # homeassistant.components.ffmpeg_motion: debug
   # homeassistant.components.xiaomi: debug
+  homeassistant.components.device_tracker.owntracks: debug
   root: warn

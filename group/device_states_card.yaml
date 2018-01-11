@@ -16,3 +16,6 @@ device_states_card:
   - sensor.xiaomi_gateway
   - sensor.hass_rpi
   - sensor.magic_mirror_rpi
+  - sensor.ring_doorbell
+  - sensor.ring_chime_pro
+  - sensor.ring_chime

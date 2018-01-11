@@ -1,0 +1,27 @@
+history_graph:
+  internet_speed_tests:
+    name: Internet Speed Tests
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+
+sensor:
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+    minute: 30
+    hour:
+      - 6
+      - 18
+group:
+  internet_card:
+    name: Internet status
+    entities:
+    - sensor.asus_router
+    - sensor.netgear_router
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload

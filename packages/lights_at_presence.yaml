@@ -4,20 +4,18 @@ automation:
   ## Turn on hallway window light and front outside light if we come home after 00 and turn them off after 10 min
   - alias: Lights On Outside And Hallway At Coming Home At Night Delay Ten Then Off
     trigger:
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.home
-        event: enter
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_6s
-        zone: zone.home
-        event: enter
       - platform: state
-        entity_id: input_boolean.stefan_home
-        to: 'on'
+        entity_id: device_tracker.stefan
+        to: home
       - platform: state
-        entity_id: input_boolean.isabella_home
-        to: 'on'
+        entity_id: device_tracker.isabella
+        to: home
+      # - platform: state
+      #   entity_id: input_boolean.stefan_home
+      #   to: 'on'
+      # - platform: state
+      #   entity_id: input_boolean.isabella_home
+      #   to: 'on'
     condition:
       condition: time
       after: '00:01:00'
@@ -46,14 +44,12 @@ automation:
   ## Also turn on passage lights, but not turn off
   - alias: Lights On Passage At Coming Home At Night
     trigger:
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.home
-        event: enter
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_6s
-        zone: zone.home
-        event: enter
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: home
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: home
     condition:
       condition: time
       after: '00:01:00'
@@ -65,14 +61,12 @@ automation:
 
   - alias: Lights On Outside And Hallway At Presence While Dark
     trigger:
-      - platform: zone
-        entity_id: device_tracker.stefan_iphone_7
-        zone: zone.home
-        event: enter
-      - platform: zone
-        entity_id: device_tracker.isabellas_iphone_6s
-        zone: zone.home
-        event: enter
+      - platform: state
+        entity_id: device_tracker.stefan
+        to: home
+      - platform: state
+        entity_id: device_tracker.isabella
+        to: home
       - platform: state
         entity_id: input_boolean.stefan_home
         to: 'on'
@@ -80,9 +74,14 @@ automation:
         entity_id: input_boolean.isabella_home
         to: 'on'
     condition:
-      condition: sun
-      after: sunset
-      after_offset: "-00:45:00"
+      condition: and
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:45:00"
+        - condition: state
+          entity_id: group.persons
+          state: home
     action:
       - service: scene.turn_on
         entity_id: scene.ceiling_lights

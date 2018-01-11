@@ -1,8 +1,0 @@
-internet_card:
-  name: Internet status
-  entities:
-  - sensor.asus_router
-  - sensor.netgear_router
-  - sensor.speedtest_ping
-  - sensor.speedtest_download
-  - sensor.speedtest_upload

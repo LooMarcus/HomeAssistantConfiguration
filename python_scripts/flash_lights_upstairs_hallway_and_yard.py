@@ -7,9 +7,9 @@ yard_light_original_state = outside_yard_light.state
 hallway_light_original_state = upstairs_hallway_ceiling_light.state
 
 if yard_light_original_state is 'on':
-    yard_light_brightness = light.attributes.get('brightness') or 0
+    yard_light_brightness = outside_yard_light.attributes.get('brightness') or 0
 if hallway_light_original_state is 'on':
-    hallway_light_brightness = light.attributes.get('brightness') or 0
+    hallway_light_brightness = upstairs_hallway_ceiling_light.attributes.get('brightness') or 0
 
 if yard_light_original_state is 'off':
     hass.services.call('light', 'turn_on', {'entity_id': 'light.outside_yard_light'})

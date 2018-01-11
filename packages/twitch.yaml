@@ -1,0 +1,4 @@
+sensor:
+  -   platform: twitch
+      channels:
+        - grimsan55

@@ -1,7 +1,0 @@
-  - platform: rfxtrx
-    # automatic_add: True
-    # devices:
-      # 08200301d119000650:
-      #   name: Fire Alarm 1
-      # 08200301629b000660:
-      #   name: Fire Alarm 2

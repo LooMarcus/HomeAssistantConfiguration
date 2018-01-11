@@ -1,4 +1,0 @@
-# - platform: mqtt
-#   state_topic: "dummy/upstairslitterbox/count"
-#   name: Upstairs Litter Box Visits
-#   unit_of_measurement: "visits"

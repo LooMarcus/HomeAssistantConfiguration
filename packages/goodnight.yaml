@@ -1,7 +1,8 @@
 homeassistant:
   customize:
     script.goodnight:
-      alexa_hidden: true
+      alexa_hidden: false
+      homebridge_visible: true
     
 input_boolean:
   goodnight_stefan:

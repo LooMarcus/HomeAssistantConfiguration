@@ -122,31 +122,37 @@ sensor:
         ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
-        ir_blaster_livingroom:
-          friendly_name: 'Broadlink IR Blaster Livingroom'
-          value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
-        ikea_gateway:
-          friendly_name: 'Ikea Trådfri Gateway'
-          value_template: "{{ 'Online' if is_state('device_tracker.tradfri_gateway', 'home') else 'Offline' }}"
+        # ir_blaster_livingroom:
+        #   friendly_name: 'Broadlink IR Blaster Livingroom'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
+        # ikea_gateway:
+        #   friendly_name: 'Ikea Trådfri Gateway'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.tradfri_gateway', 'home') else 'Offline' }}"
         xiaomi_gateway:
           friendly_name: 'Xiaomi Gateway'
           value_template: "{{ 'Online' if is_state('device_tracker.xiaomi_gateway', 'home') else 'Offline' }}"
         sonos:
           friendly_name: 'Sonos'
           value_template: "{{ 'Online' if is_state('device_tracker.sonos_play_3', 'home') else 'Offline' }}"
-        magic_mirror_rpi:
-          friendly_name: 'Magic Mirror Rpi'
-          value_template: "{{ 'Online' if is_state('device_tracker.magic_mirror_rpi', 'home') else 'Offline' }}"
-        hass_rpi:
-          friendly_name: 'Hass Rpi'
-          value_template: "{{ 'Online' if is_state('device_tracker.hass_raspberry_pi', 'home') else 'Offline' }}"
-        # ring_doorbell_:
+        # magic_mirror_rpi:
+        #   friendly_name: 'Magic Mirror Rpi'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.magic_mirror_rpi', 'home') else 'Offline' }}"
+        # hass_rpi:
         #   friendly_name: 'Hass Rpi'
         #   value_template: "{{ 'Online' if is_state('device_tracker.hass_raspberry_pi', 'home') else 'Offline' }}"
+        ring_doorbell:
+          friendly_name: 'Ring'
+          value_template: "{{ 'Online' if is_state('device_tracker.ring', 'home') else 'Offline' }}"
+        ring_chime_pro:
+          friendly_name: 'Ring Chime Pro'
+          value_template: "{{ 'Online' if is_state('device_tracker.ring_chime_pro', 'home') else 'Offline' }}"
+        ring_chime:
+          friendly_name: 'Ring Chime Pro'
+          value_template: "{{ 'Online' if is_state('device_tracker.ring_chime', 'home') else 'Offline' }}"
 
 automation:
   - alias: 'Device Status'
-    # hide_entity: True
+    initial_state: 'on'
     trigger:
          - platform: state
            entity_id:
@@ -159,7 +165,6 @@ automation:
              - sensor.ir_blaster_bedroom
              - sensor.ir_blaster_livingroom
              - sensor.xiaomi_gateway
-            #  - sensor.ikea_gateway
              - sensor.milight_hub
            to: 'offline'
            for:

@@ -25,6 +25,7 @@ plex.conf
 phue.conf
 harmony_media_room.conf
 pyozw.sqlite
+withings/
 .*
 !/.gitignore
 !/zwcfg_0xca115759.xml

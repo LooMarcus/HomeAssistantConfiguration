@@ -12,24 +12,17 @@ homeassistant:
       icon: mdi:apple
     sensor.uptime:
       friendly_name: 'Hass Uptime'
-    sensor.ha_uptime:
-      friendly_name: 'Hass Up Since'
-      icon: mdi:timetable
-    
 
 group:
   system_monitor_card:
     name: System Monitor Hass Rpi
     entities:
-      - alert.disk_use_critical    
+      - alert.disk_use_critical
       - sensor.uptime
-      - sensor.ha_uptime
-      # - binary_sensor.critical_disk_use
+      - sensor.last_boot
       - sensor.disk_used__2
       - sensor.disk_used_
-      - sensor.last_boot
       - sensor.since_last_boot
-      - sensor.ssl_cert_expiry
       - sensor.process_homebridge
       - sensor.process_mosquitto
 
@@ -42,7 +35,7 @@ sensor:
         arg: /
       - type: disk_free
         arg: /
-      # - type: memory_free
+      - type: memory_free
       - type: last_boot
       - type: since_last_boot
       - type: process
@@ -52,34 +45,6 @@ sensor:
 
   - platform: uptime
     unit_of_measurement: hours
-
-  - platform: command_line
-    name: "HA Uptime"
-    command: echo "$(($(date +%s) - $(date -d "$(head -n1 /home/hass/.homeassistant/home-assistant.log | cut -d' ' -f-2)" +%s)))"
-    scan_interval: 360
-    value_template: >-
-      {% set uptime = value | int %}
-      {% set seconds = uptime % 60 %}
-      {% set minutes = ((uptime % 3600) / 60) | int %}
-      {% set hours = ((uptime % 86400) / 3600) | int %}
-      {% set days = (uptime / 86400) | int %}
-      {%- if days > 0 -%}
-        {%- if days == 1 -%}
-          1 day
-        {%- else -%}
-          {{ days }} days
-        {%- endif -%}
-        {{ ', ' }}
-      {%- endif -%}
-      {{ '%02d' % hours }}:{{ '%02d' % minutes }}
-
-history_graph:
-  internet_speed_tests:
-    name: Internet Speed Tests
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_ping
-      - sensor.speedtest_upload
 
 binary_sensor:
   - platform: template

@@ -1,61 +1,85 @@
     light.living_room_ceiling_light_level:
       icon: mdi:ceiling-light
       friendly_name: Living Room Ceiling Light
+      homebridge_visible: true     
+      homebridge_name: Living room Ceiling Light
         
     light.upstairs_hallway_ceiling_light_level:
       icon: mdi:ceiling-light
-      friendly_name: Upstairs Hallway Ceiling Light      
+      friendly_name: Upstairs Hallway Ceiling Light
+      homebridge_visible: true     
+      homebridge_name: Upstairs Hallway Ceiling Light
         
     light.dining_area_ceiling_light_level:
       friendly_name: Dining Room Ceiling Light
       icon: mdi:ceiling-light
+      homebridge_visible: true     
+      homebridge_name: Dining Room Ceiling Light
         
     light.passage_ceiling_spotlights_level:
       friendly_name: Passage Spotlights
       icon: mdi:spotlight-beam
+      homebridge_visible: true     
+      homebridge_name: Passage Spotlights
         
     light.living_room_spotlights_level:
-      friendly_name: Livingroom Spotlights
+      friendly_name: Living room Spotlights
       icon: mdi:spotlight-beam
+      homebridge_visible: true     
+      homebridge_name: Living room Spotlights
         
     light.isa_ceiling_lamp:
       friendly_name: Bedroom Ceiling Light
       icon: mdi:ceiling-light
+      homebridge_visible: true     
+      homebridge_name: Bedroom Ceiling Light
         
     light.floorlamp_uplight:
       icon: mdi:lamp
       friendly_name: Floorlamp Uplight
+      homebridge_visible: true     
+      homebridge_name: Floorlamp Uplight
         
     light.floorlamp_reading_light:
       icon: mdi:lamp
       friendly_name: Floorlamp Reading Light
+      homebridge_visible: true     
+      homebridge_name: Christmas Star
         
     light.hallway_window_light:
       icon: mdi:lamp
+      homebridge_visible: true     
+      homebridge_name: Hallway Window Light
         
     light.stefan_ceiling_light:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
+      homebridge_visible: true     
+      homebridge_name: Stefan Ceiling Light
 
     light.stefan_lightstrip:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
-      homebridge_visible: true      
+      homebridge_visible: true
+      homebridge_name: Stefan Lightstrip   
       
     light.outside_yard_hanging_lights:
       state_card_mode: no-slider
         
-    light.drink_cabinet_led:
-      state_card_mode: no-slider
-      homebridge_visible: false
-      #   
-    light.kitchen_sink_light:
-      state_card_mode: no-slider
-      homebridge_visible: false
-      #   
+    # light.drink_cabinet_led:
+    #   state_card_mode: no-slider
+    #   homebridge_visible: false
+    #   #   
+    # light.kitchen_sink_light:
+    #   state_card_mode: no-slider
+    #   homebridge_visible: false
+    #   #   
     light.kitchen_ceiling_spotlights_level:
       icon: mdi:spotlight-beam
       friendly_name: Kitchen Spotlights
+      homebridge_visible: true
+      homebridge_name: Kitchen Spotlights
+      
         
     # light.all_hue_lights:
     #   hidden: true
