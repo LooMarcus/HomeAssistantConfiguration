@@ -1,19 +1,62 @@
 homeassistant:
   customize:
-    switch.air_cleaner_quiet_auto:
-      homebridge_visible: true
-        
+    input_text.air_tiles:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 3
+        column_width: 50px
+        row_height: 50px
+        gap: 15px
+        color: '#555B65'
+        color_on: '#D5D619'
+        color_off: '#BBBEC2'
+        entities:
+          - entity: script.air_cleaner_quiet
+            # label: S1
+            row: 1
+            column: 1
+            icon: mdi:fan-off
+          - entity: script.air_cleaner_auto
+            # label: S1
+            row: 1
+            column: 2
+            icon: mdi:fan
 switch:
   - platform: broadlink
     friendly_name: Broadlink Bedroom
     host: !secret broadlink_bedroom_ip
     mac: !secret broadlink_bedroom_mac
     switches:
-      air_cleaner_quiet_auto:
+      air_cleaner_quiet:
         friendly_name: Air Cleaner Quiet
         command_on: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
+        command_off: 'JgBQAAABI5MRFBE4FBETEhQ1EhMTEhMSFDUSExQ2EjgSExQ2EjgSOBE5ERQTEhQQFBEUERQQFRAUERQ1EjgSOBI4EjgTNxM2FAAFJQABAUoUAA0FAAAAAAAAAAA='
+      air_cleaner_auto:
+        friendly_name: Air Cleaner Auto
+        command_on: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
         command_off: 'JgBQAAABJJUTEhM2FBEUERQ2FBEUERQRFDYUERQ2FDYUERQ1FDYUNhQ2FBEUERQRFDYTEhMSExITERQ2FDYUNhQRFDUUNhQ2FAAFJAABJ0oSAA0FAAAAAAAAAAA='
 
+input_text:
+  air_tiles:
+    name: Tiles
+
+script:
+  air_cleaner_quiet:
+    sequence:
+      service: homeassistant.turn_on
+      data:
+        entity_id: switch.air_cleaner_quiet
+  air_cleaner_auto:
+    sequence:
+      service: homeassistant.turn_on
+      data:
+        entity_id: switch.air_cleaner_auto
+
+group:
+  air:
+    name: Air Cleaner Bedroom
+    entities:
+      - input_text.air_tiles
 
 automation:
   - alias: Air Cleaner To Quiet at 21
@@ -24,10 +67,6 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: switch.air_cleaner_quiet
-      # - service: notify.ios_isabellas_iphone_6s
-      #   data:
-      #     message: 'Set to quiet'
-      #     title: 'Air cleaner'
 
   - alias: Air Cleaner To Auto At 11
     initial_state: 'on'
@@ -35,9 +74,5 @@ automation:
       - platform: time
         at: '11:00:00'
     action:
-      - service: homeassistant.turn_off
-        entity_id: switch.air_cleaner_quiet
-      # - service: notify.ios_isabellas_iphone_6s
-      #   data:
-      #     message: 'Set to auto'
-      #     title: 'Air cleaner'
+      - service: homeassistant.turn_on
+        entity_id: switch.air_cleaner_auto

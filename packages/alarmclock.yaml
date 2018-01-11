@@ -171,7 +171,6 @@ script:
 
 
 automation:
-
   - alias: Wake Up Light
     initial_state: 'off'
     trigger:

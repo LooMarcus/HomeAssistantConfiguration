@@ -7,7 +7,7 @@ house_view:
     - group.air
     - group.laundry_card
     - group.vacuum_card    
-    - group.temp_and_light_card    
+    - group.temp_and_light    
     - group.cat_card
     - group.plant_card
     - device_tracker.isabella

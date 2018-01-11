@@ -2,8 +2,7 @@ homeassistant:
   customize:
     binary_sensor.switch_158d0001a5e3c4:
       friendly_name: Hallway Dimmer
-    binary_sensor.motion_sensor_158d0001a66256:
-      friendly_name: Hallway Motion
+
     sensor.illumination_158d0001a66256:
       friendly_name: Hallway Lux
     script.dim_light_hallway:

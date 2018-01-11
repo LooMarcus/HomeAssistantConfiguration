@@ -5,21 +5,18 @@ security_card:
   entities:
     - alarm_control_panel.home_alarm
     - sensor.last_seen_motion
-    - sensor.last_door_opened
     - sensor.front_door
     - sensor.back_door
     - sensor.nexa_door
     - sensor.backyard_door
     - sensor.balcony_door
     - sensor.dining_area_window
-    - binary_sensor.ring_front_door_motion
-    - sensor.kitchen_movement
+    - sensor.front_door_outeside_movement
+    - sensor.hallway_movement
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement
-    - binary_sensor.motion_sensor_158d000165ff1f
-    - binary_sensor.motion_sensor_158d0001a66256
-    - binary_sensor.back_door_camera_motion
+    - sensor.living_room_movement
+    - sensor.back_door_camera_movement
     - sensor.yard_storage_door
-    - sensor.hallway_glass_door
     - sensor.water_heater
     - sensor.kitchen_sink

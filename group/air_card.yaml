@@ -1,4 +1,0 @@
-air:
-  name: Air
-  entities:
-    - switch.air_cleaner_quiet

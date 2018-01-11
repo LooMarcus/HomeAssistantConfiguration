@@ -3,6 +3,13 @@ binary_sensor:
   - platform: ring
 sensor:
   - platform: ring
+  - platform: template
+    sensors:
+      front_door_outeside_movement:
+        friendly_name: 'Front Door Outside Movement'
+        value_template: '{% if is_state("binary_sensor.ring_front_door_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.ring_front_door_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+
 camera:
   - platform: ring
 
@@ -92,13 +99,13 @@ automation:
       #   data:
       #     title: 'Doorbell ringing'
       #     message: 'Someone is at the front door'
-      - service: xiaomi_aqara.play_ringtone
-        data:
-          gw_mac: !secret xiaomi_mac
-          ringtone_id: 10
-          ringtone_vol: 10
-      - service: switch.turn_on
-        entity_id: switch.doorbell_front_door
-      - service: switch.turn_off
-        entity_id: switch.doorbell_front_door
+      # - service: xiaomi_aqara.play_ringtone
+      #   data:
+      #     gw_mac: !secret xiaomi_mac
+      #     ringtone_id: 10
+      #     ringtone_vol: 10
+      # - service: switch.turn_on
+      #   entity_id: switch.doorbell_front_door
+      # - service: switch.turn_off
+      #   entity_id: switch.doorbell_front_door
       - service: python_script.flash_lights_upstairs_hallway_and_yard

@@ -11,6 +11,7 @@ input_boolean:
   goodnight_isa:
     name: Goodnight Isa
     initial: off
+    
 script:
   goodnight:
     alias: Goodnight

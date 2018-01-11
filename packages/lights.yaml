@@ -1,3 +1,38 @@
+homeassistant:
+  customize:
+    input_text.lights_tiles:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 3
+        column_width: 50px
+        row_height: 50px
+        gap: 15px
+        color: '#555B65'
+        color_on: '#D5D619'
+        color_off: '#BBBEC2'
+        entities:
+          - entity: script.goodnight
+            # label: S1
+            column: 1
+            row: 1
+            # row_span: 1
+            # column_span: 1
+            icon: mdi:hotel
+          - entity: script.goodmorning
+            # label: S1
+            column: 2
+            row: 1
+            icon: mdi:kettle
+          - entity: scene.watch_tv
+            # label: S1
+            column: 3
+            row: 1
+            icon: mdi:television-classic
+
+input_text:
+  lights_tiles:
+    name: Lights
+
 light:
   - platform: rfxtrx
     automatic_add: true
@@ -25,3 +60,31 @@ light:
     state_topic: milight/updates/0x1/rgbw/1 
     <<: *MILIGHT_PARAMS
   - platform: lifx
+
+
+group:
+  lights:
+    control: hidden
+    name: Inside lights
+    entities:
+      - input_text.lights_tiles
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.dining_area_ceiling_light_level  
+      - light.kitchen_ceiling_spotlights_level
+      - light.floorlamp_reading_light
+      - light.christmas_candelabra
+      - light.storage_christmas_candelabra
+      - light.floorlamp_uplight
+      - light.hallway_window_light
+      - light.isa_ceiling_light
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+      - light.passage_ceiling_spotlights_level
+      - group.stairs_lights
+      - group.walk_in_closet_lights
+      # - light.stefan_ceiling_light
+      - light.stefan_lightstrip
+      - light.upstairs_hallway_ceiling_light_level
+      - light.gateway_light_34ce008bfc4b
+      - group.outside_lights_card

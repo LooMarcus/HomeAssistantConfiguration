@@ -6,8 +6,8 @@ default_view:
     - device_tracker.isabella
     - device_tracker.stefan
     - group.info_card
-    - group.inside_lights_card
-    - group.outside_lights_card
+    - group.lights
+    # - group.outside_lights_card
     - group.door_alerts
     - group.security_card
     - group.ring_front_door

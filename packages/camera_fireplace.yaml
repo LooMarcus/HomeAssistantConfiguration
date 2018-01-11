@@ -9,6 +9,15 @@ binary_sensor:
     input: !secret camera_input
     changes: 5
 
+sensor:  
+  - platform: template
+    sensors:
+      back_door_camera_movement:
+        friendly_name: 'Back Door Camera Movement'
+        value_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.back_door_camera_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+
+
 automation:
   - alias: 'Camera Fireplace Notification On High Temperature'
     initial_state: 'on'

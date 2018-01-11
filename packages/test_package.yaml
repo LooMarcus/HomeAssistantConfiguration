@@ -20,3 +20,15 @@ automation:
             push:
               category: camera
             entity_id: camera.back_door
+
+group:
+  test_view:
+    view: yes
+    name: Test
+    entities:
+      - group.notify_stefan
+      - group.alarmclock
+      - input_boolean.test
+      - device_tracker.isabella
+      - device_tracker.stefan
+      - group.g1

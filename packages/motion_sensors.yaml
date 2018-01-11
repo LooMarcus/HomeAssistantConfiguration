@@ -1,11 +1,10 @@
 homeassistant:
   customize:
-    sensor.passage_movement:
-      homebridge_visible: true
-      device_type: opening
-    sensor.upstairs_hallway_movement:
-      homebridge_visible: true
-      device_type: opening
+    binary_sensor.motion_sensor_158d000165ff1f:
+      friendly_name: Living Room Motion
+    binary_sensor.motion_sensor_158d0001a66256:
+      friendly_name: Hallway Motion
+
 sensor:
   - platform: template
     sensors:
@@ -17,7 +16,17 @@ sensor:
       upstairs_hallway_movement:
         friendly_name: 'Upstairs Hallway Movement'
         value_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}Movement detected{% else %}No movement{% endif %}'
-        icon_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.upstairs_hallway_pir_sensor", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'    
+
+      living_room_movement:
+        friendly_name: 'Living Room Motion'
+        value_template: '{% if is_state("binary_sensor.motion_sensor_158d000165ff1f", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d000165ff1f", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+
+      hallway_movement:
+        friendly_name: 'Hallway Movement'
+        value_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66256", "on") %}Movement detected{% else %}No movement{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.motion_sensor_158d0001a66256", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
 
   - platform: template
     sensors:

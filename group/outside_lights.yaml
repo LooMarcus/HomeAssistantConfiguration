@@ -1,6 +1,7 @@
 outside_lights_card:
   name: Outside lights
+  icon: mdi:lightbulb
   entities:
     - light.outside_front_light
     - light.outside_yard_light
-    - light.outside_yard_hanging_lights    
+    - light.outside_yard_hanging_lights

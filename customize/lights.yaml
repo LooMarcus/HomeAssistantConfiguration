@@ -51,17 +51,18 @@
       homebridge_visible: true     
       homebridge_name: Hallway Window Light
         
-    light.stefan_ceiling_light:
-      confirm_controls_show_lock: true
-      state_card_mode: no-slider
-      homebridge_visible: true     
-      homebridge_name: Stefan Ceiling Light
+    # light.stefan_ceiling_light:
+    #   confirm_controls_show_lock: true
+    #   state_card_mode: no-slider
+    #   homebridge_visible: true     
+    #   homebridge_name: Stefan Ceiling Light
 
     light.stefan_lightstrip:
       confirm_controls_show_lock: true
       state_card_mode: no-slider
       homebridge_visible: true
-      homebridge_name: Stefan Lightstrip   
+      homebridge_name: Stefan Lightstrip
+      icon: mdi:led-strip
       
     light.outside_yard_hanging_lights:
       state_card_mode: no-slider
