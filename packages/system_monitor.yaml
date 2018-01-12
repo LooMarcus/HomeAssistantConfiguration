@@ -99,6 +99,9 @@ automation:
           message: "request_location_update"
       - service: python_script.device_tracker_placeholders
       - service: python_script.summary
+      - service: python_script.mailbox
+        data_template:
+          state: 'reset'
 
   - alias: 'Hass Ready'
     initial_state: 'on'

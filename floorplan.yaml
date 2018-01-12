@@ -2,104 +2,127 @@
       image: /local/custom_ui/floorplan/floorplan.svg
       stylesheet: /local/custom_ui/floorplan/floorplan.css
       warnings:
-      pan_zoom:
+      # pan_zoom:
       date_format: DD-MMM-YYYY
-      # hide_app_toolbar:
+      hide_app_toolbar:
 
       # last_motion_entity: sensor.motion_sensor
       # last_motion_class: last-motion
 
       groups:
-
-        - name: Sensors
+        - name: Mailbox
           entities:
              - sensor.mailbox
           # text_template: '${entity.state ? entity.state : "unknown"}'
           class_template: '
-          if (entity.state == "empty")
-            return "danger-text";
+          if (entity.state == "Empty")
+            return "hidden";
           else
-            return "sucess-text";
+            return "flash-info";
           '
- 
-          #'
-            
-            # var temp = parseFloat(entity.state.replace("°", ""));
-            # if (temp < 10)
-            #   return "temp-low";
-            # else if (temp < 30)
-            #   return "temp-medium";
-            # else
-            #   return "temp-high";
-            # '
+        - name: Device trackers
+          entities:
+             - device_tracker.isa_computer
+             - device_tracker.stefan_computer
+          # text_template: '${entity.state ? entity.state : "unknown"}'
+          class_template: '
+          if (entity.state == "home")
+            return "success-text";
+          else
+            return "hidden";
+          '
+        - name: Temperatures
+          entities:
+             - sensor.temperature_158d000123552c # passage
+             - sensor.temperature_158d0001235510 # upstairs hallway
+             - sensor.temperature_158d0001fd83e7 # Stefan
+             - sensor.dark_sky_temperature # Outside
+          text_template: '${entity.state ? entity.state + "°" : "unknown"}'
+          class_template: '
+            var temp = parseFloat(entity.state.replace("°", ""));
+            if (temp < 22)
+              return "temp-low";
+            else if (temp < 25)
+              return "temp-medium";
+            else
+              return "temp-high";
+            '
+        - name: Washer and dryer
+          entities:
+            - input_select.dryer_status
+            - input_select.washing_machine_status
+          class_template: '
+          if (entity.state == "Idle")
+            return "hidden";
+          else if (entity.state == "Running")
+            return "success-text";
+          else
+            return "flash-info";
+          '
 
-
-
-        # - name: Dark Sky Sensors
-        #   entities:
-        #     - sensor.home_dark_sky_icon
-        #   image_template: '
-        #     var imageName = "";
-
-        #     switch (entity.state) {
-        #       case "clear-day":
-        #         imageName = "day";
-        #         break;
-
-        #       case "clear-night":
-        #         imageName = "night";
-        #         break;
-
-        #       case "partly-cloudy-day":
-        #         imageName = "cloudy-day-1";
-        #         break;
-
-        #       case "partly-cloudy-night":
-        #         imageName = "cloudy-night-1";
-        #         break;
-
-        #       case "cloudy":
-        #         imageName = "cloudy";
-        #         break;
-
-        #       case "rain":
-        #         imageName = "rainy-1";
-        #         break;
-
-        #       case "snow":
-        #         imageName = "snowy-1";
-        #         break;
-        #     }
-
-        #     return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
-        #     '
-        - name: Lights
+        - name: Litterboxes
+          entities:
+            - sensor.upstairs_litterbox_visits
+            - sensor.downstairs_litterbox_visits
+          class_template: '
+          var visits = parseFloat(entity.state);
+          if (visits == 0)
+            return "hidden";
+          else if (visits < 3)
+            return "temp-medium";          
+          else
+            return "flash-info";
+          '
+        - name: Ceiling Lights
           entities:
             - light.bedroom_ceiling_light
-            - light.bedside_lamp
             - light.dining_area_ceiling_light_level  
             - light.kitchen_ceiling_spotlights_level
-            - light.floorlamp_reading_light
-            - light.floorlamp_uplight
-            - light.hallway_window_light
             - light.isa_ceiling_light
             - light.living_room_ceiling_light_level
             - light.living_room_spotlights_level
             - light.passage_ceiling_spotlights_level
-            - light.stairs_bottom_spot
-            - light.stairs_middle_spot
-            - light.stairs_top_spot
-            - light.walk_in_closet_1
-            - light.walk_in_closet_2
-            - light.walk_in_closet_3
-            - light.walk_in_closet_4            
-            # - light.stefan_ceiling_light
-            # - light.stefan_lightstrip
-            - light.upstairs_hallway_ceiling_light_level
+            - group.walk_in_closet_lights        
+            - light.upstairs_hallway_ceiling_light_level   
+            - light.hallway_window_light     
+          # groups:
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'ceiling-light-off'
+          action:
+            service: toggle
+        - name: Stairs Lights
+          entities:
+            - group.stairs_lights                       
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: ''
+          action:
+            service: toggle
+
+        - name: Stefan Lights
+          entities:
+            - light.stefan_lightstrip
+          states:
+            - state: 'on'
+              class: 'light-purple'
+            - state: 'off'
+              class: 'light-off'
+
+        - name: Secondary Lights
+          entities:
+            - light.bedside_lamp
+            - light.floorlamp_reading_light
+            - light.floorlamp_uplight
             - light.gateway_light_34ce008bfc4b
             - light.outside_yard_light
             - light.outside_yard_hanging_lights
-            - light.outside_front_light
+            - light.outside_front_light   
+          # groups:
           states:
             - state: 'on'
               class: 'light-on'
@@ -108,74 +131,95 @@
           action:
             service: toggle
 
-        # - name: Switches
-        #   entities:
-        #      - switch.doorbell
-        #   states:
-        #     - state: 'on'
-        #       class: 'doorbell-on'
-        #     - state: 'off'
-        #       class: 'doorbell-off'
-
-        # - name: NVR
-        #   entities:
-        #      - binary_sensor.blue_iris_nvr
-        #   text_template: '${(entity.state === "on") ? "online" : "offline"}'
-        #   states:
-        #     - state: 'off'
-        #       class: 'danger-text'
-        #     - state: 'on'
-        #       class: 'success-text'
-
-        # - name: Alarm Panel
-        #   entities:
-        #      - alarm_control_panel.alarm
-        #   states:
-        #     - state: 'armed_away'
-        #       class: 'alarm-armed'
-        #     - state: 'armed_home'
-        #       class: 'alarm-armed'
-        #     - state: 'disarmed'
-        #       class: 'alarm-disarmed'
-
-        - name: Pir sensors
+        - name: Fans
           entities:
-            - binary_sensor.passage_pir_sensor
-            - binary_sensor.upstairs_hallway_pir_sensor
-            - binary_sensor.motion_sensor_158d0001a24ef1
-            - binary_sensor.motion_sensor_158d0001a66291
+            # - switch.doorbell
+            - switch.air_cleaner_auto
           states:
-            - state: 'off'
-              class: 'info-background'
             - state: 'on'
-              class: 'warning-background'
-          state_transitions:
-            - name: On to off
-              from_state: 'on'
-              to_state: 'off'
-              duration: 10
+              class: 'rotation-fast'
+            - state: 'off'
+              class: 'rotation-slow'
+          action:
+            service: toggle
 
-        - name: Security binary sensors
+        - name: Switches
+          entities:
+            - switch.roomba
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'
+          action:
+            service: toggle
+
+        - name: Alarm Panel
+          entities:
+             - alarm_control_panel.home_alarm
+          states:
+            - state: 'armed_away'
+              class: 'alarm-armed'
+            - state: 'armed_home'
+              class: 'alarm-armed'
+            - state: 'disarmed'
+              class: 'alarm-disarmed'
+
+        # - name: Pir sensors
+        #   entities:
+        #     - binary_sensor.passage_pir_sensor
+        #     - binary_sensor.upstairs_hallway_pir_sensor
+
+        #     # - binary_sensor.motion_sensor_158d0001a24ef1
+        #     # - binary_sensor.motion_sensor_158d0001a66291
+        #   states:
+        #     - state: 'off'
+        #       class: 'hidden'
+        #     - state: 'on'
+        #       class: 'warning-background'
+        #   state_transitions:
+        #     - name: On to off
+        #       from_state: 'on'
+        #       to_state: 'off'
+        #       duration: 10
+
+        - name: Flood sensors
           entities:
             - binary_sensor.water_heater_sensor
+            - binary_sensor.water_leak_sensor_158d0001d531bb # flood sensor kitchen
+ 
+          states:
+            - state: 'off'
+              class: 'hidden'
+            - state: 'on'
+              class: 'flash-warning'
+
+        - name: Door and window sensors
+          entities:
             - binary_sensor.dining_area_window_sensor_sensor
             - binary_sensor.back_door_sensor
             - binary_sensor.front_door_sensor
-            - binary_sensor.door_window_sensor_158d00019e152b #backyard door
-            - binary_sensor.door_window_sensor_158d00019f5110 #yard storage door
+            - binary_sensor.door_window_sensor_158d00019e152b # backyard door
+            - binary_sensor.door_window_sensor_158d00019f5110 # yard storage door
+            - binary_sensor.door_window_sensor_158d0001a3e45e # balcony door
           states:
-            - state: 'off'
-              class: 'info-background'
+            # - state: 'off'
+            #   class: 'hidden'
             - state: 'on'
-              class: 'danger-background'
-          state_transitions:
-            - name: On to off
-              from_state: 'on'
-              to_state: 'off'
-              duration: 10
+              class: 'flash-warning'
+          # state_transitions:
+          #   - name: On to off
+          #     from_state: 'on'
+          #     to_state: 'off'
+          #     duration: 10
         # - name: Cameras
         #   entities:
         #     - camera.camera_sannce
         #   states:
         #     - state: 'idle'
         #       class: 'camera-idle'
+
+        - name: Sonos
+          entities:
+             - media_player.sonos
+          text_template: '${entity.state ? entity.attributes.media_title + " - " + entity.attributes.media_artist : "unknown"}'
