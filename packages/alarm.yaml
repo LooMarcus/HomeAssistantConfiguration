@@ -14,6 +14,28 @@ alarm_control_panel:
     triggered:
       pending_time: 0   
 
+group:
+  security_card:
+    view: no
+    name: Security
+    icon: mdi:home-variant
+    entities:
+      - alarm_control_panel.home_alarm
+      - sensor.last_seen_motion
+      - sensor.front_door
+      - sensor.back_door
+      - sensor.backyard_door
+      - sensor.balcony_door
+      - sensor.dining_area_window
+      - sensor.front_door_outside_movement
+      - sensor.hallway_movement
+      - sensor.passage_movement
+      - sensor.upstairs_hallway_movement
+      - sensor.living_room_movement
+      - sensor.back_door_camera_movement
+      - sensor.yard_storage_door
+      - sensor.water_heater
+      - sensor.kitchen_sink
 
 automation:
 - alias: 'Alarm Arm Away'

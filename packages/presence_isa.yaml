@@ -3,6 +3,8 @@ homeassistant:
     input_boolean.isabella_home:
       homebridge_visible: true
       confirm_controls_show_lock: true
+      homebridge_name: Isabella home
+      
 
 input_boolean:
   isabella_home:
@@ -10,6 +12,21 @@ input_boolean:
     initial: on
     icon: mdi:human-female
 
+group:
+  isabella:
+    name: Isabella
+    entities:
+      - device_tracker.isabellas_iphone_6s
+      - device_tracker.isabellas_iphone_6s_wifi
+      - device_tracker.isabellas_iphone_6s_bt
+      - device_tracker.isa_computer
+      - device_tracker.isa_laptop
+      - input_boolean.isabella_home
+  persons:
+    view: no
+    entities:
+      - device_tracker.stefan
+      - device_tracker.isabella
 
 # Lots of automations to keep track of device tracking works or not
 automation:

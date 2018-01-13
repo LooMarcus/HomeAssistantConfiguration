@@ -30,8 +30,25 @@ homeassistant:
             icon: mdi:television-classic
     script.movie_time:
       alexa_hidden: false
+      alexa_name: Movie Time
       homebridge_visible: true
       homebridge_name: Movie Time
+
+    group.outside_lights:
+      alexa_display_categories: LIGHT
+      alexa_name: Outside Lights
+      homebridge_visible: true
+      homebridge_name: Outside Lights
+      
+    group.inside_lights_automations:
+      alexa_name: All lights
+      alexa_display_categories: LIGHT
+      homebridge_visible: true
+      homebridge_name: All Lights
+
+    light.gateway_light_34ce008bfc4b:
+      friendly_name: Upstairs Hallway Nightlight
+      homebridge_visible: false
 
 input_text:
   lights_tiles:
@@ -54,28 +71,29 @@ light:
   - platform: rfxtrx
     automatic_add: true
     devices:
-      0b11000676bc0cfe01010f70:
-        name: Proove Dimmer
+      # 0b11000676bc0cfe01010f70:
+      #   name: Proove Dimmer
       0b11000552bc0cfe07010f70:
         name: Outside Yard Hanging Lights
-  - name: 'Stairs Bottom Spot'
-    command_topic: milight/0x2/rgbw/1 
-    state_topic: milight/updates/0x2/rgbw/1 
-    <<: &MILIGHT_PARAMS
-      platform: mqtt_json
-      color_temp: true
-      rgb: true
-      brightness: true
+  # - name: 'Stairs Bottom Spot'
+  #   command_topic: milight/0x2/rgbw/1 
+  #   state_topic: milight/updates/0x2/rgbw/1 
+  #   <<: &MILIGHT_PARAMS
+  #     platform: mqtt_json
+  #     color_temp: true
+  #     rgb: true
+  #     brightness: true
 
-  - name: "Stairs Middle Spot"
-    command_topic: milight/0x3/rgbw/1 
-    state_topic: milight/updates/0x3/rgbw/1 
-    <<: *MILIGHT_PARAMS
+  # - name: "Stairs Middle Spot"
+  #   command_topic: milight/0x3/rgbw/1 
+  #   state_topic: milight/updates/0x3/rgbw/1 
+  #   <<: *MILIGHT_PARAMS
 
-  - name: "Stairs Top Spot"
-    command_topic: milight/0x1/rgbw/1 
-    state_topic: milight/updates/0x1/rgbw/1 
-    <<: *MILIGHT_PARAMS
+  # - name: "Stairs Top Spot"
+  #   command_topic: milight/0x1/rgbw/1 
+  #   state_topic: milight/updates/0x1/rgbw/1 
+  #   <<: *MILIGHT_PARAMS
+
   - platform: lifx
 
 
@@ -85,6 +103,7 @@ group:
     name: Inside lights
     entities:
       - input_text.lights_tiles
+      - group.outside_lights_card
       - light.bedroom_ceiling_light
       - light.bedside_lamp
       - light.dining_area_ceiling_light_level  
@@ -104,4 +123,31 @@ group:
       - light.stefan_lightstrip
       - light.upstairs_hallway_ceiling_light_level
       - light.gateway_light_34ce008bfc4b
-      - group.outside_lights_card
+
+  outside_lights_card:
+    name: Outside lights
+    icon: mdi:lightbulb
+    entities:
+      - light.outside_front_light
+      - light.outside_yard_light
+      - light.outside_yard_hanging_lights
+
+# for automations, hubby doesn't like his lights to be included
+  inside_lights_automations:
+    name: Inside Lights Without Stefan
+    entities:
+      - light.bedroom_ceiling_light
+      - light.bedside_lamp
+      - light.living_room_ceiling_light_level
+      - light.living_room_spotlights_level
+      - light.passage_ceiling_spotlights_level
+      - light.upstairs_hallway_ceiling_light_level
+      - light.dining_area_ceiling_light_level
+      - light.isa_ceiling_light
+      - light.floorlamp_reading_light
+      - light.floorlamp_uplight
+      - light.gateway_light_34ce008bfc4b
+      - light.kitchen_sink_light
+      - group.stairs_lights
+      - group.walk_in_closet_lights
+      - light.kitchen_ceiling_spotlights_level

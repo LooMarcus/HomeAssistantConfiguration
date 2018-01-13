@@ -1,4 +1,12 @@
+homeassistant:
+  customize:   
+    group.walk_in_closet_lights:
+      alexa_name: Walk in closet lights
+      alexa_display_categories: LIGHT
+      homebridge_visible: true
+      homebridge_name: Walk in closet lights
 
+      
 group:
   walk_in_closet_lights:
     name: Walk In Closet Spotlights

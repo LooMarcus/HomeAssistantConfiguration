@@ -16,14 +16,14 @@ group:
       - light.floorlamp_reading_light
       - light.storage_christmas_candelabra
       - light.christmas_candelabra
-light:  
-  - platform: rfxtrx
-    signal_repetitions: 3
-    devices:
-      0b1100060163e70202010f70:
-        name: Christmas Candelabra
-      0b1100060163e70201010f70:
-        name: Storage Christmas Candelabra
+# light:  
+#   - platform: rfxtrx
+#     signal_repetitions: 3
+#     devices:
+#       0b1100060163e70202010f70:
+#         name: Christmas Candelabra
+#       0b1100060163e70201010f70:
+#         name: Storage Christmas Candelabra
 
 
 automation:

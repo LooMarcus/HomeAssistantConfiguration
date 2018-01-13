@@ -21,6 +21,15 @@ sensor:
         friendly_name: Washer Idle
         value_template: "{{ states('sensor.washer_plug_power') | int < 3.4 }}"
 
+group:
+  laundry_card:
+    name: Laundry
+    entities:
+      - input_select.washing_machine_status
+      - input_select.dryer_status
+      - sensor.washer
+      - sensor.dryer
+      - switch.laundry_line_drying
 
 ## ------------------------------------------------------------------- ##
 automation:
@@ -67,7 +76,9 @@ automation:
           entity_id: input_select.washing_machine_status
           option: Clean
 
-  # - alias: Set washing machine dirty when door opens
+
+## Plan to implement:
+  # - alias: Set washing machine idle when door opens
   #   trigger:
   #     # I've setup a template sensor to change make the binary_sensor report open and closed
   #     # instead of 1 and 0
@@ -138,6 +149,7 @@ automation:
           color_name: 'red'
 
       - service: notify.ios_isabellas_iphone_6s
+      ## Hubby has back pain and is relieved of this duty temporarely
       # - service_template: >
       #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
       #       notify.all

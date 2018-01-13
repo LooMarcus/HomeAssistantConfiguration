@@ -118,6 +118,8 @@ automation:
       #     color_name: 'red'
 
       - service: notify.ios_isabellas_iphone_6s
+      
+      #  ## Hubby has back pain and is relieved of this duty temporarely      
       # - service_template: >
       #     {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
       #       notify.all
@@ -134,6 +136,7 @@ automation:
           #     badge: 0
           #     category: "washer"
 
+## Plan to implement:
   # - alias: Laundry Dryer Emptied
   #   initial_state: 'on'
   #   trigger:
@@ -162,15 +165,16 @@ automation:
   #       actionName: WASHER_NOT_EMPTIED
   #   action:
   #     - delay: 0:30
-  #     # - service: notify.ios_isabellas_iphone_6s
-  #     - service_template: >
-  #         {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
-  #           notify.all
-  #         {% elif is_state('device_tracker.isabella', 'home') %}
-  #           notify.ios_isabellas_iphone_6s
-  #         {% elif is_state('device_tracker.stefan', 'home') %}
-  #           notify.ios_stefan_iphone_7
-  #         {% endif %}
+  #     - service: notify.ios_isabellas_iphone_6s
+      #  ## Hubby has back pain and is relieved of this duty temporarely
+  # #     - service_template: >
+  # #         {% if (is_state('device_tracker.isabella', 'home')) and (is_state('device_tracker.stefan', 'home'))  %}
+  # #           notify.all
+  # #         {% elif is_state('device_tracker.isabella', 'home') %}
+  # #           notify.ios_isabellas_iphone_6s
+  # #         {% elif is_state('device_tracker.stefan', 'home') %}
+  # #           notify.ios_stefan_iphone_7
+  # #         {% endif %}
   #       data:
   #         message: 'Take care of it now?'
   #         title: 'Dryer is done!'

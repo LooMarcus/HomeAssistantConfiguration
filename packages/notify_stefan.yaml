@@ -17,6 +17,13 @@ input_text:
     name: Stefan Notify Text
     initial: Fem minuter till mat
 
+group:
+  notify_stefan:
+    view: no
+    name: Notify Stefan
+    entities:
+      - input_text.stefan_notify_text
+      - input_boolean.notify_stefan    
 
 automation:
   - alias: Notify Stefan

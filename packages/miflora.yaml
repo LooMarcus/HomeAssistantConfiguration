@@ -10,7 +10,13 @@
 #       icon: mdi:theme-light-dark
 #     sensor.monstera_light_intensity:
 #       icon: mdi:theme-light-dark
-
+# group:
+#   plant_card:
+#     view: no
+#     name: Plants
+#     entities:
+#       - plant.palm
+#       - plant.monstera
 # sensor:
 #   - platform: miflora
 #     mac: "C4:7C:8D:60:A5:B3"

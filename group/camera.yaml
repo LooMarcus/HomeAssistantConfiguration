@@ -1,5 +1,0 @@
-camera:
-  name: Cameras
-  entities:
-    - camera.front_door
-    - camera.back_door

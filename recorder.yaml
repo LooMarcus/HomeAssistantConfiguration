@@ -28,7 +28,6 @@
   #     - sensor.front_door
   #     - sensor.isabellas_iphone_6s_battery_level
   #     - sensor.isabellas_iphone_6s_battery_state
-  #     - sensor.nexa_door
   #     - sensor.passage_movement
   #     - sensor.passage_pir_luminance
   #     - sensor.speedtest_download

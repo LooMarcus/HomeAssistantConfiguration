@@ -1,22 +1,7 @@
 homeassistant:
   customize:
-
-
-
     binary_sensor.door_window_sensor_158d0001a3e3a4:
       friendly_name: Bathroom Cabinet Door
-
-    light.gateway_light_34ce008bfc4b:
-      friendly_name: Upstairs Hallway Nightlight
-      homebridge_visible: false
-
-    sensor.illumination_34ce008bfc4b:
-      friendly_name: Upstairs Hallway Illumination
-      icon: mdi:theme-light-dark
-
-    sensor.illumination_158d000165ff1f:
-      friendly_name: Backyard Illumination     
-
 
 alert: 
   bathroom_cabinet_door_open:

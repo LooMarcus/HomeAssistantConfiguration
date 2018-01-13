@@ -1,8 +1,0 @@
-isabella:
-  name: Isabella
-  entities:
-    - device_tracker.isabellas_iphone_6s
-    # - device_tracker.isabellas_iphone_6s_wifi
-    # - device_tracker.isabellas_iphone_6s_bt
-    # - device_tracker.isa_computer
-    # - device_tracker.isa_laptop

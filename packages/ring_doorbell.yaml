@@ -103,21 +103,5 @@ automation:
         entity_id: binary_sensor.ring_front_door_ding
         to: 'on'
     action:
-      # - service: notify.pushbullet_isa
-      #   data:
-      #     title: 'Doorbell ringing'
-      #     message: 'Someone is at the front door'
-      # - service: notify.pushbullet_stefan
-      #   data:
-      #     title: 'Doorbell ringing'
-      #     message: 'Someone is at the front door'
-      # - service: xiaomi_aqara.play_ringtone
-      #   data:
-      #     gw_mac: !secret xiaomi_mac
-      #     ringtone_id: 10
-      #     ringtone_vol: 10
-      # - service: switch.turn_on
-      #   entity_id: switch.doorbell_front_door
-      # - service: switch.turn_off
-      #   entity_id: switch.doorbell_front_door
+      ## See script here: https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/python_scripts/flash_lights_upstairs_hallway_and_yard.py
       - service: python_script.flash_lights_upstairs_hallway_and_yard

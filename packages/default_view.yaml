@@ -1,0 +1,40 @@
+group:
+  default_view:
+    view: yes
+    name: Info
+    icon: mdi:information-outline
+    entities:
+      - device_tracker.isabella
+      - device_tracker.stefan
+      - group.info_card
+      - group.lights
+      - group.door_alerts
+      - group.security_card
+      - input_boolean.stefan_home
+      - input_boolean.isabella_home
+
+  info_card:
+    name: Info
+    control: hidden
+    entities:
+      - sun.sun
+      - alarm_control_panel.home_alarm
+      - sensor.last_seen_motion
+      - sensor.last_door_opened
+      - sensor.front_door_latest_ding
+      - sensor.front_door_latest_motion
+      - sensor.mailbox
+
+  everything_view:
+    view: yes
+    name: All
+    entities:
+      - group.all_automations
+      - group.all_devices
+      - group.all_lights
+      - group.all_switches
+      - group.all_zwave
+      - group.all_scripts
+      - group.all_plants
+      - device_tracker.isabella
+      - device_tracker.stefan

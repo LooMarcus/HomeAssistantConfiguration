@@ -1,7 +1,0 @@
-switch:
-  - platform: rfxtrx
-    # automatic_add: True
-    signal_repetitions: 3
-    devices:
-      0b1100070163e70203010f70:
-        name: Charging station

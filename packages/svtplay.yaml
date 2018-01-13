@@ -32,7 +32,7 @@ script:
           program: morning news
   
   turn_on_shield:
-    alias: Turn On Livingroom Tv
+    alias: Turn On Living Room Tv
     sequence:
       service: media_player.turn_on
       data:

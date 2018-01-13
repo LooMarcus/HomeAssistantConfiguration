@@ -1,0 +1,33 @@
+group:
+  house_mode:
+    control: hidden
+    view: no
+    icon: mdi:home-heart
+    name: House Modes
+    entities:
+      - input_boolean.vacation_mode
+      - input_boolean.cleaning_day
+      - input_boolean.guest_mode
+
+  house_view:
+    view: yes
+    icon: mdi:home-heart
+    entities:
+      - group.camera
+      - group.house_mode
+      - group.air
+      - group.laundry_card
+      - group.vacuum_card    
+      - group.temp_and_light    
+      - group.cat_card
+      - group.plant_card
+      - device_tracker.isabella
+      - device_tracker.stefan
+      - history_graph.temperatures
+      - history_graph.stefans_room
+
+  camera:
+    name: Cameras
+    entities:
+      - camera.front_door
+      - camera.back_door

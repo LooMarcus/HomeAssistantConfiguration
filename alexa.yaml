@@ -6,11 +6,17 @@
         - group.stairs_lights
         - group.walk_in_closet_lights
         - group.christmas_lights
+        - script.goodnight
+        - script.goodmorning
+        - script.cleaning_music
+        - script.cleaning_time
+        - script.cleaning_time_over
+        - script.movie_time
       include_domains:
         - switch
         - light
         - scene
-        - script        
+        # - script
       exclude_entities:
         - light.stefan_ceiling_light
         - light.walk_in_closet_1
@@ -33,3 +39,4 @@
         - automation
         - alert
         - media_player
+        - script

@@ -26,6 +26,16 @@ homeassistant:
       friendly_name: Downstairs Bathroom Humidity
       icon: mdi:water-percent
 
+    sensor.illumination_34ce008bfc4b:
+      friendly_name: Upstairs Hallway Lux
+      icon: mdi:theme-light-dark
+    sensor.illumination_158d000165ff1f:
+      friendly_name: Living Room Lux 
+      icon: mdi:theme-light-dark
+    sensor.illumination_158d0001a66256:
+      friendly_name: Hallway Lux
+      icon: mdi:theme-light-dark
+
 
 history_graph:
   temperatures:
@@ -36,7 +46,13 @@ history_graph:
       - sensor.temperature_158d0001235510
       - sensor.temperature_158d000123552c
       - sensor.temperature_158d0001a2a899
+  stefans_room:
+    name: Stefans Room
+    refresh: 1800
+    hours_to_show: 48
+    entities:
       - sensor.temperature_158d0001fd83e7
+      - sensor.humidity_158d0001fd83e7
 
 group:
   temp_and_light:

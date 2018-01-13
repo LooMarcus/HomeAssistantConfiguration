@@ -5,7 +5,7 @@ homeassistant:
 
 input_boolean:
   dimmer_floorlamp_uplight:
-    name: DimmerFloorlamp Uplight
+    name: Dimmer Floorlamp Uplight
     initial: off
 
 script:

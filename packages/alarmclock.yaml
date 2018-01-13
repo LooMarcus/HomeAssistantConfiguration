@@ -5,8 +5,7 @@ homeassistant:
   customize:
     script.alarmclock_clock_snooze:
       alexa_hidden: true
-    script.goodmorning:
-      alexa_display_categories: SCENE_TRIGGER
+
     script.wakeuplight:
       alexa_hidden: true
     
@@ -118,35 +117,9 @@ group:
       - group.alarmclock_mwf
       - group.alarmclock_tt
       - group.alarmclock_we
-script:
-  goodmorning:
-    alias: Goodmorning
-    sequence:
-      - service: light.turn_on
-        data:
-          entity_id: light.living_room_ceiling_light_level
-          brightness: 50
-      - service: light.turn_on
-        data:
-          entity_id: light.passage_ceiling_spotlights_level
-          brightness: 50
-      - service: light.turn_on
-        data:
-          entity_id: light.upstairs_hallway_ceiling_light_level
-          brightness: 50
-          transition: 30
-      - condition: state
-        entity_id: binary_sensor.workday_sensor
-        state: 'on'
-      # - service: light.turn_on
-      #   data:
-      #     entity_id: light.bedside_lamp
-      #     brightness: 60
-      #     transition: 30
-      - delay:
-          seconds: 180
-      - service: script.morning_news
 
+
+script:
   wakeuplight:
     alias: Wake Up Light
     sequence:

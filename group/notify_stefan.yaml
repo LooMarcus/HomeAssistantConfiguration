@@ -1,6 +1,0 @@
-notify_stefan:
-  view: no
-  name: Notify Stefan
-  entities:
-    - input_text.stefan_notify_text
-    - input_boolean.notify_stefan    

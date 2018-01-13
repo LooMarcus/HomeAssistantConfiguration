@@ -1,56 +1,5 @@
-binary_sensor:
-  - platform: rfxtrx
-    devices:
-      09130020a96601014270:
-        name: White6
-        off_delay:
-          seconds: 2
-switch:
-  - platform: rfxtrx
-    signal_repetitions: 3
-    devices:
-      0b1100070163e70203010f70:
-        name: Charging station
-
 automation:
-  - alias: Charging Station On
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.white6
-        to: 'on'
-    condition:
-      condition: state
-      entity_id: switch.charging_station
-      state: 'off'
-    action:
-      - service: switch.turn_on
-        entity_id: switch.charging_station
-
-  - alias: Charging Station Off
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.white6
-        to: 'on'
-    condition:
-      condition: state
-      entity_id: switch.charging_station
-      state: 'on'
-    action:
-      - service: switch.turn_off
-        entity_id: switch.charging_station
-
-  - alias: Charging Station Auto Off
-    trigger:
-      - platform: state
-        entity_id: switch.charging_station
-        to: 'on'
-        for:
-          hours: 5
-    action:
-      - service: switch.turn_off
-        entity_id: switch.charging_station
-
-  - alias: Charging Station Reminder
+  - alias: Charging Reminder
     trigger:
       - platform: time
         at: '19:00:00'
@@ -60,9 +9,6 @@ automation:
         - condition: state
           entity_id: device_tracker.isabella
           state: 'home'
-        # - condition: state
-        #   entity_id: switch.charging_station
-        #   state: 'off'
     action:
       - service: notify.ios_isabellas_iphone_6s
         data:

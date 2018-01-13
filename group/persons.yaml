@@ -1,5 +1,0 @@
-persons:
-  view: no
-  entities:
-    - device_tracker.stefan
-    - device_tracker.isabella

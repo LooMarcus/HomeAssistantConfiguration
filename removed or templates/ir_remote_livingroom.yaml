@@ -1,23 +1,23 @@
 # homeassistant:
 # switch:
 #   - platform: broadlink
-#     friendly_name: Broadlink Livingroom
-#     host: !secret broadlink_livingroom_ip
-#     mac: !secret broadlink_livingroom_mac
+#     friendly_name: Broadlink Living Room
+#     host: !secret broadlink_living_room_ip
+#     mac: !secret broadlink_living_room_mac
 #     switches:
 #       candles:
-#         friendly_name: Candles Livingroom
+#         friendly_name: Candles Living Room
 #         command_on: 'JgBQAAABJpQSFBEUERQSExITExISExITEjcSOBI1FDcSOBI3EjcSOBM2FBEUNhMSEhMUERITFBESExI4ExITNhQ1FDYTNhI3FAAFHgABJ0kTAA0FAAAAAAAAAAA'
 #         command_off: 'JgBYAAABJ5QTEhMSExITEhMSExITEhMSEzcSNxM2EzcSNxM2EjgSNxM2ExITEhMSExITExITEhMSExI3EzYTNhM3EzYTNhM3EwAFHgABJUsSAAxSAAEnShIADQU'
 #       tv:
-#         friendly_name: Livingroom Tv
+#         friendly_name: Living Room Tv
 #         command_on: 'JgCMAJOVEjgSOBI4EhMSEhMSEhMSEhM3EzcTNxMSEhMSEhMSEhMSEhM3ExISExISExISExISEjgTEhI4EjgSOBM3EzcSOREABgmTlRE5EjgSOBMSERQSEhITERQRORI4ETkSExISExISExISEhMSOBITEhISExETExISExI4EhITOBI4EjgSOBI4EjgTAA0FAAAAAAAAAAAAAAAA'
 #         command_off: 'JgCMAJOVEjgSOBI4EhMSEhMSEhMSEhM3EzcTNxMSEhMSEhMSEhMSEhM3ExISExISExISExISEjgTEhI4EjgSOBM3EzcSOREABgmTlRE5EjgSOBMSERQSEhITERQRORI4ETkSExISExISExISEhMSOBITEhISExETExISExI4EhITOBI4EjgSOBI4EjgTAA0FAAAAAAAAAAAAAAAA'
-#       roomba_livingroom:
-#         friendly_name: Roomba Livingroom
+#       roomba_living_room:
+#         friendly_name: Roomba Living Room
 #         command_on: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
 #         command_off: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='
-#       roomba_dock_livingroom:
-#         friendly_name: Dock Roomba Livingroom
+#       roomba_dock_living_room:
+#         friendly_name: Dock Roomba Living Room
 #         command_on: 'JgA2AF8iHmIdYh1iHWJcIh5iXAACbF8iIGAeYh1iHWJeICBgXQACY18iIGAeYh1iHWJeICBgXgANBQAA'
 #         command_off: 'JgD8AGEgIV8gXyBfXCIhXyBfIAACoGIfIGAfYB9gXSIfYR5hHgACol8iHmIdYh1iXCIfYR5hHgACo2EgHmEfYR1iXCIeYh1iHQACq2AhH2EeYR9gXCMfYB9gHwAComAhH2AfYR9gXCIgYB9gHwACoWAiH2AfYB9gXCMfYB9hHgAComAhH2EeYR5hXCIgYCBfIAACoGEgIGAfYB9gXSIfYR5hHgACql8jHWIdYh1iXCMeYR5hHgACo18iHmEeYh1iXCIeYh1iHQACo18jHWIdYh5hXSIeYh1iHQACo18jHWIdYh1iXCIfYR5hHgACq18iHmEeYh1iXCIeYh1iHgANBQAAAAAAAAAAAAAAAA=='

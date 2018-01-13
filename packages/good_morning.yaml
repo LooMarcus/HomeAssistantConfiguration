@@ -1,0 +1,30 @@
+homeassistant:
+  customize:
+    script.goodmorning:
+      alexa_name: Good morning
+      alexa_display_categories: SCENE_TRIGGER
+
+script:
+  goodmorning:
+    alias: Goodmorning
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.living_room_ceiling_light_level
+          brightness: 50
+      - service: light.turn_on
+        data:
+          entity_id: light.passage_ceiling_spotlights_level
+          brightness: 50
+      - service: light.turn_on
+        data:
+          entity_id: light.upstairs_hallway_ceiling_light_level
+          brightness: 50
+          transition: 30
+      # if it's a work day, turn on the tv
+      - condition: state
+        entity_id: binary_sensor.workday_sensor
+        state: 'on'
+      - delay:
+          seconds: 180
+      - service: script.morning_news

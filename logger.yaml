@@ -22,8 +22,8 @@ logs:
   # homeassistant.components.http: error
   # homeassistant.components.media_player: error
   # homeassistant.components.sensor.darksky: error
-  homeassistant.components.zwave: debug
-  homeassistant.components.zwave.util: error
+  # homeassistant.components.zwave: debug
+  # homeassistant.components.zwave.util: error
   # homeassistant.components.rfxtrx: error
   # homeassistant.components.notify: error
   # # homeassistant.helpers.script: info

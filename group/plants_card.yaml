@@ -1,6 +1,0 @@
-plant_card:
-  view: no
-  name: Plants
-  entities:
-    - plant.palm
-    - plant.monstera

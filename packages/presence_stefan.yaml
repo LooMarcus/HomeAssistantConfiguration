@@ -3,13 +3,29 @@ homeassistant:
     input_boolean.stefan_home:
       homebridge_visible: true
       confirm_controls_show_lock: true
-
+      homebridge_name: Stefan home
+      
 input_boolean:
   stefan_home:
     name: Stefan homekit
     initial: on
     icon: mdi:human-male
 
+group:
+  stefan:
+    name: Stefan
+    entities:
+      - device_tracker.stefan_iphone_7_wifi
+      - device_tracker.stefan_iphone_7
+      - device_tracker.stefans_apple_watch
+      - sensor.stefan_computer
+      - input_boolean.stefan_home
+  ## real persons group in presence_isa
+  # persons:
+  #   view: no
+  #   entities:
+  #     - device_tracker.stefan
+  #     - device_tracker.isabella
 # Lots of automations to keep track of device tracking works or not        
 automation:
   - alias: "Presence Stefan Home By Script"

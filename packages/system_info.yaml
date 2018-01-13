@@ -46,7 +46,7 @@ homeassistant:
       icon: mdi:remote
     sensor.ir_blaster_bedroom:
       icon: mdi:remote
-    sensor.ir_blaster_livingroom:
+    sensor.ir_blaster_living_room:
       icon: mdi:remote
     sensor.withings_scale:
       icon: mdi:scale-bathroom
@@ -54,6 +54,14 @@ homeassistant:
       icon: mdi:speaker
     sensor.milight_hub:
       icon: mdi:google-keep
+    sensor.ring_doorbell:
+      icon: mdi:camera-iris
+    sensor.ring_chime_pro:
+      icon: mdi:wifi
+    sensor.ring_chime:
+      icon: mdi:bell-outline  
+    
+    
       
 sensor:
   - platform: template
@@ -65,14 +73,14 @@ sensor:
           friendly_name: 'Synology NAS'
           value_template: "{{ 'Online' if is_state('device_tracker.synology_nas', 'home') else 'Offline' }}"
         samsung65:
-          friendly_name: 'Livingroom TV'
-          value_template: "{{ 'Online' if is_state('device_tracker.livingroom_tv', 'home') else 'Offline' }}"
+          friendly_name: 'Living Room TV'
+          value_template: "{{ 'Online' if is_state('device_tracker.living_room_tv', 'home') else 'Offline' }}"
         samsung49:
           friendly_name: 'Bedroom TV'
           value_template: "{{ 'Online' if is_state('device_tracker.bedroom_tv', 'home') else 'Offline' }}"
         movie_system:
-          friendly_name: 'Livingroom Movie System'
-          value_template: "{{ 'Online' if is_state('device_tracker.livingroom_movie_system', 'home') else 'Offline' }}"
+          friendly_name: 'Living Room Movie System'
+          value_template: "{{ 'Online' if is_state('device_tracker.living_room_movie_system', 'home') else 'Offline' }}"
         netgear_router:
           friendly_name: 'Netgear Router'
           value_template: "{{ 'Online' if is_state('device_tracker.netgear_router', 'home') else 'Offline' }}"
@@ -121,9 +129,9 @@ sensor:
         ir_blaster_bedroom:
           friendly_name: 'Broadlink IR Blaster Bedroom'
           value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
-        # ir_blaster_livingroom:
-        #   friendly_name: 'Broadlink IR Blaster Livingroom'
-        #   value_template: "{{ 'Online' if is_state('device_tracker.broadlink_bedroom', 'home') else 'Offline' }}"
+        # ir_blaster_living_room:
+        #   friendly_name: 'Broadlink IR Blaster Living Room'
+        #   value_template: "{{ 'Online' if is_state('device_tracker.broadlink_living_room', 'home') else 'Offline' }}"
         # ikea_gateway:
         #   friendly_name: 'Ikea Trådfri Gateway'
         #   value_template: "{{ 'Online' if is_state('device_tracker.tradfri_gateway', 'home') else 'Offline' }}"
@@ -160,11 +168,13 @@ group:
       - group.device_states
       - group.computer_states
       - group.media_states
-      - group.raspberry_card
       - group.hass_card
       - group.internet_card
       - group.system_monitor_card
       - history_graph.internet_speed_tests
+      - group.isabella
+      - group.stefan
+      - group.ring_front_door
 
   device_states:
     name: Device status
@@ -176,7 +186,7 @@ group:
     - sensor.ip_camera
     - sensor.ir_blaster
     - sensor.ir_blaster_bedroom
-    - sensor.ir_blaster_livingroom
+    - sensor.ir_blaster_living_room
     - sensor.withings_scale
     - sensor.hue_hub
     - sensor.milight_hub
@@ -212,16 +222,20 @@ automation:
     trigger:
          - platform: state
            entity_id:
-             - sensor.asus_router
-             - sensor.netgear_router
-             - sensor.printer
-             - sensor.nas
-             - sensor.hue_hub
-             - sensor.ir_blaster
-             - sensor.ir_blaster_bedroom
-             - sensor.ir_blaster_livingroom
-             - sensor.xiaomi_gateway
-             - sensor.milight_hub
+              - sensor.asus_router
+              - sensor.netgear_router
+              - sensor.printer
+              - sensor.nas
+              - sensor.hue_hub
+              - sensor.ir_blaster
+              - sensor.ir_blaster_bedroom
+              - sensor.ip_camera
+            #  - sensor.ir_blaster_living_room
+              - sensor.xiaomi_gateway
+              - sensor.milight_hub
+              - sensor.ring_doorbell
+              - sensor.ring_chime_pro
+              - sensor.ring_chime
            to: 'offline'
            for:
              minutes: 5

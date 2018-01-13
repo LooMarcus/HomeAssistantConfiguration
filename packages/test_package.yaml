@@ -1,36 +1,36 @@
-input_boolean:
-  test:
-    name: Test stuff
-    initial: off
+# input_boolean:
+#   test:
+#     name: Test stuff
+#     initial: off
 
-automation:
-  - alias: 'Test Automation'
-    initial_state: True
-    trigger:
-      - platform: state
-        entity_id: input_boolean.test
-        to: 'on'
-    action:
-      - service: notify.ios_isabellas_iphone_6s
-        data:
-          message: Fire camera motion
-          data:
-            attachment:
-              content-type: jpeg
-            push:
-              category: camera
-            entity_id: camera.back_door
+# automation:
+#   - alias: 'Test Automation'
+#     initial_state: True
+#     trigger:
+#       - platform: state
+#         entity_id: input_boolean.test
+#         to: 'on'
+#     action:
+#       - service: notify.ios_isabellas_iphone_6s
+#         data:
+#           message: Fire camera motion
+#           data:
+#             attachment:
+#               content-type: jpeg
+#             push:
+#               category: camera
+#             entity_id: camera.back_door
 
-group:
-  test_view:
-    view: yes
-    name: Test
-    entities:
-      - group.notify_stefan
-      - group.alarmclock
-      - input_boolean.test
-      - device_tracker.isabella
-      - device_tracker.stefan
-      - group.g1
-      - switch.radiator_on
-      - switch.radiator_off
+# group:
+#   test_view:
+#     view: yes
+#     name: Test
+#     entities:
+#       - group.notify_stefan
+#       - group.alarmclock
+#       - input_boolean.test
+#       - device_tracker.isabella
+#       - device_tracker.stefan
+#       - group.g1
+#       - switch.radiator_on
+#       - switch.radiator_off

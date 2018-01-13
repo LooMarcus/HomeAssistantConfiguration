@@ -23,14 +23,6 @@ homeassistant:
     binary_sensor.switch_158d0001a6687f:
       friendly_name: Upstairs litterbox switch
 
-# binary_sensor:
-#   - platform: rfxtrx
-#     devices:
-#       0913001b4ab0a1011d70:
-#         name: White3
-#         off_delay:
-#           seconds: 5
-
 #-------------------------------------------
 
 sensor:
@@ -85,14 +77,6 @@ group:
       - input_select.ulitterbox_state
       - history_graph.litterbox_visits
       
-#-------------------------------------------
-
-# history_graph:
-#   litterbox_visits:
-#     name: Litterbox Visits
-#     entities:
-#       - binary_sensor.motion_sensor_158d0001a66291
-#       - binary_sensor.motion_sensor_158d0001a24ef1
 
 #-------------------------------------------
 

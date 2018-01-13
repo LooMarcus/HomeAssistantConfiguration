@@ -58,6 +58,22 @@ input_select:
     initial: 'Waiting To Vacuum'
     icon: mdi:roomba
 
+
+group:
+  vacuum_card:
+    control: hidden
+    view: no
+    name: Roomba
+    entities:
+      - input_select.roomba_mode
+      - switch.roomba_combined
+      - sensor.roomba_docked
+      - switch.roomba
+      - switch.roomba_dock
+      - switch.roomba_dock_living_room
+      - switch.roomba_living_room
+      # - sensor.vacuumed_today 
+
 automation:
   - alias: 'Vacuum Ask When Everyone Is Away'
     initial_state: 'on'
@@ -165,12 +181,12 @@ automation:
       - service: homeassistant.turn_off
         entity_id: switch.roomba
       - service: homeassistant.turn_off
-        entity_id: switch.roomba_livingroom
+        entity_id: switch.roomba_living_room
       - delay: '0:01'
       - service: homeassistant.turn_on
         entity_id: switch.roomba_dock
       - service: homeassistant.turn_on
-        entity_id: switch.roomba_dock_livingroom
+        entity_id: switch.roomba_dock_living_room
       - service: notify.ios_isabellas_iphone_6s
         data:
           message: 'Trying to dock Roomba'

@@ -1,8 +1,0 @@
-laundry_card:
-  name: Laundry
-  entities:
-    - input_select.washing_machine_status
-    - input_select.dryer_status
-    - sensor.washer
-    - sensor.dryer
-    - switch.laundry_line_drying
