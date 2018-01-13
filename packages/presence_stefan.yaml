@@ -53,6 +53,7 @@ automation:
         data:
           title: 'Stefan'
           message: 'home'
+          
   - alias: "Presence Stefan Away Notification"
     initial_state: 'on'
     trigger:

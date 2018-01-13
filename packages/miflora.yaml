@@ -1,97 +1,97 @@
-homeassistant:
-  customize:
-    sensor.monstera_temperature:
-      homebridge_visible: true
-      icon: mdi:thermometer
-    sensor.palm_temperature:
-      homebridge_visible: true
-      icon: mdi:thermometer      
-    sensor.palm_light_intensity:
-      icon: mdi:theme-light-dark
-    sensor.monstera_light_intensity:
-      icon: mdi:theme-light-dark
+# homeassistant:
+#   customize:
+#     sensor.monstera_temperature:
+#       homebridge_visible: true
+#       icon: mdi:thermometer
+#     sensor.palm_temperature:
+#       homebridge_visible: true
+#       icon: mdi:thermometer      
+#     sensor.palm_light_intensity:
+#       icon: mdi:theme-light-dark
+#     sensor.monstera_light_intensity:
+#       icon: mdi:theme-light-dark
 
-sensor:
-  - platform: miflora
-    mac: "C4:7C:8D:60:A5:B3"
-    name: Monstera
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
-  - platform: miflora
-    mac: "C4:7C:8D:63:13:9B"
-    name: Palm
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
+# sensor:
+#   - platform: miflora
+#     mac: "C4:7C:8D:60:A5:B3"
+#     name: Monstera
+#     median: 3
+#     cache: 10800
+#     force_update: false
+#     monitored_conditions:
+#       - temperature
+#       - light
+#       - moisture
+#       - conductivity
+#       - battery
+#   - platform: miflora
+#     mac: "C4:7C:8D:63:13:9B"
+#     name: Palm
+#     median: 3
+#     cache: 10800
+#     force_update: false
+#     monitored_conditions:
+#       - temperature
+#       - light
+#       - moisture
+#       - conductivity
+#       - battery
 
-  - platform: miflora
-    mac: "C4:7C:8D:65:C3:A6"
-    name: Plant
-    median: 3
-    cache: 10800
-    force_update: false
-    monitored_conditions:
-      - temperature
-      - light
-      - moisture
-      - conductivity
-      - battery
+#   - platform: miflora
+#     mac: "C4:7C:8D:65:C3:A6"
+#     name: Plant
+#     median: 3
+#     cache: 10800
+#     force_update: false
+#     monitored_conditions:
+#       - temperature
+#       - light
+#       - moisture
+#       - conductivity
+#       - battery
 
-plant:
-  palm:
-    sensors:
-      moisture: sensor.palm_moisture
-      battery: sensor.palm_battery
-      temperature: sensor.palm_temperature
-      conductivity: sensor.palm_conductivity
-      brightness: sensor.palm_light_intensity
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 10
-    min_conductivity: 500
-    max_conductivity: 3000
+# plant:
+#   palm:
+#     sensors:
+#       moisture: sensor.palm_moisture
+#       battery: sensor.palm_battery
+#       temperature: sensor.palm_temperature
+#       conductivity: sensor.palm_conductivity
+#       brightness: sensor.palm_light_intensity
+#     min_moisture: 20
+#     max_moisture: 60
+#     min_battery: 10
+#     min_conductivity: 500
+#     max_conductivity: 3000
 
-  monstera:
-    sensors:
-      moisture: sensor.monstera_moisture
-      battery: sensor.monstera_battery
-      temperature: sensor.monstera_temperature
-      conductivity: sensor.monstera_conductivity
-      brightness: sensor.monstera_light_intensity
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 10
-    min_conductivity: 500
-    max_conductivity: 3000      
+#   monstera:
+#     sensors:
+#       moisture: sensor.monstera_moisture
+#       battery: sensor.monstera_battery
+#       temperature: sensor.monstera_temperature
+#       conductivity: sensor.monstera_conductivity
+#       brightness: sensor.monstera_light_intensity
+#     min_moisture: 20
+#     max_moisture: 60
+#     min_battery: 10
+#     min_conductivity: 500
+#     max_conductivity: 3000      
     
-# alert:
-#   palm_problem:
-#     name: Palm is having a problem
-#     entity_id: plant.palm
-#     state: 'problem'
-#     repeat: 1440 # every 24h
-#     can_acknowledge: True
-#     notifiers:
-#       - ios_isabellas_iphone_6s
+# # alert:
+# #   palm_problem:
+# #     name: Palm is having a problem
+# #     entity_id: plant.palm
+# #     state: 'problem'
+# #     repeat: 1440 # every 24h
+# #     can_acknowledge: True
+# #     notifiers:
+# #       - ios_isabellas_iphone_6s
 
-#   monstera_problem:
-#     name: Monstera is having a problem
-#     entity_id: plant.monstera
-#     state: 'problem'
-#     repeat: 1440 # every 24h
-#     can_acknowledge: True
-#     notifiers:
-#       - ios_isabellas_iphone_6s
+# #   monstera_problem:
+# #     name: Monstera is having a problem
+# #     entity_id: plant.monstera
+# #     state: 'problem'
+# #     repeat: 1440 # every 24h
+# #     can_acknowledge: True
+# #     notifiers:
+# #       - ios_isabellas_iphone_6s

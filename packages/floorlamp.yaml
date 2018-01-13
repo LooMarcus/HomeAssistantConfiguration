@@ -1,0 +1,154 @@
+homeassistant:
+  customize:
+    binary_sensor.switch_158d00019d674a:
+      friendly_name: Floorlamp Switch
+
+input_boolean:
+  dimmer_floorlamp_uplight:
+    name: DimmerFloorlamp Uplight
+    initial: off
+
+script:
+  dim_light_floorlamp_uplight:
+    sequence:
+      - condition: state
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        state: 'on'
+      - service: light.turn_on
+        entity_id: light.floorlamp_uplight
+        data_template:
+          brightness: '{{states.light.floorlamp_uplight.attributes.brightness - 10}}'
+      - service: script.turn_off
+        entity_id: script.dim_light_floorlamp_uplight
+      - service: script.turn_on
+        entity_id: script.dim_light_floorlamp_uplight
+
+  brighten_light_floorlamp_uplight:
+    sequence:
+    - condition: state
+      entity_id: input_boolean.dimmer_floorlamp_uplight
+      state: 'off'
+    - service: light.turn_on
+      entity_id: light.floorlamp_uplight
+      data_template:
+        brightness: '{{states.light.floorlamp_uplight.attributes.brightness + 10}}'
+    - service: script.turn_off
+      entity_id: script.brighten_light_floorlamp_uplight
+    - service: script.turn_on
+      entity_id: script.brighten_light_floorlamp_uplight
+
+
+automation:
+
+##################  Dimmer  ##################
+  - alias:  Light Floorlamp Uplight Brighten On
+    initial_state: 'on'
+    trigger:
+      - platform: event
+        event_type: click
+        event_data:
+          entity_id: binary_sensor.switch_158d00019d674a
+          click_type: long_click_press
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        state: 'off'
+      - condition: state
+        entity_id: light.floorlamp_uplight
+        state: 'on'
+    action:
+      - service: script.turn_on
+        entity_id: script.brighten_light_floorlamp_uplight
+        
+  - alias:  Light Floorlamp Uplight Brighten Off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.switch_158d00019d674a
+        from: 'on'
+        to: 'off'
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        state: 'off'
+      - condition: state
+        entity_id: light.floorlamp_uplight
+        state: 'on'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        
+  - alias:  Light Floorlamp Uplight Dim On
+    initial_state: 'on'
+    trigger:
+      - platform: event
+        event_type: click
+        event_data:
+          entity_id: binary_sensor.switch_158d00019d674a
+          click_type: long_click_press
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        state: 'on'
+      - condition: state
+        entity_id: light.floorlamp_uplight
+        state: 'on'
+    action:
+      - service: script.turn_on
+        entity_id: script.dim_light_floorlamp_uplight
+
+  - alias:  Light Floorlamp Uplight Dim Off
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.switch_158d00019d674a
+        from: 'on'
+        to: 'off'
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+        state: 'on'
+      - condition: state
+        entity_id: light.floorlamp_uplight
+        state: 'on'
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.dimmer_floorlamp_uplight
+
+##################  Toggle light  ##################
+        
+  - alias:  Light Floorlamp Uplight Toggle
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00019d674a
+        click_type: single
+    action:
+      service: light.toggle
+      entity_id: light.floorlamp_uplight
+
+##################  Double click - full light  ##################
+
+  - alias:  Light Floorlamp Uplight Full Light
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00019d674a
+        click_type: double
+    action:
+      service: light.turn_on
+      data:
+        entity_id: light.floorlamp_uplight
+        brightness: 255

@@ -11,7 +11,7 @@ security_card:
     - sensor.backyard_door
     - sensor.balcony_door
     - sensor.dining_area_window
-    - sensor.front_door_outeside_movement
+    - sensor.front_door_outside_movement
     - sensor.hallway_movement
     - sensor.passage_movement
     - sensor.upstairs_hallway_movement

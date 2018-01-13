@@ -32,3 +32,5 @@ group:
       - device_tracker.isabella
       - device_tracker.stefan
       - group.g1
+      - switch.radiator_on
+      - switch.radiator_off

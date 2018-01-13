@@ -67,12 +67,6 @@ automation:
       - platform: state
         entity_id: device_tracker.isabella
         to: home
-      - platform: state
-        entity_id: input_boolean.stefan_home
-        to: 'on'
-      - platform: state
-        entity_id: input_boolean.isabella_home
-        to: 'on'
     condition:
       condition: and
       conditions:

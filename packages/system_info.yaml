@@ -55,7 +55,6 @@ homeassistant:
     sensor.milight_hub:
       icon: mdi:google-keep
       
-
 sensor:
   - platform: template
     sensors:
@@ -149,6 +148,63 @@ sensor:
         ring_chime:
           friendly_name: 'Ring Chime Pro'
           value_template: "{{ 'Online' if is_state('device_tracker.ring_chime', 'home') else 'Offline' }}"
+
+group:
+  system_info_view:
+    name: System info
+    icon: mdi:lan
+    view: yes
+    entities:
+      - device_tracker.isabella
+      - device_tracker.stefan
+      - group.device_states
+      - group.computer_states
+      - group.media_states
+      - group.raspberry_card
+      - group.hass_card
+      - group.internet_card
+      - group.system_monitor_card
+      - history_graph.internet_speed_tests
+
+  device_states:
+    name: Device status
+    entities:
+    - sensor.printer
+    - sensor.nas
+    - sensor.ipad
+    - sensor.galaxy_tab
+    - sensor.ip_camera
+    - sensor.ir_blaster
+    - sensor.ir_blaster_bedroom
+    - sensor.ir_blaster_livingroom
+    - sensor.withings_scale
+    - sensor.hue_hub
+    - sensor.milight_hub
+    - sensor.ikea_gateway
+    - sensor.xiaomi_gateway
+    - sensor.hass_rpi
+    - sensor.magic_mirror_rpi
+    - sensor.ring_doorbell
+    - sensor.ring_chime_pro
+    - sensor.ring_chime
+
+  computer_states:
+    name: Computer status
+    entities:
+    - sensor.stefan_computer
+    - sensor.isa_computer
+    - sensor.isa_laptop
+
+  media_states:
+    name: Media player status
+    entities:
+    - sensor.samsung65
+    - sensor.samsung49
+    - sensor.movie_system
+    - sensor.chromecast_bedroom
+    - sensor.shield
+    - sensor.shield_2
+    - sensor.sonos
 
 automation:
   - alias: 'Device Status'

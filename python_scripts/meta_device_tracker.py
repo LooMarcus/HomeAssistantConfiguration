@@ -61,16 +61,18 @@ elif newState.state == 'off':
 # every tracker for person must be not_home for it to report not home
 elif newState.state == 'not_home':
     if metatrackerName == 'device_tracker.isabella':
-        isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_6s_wifi')
+        # isa_wifi_state = hass.states.get('device_tracker.isabellas_iphone_6s_wifi')
         isa_bt_state = hass.states.get('device_tracker.isabellas_iphone_6s_bt')
         isa_ios_state = hass.states.get('device_tracker.isabellas_iphone_6s')
-        if isa_wifi_state == 'not_home' and isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
+        # if isa_wifi_state == 'not_home' and isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
+        if isa_bt_state == 'not_home' and isa_ios_state == 'not_home':
             newStatus = 'not_home'
             newIcon = 'mdi:home'
     elif metatrackerName == 'device_tracker.stefan':
-        stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
+        # stefan_wifi_state = hass.states.get('device_tracker.stefan_iphone_7_wifi')
         stefan_ios_state = hass.states.get('device_tracker.stefan_iphone_7')
-        if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
+        # if stefan_wifi_state == 'not_home' and stefan_ios_state == 'not_home':
+        if stefan_ios_state == 'not_home':
             newStatus = 'not_home'
             newIcon = 'mdi:home'
 

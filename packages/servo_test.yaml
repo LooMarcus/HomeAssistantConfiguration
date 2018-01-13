@@ -1,0 +1,7 @@
+# switch:
+#   - platform: rest
+#     resource: 'http://192.168.1.47/control?cmd=Servo,1,13,0'
+#     name: 'Radiator off'
+#   - platform: rest
+#     resource: 'http://192.168.1.47/control?cmd=Servo,1,13,40'
+#     name: 'Radiator on'

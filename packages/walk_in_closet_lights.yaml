@@ -1,7 +1,3 @@
-homeassistant:
-  customize:
-    binary_sensor.switch_158d00019d674a:
-      friendly_name: Walk In Closet Dimmer
 
 group:
   walk_in_closet_lights:

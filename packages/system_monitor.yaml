@@ -113,6 +113,14 @@ automation:
         data:
           title: 'Z-wave network now ready'
           message: 'Home Assistant'
+      - service: python_script.meta_device_tracker
+        data_template:
+          entity_id: 'device_tracker.stefan_iphone_7'
+          meta_entity: 'Stefan'
+      - service: python_script.meta_device_tracker
+        data_template:
+          entity_id: 'device_tracker.isabellas_iphone_6s'
+          meta_entity: 'Isabella'
 
   - alias: 'Hass Stopped'
     initial_state: 'on'

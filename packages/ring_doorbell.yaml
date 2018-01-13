@@ -1,3 +1,7 @@
+homeassistant:
+  customize:
+    camera.front_door:
+      friendly_name: Latest Capture Front Door Outside
 
 binary_sensor:
   - platform: ring
@@ -5,10 +9,18 @@ sensor:
   - platform: ring
   - platform: template
     sensors:
-      front_door_outeside_movement:
+      front_door_outside_movement:
         friendly_name: 'Front Door Outside Movement'
         value_template: '{% if is_state("binary_sensor.ring_front_door_motion", "on") %}Movement detected{% else %}No movement{% endif %}'
         icon_template: '{% if is_state("binary_sensor.ring_front_door_motion", "on") %}mdi:run-fast{% else %}mdi:sleep{% endif %}'
+      front_door_latest_ding:
+        friendly_name: 'Front Door Latest Ding'
+        value_template: '{{ as_timestamp(states.sensor.ring_front_door_last_ding.attributes.created_at) | timestamp_custom("%Y-%m-%d %H:%M") }}'
+        icon_template: '{% if is_state("binary_sensor.ring_front_door_ding", "on") %}mdi:bell-ring-outline{% else %}mdi:bell-outline{% endif %}'
+      front_door_latest_motion:
+        friendly_name: 'Front Door Latest Motion'
+        value_template: '{{ as_timestamp(states.sensor.ring_front_door_last_motion.attributes.created_at) | timestamp_custom("%Y-%m-%d %H:%M") }}'
+        icon_template: '{% if is_state("binary_sensor.ring_front_door_motion", "on") %}mdi:bell-ring-outline{% else %}mdi:bell-outline{% endif %}'
 
 camera:
   - platform: ring

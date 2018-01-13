@@ -36,6 +36,7 @@
              - sensor.temperature_158d000123552c # passage
              - sensor.temperature_158d0001235510 # upstairs hallway
              - sensor.temperature_158d0001fd83e7 # Stefan
+             - sensor.temperature_158d0001a2a899 # downstairs bathroom
              - sensor.dark_sky_temperature # Outside
           text_template: '${entity.state ? entity.state + "°" : "unknown"}'
           class_template: '
@@ -47,6 +48,21 @@
             else
               return "temp-high";
             '
+
+        - name: Humidity
+          entities:
+             - sensor.humidity_158d0001a2a899
+          text_template: '${entity.state ? Math.ceil(entity.state) + "%" : "unknown"}'
+          # class_template: '
+          #   var temp = parseFloat(entity.state.replace("%", ""));
+          #   if (temp < 22)
+          #     return "temp-low";
+          #   else if (temp < 25)
+          #     return "temp-medium";
+          #   else
+          #     return "temp-high";
+          #   '
+
         - name: Washer and dryer
           entities:
             - input_select.dryer_status

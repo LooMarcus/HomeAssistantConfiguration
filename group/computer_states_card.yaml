@@ -1,6 +1,0 @@
-computer_states_card:
-  name: Computer status
-  entities:
-  - sensor.stefan_computer
-  - sensor.isa_computer
-  - sensor.isa_laptop

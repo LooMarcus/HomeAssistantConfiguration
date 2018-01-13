@@ -9,4 +9,6 @@ info_card:
     - alarm_control_panel.home_alarm
     - sensor.last_seen_motion
     - sensor.last_door_opened
-    - sensor.mailbox    
+    - sensor.front_door_latest_ding
+    - sensor.front_door_latest_motion
+    - sensor.mailbox

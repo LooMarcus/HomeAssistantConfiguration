@@ -10,7 +10,7 @@ default_view:
     # - group.outside_lights_card
     - group.door_alerts
     - group.security_card
-    - group.ring_front_door
+    # - group.ring_front_door
     - input_boolean.stefan_home
     - input_boolean.isabella_home
     # - group.summary
