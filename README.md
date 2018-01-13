@@ -72,8 +72,14 @@ My configuration is broken down into [packages](https://github.com/isabellaalstr
 * Setting up Floorplan on tablets
 * Automate turning on and off charging of e-bike battery, with notifications (need another Fibaro wall plug)
 
-## Sample gui - House View
+## My gui
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/default_view.png" alt="Home Assistant" />
 <img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/house_view.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/system_info.png" alt="Home Assistant" />
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/alarmclock.png" alt="Home Assistant" />
+
+Floorplan gif-demo:
+<img src="https://github.com/isabellaalstrom/HomeAssistantConfiguration/blob/master/Images/floorplangitgif.gif" alt="Home Assistant" />
 
 ## Recommended links
 * [Hassbian](https://home-assistant.io/docs/installation/hassbian/)

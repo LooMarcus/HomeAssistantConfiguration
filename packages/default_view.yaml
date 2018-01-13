@@ -7,11 +7,12 @@ group:
       - device_tracker.isabella
       - device_tracker.stefan
       - group.info_card
+      - input_boolean.stefan_home
+      - input_boolean.isabella_home
       - group.lights
       - group.door_alerts
       - group.security_card
-      - input_boolean.stefan_home
-      - input_boolean.isabella_home
+
 
   info_card:
     name: Info
